@@ -1,0 +1,100 @@
+{extend name='public/base'}
+{block name='content'}
+<script src="__STATIC__/ueditor/ueditor.config.js" type="text/javascript"></script>
+<script src="__STATIC__/ueditor/ueditor.all.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="__STATIC__/plugins/layui/layui.js"></script>
+<style type="text/css">
+    .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+        background-color: green
+    }
+</style>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        公司
+        <small>文化</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 系统</a></li>
+        <li class="active">系统日志</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row" >
+        <div class="col-xs-12">
+            <!-- /.box -->
+            <div class="box" style="">
+                <div class="box-header">
+                    <h3 class="box-title">文化理念</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body"  style="width: 800px;">
+
+                    <form    id="mainForm" class="layui-form layui-form-line layui-form-pane" method='post' action='culture'>
+                        <input type="hidden" value="4" name="status">
+
+                        <div class="layui-form-item layui-form-text">
+                            <textarea placeholder="请输入内容" id="editor"  style="height: 500px;"  name="text"  class="layui-textarea"> {$info.text|default=''}</textarea>
+                        </div>
+
+                        <div class="" class="layui-form-item" >
+                            <div class="layui-input-block submit_btn">
+                                <button   class="layui-btn" lay-submit lay-filter="*">更新</button>
+                                <button style="display: none;"  type="reset" class=" layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+{/block}
+{block name='js'}
+<script type="text/javascript">
+    var ue = UE.getEditor('editor');
+    $(function(){
+        var options = {
+            type:'post',           //post提交
+            //url:'http://ask.tongzhuo100.com/server/****.php?='+Math.random(),   //url
+            dataType:"json",        //json格式
+            data:{},    //如果需要提交附加参数，视情况添加
+            clearForm: false,        //成功提交后，清除所有表单元素的值
+            resetForm: false,        //成功提交后，重置所有表单元素的值
+            cache:false,
+            async:false,          //同步返回
+            success:function(data){
+                if(data.code==0){
+                    layer.msg(data.msg);
+                }else{
+                    layer.msg(data.msg,{icon:1,time:500},function(){
+                        $("#reset").click();
+                        lotus_close();
+                        parent.location.reload();
+                    });
+                }
+                //服务器端返回处理逻辑
+            },
+            error:function(XmlHttpRequest,textStatus,errorThrown){
+                layer.msg('操作失败:服务器处理失败');
+            }
+        };
+        layui.use('form', function(){
+            var form = layui.form;
+            $('#mainForm').ajaxForm(options).submit(function(data){});
+        });
+
+    })
+    // });
+</script>
+{/block}
+
+

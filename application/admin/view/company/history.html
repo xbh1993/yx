@@ -1,0 +1,187 @@
+{extend name='public/base'}
+{block name='content'}
+
+<!-- Content Header (Page header) -->
+
+
+<!-- Main content -->
+<section class="content">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">操作栏</h3>
+        </div>
+        <div class="panel-body">
+            <button data-toggle="modal" onclick="lotus_show('新增发展历程','addhistory',500,350)" class="btn  btn-success  btn-sm btn-small ">新增发展历程</button>
+            <!-- <button class="btn  btn-danger btn-small">删除</button> -->
+        </div>
+    </div>
+
+    <div class="row" >
+        <div class="col-xs-12">
+            <!-- /.box -->
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">列表</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-hover table-striped">
+                        <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>标题</th>
+                            <th>图片</th>
+                            <th>创建时间</th>
+                            <th>更新时间</th>
+                            <td>排序</td>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {volist name='list' id='vo'}
+                        <tr style="">
+                            <td>{$vo.id}</td>
+                            <td>{$vo.title}</td>
+                            <td><img src="{$vo.image}" style="width:80px;height:80px"></td>
+                            <td>{$vo.add_time|date="Y-m-d H:i:s",###}</td>
+                            <td>{$vo.update_time|date="Y-m-d H:i:s",###}</td>
+                            <td>{$vo.sort}</td>
+                            <td>
+                                <button onclick="lotus_show('编辑管理员','edithostry.html?id={$vo.id}',500,450)" class="btn btn-xs  btn-success btn-small">编辑</button>
+                                <button onclick='delete_user({$vo.id})' class="btn btn-xs  btn-danger btn-small">删除</button>
+                            </td>
+                        </tr>
+                        {/volist}
+
+                        </tbody>
+
+                        <!--  <tfoot>
+                         <tr>
+                           <th>Rendering engine</th>
+                           <th>Browser</th>
+                           <th>Platform(s)</th>
+                           <th>Engine version</th>
+                           <th>CSS grade</th>
+                         </tr>
+                         </tfoot> -->
+                    </table>
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+
+{/block}
+
+
+{block name='script'}
+<script>
+    //编辑框打开方法，并且填充数据
+    function openEdit(id){
+        $.ajax({
+            url: "{:url('edithistory')}",
+            type: 'post',
+            dataType: 'json',
+            data: {id:id},
+        })
+            .done(function(data){
+                //加载层
+                var index = layer.load(0, {shade: true,offset:'m'}); //0代表加载的风格，支持0-2
+                //打开模态框
+                $('#editModal').modal('show');
+                //填充数据
+                $("#editForm").children('input[name=id]').val(data.id);
+                $("#editForm").find('select[name=group_id]').val(data.group_id);
+                $("#editForm").children().find('input[name=username]').val(data.username);
+                $("#editForm").children().find('input[name=mobile]').val(data.mobile);
+                $("#editForm").children().find('input[name=email]').val(data.email);
+            })
+    }
+
+    //增加数据
+    $(function (){
+        $('#example1').DataTable({
+            'paging'      : true,
+            'lengthChange': true,
+            'searching'   : true,
+            'ordering'    : false,
+            'info'        : true,
+            'autoWidth'   : true
+        });
+        var options = {
+            type:'post',//post提交
+            //url:'http://ask.tongzhuo100.com/server/****.php?='+Math.random(),   //url
+            dataType:"json",        //json格式
+            data:{},    //如果需要提交附加参数，视情况添加
+            clearForm: false,        //成功提交后，清除所有表单元素的值
+            resetForm: false,        //成功提交后，重置所有表单元素的值
+            cache:false,
+            async:false,          //同步返回
+            success:function(data){
+                if(data.code==0){
+                    layer.msg(data.msg,{icon:2,offset:'m',time:1000});
+                }else{
+                    layer.msg(data.msg,{icon:1,offset:'m',time:1500},function(){
+                        location.reload();
+                    });
+                }
+                //服务器端返回处理逻辑
+            },
+            error:function(XmlHttpRequest,textStatus,errorThrown){
+                layer.msg('操作失败:服务器处理失败');
+            }
+        };
+        //提交表单
+        $('#addForm').ajaxForm(options).submit(function(data){
+            console.log(data);
+        });
+        //编辑表单
+        $('#editForm').ajaxForm(options).submit(function(data){
+            // $('#editReset').click();
+        });
+    })
+    //新增用户的模态框数据清除
+    $("#addModal,#editModal").on('hide.bs.modal',function(){
+        $('#addReset').click();
+    });
+    //加载缓冲动画
+    $("#addModal,#editModal").on('show.bs.modal',function(){
+        layer.closeAll();
+    });
+
+
+    //删除用户
+    function delete_user(id){
+        layer.confirm('真的删除行么', function(index){
+            $.ajax({
+                url: '{:url("delete")}',
+                type: 'get',
+                dataType: 'json',
+                data: {id:id},
+            })
+                .done(function(data){
+                    //回调提示
+                    if(data.code==0){
+                        layer.msg(data.msg,{icon:2,time:1000});
+                    }else{
+                        layer.msg(data.msg,{icon:1,time:1500},function(){
+                            location.reload();
+                        });
+                    }
+                })
+
+
+        })
+
+    }
+
+
+
+</script>
+{/block}

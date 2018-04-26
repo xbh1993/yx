@@ -419,3 +419,8 @@ function getClientIP()
 
     return $ip;
 }
+
+function json_code($code=0,$message="",$data=[]){
+    $data=['code'=>$code,'msg'=>$message,'data'=>$data];
+    return exit(json_encode($data));
+}

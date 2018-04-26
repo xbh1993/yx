@@ -36,4 +36,50 @@ class System extends Main{
             }
         }
     }
+
+    //轮播图 配置
+
+    public  function sowingmap(){
+        $info=Db::name('system')->find(2);
+        $info=unserialize($info['value']);
+        $this->assign('info',$info);
+        return $this->fetch();
+    }
+
+
+    //上传视频
+    function uploadvideo(){
+        $file = request()->file('video');
+
+        // 移动到框架应用根目录/public/uploads/ 目录下
+        if($file){
+            $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads'.DS.'video');
+            if($info){
+                // 成功上传后 获取上传信息
+                // 输出 20160820/42a79759f284b767dfcb2a0197904287.jpg
+                $str= $info->getSaveName();
+                $str='/uploads'.DS.$str;
+                return json_code(1,'success',$str);
+
+            }else{
+                // 上传失败获取错误信息
+                echo $file->getError();
+            }
+        }
+    }
+
+
+    function updateBanner(){
+        if(request()->isPost()){
+            $d=request()->post();
+            if(empty($d) || !is_array($d)) return json_code(0,'系统错误');
+            $arr=[];
+            if(isset($d['video']) && !empty($d['video'])) $arr['video']=$d['video'];
+            if(isset($d['img_url'])  && !empty($d['img_url'])) $arr['img_url']=$d['img_url'];
+            if (isset($d['showType']) && !empty($d['showType'])) $arr['showType']=$d['showType'];
+            $str=serialize($arr);
+            Db::name('system')->update(['id'=>2,'value'=>$str]);
+            return json_code(1,'操作成功');
+        }
+    }
 }

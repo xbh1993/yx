@@ -75,7 +75,6 @@ class Company extends Main{
                 $str= $info->getSaveName();
                 $str='/uploads'.DS.$str;
                 return json_code(1,'success',$str);
-
             }else{
                 // 上传失败获取错误信息
                 echo $file->getError();
@@ -133,7 +132,7 @@ class Company extends Main{
 
     //发z展历程
     function  history(){
-        $lists=Db::name('company')->where('status',5)->select();
+        $lists=Db::name('company')->where('status',5)->order('sort desc,add_time desc')->select();
         $this->assign('list',$lists);
         return $this->fetch();
     }

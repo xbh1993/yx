@@ -48,7 +48,7 @@
             <div class="layui-input-block">
                 <input type="text" name="address"  class="layui-input" id="address" placeholder="分公司地址">
             </div>
-            <input type="hidden" value="" name="location">
+            <input type="hidden" value="" name="location" id="location">
             <div class="layui-input-inline" style="margin-left: 300px">
                 <label onclick="getmap('getmap.html')" class="layui-btn layui-btn-normal">地理位置拾取</label>
             </div>
@@ -93,6 +93,7 @@
         }
 
         function setaddress(location, address) {
+
             $('#address').val(address);
             $('#location').val(location);
         }

@@ -16,6 +16,7 @@ class System extends Main{
 		return $this->fetch('index',['list'=>$list]);
 	}
 	function setting(){
+	    if(request())
         $site_config = Db::name('system')->field('value')->where('name', 'site_config')->find();
         $site_config = unserialize($site_config['value']);
         return $this->fetch('setting', ['site_config' => $site_config]);

@@ -1,0 +1,120 @@
+{extend name='public/base'}
+{block name='content'}
+<style type="text/css">
+    .submit_btn{
+        float: center;
+    }
+</style>
+<!-- Content Header (Page header) -->
+
+
+<!-- Main content -->
+<section class="content">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">操作栏</h3>
+        </div>
+        <div class="panel-body">
+            <button data-toggle="modal" onclick="lotus_show('新增新闻类别','addmenu?pid=0','','',30)" class="btn  btn-success  btn-sm btn-small ">新增新闻类别</button>
+            <!-- <button class="btn  btn-danger btn-small">删除</button> -->
+        </div>
+    </div>
+
+    <div class="row" >
+        <div class="col-xs-12">
+            <!-- /.box -->
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">列表</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-hover table-striped">
+                        <thead>
+                        <tr>
+                            <th>标题</th>
+                            <th>菜单类型</th>
+                            <th>排序</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {volist name='lists' id='vo'}
+                        <tr style="">
+                            <td>{$vo.title}</td>
+                            <td>
+                                {eq name="vo.menu_event_type" value="1"}跳转网址{/eq}
+                                {eq name="vo.menu_event_type" value="2"}图文消息{/eq}
+                            </td>
+                            <td>{$vo.sort}</td>
+                            <td>
+                                <button onclick="lotus_show('修改','edittype?id={$vo.id}',400,200)" class="btn btn-xs  btn-success btn-small">编辑</button>
+                               <a href="/index.php/admin/wechat/menuson.html?pid={$vo.id}" class="btn btn-xs  btn-danger btn-small">子菜单列表</a>
+                                <button onclick='delete_ptype({$vo.id})' class="btn btn-xs  btn-danger btn-small">删除</button>
+                            </td>
+                        </tr>
+                        {/volist}
+                        </tbody>
+                    </table>
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+{/block}
+{block name='script'}
+<script>
+    $(function (){
+        $('#example1').DataTable({
+            'paging'      : true,
+            'lengthChange': true,
+            'searching'   : true,
+            'ordering'    : false,
+            'info'        : true,
+            'autoWidth'   : true
+        });
+    })
+    //新增用户的模态框数据清除
+    $("#addModal,#editModal").on('hide.bs.modal',function(){
+        $('#addReset').click();
+    });
+    //加载缓冲动画
+    $("#addModal,#editModal").on('show.bs.modal',function(){
+        layer.closeAll();
+    });
+    //删除用户
+    function delete_ptype(id){
+        layer.confirm('真的删除行么', function(index){
+            $.ajax({
+                url: '{:url("admin/product/delete_ptype")}',
+                type: 'get',
+                dataType: 'json',
+                data: {id:id},
+            })
+                .done(function(data){
+                    //回调提示
+                    if(data.code==0){
+                        layer.msg(data.msg,{icon:2,time:1000});
+                    }else{
+                        layer.msg(data.msg,{icon:1,time:1500},function(){
+                            location.reload();
+                        });
+                    }
+                })
+
+
+        })
+
+    }
+
+
+
+</script>
+{/block}
+{extend name='public/footer'}

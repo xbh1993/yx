@@ -1,0 +1,89 @@
+{extend name='public/modal'}    
+
+{block name='content'}
+
+<style type="text/css">
+  .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+    background-color: green
+  }
+</style>
+	<!-- Content Header (Page header) -->
+    
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row" >
+        <div class="col-xs-12">
+          <!-- /.box -->
+          <div class="box" style="">
+         
+            <!-- /.box-header -->
+            <div class="box-body"  style="width: 800px;">
+
+                <form  id="mainForm" class="layui-form layui-form-line layui-form-pane" method='post' action='addupdate_producttype' >
+
+                    <div class="layui-form-item layui-input-inline">
+                        <label class="layui-form-label">类型名称</label>
+                        <div class="layui-input-block">
+						  <input style="display:none" type="text" value="{$info.id|default=''}" name="id"  >
+                          <input type="text" value="{$info.title|default=''}" name="title" required  lay-verify="required" placeholder="请输入类型名称" autocomplete="off" class="layui-input">
+                        </div>
+                      </div>
+                <div class="" class="layui-form-item" >
+                        <div class="layui-input-block submit_btn">
+                          <button   class="layui-btn" lay-submit lay-filter="*">提交</button>
+                          <button style="display: none;"  type="reset" class=" layui-btn layui-btn-primary">重置</button>
+                        </div>
+                </div>
+
+                </form>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+{/block}
+
+
+{block name='js'}
+  <script type="text/javascript">
+      $(function(){
+        var options = {
+              type:'post',           //post提交
+              //url:'http://ask.tongzhuo100.com/server/****.php?='+Math.random(),   //url
+              dataType:"json",        //json格式
+              data:{},    //如果需要提交附加参数，视情况添加
+              clearForm: false,        //成功提交后，清除所有表单元素的值
+              resetForm: false,        //成功提交后，重置所有表单元素的值
+              cache:false,
+              async:false,          //同步返回
+              success:function(data){
+                    if(data.code==0){
+                      layer.msg(data.msg);
+                    }else{
+                      layer.msg(data.msg,{icon:1,time:500},function(){
+                        $("#reset").click();
+                        lotus_close();
+                        parent.location.reload();
+                      });
+                    }
+                  //服务器端返回处理逻辑
+                },
+                error:function(XmlHttpRequest,textStatus,errorThrown){
+                  layer.msg('操作失败:服务器处理失败');
+              }
+            };
+          layui.use('form', function(){
+            var form = layui.form;
+            $('#mainForm').ajaxForm(options).submit(function(data){});
+          });
+
+        })
+      // });
+  </script>
+{/block}

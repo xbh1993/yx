@@ -13,6 +13,7 @@
 
 // 定义应用目录
 define('APP_PATH', __DIR__ . '/../application/');
+//define('ROOT_PATH', __DIR__ . '/../application/');
 //钩子
 define('APP_HOOK',true);
 // 加载框架引导文件

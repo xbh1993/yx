@@ -1,0 +1,108 @@
+{extend name='public/modal'}
+{block name='content'}
+<form  id="mainForm" class="layui-form layui-form-pane" method='post' action="addmenu">
+
+    <input type="hidden" value="{$pid}" name="pid">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">菜单名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="title" value="" required  lay-verify="required" placeholder="请输入菜单名称" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">菜单内容</label>
+        <div class="layui-input-block">
+            <input type="radio"   checked name="status" value="1" title="跳转网址" >
+            <input type="radio"  name="status" value="2" title="发送消息" >
+        </div>
+    </div>
+
+    <div class="layui-form-item" id="types1">
+        <label class="layui-form-label">页面地址</label>
+        <div class="layui-input-block">
+            <input type="text" name="menu_event_url" value="" required  lay-verify="required" placeholder="请输入要跳转的网址" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">排序值</label>
+        <div class="layui-input-block">
+            <input type="text" name="sort"  value=""   placeholder="请输入排序值（越大越靠前）" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="" class="layui-form-item" >
+        <div class="layui-input-block submit_btn">
+            <button   class="layui-btn" lay-submit='' lay-filter="formDemo">提交</button>
+            <button style="display: none;"  type="reset" class=" layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+
+</form>
+{/block}
+{block name='js'}
+<script type="text/javascript">
+
+
+
+
+
+
+    $(function(){
+        var options = {
+            type:'post',           //post提交
+            //url:'http://ask.tongzhuo100.com/server/****.php?='+Math.random(),   //url
+            dataType:"json",        //json格式
+            data:{},    //如果需要提交附加参数，视情况添加
+            clearForm: false,        //成功提交后，清除所有表单元素的值
+            resetForm: false,        //成功提交后，重置所有表单元素的值
+            cache:false,
+            async:false,          //同步返回
+            success:function(data){
+                console.log(data);
+                if(data.code==0){
+                    layer.msg(data.msg);
+                }else{
+                    layer.msg(data.msg,{icon:1,time:500},function(){
+                        $("#reset").click();
+                        lotus_close();
+                        parent.location.reload();
+                    });
+                }
+                //服务器端返回处理逻辑
+            },
+            error:function(XmlHttpRequest,textStatus,errorThrown){
+                layer.msg('操作失败:服务器处理失败');
+            }
+        };
+        layui.use('form', function(){
+            var form = layui.form;
+            // bind form using 'ajaxForm'
+            $('#mainForm').ajaxForm(options).submit(function(data){
+                //无逻辑
+            });
+
+            form.on('radio',function (res) {
+                var types=res.value;
+                if(types==2){
+                    console.log(types)
+                    $('#types1').hide();
+                    $('#types2').show();
+                }else{
+                    $('#types1').show();
+                    $('#types2').hide();
+                }
+            })
+
+        });
+
+
+
+
+
+    })
+    // });
+</script>
+{/block}

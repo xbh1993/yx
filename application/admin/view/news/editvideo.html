@@ -1,0 +1,193 @@
+{extend name='public/modal'}
+
+{block name='content'}
+
+<style type="text/css">
+  .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+    background-color: green
+  }
+</style>
+<script src="/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="/ueditor/ueditor.all.js"></script>
+<script type="text/javascript" src="/static/plupload/js/plupload.full.min.js"></script>
+<link rel="stylesheet" href="/ueditor/themes/default/css/ueditor.css" rel="external nofollow" >
+  <!-- Content Header (Page header) -->
+    
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row" >
+        <div class="col-xs-12">
+          <!-- /.box -->
+          <div class="box" style="">
+         
+            <!-- /.box-header -->
+            <div class="box-body"  style="width: 800px;">
+
+                <form  id="mainForm" class="layui-form layui-form-line layui-form-pane" method='post' action='addupdate_video' >                    
+                    <div class="layui-form-item layui-input-inline">
+                        <label class="layui-form-label">视频类别</label>
+                        <div class="layui-input-block">
+                        <input style="display:none" type="text" value="{$info.Id|default=''}" name="Id"  >
+                        <select name="type">
+                          {volist name="type" id="vo"}
+                              {if condition="isset($info)"}
+                                {if condition="$vo.Id eq $info.type"} <option value ="{$vo.Id}"  selected="true">{$vo.title}</option>                        
+                                {else /} 
+                                <option value ="{$vo.Id}">{$vo.title}</option>
+                              {/if}
+                              {else /}
+                              <option value ="{$vo.Id}">{$vo.title}</option>
+                              {/if}
+                          {/volist}
+                        </select>
+                        </div>
+                      </div>
+                      <div class="layui-form-item layui-input-inline">
+                        <label class="layui-form-label">标题</label>
+                        <div class="layui-input-block">
+                          <input type="text" value="{$info.title|default=''}" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                        </div>
+                      </div>   
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">链接</label>
+                        <div class="layui-input-block">
+                          <input type="text" value="{$info.url|default=''}" name="url" placeholder="请输入链接" autocomplete="off" class="layui-input">
+                        </div>
+                      </div>                   
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">预览图</label>
+                        <div class="layui-input-block">                         
+                          <image src="{$info.image|default=''}" id="preview" name="preview"/>
+                          <input style="display:none" type="text" value="{$info.image|default=''}" name="image"  >
+                          <button type="button" class="layui-btn uploadbtn" >
+                            
+                            <i class="layui-icon">&#xe67c;</i>上传图片
+                          </button>
+                          
+                        </div>
+                      </div>
+
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">视频附件</label>
+                        <div class="layui-input-block">                         
+                          <input style="display:none" type="text" value="{$info.access|default=''}" name="access"  >
+                         <button type="button" class="layui-btn uploadbtn" lay-type="video" >
+                            
+                            <i class="layui-icon">&#xe67c;</i>上传文件
+                          </button>
+
+                          <label class="layui-form-label" id="filename">{$info.access|default=''}</label>
+                        </div>
+                      </div>
+                       <div class="layui-form-item ">
+                        <label class="layui-form-label">视频描述</label>
+                        <div class="layui-input-block">                          
+                          <textarea name="describe"  placeholder="请填写视频描述" class="layui-textarea">{$info.describe|default=''}</textarea>
+                        </div>
+                      </div>
+                <div class="" class="layui-form-item" >
+                        <div class="layui-input-block submit_btn">
+                          <button   class="layui-btn" lay-submit lay-filter="*">提交</button>
+                          <button style="display: none;"  type="reset" class=" layui-btn layui-btn-primary">重置</button>
+                        </div>
+                </div>
+
+                </form>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+{/block}
+
+
+{block name='js'}
+  <script type="text/javascript">
+    $(function(){
+        layui.use('laydate', function(){
+        var laydate = layui.laydate;
+  
+        //执行一个laydate实例
+        laydate.render({
+          elem: '#time1' //指定元素
+           ,type: 'datetime'
+          });
+        });
+        layui.use('upload', function(){
+            var upload = layui.upload;
+   
+            //执行实例
+            var uploadInst = upload.render({
+              elem: '.uploadbtn' //绑定元素
+              ,url: 'upload_file' //上传接口              
+              ,accept: 'file' //允许上传的文件类型
+              ,exts: 'jpg|png|gif|bmp|jpeg|docx|doc|mp4'//允许上传的文件后缀
+              ,size: 200000 //最大允许上传的文件大小
+              ,data: {}//额外参数
+              ,done: function(res, index, upload){ //上传后的回调
+                layer.closeAll('loading'); //关闭loading
+                //上传完毕回调
+                 if(res.status){
+                    if (res.filetype.indexOf("mp4")>=0) {
+                        $('#filename').html(res.filename);
+                        $("input[name='access']").val(res.filesrc);
+                    }
+                    else{
+                        $('#preview').attr("src",res.filesrc);
+                        $('#preview').css('width','30%');
+                        $("input[name='image']").val(res.filesrc);
+                    }
+                 }
+              }
+              ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+                  layer.load(); //上传loading
+              }
+              ,error: function(){
+                //请求异常回调
+                
+              }
+           });
+        });
+        var options = {
+              type:'post',           //post提交
+              //url:'http://ask.tongzhuo100.com/server/****.php?='+Math.random(),   //url
+              dataType:"json",        //json格式
+              data:{},    //如果需要提交附加参数，视情况添加
+              clearForm: false,        //成功提交后，清除所有表单元素的值
+              resetForm: false,        //成功提交后，重置所有表单元素的值
+              cache:false,
+              async:false,          //同步返回
+              success:function(data){
+                    if(data.code==0){
+                      layer.msg(data.msg);
+                    }else{
+                      layer.msg(data.msg,{icon:1,time:500},function(){
+                        $("#reset").click();
+                        lotus_close();
+                        parent.location.reload();
+                      });
+                    }
+                  //服务器端返回处理逻辑
+                },
+                error:function(XmlHttpRequest,textStatus,errorThrown){
+                  layer.msg('操作失败:服务器处理失败');
+              }
+            };
+          layui.use('form', function(){
+            var form = layui.form;
+            $('#mainForm').ajaxForm(options).submit(function(data){});
+          });
+
+        })
+      // });
+  </script>
+
+
+
+{/block}

@@ -119,7 +119,8 @@ class Company extends Main{
     function  culture(){
         if(request()->isPost()){
             $d=request()->post();
-            if(empty($d) && is_array($d)){
+
+            if(!empty($d) && is_array($d)){
                 Db::name('company')->where('status',4)->update($d);
                 return json_code(1,'success');
             }

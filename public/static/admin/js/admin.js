@@ -147,7 +147,7 @@ function lotus_show(title,url,w,h,offset){
         h=($(window).height() - 50);
     };
     layer.open({
-        offset:offset +'px', //右下角弹出
+        offset:'auto', //右下角弹出
         type: 2,
         area: [w+'px', h +'px'],
         fix: false, //不固定

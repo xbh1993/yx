@@ -1,0 +1,392 @@
+
+                      *{
+                          padding: 0;
+                          margin: 0;
+                      }
+/*头部导航*/
+.top{
+    width: 100%;
+    height: 100px;
+    background: #06c5f9;
+    color: #fff;
+    position: fixed;
+    top: 0;
+}
+.contop{
+    width: 1400px;
+    height: 100px;
+    margin: 0 auto;
+}
+.tab{
+    width: 150px;
+    height: 100px;
+    line-height: 100px;
+    float: left;
+    text-align: center;
+}
+.tab a{
+    color: #fff;
+    text-decoration: none;
+}
+.nav{
+    width: 1040px;
+    height: 100px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav ul li{
+    width: 130px;
+    height: auto;
+    line-height: 50px;
+    text-align: center;
+    list-style-type: none;
+    float: left;
+    margin: auto;
+
+}
+.nav ul a{
+    color: #fff;
+}
+.nav ul li a{
+    color: #fff;
+    text-decoration: none;
+}
+.nav ul li:hover{
+    background: #0b58a2;
+}
+
+.nav ul li ul { position:absolute; display:none;}
+.nav ul li ul li { float:none;}
+.nav ul li ul li a {border-right:none; }
+.nav ul li ul li:hover{background: #006dcc}
+.nav ul li:hover ul{ display:block; background: #0b58a2;padding-bottom: 10px;}
+
+/*关于扬翔*/
+.onyx{
+    width: 1400px;
+    height: 700px;
+    margin: 0 auto;
+}
+.onyx_text{
+    width: 100%;
+    height: 150px;
+    line-height: 150px;
+    font-size: 30px;
+    text-align: center;
+}
+.onyx_content{
+    width: 100%;
+    height: 550px;
+}
+.onyx_detail{
+    width: 50%;
+    height: 550px;
+    float: left;
+}
+.onyx_img{
+    width: 50%;
+    height: 550px;
+    background: #0a0a0a;
+    float: right;
+}
+.onyx_name{
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.onyx_em{
+    text-indent: 2em;
+    line-height: 30px;
+    padding-right: 20px;
+}
+.onyx_more{
+    width: 120px;
+    height: 35px;
+    line-height: 35px;
+    color: #707070;
+    border: #707070 1px solid;
+    text-align: center;
+    margin-top: 30px;
+}
+.onyx_more:hover{
+    border: #0b93d5 1px solid;
+    color: #0b93d5;
+}
+a{
+    text-decoration: none;
+}
+/*扬翔分公司分布*/
+.buted{
+    width: 100%;
+    height: 700px;
+    background: #06c5f9;
+    padding-top: 50px;
+}
+.buteda{
+    width: 1400px;
+    height: 700px;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+    font-size: 26px;
+}
+.buted_map{
+    width: 100%;
+    height: 580px;
+    background: #a77a94;
+    margin-top: 50px;
+}
+/*公司视频*/
+.vd{
+    width: 1400px;
+    height: 700px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 26px;
+    padding-top: 50px;
+}
+.video{
+    width: 100%;
+    height: 580px;
+    background: #0b93d5;
+    margin-top: 50px;
+}
+/*国际合作*/
+.concur{
+    width: 100%;
+    height: 700px;
+    background: #06c5f9;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.concura{
+    width: 1400px;
+    height: 700px;
+    margin: 0 auto;
+    color: #fff;
+}
+.concurb{
+    width: 100%;
+    height: 580px;
+    margin-top: 50px;
+}
+.concurl{
+    width: 650px;
+    height: 580px;
+    float: left;
+}
+.concurr{
+    width: 650px;
+    height: 580px;
+    float: right;
+}
+.concur p{
+    text-align: center;
+    font-size: 26px;
+}
+.concur img{
+    width: 100%;
+    height: 400px;
+    background: #0a0a0a;
+}
+.biao{
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    font-size: 26px;
+}
+.concur span{
+    width: 100%;
+    height: 100px;
+    line-height: 30px;
+    text-indent: 2em;
+
+}
+
+/*产品介绍*/
+.goods{
+    width: 100%;
+    height: 700px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.goodsa{
+    width: 1400px;
+    height: 700px;
+    margin: 0 auto;
+}
+.goodsb{
+    width: 100%;
+    height: 580px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.goodsl{
+    width: 330px;
+    height: 580px;
+    box-shadow:0px 0px  10px 5px #bfbfbf;
+}
+
+.goods p{
+    text-align: center;
+    font-size: 26px;
+}
+.goods img{
+    width: 100%;
+    height: 300px;
+    background: #0a0a0a;
+}
+.jies{
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    font-size: 26px;
+    text-align: center;
+}
+.goods span{
+    width: 100%;
+    height: 150px;
+    line-height: 30px;
+    text-indent: 2em;
+    margin-left: 10px;
+}
+/*新闻中心*/
+.new{
+    width: 100%;
+    height: 800px;
+    background: #06c5f9;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.newa{
+    width: 1400px;
+    height: 800px;
+    margin: 0 auto;
+    color: #fff;
+}
+.newb{
+    width: 100%;
+    height: 680px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.newl{
+    width: 450px;
+    height: 680px;
+    float: left;
+}
+
+.new p{
+    text-align: center;
+    font-size: 26px;
+}
+.new img{
+    width: 100%;
+    height: 400px;
+    background: #0a0a0a;
+    margin-top: 30px;
+}
+.newtext{
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    font-size: 26px;
+}
+.new span{
+    width: 100%;
+    height: 100px;
+    line-height: 30px;
+    text-indent: 2em;
+
+}
+/*底部*/
+.bottom{
+    width: 100%;
+    height: 400px;
+    background: #282828;
+}
+.btm{
+    width: 1400px;
+    height: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.btml{
+    width: 700px;
+    height: 300px;
+    color: #707070;
+}
+.btmname{
+    color: #cacaca;
+    font-size: 26px;
+    margin-bottom: 10px;
+
+}
+.btmimages{
+    height: 50px;
+    margin-top: 50px;
+}
+.btmyuan{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #cacaca;
+    margin-right: 10px;
+    float: left;
+}
+.btmen{
+    font-size: 18px;
+    color: #cacaca;
+}
+.jiaru{
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #0a0a0a;
+    background:#fff;
+    margin-top: 10px;
+      }
+.btmtext{
+    font-size: 14px;
+    line-height: 25px;
+}
+.btmr{
+    width: 400px;
+    height: 300px;
+    font-size: 14px;
+}
+.btmrlx{
+    color: #e6e6e6;
+}
+.btmrhz{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+.btmricon{
+    width: 300px;
+}
+.btmrtop{
+    margin-bottom: 5px;
+}
+.btmryuan{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #cacaca;
+    margin-right: 10px;
+    float: left;
+}
+.phone{
+    color: #fff;
+}

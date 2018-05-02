@@ -15,11 +15,16 @@ class news extends Controller
     {
         return $this->fetch();
     }
+    public function yxnews_info()
+    {
+        return $this->fetch();
+    }
     public function media()
     {
         return $this->fetch();
     }
-    public function two(){
+    public function video()
+    {
         return $this->fetch();
     }
 }

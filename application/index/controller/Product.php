@@ -35,10 +35,7 @@ class Product extends Controller
     {
         return $this->fetch();
     }
-    public function two()
-    {
-        return $this->fetch();
-    }
+
 
 
 }

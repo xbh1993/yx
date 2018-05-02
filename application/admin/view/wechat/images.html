@@ -1,0 +1,382 @@
+{extend name='public/modal'}
+{block name='content'}
+<script src="__STATIC__/ueditor/ueditor.config.js" type="text/javascript"></script>
+<script src="__STATIC__/ueditor/ueditor.all.min.js" type="text/javascript"></script>
+<script src="/static/module/layui/layui.js"></script>
+<style>
+    .item_header {
+        width: 200px;
+        height: 150px;
+        border: 1px solid;
+        padding: 5px
+    }
+
+    .item_item1 {
+        width: 200px;
+        height: 80px;
+        border: 1px solid;
+        padding: 5px
+    }
+
+    .item_header_text {
+        display: block;
+        height: 20px;
+        background-color: #bbb;
+        top: -40px;
+        position: relative;
+        color: white;
+        padding: 10px 0;
+    }
+
+    .item_header_img {
+        width: 100%;
+        height: 150px;
+    }
+
+    .item_item1_title {
+        float: left;
+        width: 100px
+    }
+
+    .item_item1_img {
+        float: right;
+    }
+
+    .item_item1_img img {
+        width: 100px;
+        height: 50px;
+    }
+
+    .item_item2 {
+        text-align: center;
+        line-height: 60px;
+        font-size: 22pt;
+        color: blue;
+        cursor: pointer;
+
+    }
+
+    .item_checked {
+        border: 3px solid red;
+    }
+
+    .del_item {
+        position: relative;
+        right: -150px;
+        top: 40px;
+        padding: 5px 10px;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+    }
+
+
+</style>
+<form id="mainForm" class="layui-form layui-form-pane" onsubmit="return addarticle()" method='post' action="update_article_images">
+
+
+    <div id="type2" >
+        <div class="layui-form-item type2">
+            <label class="layui-form-label">标题</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" value="{$info[0]['title']|default=''}" onchange="changeelement('title',this)" placeholder="请输入菜单名称"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+
+
+        <div class="layui-form-item type2">
+            <label class="layui-form-label">封面图</label>
+            <div class="layui-input-block" >
+                <button type="button" class="layui-btn" id="test2" style="float: left">
+                    <i class="layui-icon">&#xe67c;</i>上传图片
+                </button>
+                <input name="cover" type="hidden" value="{$info[0]['cover']|default=''}">
+                <img id="img_list" src="{$info[0]['cover']|default=''}" style="width: 100px;height: 100px;display: none">
+            </div>
+
+        </div>
+
+        <div class="layui-form-item type2">
+            <label class="layui-form-label">摘要</label>
+            <div class="layui-input-block">
+                <textarea class="layui-textarea" id="summary" onchange="changeelement('summary',this)" placeholder="输入简介">{$info[0]['summary']|default=''}</textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-form-text type2">
+            <label for="desc" class="layui-form-label">
+                正文
+            </label>
+            <textarea placeholder="请输入内容" id="editor" style="height: 500px;" name="content" class="layui-textarea"> {$info[0]['content']|default=''}</textarea>
+        </div>
+    </div>
+
+
+    <div class="" class="layui-form-item">
+        <div class="layui-input-block submit_btn">
+            <button class="layui-btn" lay-submit='' lay-filter="formDemo">提交</button>
+            <button style="display: none;" type="reset" class=" layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+
+</form>
+
+<div class="layui-col-md-3" style="float: right;position: absolute;right: -250px;top: 50px;" id="wx_img">
+    <div class="item_content">
+        <div class="item_i item_header item_checked" onclick="update_border(this)">
+            <img src="{$info[0]['cover']|default=''}" class="item_header_img" title="封面图片">
+            <text class="item_header_text">{$info[0]['title']|default=''}</text>
+            <input type="hidden" name="hidden1" class="title_1" value="{$info[0]['title']|default=''}">
+            <input type="hidden" name="hidden1" class="cover_1" value="{$info[0]['cover']|default=''}">
+            <!--<input type="hidden" name="hidden1" class="sort_1" value="0">-->
+            <input type="hidden" name="hidden1" class="summary_1" value="{$info[0]['summary']|default=''}">
+            <input type="hidden" name="hidden1" class="content_1" value="{$info[0]['content']|default=''}">
+        </div>
+        <div class="item_list">
+            {volist name="info" id='item' offset="1"}
+            <div class="item_i item_item1 " onclick="update_border(this)">
+                <text class="item_item1_title">{$item.title|default=''}</text>
+                <div class="item_item1_img"><img src="{$item.cover|default=''}" title="封面图片"></div>
+                <span class="del_item" onclick="del_item(this)">删除</span>
+                <input type="hidden" name="hidden1" class="title_1" value="{$item.title|default=''}">
+                <input type="hidden" name="hidden1" class="cover_1" value="{$item.cover|default=''}">
+                <!--<input type="hidden" name="hidden1" class="sort_1" value="0">-->
+                <input type="hidden" name="hidden1" class="summary_1" value="{$item.summary|default=''}">
+                <input type="hidden" name="hidden1" class="content_1" value="{$item.content|default=''}">
+            </div>
+            {/volist}
+        </div>
+    </div>
+    <div class="item_item1">
+        <div class="item_item2" data-count="1">新增</div>
+    </div>
+
+</div>
+{/block}
+{block name='js'}
+<script type="text/javascript">
+
+    function addarticle() {
+        var types=3;
+        var content='';
+        var check_item=true;
+        if(types==3){    //多图文信息发布
+            var objs=$('.item_i');
+            var i=1;
+            objs.each(function (index,obj) {
+                var text='';
+                var title=$(obj).find('.title_1').val();
+                if(title=="") {
+                    layer.msg('第'+i+'篇文章标题不能为空');
+                    check_item=false;
+                    return false;
+                }
+                var cont= $(obj).find('.content_1').val();
+                if(cont=="") {
+                    layer.msg('第'+i+'篇文章内容不能为空');
+                    check_item=false;
+                    return false;
+                }
+                var summary=$(obj).find('.summary_1').val()
+                if(summary=="") {
+                    layer.msg('第'+i+'篇文章摘要不能为空');
+                    check_item=false;
+                    return false;
+                }
+                var cover=$(obj).find('.cover_1').val()
+                if(cover=="") {
+                    layer.msg('第'+i+'篇文章封面图不能为空');
+                    check_item=false;
+                    return false;
+                }
+                text=title+','+summary+','+cont+','+cover;
+                if(content!=""){
+                    content=content+'&'+text;
+                }else{
+                    content=text;
+                }
+                i++;
+            })
+
+        }
+        if( check_item==false){
+            return false;
+        }
+        var url="{:url('update_article_images')}";
+        var id="{$info[0]['media_id']}";
+        $.ajax({
+            type:'post',
+            url:url,
+            dataType:'json',
+            data:{'data':content,'types':types,'id':id},
+            success:function (res) {
+                if(res.code==1){
+                    layer.msg(res.msg, {icon: 1, time: 500}, function () {
+                        $("#reset").click();
+                        lotus_close();
+                        parent.location.reload();
+                    });
+                }
+            },
+            before:function () {
+                console.log('正在上传')
+            }
+        })
+        return false;
+    }
+
+
+    //修改多图文选中状态下的边框
+    function update_border(obj) {
+        $('.item_i').removeClass('item_checked');
+        $(obj).addClass('item_checked');
+        clearform();
+        var sort=$(obj).find('.sort_1').val();
+        var title=$(obj).find('.title_1').val();
+        var summary=$(obj).find('.summary_1').val();
+        var content=$(obj).find('.content_1').val();
+        var img_src=$(obj).find('.cover_1').val();
+        $("input[name='sort']").val(sort);
+        $("input[name='title']").val(title);
+        $("input[name='cover']").val(img_src);
+        $('#summary').val(summary);
+        var content = UE.getEditor('editor').setContent(content);
+    }
+    //表单信息清空
+    function  clearform() {
+        $("input[name='sort']").val(5);
+        $("input[name='title']").val('');
+        $("input[name='cover']").val('');
+        $('#summary').val('');
+        UE.getEditor('editor').setContent('');
+    }
+
+    //输入框改变事件
+    function changeelement(str, obj) {
+        var info = $(obj).val();
+//        if (str == 'sort') {
+//            $('.item_checked').find('.sort_1').val(info);
+//        }
+        if (str == 'title') {
+            $('.item_checked').find('text').html(info);
+            $('.item_checked').find('.title_1').val(info);
+        }
+        if (str == 'author') {
+            $('.item_checked').find('.author_1').val(info);
+        }
+        if (str == 'summary') {
+            $('.item_checked').find('.summary_1').val(info);
+        }
+        if (str == 'content') {
+            var content = UE.getEditor('editor').getContent();
+            $('.item_checked').find('.content_1').val(content);
+        }
+    }
+
+    //多图文动态删除
+    function del_item(obj) {
+        var count = $('.item_item2').attr('data-count');
+        if (count == 1) {
+            layer.msg('不能再删了..');
+            return false;
+        }
+        $('.item_item2').attr('data-count', parseInt(count) - 1);
+        $(obj).parent().remove();
+    }
+
+
+    //多图文新增
+    var html_item = '<div class="item_i item_item1 " onclick="update_border(this)">'+
+        '<text class="item_item1_title">标题</text>'+
+    '<div class="item_item1_img"><img src="" title="封面图片"></div>'+
+        '<span class="del_item" onclick="del_item(this)">删除</span>'+
+        '<input type="hidden" name="hidden1" class="title_1" value="">'+
+        '<input type="hidden" name="hidden1" class="cover_1" value="">'+
+       ' <input type="hidden" name="hidden1" class="summary_1" value="">'+
+        '<input type="hidden" name="hidden1" class="content_1" value="">'+
+        '</div>';
+    $('.item_item2').click(function (res) {
+        var count = $(this).attr('data-count');
+        if (parseInt(count) >= 7) {
+            layer.msg('最多只能发8条图文消息');
+            return false;
+        }
+        $(this).attr('data-count', parseInt(count) + 1);
+        $('.item_list').append(html_item);
+        element.render();
+    })
+
+
+    var ue = UE.getEditor('editor');
+    UE.getEditor('editor').addListener("selectionchange", function () {
+        changeelement('content');
+    });
+    $(function () {
+        var options = {
+            type: 'post',           //post提交
+            //url:'http://ask.tongzhuo100.com/server/****.php?='+Math.random(),   //url
+            dataType: "json",        //json格式
+            data: {},    //如果需要提交附加参数，视情况添加
+            clearForm: false,        //成功提交后，清除所有表单元素的值
+            resetForm: false,        //成功提交后，重置所有表单元素的值
+            cache: false,
+            async: false,          //同步返回
+            success: function (data) {
+                if (data.code == 0) {
+                    layer.msg(data.msg);
+                } else {
+                    layer.msg(data.msg, {icon: 1, time: 500}, function () {
+                        $("#reset").click();
+                        lotus_close();
+                        parent.location.reload();
+                    });
+                }
+                //服务器端返回处理逻辑
+            },
+            error: function (XmlHttpRequest, textStatus, errorThrown) {
+                layer.msg('操作失败:服务器处理失败');
+            }
+        };
+        layui.use('form', function () {
+            var form = layui.form;
+            form.on('radio', function (res) {
+                var types = 3;
+                if(types==3){
+                    $('#type1').hide();
+                    $('#type2').show();
+                    $('#wx_img').show();
+                }
+            })
+
+        });
+
+        var url2="{:url('company/uploadfile')}"
+        layui.use('upload', function () {
+            var upload = layui.upload;
+            //执行实例
+            var uploadInst = upload.render({
+                elem: '#test2' //绑定元素
+                , url: url2 //上传接口
+                , field: 'image'
+                , multiple: true
+                , done: function (res) {
+                    var types=3;
+                    var img_src=res.data;
+                    if(types==3){
+                        $('.item_checked').find('.cover_1').val(img_src);
+                        $('.item_checked').find('img').attr('src',img_src);
+                    }
+                }
+                , error: function () {
+                    //请求异常回调
+                }
+            });
+        })
+
+
+    })
+    // });
+</script>
+{/block}

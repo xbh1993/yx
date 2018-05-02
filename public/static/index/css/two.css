@@ -1,0 +1,183 @@
+.tabBar-css {
+    
+    display:flex;
+    text-align: center;
+    justify-content: center;
+    height: 80px;
+    width: 100%;
+    background-color: #05A6EE;
+    align-items: center;
+    position: relative;
+    padding-bottom: 10px;
+    padding-top:10px;
+}
+
+.logo-css {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+}
+.logo {
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 80px;
+    height: 80px;
+
+}
+
+.yuyan-text,.logo-css,.idnex-text,.yx-text,.product-text,.news-text,.cx-text,.user-text,.smart-text,.rl-text{
+
+    padding-right: 20px;
+    
+}
+.jj-text,.lc-text,.wh-text,.sy-text{
+
+    display: flex;
+    justify-content: center;
+    padding-right: 80px;
+    padding-left: 10px;
+
+}
+.mid-css {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3A465E;
+    height: 200px;
+    width: 100%;
+}
+
+
+.company {
+
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    background-color: #17699B;
+    align-items: center;
+    position: relative;
+
+}
+.baner-css {
+
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+
+
+}
+.baner {
+
+    display: flex;
+    width: 1300px;
+    border: 2px solid #3A465E;
+    padding-bottom: 10px;
+}
+.company-div {
+
+    display: flex;
+    flex-direction: column;
+    width: 80px;
+    border: 2px solid #3A465E;
+    text-align: center;
+
+
+}   
+
+.mid-ss {
+
+    width: 1080px;
+    height: 730px;
+    display: flex;
+    justify-content: center;
+    background-color: #3A465E;
+    align-items: center;
+    
+
+}
+.text_css {
+
+    height: 40px;
+
+}
+.fengongsi {
+
+    width: 1000px;
+    padding-left: 20px;
+
+
+}
+#TabMain {
+    margin: 0 auto;
+    margin-top: 100px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+.tabItemContainer {
+    width:1400px;
+    height: 50px;
+    /*float: left;*/
+}
+.tabBodyContainer {
+    width: 677px;
+    height: 500px;
+    /*float: left;*/
+    /*background-color: #fff;*/
+    -webkit-border-radius: 0 5px 5px 0;
+    -moz-border-radius: 0 5px 5px 0;
+    border-radius: 0 5px 5px 0;
+    /*margin-left: 1px;*/
+}
+.tabItemContainer>li {
+    list-style: none;
+    text-align: center;
+    float: left;
+}
+.tabItemContainer>li>a {
+    float: left;
+    width: 100%;
+    padding: 30px 0 30px 0;
+    font: 16px "微软雅黑", Arial, Helvetica, sans-serif;
+    color: #808080;
+    cursor: pointer;
+    text-decoration: none;
+    border:1px solid transparent;
+}
+.tabItemCurrent {
+    background-color: #fff;
+    border: 1px solid #ccc !important;
+    border-right: 1px solid #fff !important;
+    position: relative;
+    -webkit-border-radius: 5px 0 0 5px;
+    -moz-border-radius: 5px 0 0 5px;
+    border-radius: 5px 0 0 5px;
+}
+.tabItemContainer>li>a:hover {
+    color: #333;
+}
+.tabBodyItem {
+    position: absolute;
+    width: 677px;
+    height: 500px;
+    display: none;
+}
+.tabBodyItem>p {
+    font: 13px "微软雅黑", Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin-top: 30px;
+}
+.tabBodyItem>p>a {
+    text-decoration: none;
+    color: #0F3;
+}
+.tabBodyCurrent{
+    display:block;
+}

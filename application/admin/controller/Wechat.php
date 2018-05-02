@@ -119,4 +119,8 @@ class Wechat extends Main  {
     public function addtest(){
         var_dump(123);exit;
     }
+
+    public function editwechat(){
+        var_dump(123123);exit;
+    }
 }

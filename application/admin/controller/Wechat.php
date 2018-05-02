@@ -115,4 +115,8 @@ class Wechat extends Main  {
         }
         return $this->fetch();
     }
+
+    public function addtest(){
+        var_dump(123);exit;
+    }
 }

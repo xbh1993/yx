@@ -6,6 +6,14 @@
   .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
     background-color: green
   }
+  .Bar { position: relative; width: 0px;
+            /* 宽度 */  padding: 1px; }
+        .Bar div{ display: block; position: relative;
+            background:#009688;/* 进度条背景颜色 */ color: #ffffff;
+            height: 20px; /* 高度 */ line-height: 20px;
+            /* 必须和高度一致，文本才能垂直居中 */ }
+        .Bar div span{ position: absolute; width: 0px;
+            /* 宽度 */ text-align: center; font-weight: bold; }
 </style>
 <script src="/ueditor/ueditor.config.js"></script>
 <script type="text/javascript" src="/ueditor/ueditor.all.js"></script>
@@ -25,10 +33,10 @@
             <div class="box-body"  style="width: 800px;">
 
                 <form  id="mainForm" class="layui-form layui-form-line layui-form-pane" method='post' action='addupdate_video' >                    
-                    <div class="layui-form-item layui-input-inline">
+                    <!-- <div class="layui-form-item layui-input-inline">
                         <label class="layui-form-label">视频类别</label>
                         <div class="layui-input-block">
-                        <input style="display:none" type="text" value="{$info.Id|default=''}" name="Id"  >
+                        
                         <select name="type">
                           {volist name="type" id="vo"}
                               {if condition="isset($info)"}
@@ -42,7 +50,8 @@
                           {/volist}
                         </select>
                         </div>
-                      </div>
+                      </div> -->
+                      <input style="display:none" type="text" value="{$info.Id|default=''}" name="Id"  >
                       <div class="layui-form-item layui-input-inline">
                         <label class="layui-form-label">标题</label>
                         <div class="layui-input-block">
@@ -72,12 +81,15 @@
                         <label class="layui-form-label">视频附件</label>
                         <div class="layui-input-block">                         
                           <input style="display:none" type="text" value="{$info.access|default=''}" name="access"  >
-                         <button type="button" class="layui-btn uploadbtn" lay-type="video" >
-                            
+                         <button type="button" class="layui-btn" lay-type="video" id="browse">                            
                             <i class="layui-icon">&#xe67c;</i>上传文件
                           </button>
-
-                          <label class="layui-form-label" id="filename">{$info.access|default=''}</label>
+                          <label class="layui-form-label" style="width: 211px;" id="filename">{$info.access|default=''}</label>
+                          <div class="Bar">
+                               <div>
+                               <span></span>
+                               </div>
+                          </div>
                         </div>
                       </div>
                        <div class="layui-form-item ">
@@ -121,14 +133,13 @@
         });
         layui.use('upload', function(){
             var upload = layui.upload;
-   
             //执行实例
             var uploadInst = upload.render({
               elem: '.uploadbtn' //绑定元素
               ,url: 'upload_file' //上传接口              
               ,accept: 'file' //允许上传的文件类型
               ,exts: 'jpg|png|gif|bmp|jpeg|docx|doc|mp4'//允许上传的文件后缀
-              ,size: 200000 //最大允许上传的文件大小
+              ,size: 100000 //最大允许上传的文件大小
               ,data: {}//额外参数
               ,done: function(res, index, upload){ //上传后的回调
                 layer.closeAll('loading'); //关闭loading
@@ -187,7 +198,43 @@
         })
       // });
   </script>
+   <script src="__static__/plupload/js/plupload.full.min.js"></script>
+   <script type="text/javascript">
+     //实例化一个plupload上传对象
+    var uploader = new plupload.Uploader({
+        browse_button : 'browse', //触发文件选择对话框的按钮，为那个元素id
+        url : '{:url("admin/news/upload_file")}', //服务器端的上传页面地址
+        flash_swf_url : '__static__/plupload/js/Moxie.swf', //swf文件，当需要使用swf方式进行上传时需要配置该参数
+        silverlight_xap_url : '__static__/plupload/js/Moxie.xap' //silverlight文件，当需要使用silverlight方式进行上传时需要配置该参数
+    });    
+    
+    //在实例对象上调用init()方法进行初始化
+    uploader.init();
+    //上传完成后 
+    uploader.bind('FileUploaded',function(uploader,file,responseObject){
+        $(".Bar").hide();
+        var res=JSON.parse(responseObject.response);
+        if (res.status) {
+           $('#filename').html(res.filename);
+           $("input[name='access']").val(res.filesrc);
 
+           layer.msg('上传成功');
+        }
+        else{
+          layer.msg('上传失败')
+        }
+    });
+    //选择文件后
+    uploader.bind('FilesAdded',function(uploader,files){
+        uploader.start();
+    });
+    //文件上传中
+    uploader.bind('UploadProgress',function(uploader,file){
+        $(".Bar").css('width',file.percent+'%');
+        $(".Bar span").css('width',file.percent+'%');
+        $(".Bar span").html(file.percent+'%');
+    });
+   </script>
 
 
 {/block}

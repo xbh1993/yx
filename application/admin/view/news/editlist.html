@@ -7,10 +7,15 @@
     background-color: green
   }
   .layui-upload-img{width: 90px; height: 92px; margin: 0 10px 20px 0;}
+
+  .demo { width: 651px; margin: 0 auto; font-family: arial,SimSun; font-size: 0;}
+.demo .item { display: inline-block; width: 180px; height: 100px; margin-right: 20px; *display: inline; *zoom: 1;}
+.demo span { display: block; height: 100px; line-height: 100px; font-size: 32px; text-align: center; color: #fff;}
 </style>
 <script src="/ueditor/ueditor.config.js"></script>
 <script type="text/javascript" src="/ueditor/ueditor.all.js"></script>
 <link rel="stylesheet" href="/ueditor/themes/default/css/ueditor.css" rel="external nofollow" >
+<link rel="stylesheet" href="__adminCss__/jquery.dad.css">
   <!-- Content Header (Page header) -->
     
 
@@ -106,20 +111,22 @@
                           <button type="button" class="layui-btn uploadbtn" id="btn1">                            
                             <i class="layui-icon">&#xe67c;</i>上传图片
                           </button>                          
+                         </div>
                       </div>
-                    </div>
                       <div id="photo" class="layui-form-item" style="{if condition="isset($info)"}{$info.sid==1?'':'display:none'}{else}display:none{/if}">
                         <label class="layui-form-label">图集</label>
                         <div class="layui-input-block">
-                          <input style="display:none" type="text" value="{$info.photo|default=''}" name="photo">
+                          <textarea style="display:none" value="" name="photo"  placeholder="请填写图集描述" class="layui-textarea">
+                            {$info.photo|default=''}
+                          </textarea>
                           <div class="layui-upload" >
                             <button type="button" class="layui-btn uploadbtn" id="btn2"><i class="layui-icon">&#xe654;添加图片</i></button> 
                             <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
                               图集：
-                              <div class="layui-upload-list" style="display: flex;flex-wrap: wrap;" id="demo2">
+                              <div class="layui-upload-list demo" style="display: flex;flex-wrap: wrap;" id="demo2">
                                 {if condition="isset($info)"}
                                 {volist name="photo" id="vo"}
-<div><img src="{$vo}" alt="" class="layui-upload-img"><a class="deletebtn" href="#"><i style="position: relative;left: -26px;top: -42px;font-size: 27px;" class="layui-icon">&#x1007;</i></a></div> 
+<div><img src="{$vo.src}" data-value="{$vo.describe}" alt="" class="layui-upload-img"><a class="deletebtn" href="#"><i style="position: relative;left: -26px;top: -42px;font-size: 27px;" class="layui-icon">&#x1007;</i></a></div> 
                                 {/volist}
                                 {/if}                                
                               </div>
@@ -129,9 +136,9 @@
                     </div>
                       <div id="photodescribe" class="layui-form-item" style="{if condition="isset($info)"}{$info.sid==1?'':'display:none'}{else}display:none{/if}">
                         <label class="layui-form-label">图集描述</label>
-                        <div class="layui-input-block">                         
-                         <textarea name="photodescribe"  placeholder="请填写图集描述" class="layui-textarea">{$info.photodescribe|default=''}</textarea>
-                         <label>*描述对应图集，用 | 分隔</label>
+                        <div class="layui-input-block">               
+                         <textarea id="photodescribe2"  placeholder="请填写图集描述" class="layui-textarea"></textarea>
+                         <label>*点击图片填写描述</label>
                         </div>
                       </div>
                      
@@ -164,7 +171,27 @@
 
 
 {block name='js'}
-  <script type="text/javascript">
+<script type="text/javascript">
+  var indexsign=0;
+  function setvalue(){
+    var arry=[];
+    $(".layui-upload-img").each(function(){
+        if ($(this).parent().css('position')=='static') {
+          var src=$(this).attr('src');
+        var datavalue=$(this).attr('data-value');
+        var item={"src":src,"describe":datavalue==undefined?'':datavalue};
+        arry.push(item);
+        }        
+    });
+    $("textarea[name='photo']").html(JSON.stringify(arry));
+  }
+</script>>
+<script src="__adminJs__/jquery.dad.min.js"></script>
+  <script type="text/javascript">   
+    $("textarea[id='photodescribe2']").bind('input propertychange','textarea',function(){
+        $(".layui-upload-img").eq(indexsign).attr('data-value',$(this).val());
+        setvalue();
+    });
     var editor = new baidu.editor.ui.Editor({ initialFrameWidth: 1024,initialFrameHeight: 500, scaleEnabled:true});
     editor.render("myEditor");
     editor.addListener("ready", function () {
@@ -174,8 +201,7 @@
     window.UEDITOR_HOME_URL='ueditor/';//此为ueditor相对于实例页面的路径
     $(function(){
         layui.use('laydate', function(){
-        var laydate = layui.laydate;
-  
+        var laydate = layui.laydate;  
         //执行一个laydate实例
         var time=$('#time1').val();
           laydate.render({
@@ -230,13 +256,10 @@
             });
           });
         });
-    var val=$("input[name='photo']").val().split(',');
-    $('.deletebtn').click(function(){                      
-                      var index=$(".deletebtn").index(this);
-                      val.splice(index,1);
-                      $("input[name='photo']").val(val.join(','));
-                      $(this).parent().remove();
-                   });
+    $('.deletebtn').click(function(){                   
+        $(this).parent().remove();  
+        setvalue();
+     });
     layui.use('upload', function(){
         var upload = layui.upload; 
         //图片上传
@@ -246,7 +269,8 @@
           ,accept: 'file' //允许上传的文件类型
           ,exts: 'jpg|png|gif|bmp|jpeg|docx|doc|'//允许上传的文件后缀
           ,size: 100000 //最大允许上传的文件大小
-          ,data: {}//额外参数          
+          ,data: {}//额外参数 
+          ,multiple:true         
           ,done: function(res, index, upload){ //上传后的回调
             layer.closeAll('loading'); //关闭loading
             var name=$(this).attr('item').attr('id');
@@ -258,31 +282,29 @@
                   $("input[name='thumb']").val(res.filesrc);
                 } 
                 else{
-                   val.push(res.filesrc);
-                   $("input[name='photo']").val(val.join(','));                   
+                   
+                   $('#demo2').append('<div><img src="'+ res.filesrc +'" alt="'+ res.filename +'" class="layui-upload-img"><a class="deletebtn" href="#"><i style="position: relative;left: -26px;top: -42px;font-size: 27px;z-index:99;" class="layui-icon">&#x1007;</i></a></div> ');
+                   $('.deletebtn').click(function(){
+                      $(this).parent().remove();
+                      setvalue();
+                      $('.demo').dad(); 
+                   });
+                   $('.demo').dad();
+                   setvalue();                
                 }                
                                
              }
           }
           ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
-              layer.load(); //上传loading
-              var name=$(this).attr('item').attr('id');
-              if (name=="btn2") {
-                obj.preview(function(index, file, result){
-                    $('#demo2').append('<div><img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img"><a class="deletebtn" href="#"><i style="position: relative;left: -26px;top: -42px;font-size: 27px;" class="layui-icon">&#x1007;</i></a></div> ');
-                    $('.deletebtn').click(function(){                      
-                      var index=$(".deletebtn").index(this);
-                      val.splice(index,1);
-                      $("input[name='photo']").val(val.join(','));
-                      $(this).parent().remove();
-                   });
-                });
-              }             
+              layer.load(); //上传loading            
           }
           ,error: function(){
             //请求异常回调            
           }
         });
       });
+$(function(){ 
+  $('.demo').dad();
+});
   </script>
 {/block}

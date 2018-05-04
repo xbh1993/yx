@@ -2,6 +2,7 @@
                       *{
                           padding: 0;
                           margin: 0;
+                          font-family: "楷体";
                       }
 /*头部导航*/
 .top{
@@ -70,6 +71,7 @@
     width: 1400px;
     height: 700px;
     margin: 0 auto;
+    padding-bottom: 50px;
 }
 .onyx_text{
     width: 100%;
@@ -90,7 +92,6 @@
 .onyx_img{
     width: 50%;
     height: 550px;
-    background: #0a0a0a;
     float: right;
 }
 .onyx_name{
@@ -190,7 +191,6 @@ a{
 .concur img{
     width: 100%;
     height: 400px;
-    background: #0a0a0a;
 }
 .biao{
     width: 100%;
@@ -243,7 +243,6 @@ a{
 .goods img{
     width: 100%;
     height: 300px;
-    background: #0a0a0a;
 }
 .jies{
     width: 100%;
@@ -294,7 +293,6 @@ a{
 .new img{
     width: 100%;
     height: 400px;
-    background: #0a0a0a;
     margin-top: 30px;
 }
 .newtext{

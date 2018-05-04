@@ -6,36 +6,37 @@
 <style>
     .item_header {
         width: 200px;
-        height: 150px;
-        border: 1px solid;
+        height: auto;
+        border: 1px solid #dbdbdb;
         padding: 5px
     }
 
     .item_item1 {
         width: 200px;
-        height: 80px;
-        border: 1px solid;
+        height: auto;
+        border: 1px solid #dbdbdb;
         padding: 5px
     }
-
     .item_header_text {
+        height: auto;
         display: block;
-        height: 20px;
         background-color: #bbb;
-        top: -40px;
         position: relative;
         color: white;
         padding: 10px 0;
     }
-
     .item_header_img {
         width: 100%;
         height: 150px;
+
     }
 
     .item_item1_title {
         float: left;
-        width: 100px
+        height: auto;
+        width: 100px;
+        padding-bottom: 40px;
+
     }
 
     .item_item1_img {
@@ -43,27 +44,33 @@
     }
 
     .item_item1_img img {
-        width: 100px;
-        height: 50px;
-    }
+        width: 80px;
+        height: 80px;
+        display: block;
+        line-height: 80px;
+        background: #ececec;
+        text-align: center;
+        font-size: 14px;
+        color: #c0c0c0;
 
+    }
     .item_item2 {
         text-align: center;
         line-height: 60px;
-        font-size: 22pt;
-        color: blue;
+        font-size: 18pt;
+        color: #0072d2;
         cursor: pointer;
 
     }
 
     .item_checked {
-        border: 3px solid red;
+        border: 1px solid red;
     }
 
     .del_item {
         position: relative;
-        right: -150px;
-        top: 40px;
+        /*right: -150px;*/
+        /*top: 40px;*/
         padding: 5px 10px;
         background-color: black;
         color: white;
@@ -138,7 +145,7 @@
             {volist name="info" id='item' offset="1"}
             <div class="item_i item_item1 " onclick="update_border(this)">
                 <text class="item_item1_title">{$item.title|default=''}</text>
-                <div class="item_item1_img"><img src="{$item.cover|default=''}" title="封面图片"></div>
+                <div class="item_item1_img"><img src="{$item.cover|default=''}" title="缩略图"></div>
                 <span class="del_item" onclick="del_item(this)">删除</span>
                 <input type="hidden" name="hidden1" class="title_1" value="{$item.title|default=''}">
                 <input type="hidden" name="hidden1" class="cover_1" value="{$item.cover|default=''}">

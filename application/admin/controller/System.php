@@ -42,8 +42,11 @@ class System extends Main{
 
     public  function sowingmap(){
         $info=Db::name('system')->find(2);
+        $banner=Db::name('system')->find(4);
         $info=unserialize($info['value']);
+        $banner=unserialize($banner['value']);
         $this->assign('info',$info);
+        $this->assign('banner',$banner);
         return $this->fetch();
     }
 
@@ -73,13 +76,17 @@ class System extends Main{
     function updateBanner(){
         if(request()->isPost()){
             $d=request()->post();
-            if(empty($d) || !is_array($d)) return json_code(0,'系统错误');
+            if(empty($d) || !is_array($d) || !isset($d['banner']) || !$d['banner']) return json_code(0,'系统错误');
             $arr=[];
             if(isset($d['video']) && !empty($d['video'])) $arr['video']=$d['video'];
             if(isset($d['img_url'])  && !empty($d['img_url'])) $arr['img_url']=$d['img_url'];
             if (isset($d['showType']) && !empty($d['showType'])) $arr['showType']=$d['showType'];
+            $bannerArr=$d['banner'];
+            $bannerstr=serialize($bannerArr);
             $str=serialize($arr);
+//            var_dump($bannerstr);exit;
             Db::name('system')->update(['id'=>2,'value'=>$str]);
+            Db::name('system')->update(['id'=>4,'value'=>$bannerstr]);
             return json_code(1,'操作成功');
         }
     }

@@ -8,9 +8,15 @@
 
 namespace app\index\controller;
 use think\Controller;
-
+use  think\Db;
 class Product extends Controller
 {
+    public function _initialize()
+    {
+        $banner=Db::name('system')->find(4);
+        $banner=unserialize($banner['value']);
+        $this->assign('bannerinfo',$banner);
+    }
     public function pig()
     {
         return $this->fetch();

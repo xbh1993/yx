@@ -329,8 +329,18 @@
 
                                      <ul class="treeview-menu">
                                         {foreach name="vo['children']" item="v"}
+                                              <li style="margin-left: 15px" ><a href="{:url($v.name)}"><i class="fa fa-circle-o"></i>{$v.title}                                             
+                                              </a>
+                                                {if condition="isset($v['children'])"}
+                                              <ul class="treeview-menu sign">
+                                               {foreach name="v['children']" item="k"}
+                                               <li style="margin-left: 15px" ><a href="{:url($k.name)}"><i class="fa fa-circle-o"></i>{$k.title}</a>
 
-                                              <li style="margin-left: 15px" ><a href="{:url($v.name)}"><i class="fa fa-circle-o"></i>{$v.title}</a></li>
+                                               </li>
+                                                {/foreach}
+                                                </ul>
+                                                {/if}
+                                              </li>
 
                                         {/foreach}
                                       </ul>
@@ -363,7 +373,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.0
     </div>
-    <strong>Copyright &copy; 2014-2018 <a  target="_target" href="https://www.wen2b.com">LotusAdmin</a>.</strong> All rights
+    <strong>Copyright &copy; 2014-2018 <a  target="_target" href="#">扬翔股份</a>.</strong> All rights
     reserved.
   </footer>
 

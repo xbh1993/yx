@@ -74,14 +74,13 @@
 
 /*切换*/
 .tabItemContainer {
-    width: 100px;
+    width: auto;
     height: 300px;
     border-left: #a0a0a0 1px solid;
     display: flex;
     flex-direction: column;
     white-space: pre-wrap;
     justify-content: center;
-
 }
 .tabBodyContainer {
     -webkit-border-radius: 0 5px 5px 0;
@@ -90,7 +89,7 @@
 }
 .tabItemContainer>li {
     list-style: none;
-    text-align: center;
+    text-align: left;
 }
 .tabItemContainer>li>a {
     float: left;
@@ -124,6 +123,51 @@
 }
 .tabBodyCurrent{
     display:block;
+}
+
+/*实验基地研究成果*/
+.docon{
+    width: 1200px;
+    height: 350px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+}
+.donav{
+    width: 580px;
+    height: 300px;
+    background: #e6e6e6;
+    text-align: center;
+}
+.donav span{
+    color: #8a8a8a;
+    font-size: 50px;
+    margin-top: 30px;
+    line-height: 40px;
+}
+.doxia{
+    width: 150px;
+    line-height: 50px;
+    text-align: center;
+    border-bottom: 1px #a0a0a0 solid;
+    margin: auto;
+    color: #ff6600;
+}
+.docolor{
+    width: 100%;
+    height: 30px;
+    background: #ff6600;
+    position: relative;
+    bottom: -25px;
+}
+.donava{
+    width: 520px;
+    height: 240px;
+    background: #ff6600;
+    color: #fff;
+    padding: 30px;
 }
 
 

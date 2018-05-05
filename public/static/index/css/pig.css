@@ -11,7 +11,7 @@
 /*切换tab*/
 #TabMain {
     width: 100%;
-    height: 2000px;
+    height: 2500px;
 }
 .tabItemContainer {
     width:800px;
@@ -26,8 +26,8 @@
     border-radius: 0 5px 5px 0;
 }
 .tabItemContainer>li {
-    width: 80px;
-    height: 100px;
+    width: auto;
+    height: auto;
     line-height: 100px;
     text-align: center;
     list-style: none;
@@ -91,10 +91,38 @@
     width: 500px;
     height: 340px;
 }
+/*饲料*/
+.fname{
+    width: 100%;
+    font-size: 24px;
+    text-align: center;
+    padding-top: 70px;
+}
+.pmore{
+    width: 100%;
+    height: 150px;
+    background: #e9e9e9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.pmoreimg{
+    width: 50px;
+    height: 50px;
+}
+.pmoret{
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background: #ff6600;
+    color: #fff;
+}
 /*分页*/
 .pbottom{
     width: 100%;
-    height: 150px;
+    height: 100px;
     padding-top: 50px;
     background: #e6e6e6;
 }

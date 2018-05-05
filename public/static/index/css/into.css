@@ -42,7 +42,6 @@
 .sumimgs{
     width: 350px;
     height: 300px;
-    background: #d1c5d8;
 }
 .sumtwtext{
     width: 350px;
@@ -51,6 +50,7 @@
     opacity: 0.5;
     position: relative;
     bottom: 53px;
+    color: #0a0a0a;
 }
 /*公司文化*/
 .cucontens{
@@ -89,7 +89,6 @@
 .cunava_img{
     width: 180px;
     height: 180px;
-    background: #fff;
     border-radius: 50%;
     margin: auto;
 }
@@ -104,8 +103,6 @@
 .fengcaiimg{
     width: 450px;
     height: 400px;
-    background: #ec6f01;
-
 }
 /*公益事业*/
 .causecon{
@@ -124,7 +121,6 @@
 .causeconimgs{
     width: 430px;
     height: 300px;
-    background: #d1c5d8;
 }
 .causecontext{
     width: 430px;
@@ -193,19 +189,4 @@
 }
 .tabfenBodyCurrent{
     display:block;
-}
-/*公司简介*/
-.pnavtop{
-    width: 1400px;
-    margin: auto;
-    background: #ec6f01;
-}
-.pnavtopl{
-     width: 200px;
-     background: #e0cfc2;
-     float: left;
- }
-.pnavtopl{
-    width: 1200px;
-    background: #0b93d5;
 }

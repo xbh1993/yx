@@ -62,7 +62,7 @@ class System extends Main{
                 // 成功上传后 获取上传信息
                 // 输出 20160820/42a79759f284b767dfcb2a0197904287.jpg
                 $str= $info->getSaveName();
-                $str='/uploads'.DS.$str;
+                $str='/uploads/video/'.DS.$str;
                 return json_code(1,'success',$str);
 
             }else{

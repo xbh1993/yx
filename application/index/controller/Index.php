@@ -9,16 +9,14 @@ class Index extends Controller
     public function _initialize(){
         $banner=Db::name('system')->find(2);
         $banner=unserialize($banner['value']);
-        if($banner['showType']==1){
-            $bannerinfo=$banner['img_url'];
-        }else{
-            $bannerinfo=$banner['video'];
-        }
+            $bannerinfo['imgurl']=$banner['img_url'];
+            $bannerinfo['video']=$banner['video'];
         $this->assign('bannerinfo',$bannerinfo);
     }
     public function index()
     {
-
+          $info=Db::name('company')->find(1);
+          $this->assign('profile',$info);
         return $this->fetch();
     }
     public function testsasas(){

@@ -39,18 +39,15 @@
             <p>I n t e r n a t i o n a l &nbsp;c o o p e r a t i o n</p>
             <p>国际合作</p>
             <div class="concurb">
+                {volist name="newslist" id="vo"}
                 <div class="concurl">
-                    <img src="/static/index/images/3.jpg">
-                    <div class="biao">标题</div>
-                    <span>公司致力于为公众提供健康、安全、美味的食品；致力于在母仔猪领域为中小养殖户提供专业、稳定、高效的整体解决方案 。
-                        2000年跻身为广西饲料业龙头企业，陆续获得“农业产业化国家重点龙头企业”、“全国饲料业科技创新先进集体”</span>
+                    <a href="#"><img src="{$vo.thumb}">
+                    <div class="biao">{$vo.title}</div>
+                    <span>{$vo.introduction}</span>
+                    </a>
                 </div>
-                <div class="concurr">
-                    <img src="/static/index/images/3.jpg">
-                    <div class="biao">标题</div>
-                    <span>公司致力于为公众提供健康、安全、美味的食品；致力于在母仔猪领域为中小养殖户提供专业、稳定、高效的整体解决方案 。
-                        2000年跻身为广西饲料业龙头企业，陆续获得“农业产业化国家重点龙头企业”、“全国饲料业科技创新先进集体”</span>
-                </div>
+                {/volist}
+                
                 </div>
         </div>
     </div>
@@ -61,39 +58,15 @@
             <p>P r o d u c t &nbsp;i n t r o d u c t i o n</p>
             <p>产 品 介 绍</p>
             <div class="goodsb">
+                {volist name="productlist" id="vo"}
                 <div class="goodsl">
-                    <img src="/static/index/images/3.jpg">
+                    <img src="{$vo.image}">
                     <div class="gooodslbtm">
-                        <div class="jies">标题</div>
-                        <span>公司致力于为公众提供健康、安全、美味的食品；致力于在母仔猪领域为中小养殖户提供专业、稳定、高效的整体解决方案 。
-                        2000年跻身为广西饲料业龙头企业，陆续获得“农业产业化国家重点龙头企业”、“全国饲料业科技创新先进集体”</span>
-                    </div>
-
-                </div>
-                <div class="goodsl">
-                    <img src="/static/index/images/3.jpg">
-                    <div class="gooodslbtm">
-                        <div class="jies">标题</div>
-                        <span>公司致力于为公众提供健康、安全、美味的食品；致力于在母仔猪领域为中小养殖户提供专业、稳定、高效的整体解决方案 。
-                        2000年跻身为广西饲料业龙头企业，陆续获得“农业产业化国家重点龙头企业”、“全国饲料业科技创新先进集体”</span>
+                        <div class="jies">{$vo.title}</div>
+                        <span>{$vo.describe}</span>
                     </div>
                 </div>
-                <div class="goodsl">
-                    <img src="/static/index/images/3.jpg">
-                    <div class="gooodslbtm">
-                        <div class="jies">标题</div>
-                        <span>公司致力于为公众提供健康、安全、美味的食品；致力于在母仔猪领域为中小养殖户提供专业、稳定、高效的整体解决方案 。
-                        2000年跻身为广西饲料业龙头企业，陆续获得“农业产业化国家重点龙头企业”、“全国饲料业科技创新先进集体”</span>
-                    </div>
-                </div>
-                <div class="goodsl">
-                    <img src="/static/index/images/3.jpg">
-                    <div class="gooodslbtm">
-                        <div class="jies">标题</div>
-                        <span>公司致力于为公众提供健康、安全、美味的食品；致力于在母仔猪领域为中小养殖户提供专业、稳定、高效的整体解决方案 。
-                        2000年跻身为广西饲料业龙头企业，陆续获得“农业产业化国家重点龙头企业”、“全国饲料业科技创新先进集体”</span>
-                    </div>
-                </div>
+                {/volist}
             </div>
         </div>
     </div>
@@ -112,10 +85,9 @@
                 </div>
                 <div class="newl">
                     <p>扬翔视频</p>
-                    <img src="/static/index/images/3.jpg">
-                    <div class="newtext">标题</div>
-                    <span>公司致力于为公众提供健康、安全、美味的食品；致力于在母仔猪领域为中小养殖户提供专业、稳定、高效的整体解决方案 。
-                        2000年跻身为广西饲料业龙头企业，陆续获得“农业产业化国家重点龙头企业”、“全国饲料业科技创新先进集体”</span>
+                    <img src="{$video.image}">
+                    <div class="newtext">{$video.title}</div>
+                    <span>{$video.describe}</span>
                 </div>
                 <div class="newl">
                     <p>媒体报道</p>

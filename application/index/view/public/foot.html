@@ -69,4 +69,27 @@
     </div>
 </div>
 </body>
+<script type="text/javascript" src="__indexJs__/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+// var $win = $(window);
+// var itemOffsetTop = $(".onyx_content").offset().top;
+// var itemOuterHeight = $(".onyx_content").outerHeight();
+// var winHeight = $win.height();
+// $win.scroll(function () {
+//     var winScrollTop = $win.scrollTop();
+//     if( winScrollTop <= itemOffsetTop && itemOffsetTop <= winScrollTop) {
+//         $(".onyx_content").fadeIn(1000);
+//     } else {
+//         $(".onyx_content").hide();
+//     }
+// })
+var $win = $(window);
+$win.scroll(function () {
+var a = $(".onyx_content").offset().top;
+                if (a >= $(window).scrollTop() && a < ($(window).scrollTop() + $(window).height())) {
+                    console.log("div在可视范围");
+                }
+                });
+    
+</script>
 </html>

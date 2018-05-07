@@ -41,6 +41,7 @@
               <table id="example1" class="table table-bordered table-hover table-striped">
                 <thead>
                 <tr>
+                  <th>编号</th>
                   <th>类型名称</th>
                   <th>操作</th>
                 </tr>
@@ -48,9 +49,10 @@
                 <tbody>
                   {volist name='list' id='vo'}
                   <tr style="">
+                    <td>{$vo.Id}</td>
                     <td>{$vo.title}</td>
                     <td>
-                        <button onclick="lotus_show('编辑类别','edittype?Id={$vo.Id}',400,200)" class="btn btn-xs  btn-success btn-small">编辑</button>
+                        <button onclick="lotus_show('编辑类别','edittype?tid={$tid}&&Id={$vo.Id}',400,200)" class="btn btn-xs  btn-success btn-small">编辑</button>
                         <button onclick='delete_ptype({$vo.Id})' class="btn btn-xs  btn-danger btn-small">删除</button>
                     </td>
                   </tr>

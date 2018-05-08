@@ -9,4 +9,8 @@ class Index extends Controller
     {
         return $this->fetch();
     }
+    public function ceshi()
+    {
+        return $this->fetch();
+    }
 }

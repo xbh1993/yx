@@ -1,7 +1,10 @@
 {include file="public:header"}
 
     <!--视频-->
-    <img style="width: 100%; height: 1000px;margin-top: 100px;" src="{$bannerinfo['imgurl'][0]}" >
+
+    <img style="width: 100%;margin-top: 100px;" src="/static/index/images/2.jpg" >
+
+    <img style="width: 100%; height: 1000px;margin-top: 100px;" src="{$bannerinfo['imgurl'][0]}">
     <!--关于扬翔-->
     <div class="onyx">
         <div class="onyx_text">关 于 扬 翔</div>
@@ -40,7 +43,7 @@
             <p>国际合作</p>
             <div class="concurb">
                 {volist name="newslist" id="vo"}
-                <div class="concurl">
+                <div class="concurl">                    
                     <a href="#"><img src="{$vo.thumb}">
                     <div class="biao">{$vo.title}</div>
                     <span>{$vo.introduction}</span>
@@ -63,9 +66,9 @@
                     <img src="{$vo.image}">
                     <div class="gooodslbtm">
                         <div class="jies">{$vo.title}</div>
-                        <span>{$vo.describe}</span>
+                        <div class="goods_span">{$vo.describe}</div>
                     </div>
-                </div>
+                </div>               
                 {/volist}
             </div>
         </div>
@@ -80,19 +83,19 @@
                     <p>扬翔新闻</p>
                     <img src="{$news1.thumb}">
                     <div class="newtext">{$news1.title}</div>
-                    <span>{$news1.introduction}</span>
+                    <div class="new_span">{$news1.introduction}</div>                   
                 </div>
                 <div class="newl">
                     <p>扬翔视频</p>
                     <img src="{$video.image}">
                     <div class="newtext">{$video.title}</div>
-                    <span>{$video.describe}</span>
+                    <div class="new_span">{$video.describe}</div>
                 </div>
                 <div class="newl">
                     <p>媒体报道</p>
                     <img src="{$news2.thumb}">
                     <div class="newtext">{$news2.title}</div>
-                    <span>{$news2.introduction}</span>
+                    <div class="new_span">{$news2.introduction}</div>
                 </div>
             </div>
         </div>

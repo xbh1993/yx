@@ -2,14 +2,13 @@
                       *{
                           padding: 0;
                           margin: 0;
-                          font-family: "楷体";
+                          font-family: "黑体";
                       }
 /*头部导航*/
 .top{
     width: 100%;
     height: 100px;
-    background: #06c5f9;
-    color: #fff;
+    background: #fff;
     font-size: 20px;
     position: fixed;
     top: 0;
@@ -28,7 +27,7 @@
     text-align: center;
 }
 .tab a{
-    color: #fff;
+    color: #000;
     text-decoration: none;
 }
 .nav{
@@ -51,21 +50,21 @@
 
 }
 .nav ul a{
-    color: #fff;
+    color: #000;
 }
 .nav ul li a{
-    color: #fff;
+    color: #000;
     text-decoration: none;
 }
 .nav ul li:hover{
-    background: #0b58a2;
+    color: #ff6600;
 }
 
 .nav ul li ul { position:absolute; display:none;}
 .nav ul li ul li { float:none;}
 .nav ul li ul li a {border-right:none; }
-.nav ul li ul li:hover{background: #006dcc}
-.nav ul li:hover ul{ display:block; background: #0b58a2;padding-bottom: 10px;}
+.nav ul li ul li:hover{color: #ff6600;}
+.nav ul li:hover ul{ display:block; background: #fff;padding-bottom: 10px;}
 
 /*关于扬翔*/
 .onyx{
@@ -100,23 +99,26 @@
     margin-bottom: 10px;
 }
 .onyx_em{
+    width: 650px;
+    height: 480px;
     text-indent: 2em;
     line-height: 30px;
-    padding-right: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.onyx_more{
-    width: 120px;
-    height: 35px;
-    line-height: 35px;
-    color: #707070;
-    border: #707070 1px solid;
-    text-align: center;
-    margin-top: 30px;
-}
-.onyx_more:hover{
-    border: #0b93d5 1px solid;
-    color: #0b93d5;
-}
+/*.onyx_more{*/
+    /*width: 120px;*/
+    /*height: 35px;*/
+    /*line-height: 35px;*/
+    /*color: #707070;*/
+    /*border: #707070 1px solid;*/
+    /*text-align: center;*/
+    /*margin-top: 30px;*/
+/*}*/
+/*.onyx_more:hover{*/
+    /*border: #0b93d5 1px solid;*/
+    /*color: #0b93d5;*/
+/*}*/
 a{
     text-decoration: none;
 }
@@ -133,7 +135,7 @@ a{
     margin: 0 auto;
     text-align: center;
     color: #fff;
-    font-size: 26px;
+    font-size: 24px;
 }
 .buted_map{
     width: 100%;
@@ -147,7 +149,7 @@ a{
     height: 700px;
     margin: 0 auto;
     text-align: center;
-    font-size: 26px;
+    font-size: 24px;
     padding-top: 50px;
 }
 .video{
@@ -178,20 +180,18 @@ a{
     width: 100%;
     height: 580px;
     margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 .concurl{
     width: 650px;
     height: 580px;
-    float: left;
 }
-.concurr{
-    width: 650px;
-    height: 580px;
-    float: right;
-}
+
 .concur p{
     text-align: center;
-    font-size: 26px;
+    font-size: 24px;
 }
 .concur img{
     width: 100%;
@@ -201,13 +201,22 @@ a{
     width: 100%;
     height: 80px;
     line-height: 80px;
-    font-size: 26px;
+    font-size: 24px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
-.concur span{
+.concur_span{
     width: 100%;
-    height: 100px;
+    /*height: 100px;*/
     line-height: 30px;
     text-indent: 2em;
+    display: -webkit-box;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
 
 }
 
@@ -243,7 +252,7 @@ a{
 }
 .goods p{
     text-align: center;
-    font-size: 26px;
+    font-size: 24px;
 }
 .goods img{
     width: 100%;
@@ -253,15 +262,24 @@ a{
     width: 100%;
     height: 80px;
     line-height: 80px;
-    font-size: 26px;
+    font-size: 24px;
     text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
-.goods span{
-    width: 100%;
-    height: 150px;
+.goods_span{
+    width: 280px;
+    /*height: 150px;*/
     line-height: 30px;
     text-indent: 2em;
-    margin-left: 10px;
+    margin: auto;
+    display: -webkit-box;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
 }
 /*新闻中心*/
 .new{
@@ -293,7 +311,7 @@ a{
 
 .new p{
     text-align: center;
-    font-size: 26px;
+    font-size: 24px;
 }
 .new img{
     width: 100%;
@@ -304,14 +322,22 @@ a{
     width: 100%;
     height: 80px;
     line-height: 80px;
-    font-size: 26px;
+    font-size: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
 }
-.new span{
+.new_span{
     width: 100%;
-    height: 100px;
+    /*height: 100px;*/
     line-height: 30px;
     text-indent: 2em;
-
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
 }
 /*底部*/
 .bottom{
@@ -335,7 +361,7 @@ a{
 }
 .btmname{
     color: #cacaca;
-    font-size: 26px;
+    font-size: 24px;
     margin-bottom: 10px;
 
 }

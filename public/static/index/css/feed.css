@@ -1,8 +1,13 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: "黑体";
 }
 .pnavtop{
+    width: 1400px;
+    margin: auto;
+}
+.aa{
     width: 1400px;
     margin: auto;
 }
@@ -53,7 +58,7 @@
     font-size: 16px
 }
 .fptext{
-    color: #707070;margin-top: 10px;font-size: 14px;
+    color: #555;margin-top: 10px;font-size: 14px;
 }
 .finput{
     width: 120px;height: 30px;float: left;margin-top: 20px;
@@ -97,7 +102,7 @@
     height: 5px;
     margin-bottom: 50px;
     font: 16px "微软雅黑", Arial, Helvetica, sans-serif;
-    color: #808080;
+    color: #555;
     cursor: pointer;
     text-decoration: none;
     border-left: 3px #0a0a0a solid;
@@ -142,7 +147,7 @@
     text-align: center;
 }
 .donav span{
-    color: #8a8a8a;
+    color: #555;
     font-size: 50px;
     margin-top: 30px;
     line-height: 40px;
@@ -169,5 +174,151 @@
     color: #fff;
     padding: 30px;
 }
+.donav_texta{
+    line-height: 50px;font-size: 24px;margin-top: 30px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
+}
+.donav_textb{
+    font-size: 24px;margin-top: 30px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
+}
+.donav_nameb{
+    font-size: 20px;line-height: 50px;border-bottom: #fff 1px solid;width: 400px;
+}
+.donav_textc{
+    line-height: 30px;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+}
+/*科研所团队成员*/
+.studyt{
+    width: 1200px;
+    height: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.studytcon{
+    width: 350px;
+    height: 450px;
+    text-align: center;
+}
+.studytcon img{
+    width: 170px;
+    height: 170px;
+    margin: auto;
+    border-radius: 50%;
+}
+.studyt_name{
+    font-size: 24px;
+    margin-top: 30px;
+}
+.yuanshi{
+    color: #ff6600;
+    line-height: 50px;
+    font-size: 20px;
+}
+.studyt_text{
+    width: 300px;
+    height:150px;
+    color: #555;
+    line-height: 30px;
+    font-size: 18px;
+    margin: auto;
+    overflow: hidden;
+
+}
+/*创新与研究成果*/
+.gainstop{
+    width: 1400px;
+    height: 550px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.gainscom{
+    width: 430px;
+    height: 500px;
+    border: 2px solid #e6e6e6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.gainscom img{
+    width: 175px;
+    height: 145px;
+    margin-top: 30px;
+}
+.gainscom_btm{
+    width: 380px;
+    height: 345px;
+}
+.gainscom_name{
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.gainscom_text{
+    font-size: 14px;
+    line-height: 30px;
+    margin-top: 30px;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+}
+.gainscom_more{
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 14px;
+    margin:auto;
+    background: #e6e6e6;
+
+}
+.gainscom_div{
+    width: 100px;
+    margin: auto;
+    border-bottom: 2px #ff6600 solid;
+}
+
+/*分页*/
+.pbottom{
+    width: 100%;
+    height: 100px;
+    padding-top: 50px;
+    background: #e6e6e6;
+}
+
+.divpage{
+    width: 1200px;
+    margin:  auto;
+    text-align: right;
+
+}
+.divpage a,.divpage span{
+    text-decoration: none;
+    border: #707070 1px solid;
+    padding: 5px 7px;
+    color: #555;
+    cursor: pointer;
+}
+.divpage a:hover,.divpage span:hover{
+    color: #ec6f01;
+}
+
 
 

@@ -106,11 +106,11 @@
                       <div id="thumb" class="layui-form-item" style="{if condition="isset($info)"}{$info.sid==1?'display:none':''}{/if}">
                         <label class="layui-form-label">缩略图</label>
                         <div class="layui-input-block">                         
-                          <image src="{$info.thumb|default=''}" id="preview1" name="preview1"/>
+                          <image src="{$info.thumb|default=''}" id="preview1" name="preview1" style="{if condition="isset($info)"}{$info.sid==1?'':'width:30%'}{/if}"/>
                           <input style="display:none" type="text" value="{$info.thumb|default=''}" name="thumb"  >
                           <button type="button" class="layui-btn uploadbtn" id="btn1">                            
                             <i class="layui-icon">&#xe67c;</i>上传图片
-                          </button>                          
+                          </button>(尺寸330*300)                          
                          </div>
                       </div>
                       <div id="photo" class="layui-form-item" style="{if condition="isset($info)"}{$info.sid==1?'':'display:none'}{else}display:none{/if}">

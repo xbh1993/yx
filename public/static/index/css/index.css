@@ -153,10 +153,11 @@ a{
     padding-top: 50px;
 }
 .video{
-    width: 100%;
+    width: 1030;
     height: 580px;
     background: #0b93d5;
     margin-top: 50px;
+    margin: 50px auto;
 }
 /*国际合作*/
 .concur{
@@ -170,6 +171,9 @@ a{
     width: 1400px;
     height: 700px;
     margin: 0 auto;
+    color: #fff;
+}
+.concura a{
     color: #fff;
 }
 .concurb{

@@ -67,7 +67,7 @@
                       <div class="layui-form-item">
                         <label class="layui-form-label">预览图</label>
                         <div class="layui-input-block">                         
-                          <image src="{$info.image|default=''}" id="preview" name="preview"/>
+                          <image src="{$info.image|default=''}" id="preview" name="preview" style="{if condition="isset($info)"}width:30%{else}{/if}"/>
                           <input style="display:none" type="text" value="{$info.image|default=''}" name="image"  >
                           <button type="button" class="layui-btn uploadbtn" >
                             

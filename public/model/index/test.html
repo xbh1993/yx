@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>扬翔股份发展历程动画原型</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- 发展历程CSS -->
+    <style>
+        body{background: white;margin: 0px;padding: 0px;color: #ffffff;}
+        #content{
+            width: 100%;
+            margin-top: 500px;
+        }
+        .items{
+            background-image: url(/public/image/1.png);
+            width: 6vh;
+            height: 20vh;
+            /*margin: 0 auto;*/
+            position: relative;
+            left: 45%;
+            display: none;
+        }
+        .items_left{
+            position: relative;
+            /*background-color: red;*/
+            width: 20vh;
+            height: 20vh;
+            left: -19vh;
+            top: -10vh;
+        }
+        .items_right{
+            position: relative;
+            /*background-color: red;*/
+            width: 20vh;
+            height: 20vh;
+            left: 5vh;
+            /*top: -15vh;*/
+        }
+        .items_left span{
+            position: relative;
+            top: -49vh;
+            left:-10vh;
+            display: none;
+        }
+        .items_right span{
+            position: relative;
+            left: 23vh;
+            top: -50vh;
+            display: none;;
+        }
+        .items img{
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+        .img_2{
+            position: relative;
+            top: -37vh;
+            left: -18vh;
+        }
+        .img_3{
+            position: relative;
+            top: -37vh;
+            left: 18vh;
+        }
+        .item_header{
+            width:77vh;
+            height:85vh;
+            position: relative;
+            margin:0 auto;
+            left:-8vh;
+            display: none;
+
+        }
+        .item_header img{
+            width: 100%;
+            height:100%;
+
+        }
+    </style>
+</head>
+<body>
+<!-- 节点存放区域 -->
+<div id="content">
+    <div class="item_header"><img src="/public/image/header.png"></div>
+</div>
+
+<div id='demo1' style='width: 260px;line-height: 20px;margin: 0 auto;font-size:  24px;margin-top: 30px'>发展历程动画展示效果1</div>
+
+</body>
+
+<!-- 暂时用了cdn远程JQ，如果没有特别要求，可以采用本地的 -->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    var i=20;
+    var html='';
+
+
+    for(var index=0;index<i;index++){
+        var res=index%2;
+        if(res==0){  //为偶数
+            str='<div class="items" id="demo_'+index+'">'+
+                '<div class="items_left" >'+
+                '<img src="/public/image/2.png">'+
+                '<img class="img_2" src="/public/image/2_1.png">'+
+                    '<span>发展历程'+index+'</span>'+
+                '</div>'+
+                '</div>';
+        }else{
+            str='<div class="items" id="demo_'+index+'">'+
+                '<div class="items_right">'+
+                '<img src="/public/image/3.png">'+
+                '<img class="img_3" src="/public/image/3_1.png">'+
+                '<span>发展历程'+index+'</span>'+
+                '</div></div>';
+        }
+        html=str+html;
+    }
+
+    $('#content').append(html);
+
+
+    $("html,body").animate({scrollTop: $("#demo1").offset().top}, 80);
+
+
+    setInterval(ceshi,1000);
+
+    var show_item=0;
+    function ceshi() {
+        if(show_item<i){
+
+            $('#demo_'+show_item).show(600);
+            $('#demo_'+show_item).find('img').show(1200);
+            $('#demo_'+show_item).find('span').show(2000);
+            show_item=show_item+1;
+        }else{
+                    $('.item_header').show(500);
+        }
+
+
+    }
+</script>
+
+</html>

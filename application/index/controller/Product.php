@@ -18,7 +18,13 @@ class Product extends Controller
         $this->assign('bannerinfo',$banner);
     }
     public function pig()
-    {
+    {        
+        $tid=is_null(input('get.tid'))?"1":input('get.tid');
+        $list=Db::name('product')->where(['type'=>$tid])->order('time desc')->paginate(3);
+        $page=$list->render();
+        $this->assign('list', $list);
+        $this->assign('page', $page);
+        $this->assign('tid',$tid);
         return $this->fetch();
     }
     public function piginfo()

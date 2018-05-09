@@ -6,42 +6,80 @@
     <title>猪精</title>
     <link href="/static/index/css/pig.css" type="text/css" rel="stylesheet">
     <script language="Javascript" type="text/Javascript" src="/static/jquery-3.3.1.min.js"></script>
+    <script language="Javascript" type="text/Javascript" src="__indexJs__/pages-min.js"></script>
 </head>
 <body>
 <img class="timg" src="{$bannerinfo[1]}">
         <div id="TabMain">
             <div class="underline">
             <div class="tabItemContainer">
-                <li><a class="tabItemCurrent">猪 精</a></li>
+                <li><a href="?tid=1" >猪 精</a></li>
                 <div class="lixian"></div>
-                <li><a>饲 料</a></li>
+                <li><a href="?tid=2">饲 料</a></li>
                 <div class="lixian"></div>
-                <li><a>种 猪</a></li>
+                <li><a href="?tid=3">种 猪</a></li>
                 <div class="lixian"></div>
-                <li><a>动 保</a></li>
+                <li><a href="?tid=4">动 保</a></li>
                 <div class="lixian"></div>
-                <li><a>设 备</a></li>
+                <li><a href="?tid=5">设 备</a></li>
             </div>
             </div>
+            
+
             <div class="tabBodyContainer">
                 <div class="tabBodyItem tabBodyCurrent">
-<div id="html_5"><iframe align="center" width="100%" height="2200px" src="/index/product/piginfo.html" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></div>
-                </div>
-                <div class="tabBodyItem">
-<div id="html_4"><iframe align="center" width="100%" height="2500px" src="/index/product/feed.html" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></div>
-                </div>
-                <div class="tabBodyItem">
-<div id="html_3"><iframe align="center" width="100%" height="2200px" src="/index/product/pigs.html" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></div>
-                </div>
-                <div class="tabBodyItem">
-<div id="html_2"><iframe align="center" width="100%" height="2200px" src="/index/product/move.html" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></div>
-                </div>
-                <div class="tabBodyItem">
-<div id="html_1"><iframe align="center" width="100%" height="2200px" src="/index/product/equipment.html" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></div>
-                </div>
+                    <div id="html_5">
+                    {volist name="list" id="vo" key="i"}
+                    <div class="ptop" style="{$i%2!=0?"background: #e6e6e6;":""}">
+                        <div class="pcon">
+                            <div class="pconl">
+                                <div class="pigname">扬翔集团</div>
+                                <div class="pigtitle">{$vo.title}</div>
+                                <div class="pigtexts">{$vo.describe}</div>
+                            </div>
+                            <img src="{$vo.image}">
+                        </div>
+                    </div>
+                    {if condition="$vo.type==2"}
+                    <div class="pmore">
+    <img src="/static/index/images/xia.png" class="pmoreimg">
+    <div class="pmoret">点击了解更多</div>
+</div>
+                    {/if}
+                    {/volist}        
+                    {$page}            
+                    <!-- <div class="pbottom">
+                        <div class="divpage">
+                            <span>共16页</span>
+                            <span>上一页</span>
+                            <a href="#">1</a>
+                            <a href="#">2</a>
+                            <a href="#">3</a>
+                            <a href="#">4</a>
+                            <span>下一页</span>
+                        </div>
+                     </div> -->
+                   </div>
+                    <!-- <div class="paging">
+                    <div class="pp"></div>  
+                    </div> -->
+                </div>               
             </div>
         </div>
 </body>
 <script src="/static/index/js/product.js" type="text/javascript"></script>
+<script type="text/javascript">
+var tid="{$tid}";
+$(".tabItemContainer a").each(function(){
+   var href=$(this).attr('href');
+   if (href.indexOf(tid)>0) {
+       $(this).addClass('tabItemCurrent');
+   }
+})
+$(".pagination a").each(function(){
+   var href=$(this).attr('href');
+   $(this).attr('href',href+'&&tid='+tid);
+})
+</script>
 </html>
 {include file="public:foot"}

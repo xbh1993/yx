@@ -38,8 +38,8 @@ class Index extends Controller
     public function testsasas(){
         return $this->fetch();
     }
-    public function ceshi()
-    {
-        return $this->fetch();
+
+    public function test(){
+        var_dump(123);
     }
 }

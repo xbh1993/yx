@@ -23,6 +23,8 @@ class Into extends Controller
         return $this->fetch();
     }
     public function summary(){
+        $info=Db::name('company')->where('status',1)->find();
+        $this->assign('info',$info);
         return $this->fetch();
     }
     public function course(){

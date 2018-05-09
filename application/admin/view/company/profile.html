@@ -55,6 +55,22 @@
                                 <textarea placeholder="请输入内容" id="editor"  style="height: 500px;"  name="site_config[text]"  class="layui-textarea"> {$site_config.text|default=''}</textarea>
 
                         </div>
+                        <div class="layui-form-item layui-form-text">
+                            <label for="desc" class="layui-form-label">
+                                饲料分公司简介
+                            </label>
+
+                                <textarea placeholder="请输入内容" id="editor2"  style="height: 500px;"  name="site_config[text2]"  class="layui-textarea"> {$site_config.text2|default=''}</textarea>
+
+                        </div>
+                        <div class="layui-form-item layui-form-text">
+                            <label for="desc" class="layui-form-label">
+                                养猪分公司简介
+                            </label>
+
+                                <textarea placeholder="请输入内容" id="editor3"  style="height: 500px;"  name="site_config[text3]"  class="layui-textarea"> {$site_config.text3|default=''}</textarea>
+
+                        </div>
 
                         <div class="" class="layui-form-item" >
                             <div class="layui-input-block submit_btn">
@@ -78,6 +94,8 @@
 {block name='js'}
 <script type="text/javascript">
     var ue = UE.getEditor('editor');
+    var ue = UE.getEditor('editor2');
+    var ue = UE.getEditor('editor3');
     $(function(){
         var options = {
             type:'post',           //post提交

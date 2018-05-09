@@ -43,17 +43,22 @@
                         </div>
                       </div>
                       <div class="layui-form-item layui-input-inline">
-                        <label class="layui-form-label">标题</label>
+                        <label class="layui-form-label">姓名</label>
                         <div class="layui-input-block">
                           <input type="text" value="{$info.title|default=''}" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                        </div>
+                      </div>
+                      <div class="layui-form-item layui-input-inline">
+                        <label class="layui-form-label">职位</label>
+                        <div class="layui-input-block">
+                          <input type="text" value="{$info.name|default=''}" name="name" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
                         </div>
                       </div>
 
                       <div class="layui-form-item ">
                         <label class="layui-form-label">简介</label>
                         <div class="layui-input-block">
-                          <textarea name="describe"  placeholder="请输入简介" class="layui-textarea">{$info.describe|default=''}</textarea>
-
+                          <p id="myEditor" name="describe"></p>
                         </div>
                       </div>
                       <div class="layui-form-item">
@@ -92,7 +97,7 @@
     editor.render("myEditor");
     editor.addListener("ready", function () {
         // editor准备好之后才可以使用
-        editor.setContent('{$info.content|default=''}');
+        editor.setContent('{$info.describe|default=''}');
         });
     window.UEDITOR_HOME_URL='ueditor/';//此为ueditor相对于实例页面的路径
     $(function(){

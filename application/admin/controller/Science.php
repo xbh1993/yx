@@ -137,14 +137,21 @@ class Science extends Main{
     	$list=Db::name('project')->where('bid',1)->select();
     	$this->assign('list',$list);
     	$this->assign('bid',1);
-    	$this->assign('item',['item1'=>'工作站','item2'=>'研究项目']);
+    	$this->assign('item',['item1'=>'工作站','item2'=>'研究成果']);
 	 	return $this->fetch();
 	}
 	function iproject(){
     	$list=Db::name('project')->where('bid',0)->select();
     	$this->assign('list',$list);
     	$this->assign('bid',0);
-    	$this->assign('item',['item1'=>'研究院','item2'=>'研究项目']);
+    	$this->assign('item',['item1'=>'研究院','item2'=>'研究成果']);
+	 	return $this->fetch('wproject');
+	}
+	function bfruit(){
+    	$list=Db::name('project')->where('bid',2)->select();
+    	$this->assign('list',$list);
+    	$this->assign('bid',2);
+    	$this->assign('item',['item1'=>'实验基地','item2'=>'研究成果']);
 	 	return $this->fetch('wproject');
 	}
     function editproject(){
@@ -246,5 +253,13 @@ class Science extends Main{
             $this->error('删除失败');
         }
 	}
+	//基地简介
+	function bsummary(){
+		$info=Db::name('content')->where('id',3)->find();
+		$this->assign('info',$info);
+		$this->assign('item',['item1'=>'实验基地','item2'=>'简介']);
+		return $this->fetch('wsummary');
+	}
+
 
 }

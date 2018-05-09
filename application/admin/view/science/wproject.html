@@ -54,7 +54,7 @@
                     <td><input type="checkbox" name="checkbox" data-id="{$vo.id}"></td>
                     <td>{$vo.title}</td>
                     <td><img style="width:100px;" src="{$vo.image}"></td>
-                    <td>{$vo.status==0?'不发布':'发布'}</td>
+                    <td>{$vo.status==0?'发布':'不发布'}</td>
                     <td>
                         <button onclick="lotus_show('编辑','editproject?id={$vo.id}',0,0)" class="btn btn-xs  btn-success btn-small">编辑</button>
                         <button onclick='delete_project({$vo.id})' class="btn btn-xs  btn-danger btn-small">删除</button>

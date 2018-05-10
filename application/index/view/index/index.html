@@ -1,220 +1,162 @@
 {include file="public:header"}
-
 <script src="https://webapi.amap.com/js/marker.js"></script>
 <script src="https://webapi.amap.com/maps?v=1.4.2&key=您申请的key值"></script>
 <script type="text/javascript" src="https://webapi.amap.com/demos/js/liteToolbar.js"></script>
-    <!--视频-->
-<style>
 
-    .taiwan{
-        border: solid 1px red;
-        color: red;
-        float: left;
-        width: 50px;
-        background-color: rgba(255,0,0,0.1)
-    }
+<script language="Javascript" type="text/Javascript" src="/static/jquery-3.3.1.min.js"></script>
 
-    .map{
-        width: 1400px;
-        height: 700px;
-        background: #a0a0a0;
-        margin:30px auto;
-    }
-    .map_com{
-        width: 735px;
-        height: 284px;
-        border-radius: 15px;
-        background: #ff6600;
-        color: #fff;
-        margin: auto;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
+<!--视频-->
 
-    }
-    .map_left{
-        width: 420px;
-        height: 208px;
-    }
-    .map_com img{
-        width: 225px;
-        height: 208px;
-    }
-    .map_name{
-        font-size: 30px;
-        line-height: 40px;
-    }
-    .map_xia{
-        width: 70px;
-        border-bottom: 1px #fff solid;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-    .map_address{
-        font-size: 14px;
-    }
-    .map_phone{
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin-top: 20px;
 
-    }
-    .phone_text{
-        font-size: 24px;
-    }
-    .map_phone img{
-        width: 50px;
-        height: 50px;
-        margin-left: 20px;
-    }
-
-</style>
-
-    <img style="width: 100%;margin-top: 100px;" src="{$bannerinfo['imgurl'][0]|default=''}" >
-    <!--关于扬翔-->
-    <div class="onyx">
-        <div class="onyx_text">关 于 扬 翔</div>
-        <div class="onyx_content">
-            <div class="onyx_detail" style="overflow:hidden;height: 540px;">
-                <p>Guang xi &nbsp;yang xiang &nbsp;co . &nbsp;LTD .</p>
-                <p class="onyx_name">广 西 扬 翔 股 份 有 限 公 司</p>
-                <div class="onyx_em" >{$profile['text']}</div>
-                <a href="#"><div class="onyx_more">点击了解更多</div></a>
+<img style="width: 100%;margin-top: 100px;" src="{$bannerinfo['imgurl'][0]|default=''}">
+<!--关于扬翔-->
+<div class="onyx">
+    <div class="tb">
+        <div class="onyx_text">About Yang Xiang</div>
+        <div class="onyx_text">关于扬翔</div>
+    </div>
+    <div class="onyx_content">
+        <div class="onyx_detail">
+            <div class="onyx_tit">Guang xi &nbsp;yang xiang &nbsp;co . &nbsp;LTD .</div>
+            <div class="onyx_name">广 西 扬 翔 股 份 有 限 公 司</div>
+            <div class="onyx_em">{$profile['text']}</div>
+            <a href="#">
+                <div class="onyx_more">点击了解更多</div>
+            </a>
+        </div>
+        <img class="onyx_img" src="/static/index/images/3.jpg">
+    </div>
+</div>
+<!--扬翔分公司分布-->
+<div class="buted">
+    <div class="tb" style="background: #f2f3f5;">
+        <div class="onyx_text">Branch &nbsp;distri bution</div>
+        <div class="onyx_text">扬翔分公司分布</div>
+    </div>
+    <div class="buteda">
+        <div id="Tabfen">
+            <div class="tabfenItemContainer">
+                <li><a class="tabfenItemCurrent">饲料分公司</a></li>
+                <li><a>养猪分公司</a></li>
             </div>
-            <img class="onyx_img" src="/static/index/images/3.jpg" >
-        </div>
-    </div>
-    <!--扬翔分公司分布-->
-    <div class="buted">
-        <div class="buteda">
-            <p>Branch &nbsp;distri bution</p>
-            <p>扬 翔 分 公 司 分 布</p>
-            <div class="buted_map" id="container"></div>
-        </div>
-    </div>
-    <!--公司视频-->
-        <div class="vd">
-            <p>The &nbsp;company &nbsp;video</p>
-            <p>公 司 视 频 </p>
-            <div class="video">
-                <video src="{$bannerinfo['video']}" style="width: 100%;height: 100%" controls="controls">
-                    您的浏览器不支持 video 标签。
-                </video>
-            </div>
-        </div>
-    <!--国际合作-->
-    <div class="concur">
-        <div class="concura">
-            <p>Inter national cooperation</p>
-            <p>国际合作</p>
-            <div class="concurb">
-                {volist name="newslist" id="vo"}
-                <div class="concurl">
-                    <a href="#"><img src="{$vo.thumb}">
-                    <div class="biao">{$vo.title}</div>
-                    <span>{$vo.introduction}</span>
-                    </a>
-                </div>
-                {/volist}
-        </div>
-    </div>
+            <div class="tabfenBodyContainer">
+                <div class="tabfenBodyItem tabfenBodyCurrent">
+                    <div class="map" id="container">
 
-    <!--产品介绍-->
-    <div class="goods">
-        <div class="goodsa">
-            <p>P r o d u c t &nbsp;i n t r o d u c t i o n</p>
-            <p>产 品 介 绍</p>
-            <div class="goodsb">
-                {volist name="productlist" id="vo"}
-                <div class="goodsl">
-                    <img src="{$vo.image}">
-                    <div class="gooodslbtm">
-                        <div class="jies">{$vo.title}</div>
-                        <div class="goods_span">{$vo.describe}</div>
                     </div>
-                </div>               
-                {/volist}
-            </div>
-        </div>
-    </div>
-    <!--新闻中心-->
-    <div class="new">
-        <div class="newa">
-            <p>N e w s &nbsp;C e n t e r</p>
-            <p>新闻中心</p>
-            <div class="newb">
-                <div class="newl">
-                    <p>扬翔新闻</p>
-                    <img src="{$news1.thumb}">
-                    <div class="newtext">{$news1.title}</div>
-                    <div class="new_span">{$news1.introduction}</div>                   
                 </div>
-                <div class="newl">
-                    <p>扬翔视频</p>
-                    <img src="{$video.image}">
-                    <div class="newtext">{$video.title}</div>
-                    <div class="new_span">{$video.describe}</div>
-                </div>
-                <div class="newl">
-                    <p>媒体报道</p>
-                    <img src="{$news2.thumb}">
-                    <div class="newtext">{$news2.title}</div>
-                    <div class="new_span">{$news2.introduction}</div>
+                <div class="tabfenBodyItem">
+
                 </div>
             </div>
         </div>
+
     </div>
-        <script>
+</div>
+<!--国际合作-->
+<div class="onyx">
+    <div class="tb">
+        <div class="onyx_text">International cooperation</div>
+        <div class="onyx_text">国际合作</div>
+    </div>
+    <div class="onyx_content">
+        <img class="onyx_img" src="/static/index/images/3.jpg">
+        <div class="onyx_detail">
+            <div class="onyx_name" style="margin-top: 20px;">广 西 扬 翔 股 份 有 限 公 司</div>
+            <div class="onyx_em">{$profile['text']}</div>
+            <a href="#">
+                <div class="onyx_more">点击了解更多</div>
+            </a>
+        </div>
+    </div>
+</div>
+<!--产品介绍-->
+<div class="buted">
+    <div class="tb">
+        <div class="onyx_text">Proguct introduction</div>
+        <div class="onyx_text">产品介绍</div>
+    </div>
+    <div class="goodsb">
+        {volist name="productlist" id="vo"}
+        <div class="goodsl">
+            <img src="{$vo.image}">
+            <div class="gooodslbtm">
+                <div class="jies">{$vo.title}</div>
+                <div class="goods_span">{$vo.describe}</div>
+            </div>
+        </div>
+        {/volist}
+    </div>
+</div>
+<!--新闻中心-->
+<div class="onyx">
+    <div class="tb">
+        <div class="onyx_text">News Center</div>
+        <div class="onyx_text">新闻中心</div>
+    </div>
+    <div class="newb">
+        <div class="newl">
+            <div class="newl_name">扬翔新闻</div>
+            <img src="{$news1.thumb}">
+            <div class="newtext">{$news1.title}</div>
+            <div class="new_span">{$news1.introduction}</div>
+        </div>
+        <div class="newl">
+            <div class="newl_name">扬翔视频</div>
+            <img src="{$video.image}">
+            <div class="newtext">{$video.title}</div>
+            <div class="new_span">{$video.describe}</div>
+        </div>
+        <div class="newl">
+            <div class="newl_name">媒体报道</div>
+            <img src="{$news2.thumb}">
+            <div class="newtext">{$news2.title}</div>
+            <div class="new_span">{$news2.introduction}</div>
+        </div>
+    </div>
+</div>
 
-            var html='<div class="map_com">'+
-                '<div class="map_left">'+
-                '<div class="map_name">广西扬翔股份有限公司服务中心</div>'+
-                '<div class="map_xia"></div>'+
-                '<div class="map_address">地址：地址12212121212121</div>'+
-            '<div class="map_phone">'+
-                '<div class="phone_text">联系电话：1381948222222</div>'+
-            '<img src="/static/index/images/phone1.png">'+
-                '</div>'+
-                '</div>'+
-                '<img src="/static/index/images/3.jpg">'+
-                '</div>';
+<script language="Javascript" type="text/Javascript" src="/static/index/js/feed.js"></script>
+<script>
+
+    var html = ' <div class="map_com">\n' +
+        '                                    <div class="map_left">\n' +
+        '                                        <div class="map_name">广西扬翔股份有限公司服务中心</div>\n' +
+        '                                        <div class="map_xia"></div>\n' +
+        '                                        <div class="map_jianjie">\n' +
+        '                                            简介：广西扬翔股份有限公司成立于1998年，是农业产业化国家重点龙头企业，旗下32家子公司，员工5000余名。\n' +
+        '                                            公司主营猪产业，拥有自养猪和服务养猪两大板块，是集种猪、肉猪、猪精、猪饲料、养猪设备、猪动保为一体的\n' +
+        '                                            全产业链大型农牧企业，致力于打造“基因+产品+服务+互联网”的综合模式。\n' +
+        '                                        </div>\n' +
+        '                                        <div class="map_address">地址：广西贵港市江南工业园区城东大道与工业一路交汇处东北角</div>\n' +
+        '                                        <div class="map_phone">\n' +
+        '                                            <div class="phone_text">联系电话：400-727-0088</div>\n' +
+        '                                            <img src="/static/index/images/phone1.png">\n' +
+        '                                        </div>\n' +
+        '                                    </div>\n' +
+        '                                    <img src="/static/index/images/3.jpg">\n' +
+        '                                </div>';
+    var map = new AMap.Map('container', {resizeEnable: true, zoom: 4});
+    var markers = []; //province见Demo引用的JS文件
+    var infoWindow = new AMap.InfoWindow({offset: new AMap.Pixel(0, -30)});
+    for (var i = 0, marker; i < provinces.length; i++) {
+        var marker = new AMap.Marker({
+            position: provinces[i].center.split(','),
+            map: map
+        });
+        marker.content = html;
+        marker.on('click', markerClick);
+        // marker.emit('click', {target: marker});
+    }
+
+    function markerClick(e) {
+        infoWindow.setContent(e.target.content);
+        infoWindow.open(map, e.target.getPosition());
+    }
+
+    map.setFitView();
+    map.setZoomAndCenter(4, [104.205467, 34.997761]);
 
 
-            var map = new AMap.Map('container',{resizeEnable: true,zoom:4});
-            var markers = []; //province见Demo引用的JS文件
-
-            var infoWindow = new AMap.InfoWindow({offset: new AMap.Pixel(0, -30)});
-            for (var i = 0, marker; i < provinces.length; i++) {
-                var marker = new AMap.Marker({
-                    position: provinces[i].center.split(','),
-                    map: map
-                });
-                marker.content = html;
-                marker.on('click', markerClick);
-                marker.emit('click', {target: marker});
-            }
-            function markerClick(e) {
-                infoWindow.setContent(e.target.content);
-                infoWindow.open(map, e.target.getPosition());
-            }
-            map.setFitView();
-//            for (var i = 0; i < provinces.length; i += 1) {
-//                var marker;
-//                if (provinces[i].type === 0) {
-//                    marker = new AMap.Marker({
-//                        position: provinces[i].center.split(','),
-//                        title: provinces[i].name,
-//                        content:html,
-//                        map: map
-//                    });
-//                }
-//                marker.on('click', markerClick);
-//                marker.emit('click', {target: marker});
-//                markers.push(marker);
-//            }
-            map.setZoomAndCenter(4, [104.205467, 34.997761]);
-        </script>
+</script>
 {include file="public:foot"}

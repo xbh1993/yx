@@ -196,6 +196,10 @@
     text-decoration: none;
     border:1px solid transparent;
 }
+.tabfenItemContainer>li>a:hover{
+    border-bottom: 1px solid #ff6600;
+    color: #ff6600;
+}
 .tabfenItemCurrent {
     border-bottom: 1px solid #ff6600 !important;
     color: #ff6600 !important;

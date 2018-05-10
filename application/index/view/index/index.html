@@ -1,7 +1,77 @@
 {include file="public:header"}
 
+<script src="https://webapi.amap.com/js/marker.js"></script>
+<script src="https://webapi.amap.com/maps?v=1.4.2&key=您申请的key值"></script>
+<script type="text/javascript" src="https://webapi.amap.com/demos/js/liteToolbar.js"></script>
     <!--视频-->
+<style>
 
+    .taiwan{
+        border: solid 1px red;
+        color: red;
+        float: left;
+        width: 50px;
+        background-color: rgba(255,0,0,0.1)
+    }
+
+    .map{
+        width: 1400px;
+        height: 700px;
+        background: #a0a0a0;
+        margin:30px auto;
+    }
+    .map_com{
+        width: 735px;
+        height: 284px;
+        border-radius: 15px;
+        background: #ff6600;
+        color: #fff;
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+
+    }
+    .map_left{
+        width: 420px;
+        height: 208px;
+    }
+    .map_com img{
+        width: 225px;
+        height: 208px;
+    }
+    .map_name{
+        font-size: 30px;
+        line-height: 40px;
+    }
+    .map_xia{
+        width: 70px;
+        border-bottom: 1px #fff solid;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .map_address{
+        font-size: 14px;
+    }
+    .map_phone{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 20px;
+
+    }
+    .phone_text{
+        font-size: 24px;
+    }
+    .map_phone img{
+        width: 50px;
+        height: 50px;
+        margin-left: 20px;
+    }
+
+</style>
 
     <img style="width: 100%;margin-top: 100px;" src="{$bannerinfo['imgurl'][0]|default=''}" >
     <!--关于扬翔-->
@@ -22,7 +92,7 @@
         <div class="buteda">
             <p>Branch &nbsp;distri bution</p>
             <p>扬 翔 分 公 司 分 布</p>
-            <div class="buted_map"></div>
+            <div class="buted_map" id="container"></div>
         </div>
     </div>
     <!--公司视频-->
@@ -97,4 +167,54 @@
             </div>
         </div>
     </div>
+        <script>
+
+            var html='<div class="map_com">'+
+                '<div class="map_left">'+
+                '<div class="map_name">广西扬翔股份有限公司服务中心</div>'+
+                '<div class="map_xia"></div>'+
+                '<div class="map_address">地址：地址12212121212121</div>'+
+            '<div class="map_phone">'+
+                '<div class="phone_text">联系电话：1381948222222</div>'+
+            '<img src="/static/index/images/phone1.png">'+
+                '</div>'+
+                '</div>'+
+                '<img src="/static/index/images/3.jpg">'+
+                '</div>';
+
+
+            var map = new AMap.Map('container',{resizeEnable: true,zoom:4});
+            var markers = []; //province见Demo引用的JS文件
+
+            var infoWindow = new AMap.InfoWindow({offset: new AMap.Pixel(0, -30)});
+            for (var i = 0, marker; i < provinces.length; i++) {
+                var marker = new AMap.Marker({
+                    position: provinces[i].center.split(','),
+                    map: map
+                });
+                marker.content = html;
+                marker.on('click', markerClick);
+                marker.emit('click', {target: marker});
+            }
+            function markerClick(e) {
+                infoWindow.setContent(e.target.content);
+                infoWindow.open(map, e.target.getPosition());
+            }
+            map.setFitView();
+//            for (var i = 0; i < provinces.length; i += 1) {
+//                var marker;
+//                if (provinces[i].type === 0) {
+//                    marker = new AMap.Marker({
+//                        position: provinces[i].center.split(','),
+//                        title: provinces[i].name,
+//                        content:html,
+//                        map: map
+//                    });
+//                }
+//                marker.on('click', markerClick);
+//                marker.emit('click', {target: marker});
+//                markers.push(marker);
+//            }
+            map.setZoomAndCenter(4, [104.205467, 34.997761]);
+        </script>
 {include file="public:foot"}

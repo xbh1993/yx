@@ -16,6 +16,7 @@ class Index extends Controller
         if(isset($banner['video'])){
             $bannerinfo['video']=$banner['video'];
         }
+
         $this->assign('bannerinfo',$bannerinfo);
     }
     public function index()

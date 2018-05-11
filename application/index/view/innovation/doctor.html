@@ -11,26 +11,26 @@
 <div style="width: 100%;height: 20px;background: #e6e6e6;"></div>
 <div class="pnavtop">
     <div class="pnavtopl">
-        <div class="tabItemContainer">
-            <li><a class="tabItemCurrent">博士后实验基地简介</a></li>
+        <div class="tabItemContainers">
+            <li><a class="tabItemCurrents">博士后实验基地简介</a></li>
             <li><a>实验基地研究成果</a></li>
         </div>
     </div>
     <div class="pnavtopr">
-        <div class="tabBodyContainer">
-            <div class="tabBodyItem tabBodyCurrent">
+        <div class="tabBodyContainers">
+            <div class="tabBodyItems tabBodyCurrents">
                 <div class="sumname">博士后实验基地简介</div>
-                 {$info.content}
+                {$info.content}
             </div>
         </div>
-        <div class="tabBodyContainer">
-            <div class="tabBodyItem">
+        <div class="tabBodyContainers">
+            <div class="tabBodyItems">
                 <div class="sumname">实验基地研究成果</div>
                 <div class="docon">
                     {volist name="list" id="vo"}
                     <div class="donav">
                         <div class="donav_con">
-                            <div  class="donav_texta">{$vo.title}</div>
+                            <div class="donav_texta">{$vo.title}</div>
                             <div style="font-size: 20px">{$vo.name}</div>
                             {$vo.describe}
                         </div>

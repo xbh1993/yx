@@ -4,8 +4,115 @@
 <head>
     <meta charset="UTF-8">
     <title>详情</title>
+    <link href="/static/index/css/pig.css" type="text/css" rel="stylesheet">
+    <style>
+        /*大层*/
+        .container{width:80%;margin: 0 auto;}
+        /*瀑布流层*/
+        .waterfall{
+            -moz-column-count:4; /* Firefox */
+            -webkit-column-count:4; /* Safari 和 Chrome */
+            column-count:4;
+            -moz-column-gap: 1em;
+            -webkit-column-gap: 1em;
+            column-gap: 1em;
+        }
+        /*一个内容层*/
+        .item{
+            padding: 1em;
+            margin: 0 0 1em 0;
+            -moz-page-break-inside: avoid;
+            -webkit-column-break-inside: avoid;
+            break-inside: avoid;
+            border: 1px solid #000;
+        }
+        .item img{
+            width: 100%;
+            margin-bottom:10px;
+        }
+    </style>
 </head>
 <body>
+<div class="container">
+    <div class="waterfall">
+        <div class="item">
+            <div class="gainscom">
+                <img src="">
+                <div class="gainscom_btm">
+                    <div class="gainscom_name">11111</div>
+                    <div class="gainscom_div"></div>
+                    <div class="gainscom_text">
+                        2222222
+                    </div>
+                    <div class="gainscom_more">了解更多+11</div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="item">
+            <div class="gainscom">
+                <img src="">
+                <div class="gainscom_btm">
+                    <div class="gainscom_name">11111</div>
+                    <div class="gainscom_div"></div>
+                    <div class="gainscom_text">
+                        2222222
+                    </div>
+                    <div class="gainscom_more">了解更多+11</div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="item">
+            <div class="gainscom">
+                <img src="">
+                <div class="gainscom_btm">
+                    <div class="gainscom_name">11111</div>
+                    <div class="gainscom_div"></div>
+                    <div class="gainscom_text">
+                        2222222
+                    </div>
+                    <div class="gainscom_more">了解更多+11</div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="item">
+            <div class="gainscom">
+                <img src="">
+                <div class="gainscom_btm">
+                    <div class="gainscom_name">11111</div>
+                    <div class="gainscom_div"></div>
+                    <div class="gainscom_text">
+                        2222222
+                    </div>
+                    <div class="gainscom_more">了解更多+11</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="gainscom">
+                <img src="">
+                <div class="gainscom_btm">
+                    <div class="gainscom_name">11111</div>
+                    <div class="gainscom_div"></div>
+                    <div class="gainscom_text">
+                        2222222
+                    </div>
+                    <div class="gainscom_more">了解更多+11</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
 {include file="public:foot"}

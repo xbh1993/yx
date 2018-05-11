@@ -5,8 +5,6 @@
 
 <script language="Javascript" type="text/Javascript" src="/static/jquery-3.3.1.min.js"></script>
 
-<!--视频-->
-
 
 <img style="width: 100%;margin-top: 100px;" src="{$bannerinfo['imgurl'][0]|default=''}">
 <!--关于扬翔-->
@@ -34,7 +32,7 @@
         <div class="onyx_text">扬翔分公司分布</div>
     </div>
     <div class="buteda">
-        <div id="Tabfen">
+        <div id="Tabfen" style="background: #f2f3f5;">
             <div class="tabfenItemContainer">
                 <li><a class="tabfenItemCurrent">饲料分公司</a></li>
                 <li><a>养猪分公司</a></li>
@@ -71,7 +69,7 @@
     </div>
 </div>
 <!--产品介绍-->
-<div class="buted">
+<div class="buted" style="background: #f2f3f5;">
     <div class="tb">
         <div class="onyx_text">Proguct introduction</div>
         <div class="onyx_text">产品介绍</div>
@@ -118,7 +116,6 @@
 
 <script language="Javascript" type="text/Javascript" src="/static/index/js/feed.js"></script>
 <script>
-
     var html = ' <div class="map_com">\n' +
         '                                    <div class="map_left">\n' +
         '                                        <div class="map_name">广西扬翔股份有限公司服务中心</div>\n' +
@@ -131,12 +128,12 @@
         '                                        <div class="map_address">地址：广西贵港市江南工业园区城东大道与工业一路交汇处东北角</div>\n' +
         '                                        <div class="map_phone">\n' +
         '                                            <div class="phone_text">联系电话：400-727-0088</div>\n' +
-        '                                            <img src="/static/index/images/phone1.png">\n' +
+        '                                            <img src="/static/index/images/phonef.png">\n' +
         '                                        </div>\n' +
         '                                    </div>\n' +
         '                                    <img src="/static/index/images/3.jpg">\n' +
         '                                </div>';
-    var map = new AMap.Map('container', {resizeEnable: true, zoom: 4});
+    var map = new AMap.Map('container', {resizeEnable: true, zoom: 5,zoomEnable:false,});
     var markers = []; //province见Demo引用的JS文件
     var infoWindow = new AMap.InfoWindow({offset: new AMap.Pixel(0, -30)});
     for (var i = 0, marker; i < provinces.length; i++) {
@@ -146,17 +143,15 @@
         });
         marker.content = html;
         marker.on('click', markerClick);
-        // marker.emit('click', {target: marker});
     }
 
     function markerClick(e) {
         infoWindow.setContent(e.target.content);
         infoWindow.open(map, e.target.getPosition());
     }
-
     map.setFitView();
-    map.setZoomAndCenter(4, [104.205467, 34.997761]);
-
-
+    map.setZoomAndCenter(4, [104.205467, 39.857761]);
+    //    map.setLimitBounds(map.getBounds());
 </script>
+
 {include file="public:foot"}

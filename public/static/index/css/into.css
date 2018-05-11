@@ -1,37 +1,40 @@
-*{
+* {
     margin: 0;
     padding: 0;
-    font-weight:400;
-    font-family: PingFang SC,Microsoft YaHei,宋体,黑体,Arial,sans-serif;
 }
-.sumname{
+.body{font-weight:400;
+    font-family:" PingFang SC", 宋体, 黑体, Arial,  "Microsoft YaHei",sans-serif;}
+.sumname {
     width: 1200px;
     padding-top: 60px;
     padding-bottom: 50px;
     border-bottom: 1px #e3e3e3 solid;
     font-size: 20px;
 }
-.sumvideo{
+
+.sumvideo {
     width: 1200px;
-    height: 600px;
-    background: #0b93d5;
+    height: 675px;
+    /*background: #0b93d5;*/
     margin-top: 20px;
 }
-.sumtext{
+
+.sumtext {
     width: 1200px;
-    height: auto;
+    /*height: auto;*/
     line-height: 30px;
     margin-top: 50px;
     text-indent: 2em;
     color: #555;
 }
 
-.fenmap{
+.fenmap {
     width: 1200px;
     height: 600px;
     background: #ff6600;
 }
-.sumtw{
+
+.sumtw {
     width: 1200px;
     height: 400px;
     display: flex;
@@ -39,15 +42,18 @@
     justify-content: space-around;
     align-items: center;
 }
-.sumtwa{
+
+.sumtwa {
     width: 350px;
     height: 300px;
 }
-.sumimgs{
+
+.sumimgs {
     width: 350px;
     height: 300px;
 }
-.sumtwtext{
+
+.sumtwtext {
     width: 350px;
     height: 50px;
     line-height: 50px;
@@ -62,20 +68,34 @@
     white-space: nowrap;
 
 }
+
 /*公司文化*/
-.cucontens{
-    width: 100%;background: #e6e6e6;padding-bottom: 50px;
+.cucontens {
+    width: 100%;
+    background: #e6e6e6;
+    padding-bottom: 50px;
 }
-.cuwen{
-    width: 800px;margin: auto;padding-top: 40px;padding-bottom: 60px;
+
+.cuwen {
+    width: 800px;
+    margin: auto;
+    padding-top: 40px;
+    padding-bottom: 60px;
 }
-.cuname{
-    text-align: center;font-size: 40px;line-height: 80px;
+
+.cuname {
+    text-align: center;
+    font-size: 32px;
+    line-height: 80px;
 }
-.cutexts{
-    color: #555;font-size: 20px;line-height: 30px;
+
+.cutexts {
+    color: #555;
+    font-size: 16px;
+    line-height: 30px;
 }
-.cubacolor{
+
+.cubacolor {
     width: 100%;
     height: 600px;
     background: #ff6600;
@@ -84,25 +104,29 @@
     justify-content: center;
     align-items: center;
 }
-.cunav{
-     width: 1400px;
-     height: 400px;
+
+.cunav {
+    width: 1400px;
+    height: 400px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
- }
-.cunava{
+}
+
+.cunava {
     width: 180px;
     height: 400px;
     color: #fff;
 }
-.cunava_img{
+
+.cunava_img {
     width: 180px;
     height: 180px;
     border-radius: 50%;
     margin: auto;
 }
-.fengcai{
+
+.fengcai {
     width: 1400px;
     height: 400px;
     margin: auto;
@@ -110,11 +134,13 @@
     flex-direction: row;
     justify-content: space-between;
 }
-.fengcaiimg{
+
+.fengcaiimg {
     width: 450px;
     height: 400px;
 }
-.cunavtext{
+
+.cunavtext {
     width: 100%;
     /*height: 150px;*/
     line-height: 30px;
@@ -128,8 +154,9 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 5;
 }
+
 /*公益事业*/
-.causecon{
+.causecon {
     width: 1400px;
     height: 300px;
     margin: 40px auto;
@@ -138,15 +165,18 @@
     justify-content: space-around;
     align-items: center;
 }
-.causecona{
+
+.causecona {
     width: 430px;
     height: 300px;
 }
-.causeconimgs{
+
+.causeconimgs {
     width: 430px;
     height: 300px;
 }
-.causecontext{
+
+.causecontext {
     width: 430px;
     height: 50px;
     line-height: 50px;
@@ -160,24 +190,28 @@
     white-space: nowrap;
     color: #fff;
 }
+
 /*切换2*/
 #TabfenMain {
     width: 100%;
     height: auto;
 }
+
 .tabfenItemContainer {
-    width:300px;
+    width: 300px;
     height: 100px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
 }
+
 .tabfenBodyContainer {
     -webkit-border-radius: 0 5px 5px 0;
     -moz-border-radius: 0 5px 5px 0;
     border-radius: 0 5px 5px 0;
 }
-.tabfenItemContainer>li {
+
+.tabfenItemContainer > li {
     width: 100px;
     height: 100px;
     line-height: 100px;
@@ -186,20 +220,23 @@
     text-align: center;
     float: left;
 }
-.tabfenItemContainer>li>a {
+
+.tabfenItemContainer > li > a {
     float: left;
     width: 100%;
     padding: 30px 0 30px 0;
-    font: 16px  Arial, Helvetica, sans-serif;
+    font: 16px Arial, Helvetica, sans-serif;
     color: #555;
     cursor: pointer;
     text-decoration: none;
-    border:1px solid transparent;
+    border: 1px solid transparent;
 }
-.tabfenItemContainer>li>a:hover{
+
+.tabfenItemContainer > li > a:hover {
     border-bottom: 1px solid #ff6600;
     color: #ff6600;
 }
+
 .tabfenItemCurrent {
     border-bottom: 1px solid #ff6600 !important;
     color: #ff6600 !important;
@@ -209,18 +246,20 @@
 
 .tabfenBodyItem {
     width: 100%;
-    position: absolute;
     display: none;
 }
-.tabfenBodyItem>p {
+
+.tabfenBodyItem > p {
     font: 13px Arial, Helvetica, sans-serif;
     text-align: center;
     margin-top: 30px;
 }
-.tabfenBodyItem>p>a {
+
+.tabfenBodyItem > p > a {
     text-decoration: none;
     color: #0F3;
 }
-.tabfenBodyCurrent{
-    display:block;
+
+.tabfenBodyCurrent {
+    display: block;
 }

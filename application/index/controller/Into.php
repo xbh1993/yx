@@ -17,14 +17,14 @@ class Into extends Controller
         $banner=Db::name('system')->find(4);
         $banner=unserialize($banner['value']);
         $this->assign('bannerinfo',$banner);
+        $info=Db::name('company')->where('status',1)->find();
+        $this->assign('info',$info);
     }
 
     public function into(){
         return $this->fetch();
     }
     public function summary(){
-        $info=Db::name('company')->where('status',1)->find();
-        $this->assign('info',$info);
         return $this->fetch();
     }
     public function course(){

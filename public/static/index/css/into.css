@@ -22,7 +22,7 @@
 
 .sumtext {
     width: 1200px;
-    height: auto;
+    /*height: auto;*/
     line-height: 30px;
     margin-top: 50px;
     text-indent: 2em;

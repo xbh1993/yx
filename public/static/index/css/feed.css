@@ -17,7 +17,7 @@
 
 .pnavtopl {
     width: 200px;
-    height: 800px;
+    /*height: 800px;*/
     margin-top: 50px;
     float: left;
 }
@@ -109,9 +109,9 @@
 }
 
 /*左切换*/
-.tabItemContainer {
+.tabItemContainers {
     width: auto;
-    height: 300px;
+    /*height: 300px;*/
     border-left: #555 1px solid;
     display: flex;
     flex-direction: column;
@@ -119,13 +119,13 @@
     justify-content: center;
 }
 
-.tabBodyContainer {
+.tabBodyContainers {
     -webkit-border-radius: 0 5px 5px 0;
     -moz-border-radius: 0 5px 5px 0;
     border-radius: 0 5px 5px 0;
 }
 
-.tabItemContainer > li {
+.tabItemContainers > li {
     margin-left: -3px;
     margin-bottom: 50px;
     font-size: 16px;
@@ -133,40 +133,40 @@
     cursor: pointer;
 }
 
-.tabItemContainer > li > a {
+.tabItemContainers > li > a {
     padding: 5px 10px;
 }
 
-.tabItemContainer > li > a:hover {
+.tabItemContainers > li > a:hover {
     padding: 5px 10px;
     background-color: #ec6f01 !important;
     color: #fff;
 }
 
-.tabItemCurrent {
+.tabItemCurrents{
     padding: 5px 10px;
     background-color: #ec6f01 !important;
     position: relative;
     color: #fff;
 }
 
-.tabBodyItem {
+.tabBodyItems {
     position: absolute;
     display: none;
 }
 
-.tabBodyItem > p {
+.tabBodyItems > p {
     font: 13px "微软雅黑", Arial, Helvetica, sans-serif;
     text-align: center;
     margin-top: 30px;
 }
 
-.tabBodyItem > p > a {
+.tabBodyItems > p > a {
     text-decoration: none;
     color: #0F3;
 }
 
-.tabBodyCurrent {
+.tabBodyCurrents {
     display: block;
 }
 

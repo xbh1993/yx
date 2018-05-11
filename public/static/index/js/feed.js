@@ -1,9 +1,11 @@
+//侧边切换
+
 $(function(){
-    $(".tabItemContainer>li").click(function(){
-        $(".tabItemContainer>li>a").removeClass("tabItemCurrent");
-        $(".tabBodyItem").removeClass("tabBodyCurrent");
-        $(this).find("a").addClass("tabItemCurrent");
-        $($(".tabBodyItem")[$(this).index()]).addClass("tabBodyCurrent");
+    $(".tabItemContainers>li").click(function(){
+        $(".tabItemContainers>li>a").removeClass("tabItemCurrents");
+        $(".tabBodyItems").removeClass("tabBodyCurrents");
+        $(this).find("a").addClass("tabItemCurrents");
+        $($(".tabBodyItems")[$(this).index()]).addClass("tabBodyCurrents");
     });
 })
 

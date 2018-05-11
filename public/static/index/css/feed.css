@@ -1,28 +1,33 @@
-*{
+* {
     margin: 0;
     padding: 0;
-    font-weight:400;
-    font-family: PingFang SC,Microsoft YaHei,宋体,黑体,Arial,sans-serif;
+    font-weight: 400;
+    font-family:  PingFang SC, Microsoft YaHei, 宋体, 黑体, Arial, sans-serif;
 }
-.pnavtop{
+
+.pnavtop {
     width: 1400px;
     margin: auto;
 }
-.aa{
+
+.aa {
     width: 1400px;
     margin: auto;
 }
-.pnavtopl{
+
+.pnavtopl {
     width: 200px;
     height: 800px;
     margin-top: 50px;
     float: left;
 }
-.pnavtopr{
+
+.pnavtopr {
     width: 1200px;
     float: right;
 }
-.pnavtopa{
+
+.pnavtopa {
     width: 1200px;
     height: 100px;
     margin: auto;
@@ -30,13 +35,15 @@
     align-items: center;
 
 }
-.pnavtoptext{
+
+.pnavtoptext {
     height: 20px;
     line-height: 20px;
     font-size: 20px;
     border-left: 5px #ec6f01 solid;
 }
-.flie{
+
+.flie {
     width: 100%;
     height: 400px;
     display: flex;
@@ -44,39 +51,62 @@
     justify-content: space-between;
     margin-top: 30px;
 }
-.ftuwen{
+
+.ftuwen {
     width: 280px;
     height: 400px;
-    box-shadow:0px 0px  10px 5px #bfbfbf;
+    box-shadow: 0px 0px 10px 5px #bfbfbf;
 }
-.ftopimg{
-    width: 100%;height: 250px;background: #0b93d5;
+
+.ftopimg {
+    width: 100%;
+    height: 250px;
+    background: #0b93d5;
 }
-.fbtmdiv{
-    padding-left: 8px;margin-right: 8px;
+
+.fbtmdiv {
+    padding-left: 8px;
+    margin-right: 8px;
 }
-.fpname{
+
+.fpname {
     font-size: 16px
 }
-.fptext{
-    color: #555;margin-top: 10px;font-size: 14px;
+
+.fptext {
+    color: #555;
+    margin-top: 10px;
+    font-size: 14px;
 }
-.finput{
-    width: 120px;height: 30px;float: left;margin-top: 20px;
+
+.finput {
+    width: 120px;
+    height: 30px;
+    float: left;
+    margin-top: 20px;
 }
-.fsubmit{
-    width: 50px;height: 30px;margin-left: 5px;float: left
+
+.fsubmit {
+    width: 50px;
+    height: 30px;
+    margin-left: 5px;
+    float: left
 }
-.fbicon{
-    width: 40px;height: 40px;float: left;margin-left: 5px;
+
+.fbicon {
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin-left: 5px;
 }
-.fpcolor{
-    color: #ec6f01;
-}
-.fspan{
+
+.fpcolor {
     color: #ec6f01;
 }
 
+.fspan {
+    color: #ec6f01;
+}
 
 /*左切换*/
 .tabItemContainer {
@@ -88,12 +118,14 @@
     white-space: pre-wrap;
     justify-content: center;
 }
+
 .tabBodyContainer {
     -webkit-border-radius: 0 5px 5px 0;
     -moz-border-radius: 0 5px 5px 0;
     border-radius: 0 5px 5px 0;
 }
-.tabItemContainer>li {
+
+.tabItemContainer > li {
     margin-left: -3px;
     margin-bottom: 50px;
     font-size: 16px;
@@ -101,14 +133,16 @@
     cursor: pointer;
 }
 
-.tabItemContainer>li>a {
+.tabItemContainer > li > a {
     padding: 5px 10px;
 }
-.tabItemContainer>li>a:hover {
+
+.tabItemContainer > li > a:hover {
     padding: 5px 10px;
     background-color: #ec6f01 !important;
     color: #fff;
 }
+
 .tabItemCurrent {
     padding: 5px 10px;
     background-color: #ec6f01 !important;
@@ -120,21 +154,24 @@
     position: absolute;
     display: none;
 }
-.tabBodyItem>p {
+
+.tabBodyItem > p {
     font: 13px "微软雅黑", Arial, Helvetica, sans-serif;
     text-align: center;
     margin-top: 30px;
 }
-.tabBodyItem>p>a {
+
+.tabBodyItem > p > a {
     text-decoration: none;
     color: #0F3;
 }
-.tabBodyCurrent{
-    display:block;
+
+.tabBodyCurrent {
+    display: block;
 }
 
 /*实验基地研究成果*/
-.docon{
+.docon {
     width: 1200px;
     height: 350px;
     display: flex;
@@ -143,23 +180,28 @@
     align-items: center;
     padding-top: 15px;
 }
-.donav{
+
+.donav {
     width: 580px;
     height: 300px;
     background: #e6e6e6;
     text-align: center;
 }
-.donav_con{
+
+.donav_con {
     width: 540px;
+    height: 223px;
     margin: auto;
 }
-.donav span{
+
+.donav span {
     color: #555;
     font-size: 50px;
     margin-top: 30px;
     line-height: 40px;
 }
-.doxia{
+
+.doxia {
     width: 150px;
     line-height: 50px;
     text-align: center;
@@ -167,30 +209,48 @@
     margin: auto;
     color: #ff6600;
 }
-.docolor{
+
+.docolor {
     width: 100%;
     height: 30px;
     background: #ff6600;
     position: relative;
     bottom: -16px;
 }
-.donava{
+
+.donava {
     width: 520px;
     height: 240px;
     background: #ff6600;
     color: #fff;
     padding: 30px;
 }
-.donav_texta{
-    line-height: 50px;font-size: 24px;margin-top: 30px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
+
+.donav_texta {
+    line-height: 50px;
+    font-size: 24px;
+    margin-top: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
-.donav_textb{
-    font-size: 24px;margin-top: 30px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
+
+.donav_textb {
+    font-size: 24px;
+    margin-top: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
-.donav_nameb{
-    font-size: 20px;line-height: 50px;border-bottom: #fff 1px solid;width: 400px;
+
+.donav_nameb {
+    font-size: 20px;
+    line-height: 50px;
+    border-bottom: #fff 1px solid;
+    width: 400px;
 }
-.donav_textc{
+
+.donav_textc {
     line-height: 30px;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -200,8 +260,9 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
 }
+
 /*科研所团队成员*/
-.studyt{
+.studyt {
     width: 1200px;
     height: 500px;
     display: flex;
@@ -209,29 +270,34 @@
     justify-content: space-around;
     align-items: center;
 }
-.studytcon{
+
+.studytcon {
     width: 350px;
     height: 450px;
     text-align: center;
 }
-.studytcon img{
+
+.studytcon img {
     width: 170px;
     height: 170px;
     margin: auto;
     border-radius: 50%;
 }
-.studyt_name{
+
+.studyt_name {
     font-size: 24px;
     margin-top: 30px;
 }
-.yuanshi{
+
+.yuanshi {
     color: #ff6600;
     line-height: 50px;
     font-size: 20px;
 }
-.studyt_text{
+
+.studyt_text {
     width: 300px;
-    height:150px;
+    height: 150px;
     color: #555;
     line-height: 30px;
     font-size: 18px;
@@ -239,8 +305,9 @@
     overflow: hidden;
 
 }
+
 /*创新与研究成果*/
-.gainstop{
+.gainstop {
     width: 1400px;
     height: 550px;
     margin: auto;
@@ -249,7 +316,8 @@
     justify-content: space-between;
     align-items: center;
 }
-.gainscom{
+
+.gainscom {
     width: 430px;
     height: 500px;
     border: 2px solid #e6e6e6;
@@ -257,16 +325,21 @@
     flex-direction: column;
     align-items: center;
 }
-.gainscom img{
+
+.gainscom img {
     width: 175px;
     height: 145px;
     margin-top: 30px;
 }
-.gainscom_btm{
-    width: 380px;
+
+.gainscom_btm {
+    width: 340px;
     height: 345px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
-.gainscom_name{
+
+.gainscom_name {
     font-size: 20px;
     line-height: 50px;
     text-align: center;
@@ -274,7 +347,8 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.gainscom_text{
+
+.gainscom_text {
     height: 180px;
     font-size: 14px;
     line-height: 30px;
@@ -287,7 +361,8 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 6;
 }
-.gainscom_more{
+
+.gainscom_more {
     width: 150px;
     height: 40px;
     line-height: 40px;
@@ -296,36 +371,39 @@
     background: #e6e6e6;
     position: relative;
     bottom: -23px;
-    left: 124px;
+    left: 104px;
 }
-.gainscom_div{
+
+.gainscom_div {
     width: 100px;
     margin: auto;
     border-bottom: 2px #ff6600 solid;
 }
 
 /*分页*/
-.pbottom{
+.pbottom {
     width: 100%;
     height: 100px;
     padding-top: 50px;
     background: #e6e6e6;
 }
 
-.divpage{
+.divpage {
     width: 1200px;
-    margin:  auto;
+    margin: auto;
     text-align: right;
 
 }
-.divpage a,.divpage span{
+
+.divpage a, .divpage span {
     text-decoration: none;
     border: #707070 1px solid;
     padding: 5px 7px;
     color: #555;
     cursor: pointer;
 }
-.divpage a:hover,.divpage span:hover{
+
+.divpage a:hover, .divpage span:hover {
     color: #ec6f01;
 }
 

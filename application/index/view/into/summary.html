@@ -2,8 +2,6 @@
 <script src="https://webapi.amap.com/maps?v=1.4.2&key=您申请的key值"></script>
 <script type="text/javascript" src="https://webapi.amap.com/demos/js/liteToolbar.js"></script>
 
-
-
 <div style="width: 100%;height: 20px;background: #e6e6e6;">
 </div>
 <div class="pnavtop">
@@ -20,7 +18,6 @@
                 <div class="sumname">{$info.title|default=''}</div>
                 <div class="sumvideo">  <video src="{$video}" style="width: 100%;height: 100%" controls="controls"></video></div>
                 <div class="sumtext">
-
                        {$info.text|default=""}
                     </p>
                 </div>
@@ -81,7 +78,6 @@
     </div>
     <div style="clear: both"></div>
 </div>
-
 <script>
     var html = ' <div class="map_com">\n' +
         '                                    <div class="map_left">\n' +
@@ -120,6 +116,3 @@
     map.setZoomAndCenter(4, [104.205467, 39.857761]);
     //    map.setLimitBounds(map.getBounds());
 </script>
-
-
-

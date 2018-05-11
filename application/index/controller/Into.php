@@ -26,6 +26,7 @@ class Into extends Controller
             $video=$videoArr['video'];
             $this->assign('video',$video);
         }
+
         $this->assign('bannerinfo',$banner);
 
     }
@@ -37,6 +38,7 @@ class Into extends Controller
         return $this->fetch();
     }
     public function summary(){
+
         return $this->fetch();
     }
     public function course(){

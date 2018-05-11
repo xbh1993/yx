@@ -2,10 +2,9 @@
 * {
     padding: 0;
     margin: 0;
-    font-weight: 400;
-    font-family:  PingFang SC, Microsoft YaHei, 宋体, 黑体, Arial, sans-serif;
 }
-
+.body{font-weight:400;
+    font-family:" PingFang SC", 宋体, 黑体, Arial,  "Microsoft YaHei",sans-serif;}
 /*头部导航*/
 .top {
     width: 100%;
@@ -321,7 +320,6 @@ a {
 
 .tabfenBodyItem {
     width: 100%;
-    /*position: absolute;*/
     display: none;
 }
 
@@ -448,6 +446,7 @@ a {
     height: 400px;
     background: #3c444c;
     color: #fff;
+    margin-top: 20px;
 }
 
 .btm {

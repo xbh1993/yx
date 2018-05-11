@@ -4,72 +4,21 @@
     <meta charset="UTF-8">
     <title>扬翔新闻</title>
     <link href="/static/index/css/yxnews.css" type="text/css" rel="stylesheet">
+    <link href="/static/index/css/index.css" type="text/css" rel="stylesheet">
 </head>
 <body>
     <div class="yxcontent">
-        <div class="yxlie">
-            <img src="/static/index/images/4.jpg" class="yximg">
+            {volist name="list1" id="vo"}            
+            <div class="yxlie">
+            <img src="{$vo.thumb}" class="yximg">
             <div class="yxtt">
-                <p class="newnames" >领跑中国种猪基因改良系统解决方案和母仔猪领域精准营养解决方案的领跑中国种猪基因改良系统解决方案和母仔猪领域精准营养解决方案的</p>
-                <p class="newtexts" >领跑中国种猪基因改良系统解决方案和母仔猪领域精准营养解决方案的广西秀博科技股份有限公司
-                    领跑中国种猪基因改良系统解决方案和母仔猪领域精准营养解决方案的广西秀博科技股份有限公司
-                    ，是一家与国际接轨、资金雄厚、科技领先、有着</p>
+                <p class="newnames" >{$vo.title}</p>
+                <p class="newtexts" >{$vo.introduction}</p>
                 <div class="newspans">[查看详情]</div>
             </div>
-        </div>
-        <div class="yxlie">
-            <img src="/static/index/images/4.jpg" class="yximg">
-            <div class="yxtt">
-                <p class="newnames" >领跑中国种猪基因改良系统解决方案和母仔猪领域精准营养解决方案的领跑中国种猪基因改良系统解决方案和母仔猪领域精准营养解决方案的</p>
-                <p class="newtexts" >领跑中国种猪基因改良系统解决方案和母仔猪领域精准营养解决方案的广西秀博科技股份有限公司
-                    领跑中国种猪基因改良系统解决方案和母仔猪领域精准营养解决方案的广西秀博科技股份有限公司
-                    ，是一家与国际接轨、资金雄厚、科技领先、有着</p>
-                <div class="newspans">[查看详情]</div>
             </div>
-        </div>
-        <div class="yxlie">
-            <img src="/static/index/images/4.jpg" class="yximg">
-            <div class="yxtt">
-                <p class="newnames" >领跑中国种猪基因改良系统解决方案和母仔猪领域精准营养解决方案的领跑中国种猪基因改良系统解决方案和母仔猪领域精准营养解决方案的</p>
-                <p class="newtexts" >领跑中国种猪基因改良系统解决方案和母仔猪领域精准营养解决方案的广西秀博科技股份有限公司
-                    领跑中国种猪基因改良系统解决方案和母仔猪领域精准营养解决方案的广西秀博科技股份有限公司
-                    ，是一家与国际接轨、资金雄厚、科技领先、有着</p>
-                <div class="newspans">[查看详情]</div>
-            </div>
-        </div>
-        <div class="yxlie">
-            <img src="/static/index/images/4.jpg" class="yximg">
-            <div class="yxtt">
-                <p class="newnames" >领跑中国种猪基因改良系统解决方案和母仔猪领域精准营养解决方案的领跑中国种猪基因改良系统解决方案和母仔猪领域精准营养解决方案的</p>
-                <p class="newtexts" >领跑中国种猪基因改良系统解决方案和母仔猪领域精准营养解决方案的广西秀博科技股份有限公司
-                    领跑中国种猪基因改良系统解决方案和母仔猪领域精准营养解决方案的广西秀博科技股份有限公司
-                    ，是一家与国际接轨、资金雄厚、科技领先、有着</p>
-                <div class="newspans">[查看详情]</div>
-            </div>
-        </div>
-        <div class="yxlie">
-            <img src="/static/index/images/4.jpg" class="yximg">
-            <div class="yxtt">
-                <p class="newnames" >领跑中国种猪基因改良系统解决方案和母仔猪领域精准营养解决方案的领跑中国种猪基因改良系统解决方案和母仔猪领域精准营养解决方案的</p>
-                <p class="newtexts" >领跑中国种猪基因改良系统解决方案和母仔猪领域精准营养解决方案的广西秀博科技股份有限公司
-                    领跑中国种猪基因改良系统解决方案和母仔猪领域精准营养解决方案的广西秀博科技股份有限公司
-                    ，是一家与国际接轨、资金雄厚、科技领先、有着</p>
-                <div class="newspans">[查看详情]</div>
-            </div>
-        </div>
-    </div>
-    <div class="pbottom">
-        <div class="divpage">
-            <span>共16页</span>
-            <span>上一页</span>
-            <a href="#">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <span>下一页</span>
-        </div>
-    </div>
-
-
+            {/volist}
+           </div>
+    {$page1}
 </body>
 </html>

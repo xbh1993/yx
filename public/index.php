@@ -11,10 +11,24 @@
 
 // [ 应用入口文件 ]
 
-// 定义应用目录
+
+$url=$_SERVER['REQUEST_URI'];
+// if (strstr($url,"/en")) {
+// 	// 定义应用目录
+// define('APP_PATH', __DIR__ . '/../applicationen/');
+// //define('ROOT_PATH', __DIR__ . '/../application/');
+// //钩子
+// define('APP_HOOK',true);
+// // 加载框架引导文件
+// require __DIR__ . '/../thinkphp/start.php';
+// }
+// else{
+	// 定义应用目录
 define('APP_PATH', __DIR__ . '/../application/');
 //define('ROOT_PATH', __DIR__ . '/../application/');
 //钩子
 define('APP_HOOK',true);
 // 加载框架引导文件
 require __DIR__ . '/../thinkphp/start.php';
+//}
+

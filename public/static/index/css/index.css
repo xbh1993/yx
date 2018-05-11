@@ -462,4 +462,15 @@ a{
     border: 1px #a2a5a8 solid;
     color: #ff6600;
 }
+.pagination{
+  display: flex;
+  list-style: none;
+  background-color:#ffffff;
+  padding: 0 0 0 42%;
+}
+.pagination li{
+  width: 31px;
+  border: 1px solid lightgrey;
+    text-align: center;
+}
 

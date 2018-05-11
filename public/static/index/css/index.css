@@ -257,6 +257,7 @@ a {
 
 .phone_text {
     font-size: 20px;
+
 }
 
 .map_phone img {
@@ -320,7 +321,7 @@ a {
 
 .tabfenBodyItem {
     width: 100%;
-    position: absolute;
+    /*position: absolute;*/
     display: none;
 }
 

@@ -151,7 +151,7 @@
 }
 
 .tabBodyItems {
-    position: absolute;
+    /*position: absolute;*/
     display: none;
 }
 

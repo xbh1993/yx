@@ -16,12 +16,24 @@ class Into extends Controller
     {
         $banner=Db::name('system')->find(4);
         $banner=unserialize($banner['value']);
-        $this->assign('bannerinfo',$banner);
+
         $info=Db::name('company')->where('status',1)->find();
         $this->assign('info',$info);
+
+        $videoArr=Db::name('system')->find(2);
+        $videoArr=unserialize($videoArr['value']);
+        if(isset($videoArr['video'])){
+            $video=$videoArr['video'];
+            $this->assign('video',$video);
+        }
+        $this->assign('bannerinfo',$banner);
+
     }
 
     public function into(){
+        //杨翔简介
+        $info=Db::name('company')->where('status',1)->find();
+        $this->assign('info',$info);
         return $this->fetch();
     }
     public function summary(){
@@ -36,4 +48,6 @@ class Into extends Controller
     public function cause(){
         return $this->fetch();
     }
+
+
 }

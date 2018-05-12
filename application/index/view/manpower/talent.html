@@ -7,26 +7,17 @@
 </head>
 <body>
 <div class="tatcon">
+    
     <div class="tatnav">
+        {volist name="list" id="vo"}
         <div class="tatnava">
-            <img class="tatnava_img" src="/static/index/images/3.jpg">
-            <div class="tatnava_title">人才理念公司致力于为公众提供健康、安全、美味的食品；</div>
-            <div class="tatnava_text">公司致力于为公众提供健康、安全、美味的食品；致力于在母仔猪领域为中小养殖户提供专业、稳定、高效
-                的整体解决方案公司致力于为公众提供健康、安全、美味的食品；的整体解决方案公司致力于为公众提供健康、安全、美味的食品</div>
+            <img class="tatnava_img" src="{$vo.thumb}">
+            <div class="tatnava_title">{$vo.title}</div>
+            <div class="tatnava_text">{$vo.introduction}</div>
         </div>
-        <div class="tatnava">
-            <img class="tatnava_img" src="/static/index/images/3.jpg">
-            <div class="tatnava_title">人才理念公司致力</div>
-            <div class="tatnava_text">公司致力于为公众提供健康、安全、美味的食品；致力于在母仔猪领域为中小养殖户提供专业、稳定、高效
-                的整体解决方案公司致力于为公众提供健康、安全、</div>
-        </div>
-        <div class="tatnava">
-            <img class="tatnava_img" src="/static/index/images/3.jpg">
-            <div class="tatnava_title">人才理念公司致力</div>
-            <div class="tatnava_text">公司致力于为公众提供健康、安全、美味的食品；致力于在母仔猪领域为中小养殖户提供专业、稳定、高效
-                的整体解决方案公司致力于为公众提供健康、安全、美味的食品</div>
-        </div>
+        {/volist}
     </div>
+    
 </div>
 </body>
 </html>

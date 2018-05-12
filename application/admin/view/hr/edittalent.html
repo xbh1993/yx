@@ -44,7 +44,20 @@
                         </select>
                         </div>
                       </div>
-                      
+                      <div class="layui-form-item layui-input-inline">
+                        <label class="layui-form-label">置顶</label>
+                        <div class="layui-input-block">              
+                       <select name="is_top">
+                          {if condition="isset($info)"}
+                            <option value ="0" {$info.is_top==0?'selected=\"true\"':''}>否</option>
+                            <option value ="1"  {$info.is_top==1?'selected=\"true\"':''}>是</option>
+                          {else /}
+                          <option value ="0">否</option>
+                          <option value ="1">是</option>
+                          {/if}
+                        </select>
+                        </div>
+                      </div>
                       <div class="layui-form-item">
                         <label class="layui-form-label">标题</label>
                         <div class="layui-input-block">
@@ -76,7 +89,7 @@
                       <div class="layui-form-item">
                         <label class="layui-form-label">排序</label>
                         <div class="layui-input-block">
-                          <input type="text" value="{$info.sys_order|default=''}" name="sys_order"  placeholder="请输入标题" autocomplete="off" class="layui-input">
+                          <input type="text" value="{$info.sys_order|default='0'}" name="sys_order"  placeholder="请输入标题" autocomplete="off" class="layui-input">
                         </div>
                       </div>
                       <div class="layui-form-item" id="content">

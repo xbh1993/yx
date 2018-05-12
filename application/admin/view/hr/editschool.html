@@ -53,8 +53,8 @@
                         <div class="layui-input-block">              
                        <select name="tid">
                           {if condition="isset($info)"}
-                            <option value ="0" {$info.status==0?'selected=\"true\"':''}>校企合作项目</option>
-                            <option value ="1"  {$info.status==1?'selected=\"true\"':''}>校企合作动态</option>
+                            <option value ="0" {$info.tid==0?'selected=\"true\"':''}>校企合作项目</option>
+                            <option value ="1"  {$info.tid==1?'selected=\"true\"':''}>校企合作动态</option>
                           {else /}
                           <option value ="0">校企合作项目</option>
                           <option value ="1">校企合作动态</option>
@@ -94,7 +94,7 @@
                       <div class="layui-form-item">
                         <label class="layui-form-label">排序</label>
                         <div class="layui-input-block">
-                          <input type="text" value="{$info.sys_order|default=''}" name="sys_order"  placeholder="请输入标题" autocomplete="off" class="layui-input">
+                          <input type="text" value="{$info.sys_order|default='0'}" name="sys_order"  placeholder="请输入编号" autocomplete="off" class="layui-input">
                         </div>
                       </div>
                       <div class="layui-form-item" id="content">

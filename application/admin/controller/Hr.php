@@ -33,7 +33,7 @@ class Hr extends Main{
 	function editschool(){
 		if(isset($_GET["id"])){
 	    $list=Db::name('publiclist')->where('id',$_GET["id"])->find();		
-	    return  $this->fetch('editinfo',['info'=>$list]);
+	    return  $this->fetch('editschool',['info'=>$list]);
 		}
 		else{
 		   return  $this->fetch();
@@ -92,15 +92,39 @@ class Hr extends Main{
     }
     //建设标准
     function standard(){
-
+        $info=Db::name('content')->where('id',9)->find();
+        if (isset($info)) {
+    		$photo=json_decode($info["image"],true);
+    		$this->assign('photo',$photo);
+		}
+        $this->assign('id',9);
+        $this->assign('info',$info);
+        $this->assign('item',['item1'=>'扬翔大学','item2'=>'建设标准']);
+    	return $this->fetch('train');
     }
     //支持体系
     function system(){
-
+        $info=Db::name('content')->where('id',10)->find();
+        if (isset($info)) {
+    		$photo=json_decode($info["image"],true);
+    		$this->assign('photo',$photo);
+		}
+        $this->assign('id',10);
+        $this->assign('info',$info);
+        $this->assign('item',['item1'=>'扬翔大学','item2'=>'支持体系']);
+    	return $this->fetch('train');
     }
     //培训方式
     function way(){
-
+        $info=Db::name('content')->where('id',11)->find();
+        if (isset($info)) {
+    		$photo=json_decode($info["image"],true);
+    		$this->assign('photo',$photo);
+		}
+        $this->assign('id',11);
+        $this->assign('info',$info);
+        $this->assign('item',['item1'=>'扬翔大学','item2'=>'培训方式']);
+    	return $this->fetch('train');
     }
 	function add_update(){
 		$data=input('post.');

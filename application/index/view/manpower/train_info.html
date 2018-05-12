@@ -13,10 +13,8 @@
     <img src="/static/index/images/peixun.jpg">
     <div class="px">
         <div class="px_div">
-            <div class="px_title">扬翔集团扬翔集团是一家以饲料业、养猪业、</div>
-            <div class="px_titles">扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、
-                扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧企业扬翔集团是一家以饲料业肉食品加工业为主导
-                ，兼营育种的现代大型农牧企业扬翔集团是一家以饲料业肉食品加工业为主导，兼营育种的现代大型农牧企业扬翔集团是一家以饲料业</div>
+            <div class="px_title">{$info.title}</div>
+            <div class="px_titles">{$info.content}</div>
             <div class="px_more">【点击更多详情】</div>
         </div>
     </div>
@@ -24,55 +22,18 @@
 <div class="school_top">
     <div class="school_topa">培训动态</div>
 </div>
+{volist name="list" id="vo"}
 <div class="school_nav">
     <div class="school_con">
-        <img src="/static/index/images/2.jpg" style="width: 360px;height: 250px;">
+        <img src="{$vo.thumb}" style="width: 360px;height: 250px;">
         <div class="school_conl">
-            <div class="school_names">扬翔集团扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧</div>
-            <div class="school_textsa">扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、
-                扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，
-                兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧扬翔集团是一家以饲料业、养猪业、
-                肉食品加工业为主导，兼营育种的现代大型农牧</div>
+            <div class="school_names">{$vo.title}</div>
+            <div class="school_textsa">{$vo.content}</div>
             <div class="school_more">[ 详 情 ]</div>
         </div>
     </div>
 </div>
-<div class="school_nav">
-    <div class="school_con">
-        <img src="/static/index/images/2.jpg" style="width: 360px;height: 250px;">
-        <div class="school_conl">
-            <div class="school_names">扬翔集团扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧</div>
-            <div class="school_textsa">扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、
-                扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，
-                兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧扬翔集团是一家以饲料业、养猪业、
-                肉食品加工业为主导，兼营育种的现代大型农牧</div>
-            <div class="school_more">[ 详 情 ]</div>
-        </div>
-    </div>
-</div>
-<div class="school_nav">
-    <div class="school_con">
-        <img src="/static/index/images/2.jpg" style="width: 360px;height: 250px;">
-        <div class="school_conl">
-            <div class="school_names">扬翔集团扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧</div>
-            <div class="school_textsa">扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、
-                扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，
-                兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧扬翔集团是一家以饲料业、养猪业、
-                肉食品加工业为主导，兼营育种的现代大型农牧</div>
-            <div class="school_more">[ 详 情 ]</div>
-        </div>
-    </div>
-</div>
-<div class="pbottom">
-    <div class="divpage">
-        <span>共16页</span>
-        <span>上一页</span>
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <span>下一页</span>
-    </div>
-</div>
+{/volist}
+{$page}
 </body>
 </html>

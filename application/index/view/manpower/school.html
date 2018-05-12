@@ -4,72 +4,91 @@
     <meta charset="UTF-8">
     <title>校企合作</title>
     <link href="/static/index/css/manpower.css" type="text/css" rel="stylesheet">
+    <script src="__AdminLTE__/bower_components/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
 <div class="school_top">
     <div class="school_topa">校企合作项目</div>
 </div>
+<div id="school1">
+    {volist name="list" id="vo"}
     <div class="school_nav">
         <div class="school_con">
-            <img src="/static/index/images/2.jpg">
+            <img src="{$vo.thumb}">
             <div class="school_conl">
-                <div class="school_name">扬翔集团扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧</div>
-                <div class="school_title">养猪业扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧扬翔集团是一家以饲料业、养猪业、
-                    肉食品加工业为主导，兼营育种的现代大型农牧</div>
-                <div class="school_texts">扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、
-                    扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，
-                    兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧扬翔集团是一家以饲料业、养猪业、
-                    肉食品加工业为主导，兼营育种的现代大型农牧</div>
+                <div class="school_name">{$vo.title}</div>
+                <div class="school_texts">{$vo.introduction}</div>
             </div>
         </div>
     </div>
-<div class="school_nav" style="background: #e6e6e6;">
-    <div class="school_con">
-        <div class="school_conl">
-            <div class="school_name">扬翔集团</div>
-            <div class="school_title">养猪业</div>
-            <div class="school_texts">扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、
-                扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，
-                兼营育种的现代大型农牧企业</div>
-        </div>
-        <img src="/static/index/images/2.jpg">
-    </div>
+    {/volist}
+    {$list->render()}
 </div>
-<div class="pmore">
-    <img src="/static/index/images/xia.png" class="pmoreimg">
-    <div class="pmoret">点击了解更多</div>
-</div>
+
 <div class="school_top">
     <div class="school_topa">校企合作动态</div>
 </div>
-<div class="school_nav">
+<div id="school2">
+    {volist name="list2" id="vo"}
+    <div class="school_nav">
     <div class="school_con">
-        <img src="/static/index/images/2.jpg" style="width: 360px;height: 250px;">
+        <img src="{$vo.thumb}" style="width: 360px;height: 250px;">
         <div class="school_conl">
-            <div class="school_names">扬翔集团扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧</div>
-            <div class="school_textsa">扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、
-                扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，
-                兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧扬翔集团是一家以饲料业、养猪业、
-                肉食品加工业为主导，兼营育种的现代大型农牧</div>
+            <div class="school_names">{$vo.title}</div>
+            <div class="school_textsa">{$vo.introduction}</div>
             <div class="school_more"><a href="/index/details/details.html">[ 详 情 ]</a></div>
         </div>
     </div>
-</div>
-<div class="school_nav">
-    <div class="school_con">
-        <img src="/static/index/images/2.jpg" style="width: 360px;height: 250px;">
-        <div class="school_conl">
-            <div class="school_names">扬翔集团</div>
-            <div class="school_textsa">扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、
-                扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，
-                兼营育种的现代大型农牧企业</div>
-            <div class="school_more">[ 详 情 ]</div>
-        </div>
     </div>
-</div>
-<div class="pmore" style="background: #e6e6e6;">
-    <img src="/static/index/images/xia.png" class="pmoreimg">
-    <div class="pmoret">点击了解更多</div>
+    {/volist}
+    {$list2->render()}
 </div>
 </body>
+<script>
+    function init(){
+        $(".pagination").eq(0).find('a').each(function(){
+            var href=$(this).attr('href').substring(0,22);
+            $(this).attr("href",href);
+        });
+        $(".pagination").eq(1).find('a').each(function(){
+            var href=$(this).attr('href').substring(0,22).replace('AjaxPage','AjaxPage2');
+            $(this).attr("href",href);
+        });
+    };    
+    init();
+   var AjaxPage = function(page){
+        $.ajax({
+            url:'ajaxListAction',
+            type:'post',
+            dataType:'json',
+            data: {apage:page,tid:0},
+            success:function(data){
+                var json=data.list.data;
+                $("#school1").empty();
+                for (var i = 0; i <json.length; i++) {
+                    $("#school1").append('<div class="school_nav"><div class="school_con"><img src="'+json[i].thumb+'" style="width: 360px;height: 250px;"><div class="school_conl"><div class="school_names">'+json[i].title+'</div><div class="school_textsa">'+json[i].introduction+'</div><div class="school_more"><a href="/index/details/details.html"></a></div></div></div></div>');
+                }                
+                $("#school1").append(data.page);
+                init();
+            }
+        });
+    }
+    var AjaxPage2 = function(page){
+        $.ajax({
+            url:'ajaxListAction',
+            type:'post',
+            dataType:'json',
+            data: {apage:page,tid:1},
+            success:function(data){
+                var json=data.list.data;
+                $("#school2").empty();
+                for (var i = 0; i <json.length; i++) {
+                    $("#school2").append('<div class="school_nav"><div class="school_con"><img src="'+json[i].thumb+'" style="width: 360px;height: 250px;"><div class="school_conl"><div class="school_names">'+json[i].title+'</div><div class="school_textsa">'+json[i].introduction+'</div><div class="school_more"><a href="/index/details/details.html"></a></div></div></div></div>');
+                }                
+                $("#school2").append(data.page);
+                init();
+            }
+        });
+    }
+</script>
 </html>

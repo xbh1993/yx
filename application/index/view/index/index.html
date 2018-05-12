@@ -4,11 +4,16 @@
 <script type="text/javascript" src="https://webapi.amap.com/demos/js/liteToolbar.js"></script>
 
 <script language="Javascript" type="text/Javascript" src="/static/jquery-3.3.1.min.js"></script>
-
-<!--视频-->
-
-
-<img style="width: 100%;margin-top: 100px;" src="{$bannerinfo['imgurl'][0]|default=''}">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0">
+<style type="text/css">
+    #lunbo img{width: 100%;margin-top: 100px;}
+    #lunbo img:not(:first-child){display: none;}
+</style>
+<div id="lunbo">
+    <img src="{$bannerinfo['imgurl'][0]|default=''}">
+    <img src="/static/index/images/top1.jpg">
+    <img src="/static/index/images/top3.jpg">
+</div>
 <!--关于扬翔-->
 <div class="onyx">
     <div class="tb">
@@ -118,7 +123,6 @@
 
 <script language="Javascript" type="text/Javascript" src="/static/index/js/feed.js"></script>
 <script>
-
     var html = ' <div class="map_com">\n' +
         '                                    <div class="map_left">\n' +
         '                                        <div class="map_name">广西扬翔股份有限公司服务中心</div>\n' +
@@ -136,7 +140,7 @@
         '                                    </div>\n' +
         '                                    <img src="/static/index/images/3.jpg">\n' +
         '                                </div>';
-    var map = new AMap.Map('container', {resizeEnable: true, zoom: 4});
+    var map = new AMap.Map('container', {resizeEnable: true, zoom: 5,zoomEnable:false,});
     var markers = []; //province见Demo引用的JS文件
     var infoWindow = new AMap.InfoWindow({offset: new AMap.Pixel(0, -30)});
     for (var i = 0, marker; i < provinces.length; i++) {
@@ -146,17 +150,28 @@
         });
         marker.content = html;
         marker.on('click', markerClick);
-        // marker.emit('click', {target: marker});
     }
 
     function markerClick(e) {
         infoWindow.setContent(e.target.content);
         infoWindow.open(map, e.target.getPosition());
     }
-
     map.setFitView();
-    map.setZoomAndCenter(4, [104.205467, 34.997761]);
+    map.setZoomAndCenter(4, [104.205467, 39.857761]);
+    //    map.setLimitBounds(map.getBounds());
 
+    //轮播图
+    //因为使用了document，所以js需要放在需要执行的代码下面生效才能生效
+    var img=document.getElementById('lunbo').getElementsByTagName("img");
+    var num=0;
+    var len=img.length;
 
+    setInterval(function(){
+        img[num].style.display="none";
+        num=++num==len?0:num;
+        img[num].style.display="inline-block";
+
+    },3000);//切换时间
 </script>
+
 {include file="public:foot"}

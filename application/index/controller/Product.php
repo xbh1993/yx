@@ -18,7 +18,12 @@ class Product extends Controller
         $this->assign('bannerinfo',$banner);
     }
     public function pig()
-    {        
+    {       
+        
+        return $this->fetch();
+    }
+    public function piginfo()
+    {
         $tid=is_null(input('get.tid'))?"1":input('get.tid');
         $list=Db::name('product')->where(['type'=>$tid])->order('time desc')->paginate(3);
         $page=$list->render();
@@ -27,24 +32,44 @@ class Product extends Controller
         $this->assign('tid',$tid);
         return $this->fetch();
     }
-    public function piginfo()
-    {
-        return $this->fetch();
-    }
     public function feed()
     {
+        $tid=is_null(input('get.tid'))?"2":input('get.tid');
+        $list=Db::name('product')->where(['type'=>$tid])->order('time desc')->paginate(3);
+        $page=$list->render();
+        $this->assign('list', $list);
+        $this->assign('page', $page);
+        $this->assign('tid',$tid);
         return $this->fetch();
     }
     public function pigs()
     {
+        $tid=is_null(input('get.tid'))?"4":input('get.tid');
+        $list=Db::name('product')->where(['type'=>$tid])->order('time desc')->paginate(3);
+        $page=$list->render();
+        $this->assign('list', $list);
+        $this->assign('page', $page);
+        $this->assign('tid',$tid);
         return $this->fetch();
     }
     public function move()
     {
+        $tid=is_null(input('get.tid'))?"3":input('get.tid');
+        $list=Db::name('product')->where(['type'=>$tid])->order('time desc')->paginate(3);
+        $page=$list->render();
+        $this->assign('list', $list);
+        $this->assign('page', $page);
+        $this->assign('tid',$tid);
         return $this->fetch();
     }
     public function equipment()
     {
+        $tid=is_null(input('get.tid'))?"5":input('get.tid');
+        $list=Db::name('product')->where(['type'=>$tid])->order('time desc')->paginate(3);
+        $page=$list->render();
+        $this->assign('list', $list);
+        $this->assign('page', $page);
+        $this->assign('tid',$tid);
         return $this->fetch();
     }
 

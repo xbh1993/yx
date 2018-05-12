@@ -18,3 +18,4 @@ $(function(){
         $($(".tabBodyItem ")[$(this).index()/2]).addClass("tabBodyCurrent");
     });
 })
+

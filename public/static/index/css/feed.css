@@ -170,19 +170,20 @@
 /*实验基地研究成果*/
 .docon {
     width: 1200px;
-    height: 350px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    column-count:2;
+    column-gap: 1em;
     padding-top: 15px;
 }
-
 .donav {
     width: 580px;
     height: 300px;
     background: #e6e6e6;
+    -webkit-column-break-inside: avoid;
+    break-inside: avoid;
+    display: flex;
+    flex-direction: column;
     text-align: center;
+    margin: 0 0 1em 0;
 }
 
 .donav_con {
@@ -222,10 +223,23 @@
     color: #fff;
     padding: 30px;
 }
-
+.donav_namea{
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+.donav_mms{
+    font-size: 14px;
+    line-height: 30px;
+    display: -webkit-box;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
 .donav_texta {
     line-height: 50px;
-    font-size: 24px;
+    font-size: 20px;
     margin-top: 30px;
     overflow: hidden;
     white-space: nowrap;
@@ -233,7 +247,7 @@
 }
 
 .donav_textb {
-    font-size: 24px;
+    font-size: 20px;
     margin-top: 30px;
     overflow: hidden;
     white-space: nowrap;
@@ -261,17 +275,17 @@
 /*科研所团队成员*/
 .studyt {
     width: 1200px;
-    height: 500px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+    column-count:3;
+    column-gap: 1em;
 }
 
 .studytcon {
     width: 350px;
     height: 450px;
     text-align: center;
+    -webkit-column-break-inside: avoid;
+    break-inside: avoid;
+    margin: 0 0 1em 0;
 }
 
 .studytcon img {
@@ -306,21 +320,19 @@
 /*创新与研究成果*/
 .gainstop {
     width: 1400px;
-    height: 550px;
     margin: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    column-count:3;
+    column-gap: 1em;
 }
 
 .gainscom {
     width: 430px;
     height: 500px;
+    margin: 0 0 2em 0;
     border: 2px solid #e6e6e6;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    -webkit-column-break-inside: avoid;
+    break-inside: avoid;
+    text-align: center;
 }
 
 .gainscom img {
@@ -367,7 +379,7 @@
     font-size: 14px;
     background: #e6e6e6;
     position: relative;
-    bottom: -23px;
+    bottom: -19px;
     left: 104px;
 }
 
@@ -376,33 +388,27 @@
     margin: auto;
     border-bottom: 2px #ff6600 solid;
 }
-
 /*分页*/
-.pbottom {
-    width: 100%;
-    height: 100px;
-    padding-top: 50px;
-    background: #e6e6e6;
+.pagination{
+    display: flex;
+    list-style: none;
+    padding: 0 0 0 50%;
+    margin-top: 30px;
 }
-
-.divpage {
-    width: 1200px;
-    margin: auto;
-    text-align: right;
-
-}
-
-.divpage a, .divpage span {
-    text-decoration: none;
-    border: #707070 1px solid;
-    padding: 5px 7px;
+.pagination li{
+    padding: 5px 20px;
+    border: 1px solid lightgrey;
+    text-align: center;
     color: #555;
-    cursor: pointer;
+}
+.pagination li a{
+    color: #555;
+    text-decoration: none;
+}
+.pagination li a:hover{
+    color: #ff6600;
 }
 
-.divpage a:hover, .divpage span:hover {
-    color: #ec6f01;
-}
 
 
 

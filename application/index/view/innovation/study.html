@@ -28,21 +28,19 @@
         <div class="tabBodyContainers">
             <div class="tabBodyItems">
                 <div class="sumname">研究成果</div>
-                <div class="docon">
                     <div class="docon">
                     {volist name="list1" id="vo"}
                     <div class="donav">
                         <div class="donav_con">
                             <div  class="donav_texta">{$vo.title}</div>
-                            <div style="font-size: 20px">{$vo.name}</div>
-                            {$vo.describe}
+                            <div class="donav_namea">{$vo.name}</div>
+                            <div class="donav_mms">{$vo.describe}</div>
                         </div>
                         <div class="docolor"></div>
                     </div>
                     {/volist}
                     {$page1}
                 </div>
-                </div>               
                 
             </div>
         </div>

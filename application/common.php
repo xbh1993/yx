@@ -424,3 +424,26 @@ function json_code($code=0,$message="",$data=[]){
     $data=['code'=>$code,'msg'=>$message,'data'=>$data];
     return exit(json_encode($data));
 }
+
+//上传图片
+function upload_file()
+{       
+    $filename = $_FILES['file']['name'];
+    $filetype = $_FILES['file']['type'];
+    $filetmpname=$_FILES['file']['tmp_name'];
+    $filesize = $_FILES['file']['size']/1024/1024;
+
+    $file = request()->file('file');
+    $info = $file->validate([])->move(ROOT_PATH . 'public' . DS . 'uploads');
+    if ($info) {            
+        $msg=$info->getSaveName();
+        $result=array( 
+        'status'=>true, 
+        'filename'=>$filename, 
+        'filetype'=>$filetype,
+        '$filesize'=>round($filesize,2).'mb',
+        'filesrc'=>'/uploads/'.str_replace('\\','/',$msg)
+       ); 
+       echo  json_encode($result);
+    };    
+}   

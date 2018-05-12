@@ -33,6 +33,7 @@
                             </th>
                             <th>id</th>
                             <th>分公司名称</th>
+                            <th>类型</th>
                             <th>封面图片</th>
                             <th>创建时间</th>
                             <th>更新时间</th>
@@ -48,6 +49,10 @@
                             </td>
                             <td>{$vo.id}</td>
                             <td>{$vo.title}</td>
+                            <td>
+                                {eq name="$vo.type" value="1" }养猪类{/eq}
+                                {eq name="$vo.type" value="2" }饲料类{/eq}
+                            </td>
                             <td><img src="{$vo.image}" style="width:80px;height:80px"></td>
                             <td>{$vo.add_time|date="Y-m-d H:i:s",###}</td>
                             <td>{$vo.update_time|date="Y-m-d H:i:s",###}</td>

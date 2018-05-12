@@ -4,55 +4,27 @@
     <meta charset="UTF-8">
     <title>猪精</title>
     <link href="/static/index/css/pig.css" type="text/css" rel="stylesheet">
+    
 </head>
 <body>
-<div class="ptop">
-    <div class="pcon">
-        <div class="pconl">
-            <div class="pigname">扬翔集团</div>
-            <div class="pigtitle">养猪业</div>
-            <div class="pigtexts">扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、
-                扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，
-                兼营育种的现代大型农牧企业</div>
-        </div>
-        <img src="/static/index/images/2.jpg">
-    </div>
+{volist name="list" id="vo" key="i"}
+                    <div class="ptop" style="{$i%2!=0?"background: #e6e6e6;":""}">
+                        <div class="pcon">
+                            <div class="pconl">
+                                <div class="pigname">扬翔集团</div>
+                                <div class="pigtitle">{$vo.title}</div>
+                                <div class="pigtexts">{$vo.describe}</div>
+                            </div>
+                            <img src="{$vo.image}">
+                        </div>
+                    </div>
+                    {if condition="$vo.type==2"}
+                    <div class="pmore">
+    <img src="/static/index/images/xia.png" class="pmoreimg">
+    <div class="pmoret">点击了解更多</div>
 </div>
-<div class="ptop" style="background: #e6e6e6;">
-    <div class="pcon">
-        <div class="pconl">
-            <div class="pigname">扬翔集团</div>
-            <div class="pigtitle">养猪业</div>
-            <div class="pigtexts">扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、
-                扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，
-                兼营育种的现代大型农牧企业</div>
-        </div>
-        <img src="/static/index/images/2.jpg">
-    </div>
-</div>
-<div class="ptop">
-    <div class="pcon">
-        <div class="pconl">
-            <div class="pigname">扬翔集团</div>
-            <div class="pigtitle">养猪业</div>
-            <div class="pigtexts">扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、
-                扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，兼营育种的现代大型农牧企业扬翔集团是一家以饲料业、养猪业、肉食品加工业为主导，
-                兼营育种的现代大型农牧企业</div>
-        </div>
-        <img src="/static/index/images/2.jpg">
-    </div>
-</div>
-<div class="pbottom">
-    <div class="divpage">
-        <span>共16页</span>
-        <span>上一页</span>
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <span>下一页</span>
-    </div>
-</div>
-
+{/if}
+{/volist} 
+{$page}
 </body>
 </html>

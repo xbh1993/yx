@@ -1339,6 +1339,8 @@ class Query
 
         $config['path'] = isset($config['path']) ? $config['path'] : call_user_func([$class, 'getCurrentPath']);
 
+        
+
         if (!isset($total) && !$simple) {
             $options = $this->getOptions();
 

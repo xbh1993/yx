@@ -12,21 +12,25 @@
 .underline{
     width: 100%;
     border-bottom: 1px #e3e3e3 solid;
+    margin:0 auto 20px;
+    display: flex;
+    justify-content: center;
 }
 .lixian{
     width: 10px;
     height: 20px;
     border-right: 1px #e3e3e3 solid;
     margin-top: 34px;
+    margin-left: 30px;
 }
 #TabMain {
     width: 100%;
 }
 .tabItemContainer {
-    width:800px;
-    margin: 0 auto;
+    width: 1400px;
+    margin:0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 .tabBodyContainer {
     -webkit-border-radius: 0 5px 5px 0;
@@ -34,13 +38,14 @@
     border-radius: 0 5px 5px 0;
 }
 .tabItemContainer>li {
-    width: auto;
-    height: auto;
-    line-height: 100px;
-    text-align: center;
+    /*width: auto;*/
+    /*height: auto;*/
+    /*line-height: 100px;*/
+    /*text-align: center;*/
     list-style: none;
-    text-align: center;
-    float: left;
+    margin-left: 30px;
+    /*text-align: center;*/
+    /*float: left;*/
 }
 .tabItemContainer>li>a {
     float: left;
@@ -83,11 +88,10 @@
 
 
 .tabItemContainer_item {
-    width:800px;
-    height: 82px;
-    margin: 0 auto;
+    width: 1400px;
+    margin:0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .tabItemContainer_item li {
@@ -98,6 +102,7 @@
     list-style: none;
     text-align: center;
     float: left;
+    margin-left: 50px;
 }
 .tabItemContainer_item li a {
     float: left;
@@ -174,9 +179,7 @@
     height: 50px;
 }
 .pmoret{
-    width: 150px;
-    height: 50px;
-    line-height: 50px;
+    padding: 10px;
     text-align: center;
     background: #ff6600;
     color: #fff;

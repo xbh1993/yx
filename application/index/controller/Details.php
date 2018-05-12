@@ -14,4 +14,11 @@ class Details extends Controller
     public function details(){
         return $this->fetch();
     }
+    public function office(){
+        return $this->fetch();
+    }
+    public function international(){
+        return $this->fetch();
+    }
+
 }

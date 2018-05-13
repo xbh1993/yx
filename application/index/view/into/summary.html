@@ -1,7 +1,6 @@
 <script src="https://webapi.amap.com/js/marker.js"></script>
 <script src="https://webapi.amap.com/maps?v=1.4.2&key=您申请的key值"></script>
 <script type="text/javascript" src="https://webapi.amap.com/demos/js/liteToolbar.js"></script>
-
 <div style="width: 100%;height: 20px;background: #e6e6e6;">
 </div>
 <div class="pnavtop">
@@ -16,9 +15,13 @@
         <div class="tabBodyContainers">
             <div class="tabBodyItems tabBodyCurrents">
                 <div class="sumname">{$info.title|default=''}</div>
-                <div class="sumvideo">  <video src="{$video}" style="width: 100%;height: 100%" controls="controls"></video></div>
+                {if condition="isset($video) && !empty($video)"}
+                <div class="sumvideo">
+                    <video src="{$video}" style="width: 100%;height: 100%" controls="controls"></video>
+                </div>
+                {/if}
                 <div class="sumtext">
-                       {$info.text|default=""}
+                    {$info.text|default=""}
                     </p>
                 </div>
             </div>
@@ -26,7 +29,7 @@
         <div class="tabBodyContainers">
             <div class="tabBodyItems">
                 <div class="pnavtopa" style="border-bottom: 1px solid">
-                    <p class="pnavtoptext"> &nbsp;扬  翔 分 公 司 分 布</p>
+                    <p class="pnavtoptext"> &nbsp;扬 翔 分 公 司 分 布</p>
                 </div>
                 <div id="Tabfen">
                     <div class="tabfenItemContainer">
@@ -35,84 +38,57 @@
                     </div>
                     <div class="tabfenBodyContainer">
                         <div class="tabfenBodyItem tabfenBodyCurrent">
-                            <div class="fenmap" id="container"></div>
+                            <div class="fenmap" id="container" ></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+
+        </script>
         <div class="tabBodyContainers">
             <div class="tabBodyItems">
                 <div class="sumname">公 司 荣 誉</div>
-                <div class="sumtw">
-                    <div class="sumtwa">
-                        <img src="/static/index/images/2.jpg" class="sumimgs">
-                        <div class="sumtwtext">扬翔集团是一家以饲料业扬翔集团是一家以饲料业</div>
+                <div class="sumtw" id="item_item1">
+
+                    <div class="item1" style="width: 800%;">
+                        <div id="item1" style="height: 000px;float: left;display: flex">
+                            {volist name="$lits1['img_url']" id="vo" empty="暂时没有数据"}
+                            <div style="margin-left: 50px">
+                                <img style="width: 400px;height: 300px;" src="{$vo}">
+                                <div class="sumtwtext">{$lits1['data'][$key]|default='  '}</div>
+                            </div>
+                            {/volist}
+                        </div>
+                        <div id="item2" style="height: 300px;float: left;display: flex">
+                        </div>
                     </div>
-                    <div class="sumtwa">
-                        <img src="/static/index/images/2.jpg" class="sumimgs">
-                        <div class="sumtwtext">扬翔集团是一家以饲料业</div>
-                    </div>
-                    <div class="sumtwa">
-                        <img src="/static/index/images/2.jpg" class="sumimgs">
-                        <div class="sumtwtext">扬翔集团是一家以饲料业</div>
-                    </div>
+
                 </div>
+
                 <div class="sumname">公 司 展 示</div>
-                <div class="sumtw">
-                    <div class="sumtwa">
-                        <img src="/static/index/images/2.jpg" class="sumimgs">
-                        <div class="sumtwtext">扬翔集团是一家以饲料业</div>
+
+                <div class="sumtw" id="item_item_2">
+
+                    <div class="item1" style="width: 800%;">
+                        <div id="item2_2" style="height: 300px;float: left;display: flex">
+                            {volist name="$lits2['img_url']" id="vo" empty="暂时没有数据"}
+                            <div style="margin-left: 50px">
+                                <img style="height: 300px;width: 400px" src="{$vo}">
+                                <div class="sumtwtext">{$lits2['data'][$key]|default=''}</div>
+                            </div>
+                            {/volist}
+                        </div>
+                        <div id="item2_3" style="height: 300px;float: left;display: flex">
+                        </div>
                     </div>
-                    <div class="sumtwa">
-                        <img src="/static/index/images/2.jpg" class="sumimgs">
-                        <div class="sumtwtext">扬翔集团是一家以饲料业</div>
-                    </div>
-                    <div class="sumtwa">
-                        <img src="/static/index/images/2.jpg" class="sumimgs">
-                        <div class="sumtwtext">扬翔集团是一家以饲料业</div>
-                    </div>
+
                 </div>
+
             </div>
         </div>
     </div>
     <div style="clear: both"></div>
 </div>
-<script>
-    var html = ' <div class="map_com">\n' +
-        '                                    <div class="map_left">\n' +
-        '                                        <div class="map_name">广西扬翔股份有限公司服务中心</div>\n' +
-        '                                        <div class="map_xia"></div>\n' +
-        '                                        <div class="map_jianjie">\n' +
-        '                                            简介：广西扬翔股份有限公司成立于1998年，是农业产业化国家重点龙头企业，旗下32家子公司，员工5000余名。\n' +
-        '                                            公司主营猪产业，拥有自养猪和服务养猪两大板块，是集种猪、肉猪、猪精、猪饲料、养猪设备、猪动保为一体的\n' +
-        '                                            全产业链大型农牧企业，致力于打造“基因+产品+服务+互联网”的综合模式。\n' +
-        '                                        </div>\n' +
-        '                                        <div class="map_address">地址：广西贵港市江南工业园区城东大道与工业一路交汇处东北角</div>\n' +
-        '                                        <div class="map_phone">\n' +
-        '                                            <div class="phone_text">联系电话：400-727-0088</div>\n' +
-        '                                            <img src="/static/index/images/phonef.png">\n' +
-        '                                        </div>\n' +
-        '                                    </div>\n' +
-        '                                    <img src="/static/index/images/3.jpg">\n' +
-        '                                </div>';
-    var map = new AMap.Map('container', {resizeEnable: true, zoom: 5,zoomEnable:false,});
-    var markers = []; //province见Demo引用的JS文件
-    var infoWindow = new AMap.InfoWindow({offset: new AMap.Pixel(0, -30)});
-    for (var i = 0, marker; i < provinces.length; i++) {
-        var marker = new AMap.Marker({
-            position: provinces[i].center.split(','),
-            map: map
-        });
-        marker.content = html;
-        marker.on('click', markerClick);
-    }
-
-    function markerClick(e) {
-        infoWindow.setContent(e.target.content);
-        infoWindow.open(map, e.target.getPosition());
-    }
-    map.setFitView();
-    map.setZoomAndCenter(4, [104.205467, 39.857761]);
-    //    map.setLimitBounds(map.getBounds());
-</script>
+<script src="/static/index/js/into.js"></script>

@@ -8,32 +8,27 @@
 <body>
 <div style="width: 100%;height: 20px;background: #e6e6e6;margin-bottom: 80px;"></div>
 <div class="causecon">
+    {volist name="gyshlists" id="vo" empty="暂时没有数据"}
     <div class="causecona">
-        <img src="/static/index/images/2.jpg" class="causeconimgs">
-        <div class="causecontext">扬翔集团是一家以饲料业扬翔扬翔集团是一家以饲料业扬翔扬翔集团是一家以饲料业扬翔</div>
+        <img src="{$vo.image}" class="causeconimgs">
+        <div class="causecontext">{$vo['title']}</div>
     </div>
-    <div class="causecona">
-        <img src="/static/index/images/2.jpg" class="causeconimgs">
-        <div class="causecontext">扬翔集团是一家以饲料业扬翔</div>
-    </div>
-    <div class="causecona">
-        <img src="/static/index/images/2.jpg" class="causeconimgs">
-        <div class="causecontext">扬翔集团是一家以饲料业扬翔</div>
-    </div>
+    {/volist}
+<div style="clear: both"></div>
 </div>
-<div class="causecon">
-    <div class="causecona">
-        <img src="/static/index/images/2.jpg" class="causeconimgs">
-        <div class="causecontext">扬翔集团是一家以饲料业扬翔</div>
-    </div>
-    <div class="causecona">
-        <img src="/static/index/images/2.jpg" class="causeconimgs">
-        <div class="causecontext">扬翔集团是一家以饲料业扬翔</div>
-    </div>
-    <div class="causecona">
-        <img src="/static/index/images/2.jpg" class="causeconimgs">
-        <div class="causecontext">扬翔集团是一家以饲料业扬翔</div>
-    </div>
-</div>
+<!--<div class="causecon">-->
+    <!--<div class="causecona">-->
+        <!--<img src="/static/index/images/2.jpg" class="causeconimgs">-->
+        <!--<div class="causecontext">扬翔集团是一家以饲料业扬翔</div>-->
+    <!--</div>-->
+    <!--<div class="causecona">-->
+        <!--<img src="/static/index/images/2.jpg" class="causeconimgs">-->
+        <!--<div class="causecontext">扬翔集团是一家以饲料业扬翔</div>-->
+    <!--</div>-->
+    <!--<div class="causecona">-->
+        <!--<img src="/static/index/images/2.jpg" class="causeconimgs">-->
+        <!--<div class="causecontext">扬翔集团是一家以饲料业扬翔</div>-->
+    <!--</div>-->
+<!--</div>-->
 </body>
 </html>

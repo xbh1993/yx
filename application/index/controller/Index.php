@@ -7,17 +7,15 @@ use  think\Controller;
 class Index extends Controller
 {
     public function _initialize(){
-        $banner=Db::name('system')->find(2);
-
-        $banner=unserialize($banner['value']);
-        if(isset($banner['img_url'])){
-            $bannerinfo['imgurl']=$banner['img_url'];
-        }
-        if(isset($banner['video'])){
-            $bannerinfo['video']=$banner['video'];
-        }
-
-        $this->assign('bannerinfo',$bannerinfo);
+        $banner=Db::name('banner')->where('type_pid',40)->find();
+        $banner=unserialize($banner['img_url']);
+//        if(isset($banner['img_url'])){
+//            $bannerinfo['imgurl']=$banner['img_url'];
+//        }
+//        if(isset($banner['video'])){
+//            $bannerinfo['video']=$banner['video'];
+//        }
+        $this->assign('bannerinfo',$banner);
     }
     public function index()
     {

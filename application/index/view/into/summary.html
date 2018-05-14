@@ -31,10 +31,10 @@
                 <div class="pnavtopa" style="border-bottom: 1px solid">
                     <p class="pnavtoptext"> &nbsp;扬 翔 分 公 司 分 布</p>
                 </div>
-                <div id="Tabfen">
+                <div id="Tabfen" data-url="{:url('/index/index/getCompanyList')}">
                     <div class="tabfenItemContainer">
-                        <li><a class="tabfenItemCurrent">饲料分公司</a></li>
-                        <li><a>养猪分公司</a></li>
+                        <li data-type="1"><a class="tabfenItemCurrent">饲料分公司</a></li>
+                        <li data-type="2"><a>养猪分公司</a></li>
                     </div>
                     <div class="tabfenBodyContainer">
                         <div class="tabfenBodyItem tabfenBodyCurrent">
@@ -92,3 +92,4 @@
     <div style="clear: both"></div>
 </div>
 <script src="/static/index/js/into.js"></script>
+

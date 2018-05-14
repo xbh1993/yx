@@ -27,7 +27,6 @@ class Index extends Controller
           $this->assign('newslist',$newslist);
           //产品介绍
           $productlist=Db::name('product')->limit(4)->select();
-//          dump($productlist);exit;
           $this->assign('productlist',$productlist);
           //视频
           $video=Db::name('video')->order('create_time desc')->limit(1)->find();
@@ -42,6 +41,17 @@ class Index extends Controller
     }
     public function testsasas(){
         return $this->fetch();
+    }
+
+    public function getCompanyList(){
+        $type=request()->post();
+        $where=[];
+        $where['status']=2;
+        if(isset($type['type'])){
+            $where['type']=$type['type'];
+        }
+        $lists=Db::name('company')->where($where)->select();
+        return json_code(1,'success',$lists);
     }
 
 }

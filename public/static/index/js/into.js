@@ -44,34 +44,62 @@ tab_tab.onmouseout = function () {
 
 
 
-var html = ' <div class="map_com">\n' +
-    '                                    <div class="map_left">\n' +
-    '                                        <div class="map_name">广西扬翔股份有限公司服务中心</div>\n' +
-    '                                        <div class="map_xia"></div>\n' +
-    '                                        <div class="map_jianjie">\n' +
-    '                                            简介：广西扬翔股份有限公司成立于1998年，是农业产业化国家重点龙头企业，旗下32家子公司，员工5000余名。\n' +
-    '                                            公司主营猪产业，拥有自养猪和服务养猪两大板块，是集种猪、肉猪、猪精、猪饲料、养猪设备、猪动保为一体的\n' +
-    '                                            全产业链大型农牧企业，致力于打造“基因+产品+服务+互联网”的综合模式。\n' +
-    '                                        </div>\n' +
-    '                                        <div class="map_address">地址：广西贵港市江南工业园区城东大道与工业一路交汇处东北角</div>\n' +
-    '                                        <div class="map_phone">\n' +
-    '                                            <div class="phone_text">联系电话：400-727-0088</div>\n' +
-    '                                            <img src="/static/index/images/phonef.png">\n' +
-    '                                        </div>\n' +
-    '                                    </div>\n' +
-    '                                    <img src="/static/index/images/3.jpg">\n' +
-    '                                </div>';
-var map = new AMap.Map('container', {resizeEnable: true, zoom: 5, zoomEnable: false,});
-var markers = []; //province见Demo引用的JS文件
+var map = new AMap.Map('container', {resizeEnable: true, zoom: 5,zoomEnable:false,});
 var infoWindow = new AMap.InfoWindow({offset: new AMap.Pixel(0, -30)});
-for (var i = 0, marker; i < provinces.length; i++) {
-    var marker = new AMap.Marker({
-        position: provinces[i].center.split(','),
-        map: map
-    });
-    marker.content = html;
-    marker.on('click', markerClick);
+var markers = [];
+var url=$('#Tabfen').attr('data-url');
+$.post(url,{type:1},function (res) {
+    if(res.code==1){
+        getmap(res.data)
+    }
+},'json')
+
+$('.tabfenItemContainer li').click(function () {
+    $('.tabfenItemContainer li a').removeClass('tabfenItemCurrent');
+    $(this).find('a').addClass('tabfenItemCurrent');
+    var type= $(this).attr('data-type');
+    $.post(url,{type:type},function (res) {
+        if(res.code==1){
+            map.remove(markers);
+            getmap(res.data)
+        }
+    },'json')
+})
+
+
+function getmap(data) {
+    markers=[];
+    for (var i = 0, marker; i < data.length; i++) {
+        var position=data[i].location.split(',');
+
+        var html = ' <div class="map_com">\n' +
+            '                                    <div class="map_left">\n' +
+            '                                        <div class="map_name">'+data[i].title+'</div>\n' +
+            '                                        <div class="map_xia"></div>\n' +
+            '                                        <div class="map_jianjie">'+data[i].describle+'</div>'+
+            '                                        <div class="map_address">地址:'+data[i].address+'</div>\n' +
+            '                                        <div class="map_phone">\n' +
+            '                                            <div class="phone_text">联系电话：'+data[i].tel+'</div>\n' +
+            '                                            <img src="/static/index/images/phonef.png">\n' +
+            '                                        </div>\n' +
+            '                                    </div>\n' +
+            '                                    <img src="'+data[i].image+'">\n' +
+            '                                </div>';
+
+        var marker = new AMap.Marker({
+            position: [position[1],position[0]],
+            map: map
+        });
+
+        marker.content = html;
+        markers.push(marker);
+        marker.on('click', markerClick);
+    }
+    map.setFitView();
+    map.setZoomAndCenter(4, [104.205467, 39.857761]);
+    //    map.setLimitBounds(map.getBounds());
 }
+
 
 
 
@@ -79,6 +107,3 @@ function markerClick(e) {
     infoWindow.setContent(e.target.content);
     infoWindow.open(map, e.target.getPosition());
 }
-map.setFitView();
-map.setZoomAndCenter(4, [104.205467, 39.857761]);
-map.setLimitBounds(map.getBounds());

@@ -12,6 +12,14 @@ use think\Db;
 use think\Model;
 class Manpower extends Controller
 {
+
+    public function _initialize(){
+        //banner图
+        $banner=Db::name('system')->find(4);
+        $banner=unserialize($banner['value']);
+        $this->assign('banner',$banner);
+    }
+
   public function manpower(){
       
       
@@ -56,7 +64,8 @@ class Manpower extends Controller
       return json(['list'=>$rel,'page'=>$page]);
    }
     //人才理念
-    public function talent(){     
+    public function talent(){
+
     $list=Db::name('publiclist')->where(['coid'=>1,'status'=>1])->limit(3)->select();
       $this->assign('list',$list);   
         return $this->fetch();

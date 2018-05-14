@@ -1,6 +1,6 @@
 {include file="public:header"}
 <script src="https://webapi.amap.com/js/marker.js"></script>
-<script src="https://webapi.amap.com/maps?v=1.4.2&key=您申请的key值"></script>
+<script src="https://webapi.amap.com/maps?v=1.4.2&key=270729cb85d57dc2fc4a9daf217fee20"></script>
 <script type="text/javascript" src="https://webapi.amap.com/demos/js/liteToolbar.js"></script>
 
 <script language="Javascript" type="text/Javascript" src="/static/jquery-3.3.1.min.js"></script>
@@ -28,7 +28,7 @@
             <div class="onyx_tit">Guang xi &nbsp;yang xiang &nbsp;co . &nbsp;LTD .</div>
             <div class="onyx_name">广 西 扬 翔 股 份 有 限 公 司</div>
             <div class="onyx_em">{$profile['text']}</div>
-            <a href="#">
+            <a href="/index/into/into.html">
                 <div class="onyx_more">点击了解更多</div>
             </a>
         </div>
@@ -44,8 +44,8 @@
     <div class="buteda">
         <div id="Tabfen" style="background: #f2f3f5;">
             <div class="tabfenItemContainer">
-                <li><a class="tabfenItemCurrent">饲料分公司</a></li>
-                <li><a>养猪分公司</a></li>
+                <li data-type="1"><a class="tabfenItemCurrent">饲料分公司</a></li>
+                <li data-type="2"><a>养猪分公司</a></li>
             </div>
             <div class="tabfenBodyContainer">
                 <div class="tabfenBodyItem tabfenBodyCurrent">
@@ -73,7 +73,7 @@
             <div class="onyx_name" style="margin-top: 20px;">广 西 扬 翔 股 份 有 限 公 司</div>
             <div class="onyx_em">{$profile['text']}</div>
             <a href="/index/details/international.html">
-                <div class="onyx_more">点击了解更多</div>
+                <div class="onyx_more"> 点击了解更多</div>
             </a>
         </div>
     </div>
@@ -126,42 +126,71 @@
 
 <script language="Javascript" type="text/Javascript" src="/static/index/js/feed.js"></script>
 <script>
-    var html = ' <div class="map_com">\n' +
-        '                                    <div class="map_left">\n' +
-        '                                        <div class="map_name">广西扬翔股份有限公司服务中心</div>\n' +
-        '                                        <div class="map_xia"></div>\n' +
-        '                                        <div class="map_jianjie">\n' +
-        '                                            简介：广西扬翔股份有限公司成立于1998年，是农业产业化国家重点龙头企业，旗下32家子公司，员工5000余名。\n' +
-        '                                            公司主营猪产业，拥有自养猪和服务养猪两大板块，是集种猪、肉猪、猪精、猪饲料、养猪设备、猪动保为一体的\n' +
-        '                                            全产业链大型农牧企业，致力于打造“基因+产品+服务+互联网”的综合模式。\n' +
-        '                                        </div>\n' +
-        '                                        <div class="map_address">地址：广西贵港市江南工业园区城东大道与工业一路交汇处东北角</div>\n' +
-        '                                        <div class="map_phone">\n' +
-        '                                            <div class="phone_text">联系电话：400-727-0088</div>\n' +
-        '                                            <img src="/static/index/images/phonef.png">\n' +
-        '                                        </div>\n' +
-        '                                    </div>\n' +
-        '                                    <img src="/static/index/images/3.jpg">\n' +
-        '                                </div>';
+
     var map = new AMap.Map('container', {resizeEnable: true, zoom: 5,zoomEnable:false,});
-    var markers = []; //province见Demo引用的JS文件
     var infoWindow = new AMap.InfoWindow({offset: new AMap.Pixel(0, -30)});
-    for (var i = 0, marker; i < provinces.length; i++) {
-        var marker = new AMap.Marker({
-            position: provinces[i].center.split(','),
-            map: map
-        });
-        marker.content = html;
-        marker.on('click', markerClick);
+    var markers = [];
+    var url="{:url('index/index/getCompanyList')}"
+    $.post(url,{type:1},function (res) {
+       if(res.code==1){
+           getmap(res.data)
+       }
+    },'json')
+
+   $('.tabfenItemContainer li').click(function () {
+       $('.tabfenItemContainer li a').removeClass('tabfenItemCurrent');
+         $(this).find('a').addClass('tabfenItemCurrent');
+           var type= $(this).attr('data-type');
+          $.post(url,{type:type},function (res) {
+           if(res.code==1){
+               map.remove(markers);
+               getmap(res.data)
+           }
+       },'json')
+   })
+
+
+    function getmap(data) {
+        markers=[];
+        for (var i = 0, marker; i < data.length; i++) {
+            var position=data[i].location.split(',');
+
+            var html = ' <div class="map_com">\n' +
+                '                                    <div class="map_left">\n' +
+                '                                        <div class="map_name">'+data[i].title+'</div>\n' +
+                '                                        <div class="map_xia"></div>\n' +
+                '                                        <div class="map_jianjie">'+data[i].describle+'</div>'+
+                '                                        <div class="map_address">地址:'+data[i].address+'</div>\n' +
+                '                                        <div class="map_phone">\n' +
+                '                                            <div class="phone_text">联系电话：'+data[i].tel+'</div>\n' +
+                '                                            <img src="/static/index/images/phonef.png">\n' +
+                '                                        </div>\n' +
+                '                                    </div>\n' +
+                '                                    <img src="'+data[i].image+'">\n' +
+                '                                </div>';
+
+            var marker = new AMap.Marker({
+                position: [position[1],position[0]],
+                map: map
+            });
+
+            marker.content = html;
+            markers.push(marker);
+            marker.on('click', markerClick);
+        }
+        map.setFitView();
+        map.setZoomAndCenter(4, [104.205467, 39.857761]);
+        //    map.setLimitBounds(map.getBounds());
     }
+
+
+
 
     function markerClick(e) {
         infoWindow.setContent(e.target.content);
         infoWindow.open(map, e.target.getPosition());
     }
-    map.setFitView();
-    map.setZoomAndCenter(4, [104.205467, 39.857761]);
-    //    map.setLimitBounds(map.getBounds());
+
 
     //轮播图
     //因为使用了document，所以js需要放在需要执行的代码下面生效才能生效

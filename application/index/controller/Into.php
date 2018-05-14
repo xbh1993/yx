@@ -14,6 +14,7 @@ class Into extends Controller
 {
     public function _initialize()
     {
+        $type=request()->param();
         //banner图
         $banner=Db::name('system')->find(4);
         $banner=unserialize($banner['value']);
@@ -34,8 +35,14 @@ class Into extends Controller
         $this->assign('yxfcList',$list);
 
         //公益事业
-        $gysyList=Db::name('company')->where('status',3)->paginate(6);
+       if(isset($type['page'])){
+           $this->assign('p',1);
+       }
+        $gysyList=Db::name('company')->where('status',3)->paginate(6,false,$type);
 
+        $page=$gysyList->render();
+
+        $this->assign('page',$page);
 
         $this->assign('gyshlists',$gysyList);
 
@@ -66,7 +73,6 @@ class Into extends Controller
         return $this->fetch();
     }
     public function summary(){
-
         return $this->fetch();
     }
     public function course(){

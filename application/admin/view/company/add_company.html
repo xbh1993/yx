@@ -42,6 +42,24 @@
     </div>
 
     <div class="layui-form-item">
+        <label class="layui-form-label">
+            联系方式
+        </label>
+        <div class="layui-input-block">
+            <input type="text" name="tel" value=""   class="layui-input" id="tel" placeholder="输入联系方式">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">
+            简介
+        </label>
+        <div class="layui-input-block">
+           <textarea name="describle" class="layui-textarea" placeholder="公司简介"></textarea>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
         <label class="layui-form-label">分公司类型</label>
         <div class="layui-input-block">
             <select name="type" lay-verify="required">
@@ -66,7 +84,7 @@
 
         <div class="layui-form-item layui-form-text">
             <label for="desc" class="layui-form-label">
-                分公司简介
+                分公司详情
             </label>
 
             <textarea placeholder="请输入内容" id="editor"  style="height: 500px;"  name="text"  class="layui-textarea"> {$site_config.text|default=''}</textarea>

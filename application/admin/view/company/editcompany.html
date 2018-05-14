@@ -43,6 +43,24 @@
         </div>
     </div>
 
+    <div class="layui-form-item">
+        <label class="layui-form-label">
+            联系方式
+        </label>
+        <div class="layui-input-block">
+            <input type="text" name="tel" value="{$info.tel|default=''}"   class="layui-input" id="tel" placeholder="输入联系方式">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">
+            简介
+        </label>
+        <div class="layui-input-block">
+            <textarea name="describle" class="layui-textarea" placeholder="公司简介">{$info.describle|default=''}</textarea>
+        </div>
+    </div>
+
 
 
 

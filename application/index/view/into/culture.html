@@ -35,9 +35,40 @@
         </div>
     </div>
     <p style="text-align: center;font-size: 30px;line-height: 150px;">扬 翔 风 采</p>
-    <div class="fengcai">
-        <img src="/static/index/images/2.jpg" class="fengcaiimg">
-        <img src="/static/index/images/2.jpg" class="fengcaiimg">
-        <img src="/static/index/images/2.jpg" class="fengcaiimg">
+    <div class="fengcai" id="item_item4">
+        <div class="item4_1" style="width: 800%;">
+            <div id="item4_2" style="height:300px;float: left;display: flex">
+                {volist name="$yxfcList['img_url']" id="vo" empty="暂时没有数据"}
+                <div style="margin-left: 50px">
+                    <img style="width: 400px;height: 300px;" src="{$vo}">
+                </div>
+                {/volist}
+            </div>
+            <div id="item4_3" style="height: 300px;float: left;display: flex">
+            </div>
+        </div>
     </div>
 </div>
+<script>
+
+    var speed = 15; //数字越大速度越慢
+    var tab123 = document.getElementById("item_item4");
+    var tab1123 = document.getElementById("item4_2");
+    var tab2123 = document.getElementById("item4_3");
+    var html123 = $('#item4_2').html();
+    $('#item4_3').html(html123)
+    function Marquee123() {
+        if (tab2123.offsetWidth - tab123.scrollLeft <= 0)
+            tab123.scrollLeft -= tab1123.offsetWidth
+        else {
+            tab123.scrollLeft++;
+        }
+    }
+    var MyMar123 = setInterval(Marquee123, speed);
+    tab123.onmouseover = function () {
+        clearInterval(MyMar123)
+    };
+    tab123.onmouseout = function () {
+        MyMar123 = setInterval(Marquee123, speed)
+    };
+</script>

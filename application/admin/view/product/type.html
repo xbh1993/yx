@@ -24,7 +24,7 @@
             <h3 class="panel-title">操作栏</h3>
         </div>
         <div class="panel-body">
-              <button data-toggle="modal" onclick="lotus_show('新增新闻类别','edittype',400,200)" class="btn  btn-success  btn-sm btn-small ">新增新闻类别</button>
+              <button data-toggle="modal" onclick="lotus_show('新增新闻类别','edittype',800,400)" class="btn  btn-success  btn-sm btn-small ">新增新闻类别</button>
               <!-- <button class="btn  btn-danger btn-small">删除</button> -->
         </div>
      </div>
@@ -50,7 +50,7 @@
                   <tr style="">
                     <td>{$vo.title}</td>
                     <td>
-                        <button onclick="lotus_show('新增新闻类别','edittype?id={$vo.Id}',400,200)" class="btn btn-xs  btn-success btn-small">编辑</button>
+                        <button onclick="lotus_show('编辑','edittype?id={$vo.Id}',900,400)" class="btn btn-xs  btn-success btn-small">编辑</button>
                         <button onclick='delete_ptype({$vo.Id})' class="btn btn-xs  btn-danger btn-small">删除</button>
                     </td>
                   </tr>

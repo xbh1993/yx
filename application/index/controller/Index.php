@@ -26,7 +26,7 @@ class Index extends Controller
           $newslist=Db::name('article')->where(['cid'=>19,'status'=>1])->limit(4)->select();
           $this->assign('newslist',$newslist);
           //产品介绍
-          $productlist=Db::name('product')->limit(4)->select();
+          $productlist=Db::name('type')->where('name','product')->select();
           $this->assign('productlist',$productlist);
           //视频
           $video=Db::name('video')->order('create_time desc')->limit(1)->find();

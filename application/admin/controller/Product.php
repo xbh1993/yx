@@ -102,8 +102,8 @@ class Product extends Main{
 		return  $this->fetch();            
      }   
      public function edittype(){
-        if(isset($_GET["ID"])){
-	    $list=Db::name('type')->where('ID',$_GET["ID"])->find();		
+        if(isset($_GET["id"])){
+	    $list=Db::name('type')->where('id',$_GET["id"])->find();		
 	    return  $this->fetch('edittype',['info'=>$list]);
 		}
 		else{
@@ -114,10 +114,9 @@ class Product extends Main{
      * 更新/添加产品类别
      */
     public function addupdate_producttype() {
-        $data=["title"=>$_POST["title"],["name"]=>'product'];
+        $data=["title"=>$_POST["title"],"name"=>'product','introduction'=>$_POST["introduction"]];
         //$data=SafeFilter($data);        
         if ($this->request->isPost()) {
-
 					if($_POST["id"]!=''){
 						 if (Db::name('type')->where('id', $_POST["id"])->update($data) !== false) {
 								$this->success('修改成功');

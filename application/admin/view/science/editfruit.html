@@ -54,6 +54,12 @@
                           <input type="text" value="{$info.character|default=''}" name="character" required  lay-verify="required" placeholder="请输入人物" autocomplete="off" class="layui-input">
                         </div>
                       </div>
+                      <div class="layui-form-item ">
+                        <label class="layui-form-label">简介</label>
+                        <div class="layui-input-block">
+                          <textarea placeholder="请输入简介" class="layui-textarea" name="introduction">{$info.introduction|default=''}</textarea>
+                        </div>
+                      </div>
                       <div class="layui-form-item layui-input-inline">
                         <label class="layui-form-label">创建时间</label>
                         <div class="layui-input-block">

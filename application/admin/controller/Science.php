@@ -31,7 +31,7 @@ class Science extends Main{
     
     function addupdate_fruit() {		
         $data=["title"=>$_POST["title"],"content"=>$_POST["content"],"time"=>$_POST["time"],
-		"image"=>$_POST["image"],"character"=>$_POST["character"],"status"=>$_POST["status"]];		
+		"image"=>$_POST["image"],"character"=>$_POST["character"],"status"=>$_POST["status"],"introduction"=>$_POST["introduction"]];		
         if ($this->request->isPost()) {
 					if($_POST["Id"]!=''){
 						 if (Db::name('fruit')->where('Id', $_POST["Id"])->update($data) !== false) {

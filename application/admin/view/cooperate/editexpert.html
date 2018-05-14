@@ -1,4 +1,5 @@
-{extend name='public/base'}
+{extend name='public/modal'}
+
 {block name='content'}
 
 <style type="text/css">
@@ -15,62 +16,88 @@
 <script type="text/javascript" src="/ueditor/ueditor.all.js"></script>
 <link rel="stylesheet" href="/ueditor/themes/default/css/ueditor.css" rel="external nofollow" >
 <link rel="stylesheet" href="__adminCss__/jquery.dad.css">
- <!-- Main content -->
- <section class="content-header">
-      <h1>
-        {$item.item1}
-        <small>{$item.item2}</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i>{$item.item1}</a></li>
-        <li class="active">{$item.item2}</li>
-      </ol>
-    </section>
+  <!-- Content Header (Page header) -->
+    <!-- Main content -->
     <section class="content">
       <div class="row" >
         <div class="col-xs-12">
           <!-- /.box -->
-          <div class="box" style="">
-         
+          <div class="box" style="">         
             <!-- /.box-header -->
-            <div class="box-body"  style="width: 800px;">
-
-                <form  id="mainForm" class="layui-form layui-form-line layui-form-pane" method='post' action='add_update' >                    
-                    <input style="display:none" type="text" value="{$id}" name="id"  >
-                    <input style="display:none" type="text" value="content" name="tablename"  >
+            <div class="box-body" style="width: 800px;">
+                <form  id="mainForm" class="layui-form layui-form-line layui-form-pane" method='post' action='add_update' >       
+                  <input style="display:none" type="text" value="{$info.id|default=''}" name="id"  >
+                  <input style="display:none" type="text" value="publiclist" name="tablename"  >
+                  <input style="display:none" type="text" value="{$coid}" name="coid"  >                     
                       <div class="layui-form-item layui-input-inline">
-                        <label class="layui-form-label">标题</label>
-                        <div class="layui-input-block">
-                          <input type="text" value="{$info.title|default=''}" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                        <label class="layui-form-label">状态</label>
+                        <div class="layui-input-block">              
+                       <select name="status">
+                          {if condition="isset($info)"}
+                            <option value ="0" {$info.status==0?'selected=\"true\"':''}>不发布</option>
+                            <option value ="1"  {$info.status==1?'selected=\"true\"':''}>发布</option>
+                          {else /}
+                          <option value ="0">不发布</option>
+                          <option value ="1">发布</option>
+                          {/if}
+                        </select>
                         </div>
                       </div>
-                      <div id="photo" class="layui-form-item">
-                        <label class="layui-form-label">图片</label>
-                        <div class="layui-input-block">
-                          <textarea style="display:none" value="" name="image"  placeholder="请填写图集描述" class="layui-textarea">
-                            {$info.image|default=''}
-                          </textarea>
-                          <div class="layui-upload" >
-                            <button type="button" class="layui-btn uploadbtn" id="btn2"><i class="layui-icon">&#xe654;添加图片</i></button> 
-                            <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
-                              图集：
-                              <div class="layui-upload-list demo" style="display: flex;flex-wrap: wrap;" id="demo2">
-                                {if condition="isset($info)"}
-                                {volist name="photo" id="vo"}
-<div><img src="{$vo.src}" data-value="{$vo.describe}" alt="" class="layui-upload-img"><a class="deletebtn" href="#"><i style="position: relative;left: -26px;top: -42px;font-size: 27px;" class="layui-icon">&#x1007;</i></a></div> 
-                                {/volist}
-                                {/if}                                
-                              </div>
-                           </blockquote>
-                          </div>                                                
+                      <div class="layui-form-item layui-input-inline">
+                        <label class="layui-form-label">置顶</label>
+                        <div class="layui-input-block">              
+                       <select name="is_top">
+                          {if condition="isset($info)"}
+                            <option value ="0" {$info.is_top==0?'selected=\"true\"':''}>否</option>
+                            <option value ="1"  {$info.is_top==1?'selected=\"true\"':''}>是</option>
+                          {else /}
+                          <option value ="0">否</option>
+                          <option value ="1">是</option>
+                          {/if}
+                        </select>
+                        </div>
                       </div>
-                    </div>
                       <div class="layui-form-item">
+                        <label class="layui-form-label">标题</label>
+                        <div class="layui-input-block">
+                          <input type="text" value="{$info.title|default=''}" name="title"  placeholder="请输入标题" autocomplete="off" class="layui-input">
+                        </div>
+                      </div>                      
+                      <div class="layui-form-item ">
+                        <label class="layui-form-label">职位</label>
+                        <div class="layui-input-block">
+                          <input type="text" value="{$info.introduction|default=''}" name="introduction"  placeholder="请输入标题" autocomplete="off" class="layui-input">
+                        </div>
+                      </div>
+                       <div class="layui-form-item layui-input-inline">
+                        <label class="layui-form-label">创建时间</label>
+                        <div class="layui-input-block">
+                          <input type="text" value="{$info.create_time|default=''}" name="create_time"  placeholder="请选择时间" autocomplete="off" class="layui-input" id="time1">
+                        </div>
+                      </div>                    
+                     <div id="thumb" class="layui-form-item">
+                        <label class="layui-form-label">缩略图</label>
+                        <div class="layui-input-block">                         
+                          <image src="{$info.thumb|default=''}" id="preview1" name="preview1" style="width:30%"/>
+                          <input style="display:none" type="text" value="{$info.thumb|default=''}" name="thumb"  >
+                          <button type="button" class="layui-btn uploadbtn" id="btn1">                            
+                            <i class="layui-icon">&#xe67c;</i>上传图片
+                          </button>                          
+                         </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">排序</label>
+                        <div class="layui-input-block">
+                          <input type="text" value="{$info.sys_order|default='0'}" name="sys_order"  placeholder="请输入标题" autocomplete="off" class="layui-input">
+                        </div>
+                      </div>
+                      <div class="layui-form-item" id="content">
                         <label class="layui-form-label">内容</label>
                         <div class="layui-input-block">
                           <p id="myEditor" name="content" style="width:1024px;height:500px;"></p>
                         </div>
-                      </div>                      
+                      </div>
+                      
                 <div class="" class="layui-form-item" >
                         <div class="layui-input-block submit_btn">
                           <button   class="layui-btn" lay-submit lay-filter="*">提交</button>
@@ -90,11 +117,11 @@
     </section>
     <!-- /.content -->
 {/block}
-{block name='js'}
-<script src="__adminJs__/jquery.dad.min.js"></script>
-  <script type="text/javascript">
 
-    var indexsign=0;
+
+{block name='js'}
+<script type="text/javascript">
+  var indexsign=0;
   function setvalue(){
     var arry=[];
     $(".layui-upload-img").each(function(){
@@ -105,31 +132,33 @@
         arry.push(item);
         }        
     });
-    $("textarea[name='image']").html(JSON.stringify(arry));
-  };
-  $('.deletebtn').click(function(){                   
-        $(this).parent().remove();  
+    $("textarea[name='photo']").html(JSON.stringify(arry));
+  }
+</script>>
+<script src="__adminJs__/jquery.dad.min.js"></script>
+  <script type="text/javascript">   
+    $("textarea[id='photodescribe2']").bind('input propertychange','textarea',function(){
+        $(".layui-upload-img").eq(indexsign).attr('data-value',$(this).val());
         setvalue();
-     });
+    });
     var editor = new baidu.editor.ui.Editor({ initialFrameWidth: 1024,initialFrameHeight: 500, scaleEnabled:true});
     editor.render("myEditor");
     editor.addListener("ready", function () {
         // editor准备好之后才可以使用
-        editor.setContent("{$info.content|default=''}");
+        editor.setContent('{$info.content|default=''}');
         });
     window.UEDITOR_HOME_URL='ueditor/';//此为ueditor相对于实例页面的路径
     $(function(){
         layui.use('laydate', function(){
-        var laydate = layui.laydate;
-  
-  //执行一个laydate实例
-  var time=$('#time1').val();
-  laydate.render({
-    elem: '#time1' //指定元素
-     ,type: 'datetime'
-     ,value:time!=''?time:new Date()
-  });
-});
+        var laydate = layui.laydate;  
+        //执行一个laydate实例
+        var time=$('#time1').val();
+          laydate.render({
+            elem: '#time1' //指定元素
+             ,type: 'datetime'
+             ,value:time!=''?time:new Date()
+          });
+        });
         var options = {
               type:'post',           //post提交
               //url:'http://ask.tongzhuo100.com/server/****.php?='+Math.random(),   //url
@@ -159,8 +188,28 @@
           layui.use('form', function(){
             var form = layui.form;
             $('#mainForm').ajaxForm(options).submit(function(data){});
+            form.on('select(test)', function(data){
+              var value=data.value;
+              if (value==0) {
+                 $("#thumb").show();
+                 $("#content").show();
+                 $("#photo").hide();
+                 $("#photodescribe").hide();
+              }
+              else{
+                 $("#thumb").hide();
+                 $("#content").hide();
+                 $("#photo").show();
+                 $("#photodescribe").show();
+              }
+            });
           });
-          layui.use('upload', function(){
+        });
+    $('.deletebtn').click(function(){                   
+        $(this).parent().remove();  
+        setvalue();
+     });
+    layui.use('upload', function(){
         var upload = layui.upload; 
         //图片上传
         var uploadInst = upload.render({
@@ -203,7 +252,8 @@
           }
         });
       });
-        })
-      // });
-  </script>{/block}
-{extend name='public/footer'}
+$(function(){ 
+  $('.demo').dad();
+});
+  </script>
+{/block}

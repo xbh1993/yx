@@ -10,6 +10,12 @@ use think\Controller;
 use think\Db;
 class User extends Controller
 {
+    public function _initialize(){
+        //banner图
+        $banner=Db::name('system')->find(4);
+        $banner=unserialize($banner['value']);
+        $this->assign('bannerinfo',$banner);
+    }
     public function contact(){
     	$info=Db::name('content')->where('id',4)->find();
     	$this->assign('info',$info);

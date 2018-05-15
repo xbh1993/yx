@@ -11,84 +11,58 @@
     <div class="school_topa">校企合作项目</div>
 </div>
 <div id="school1">
-    {volist name="list" id="vo"}
-    <div class="school_nav">
-        <div class="school_con">
-            <img src="{$vo.thumb}">
-            <div class="school_conl">
-                <div class="school_name">{$vo.title}</div>
-                <div class="school_texts">{$vo.introduction}</div>
-            </div>
-        </div>
-    </div>
-    {/volist}
-    {$list->render()}
+
 </div>
 
 <div class="school_top">
     <div class="school_topa">校企合作动态</div>
 </div>
 <div id="school2">
-    {volist name="list2" id="vo"}
-    <div class="school_nav">
-    <div class="school_con">
-        <img src="{$vo.thumb}" style="width: 360px;height: 250px;">
-        <div class="school_conl">
-            <div class="school_names">{$vo.title}</div>
-            <div class="school_textsa">{$vo.introduction}</div>
-            <div class="school_more"><a href="/index/details/details.html">[ 详 情 ]</a></div>
-        </div>
-    </div>
-    </div>
-    {/volist}
-    {$list2->render()}
+
 </div>
 </body>
 <script>
-    function init(){
-        $(".pagination").eq(0).find('a').each(function(){
-            var href=$(this).attr('href').substring(0,22);
-            $(this).attr("href",href);
-        });
-        $(".pagination").eq(1).find('a').each(function(){
-            var href=$(this).attr('href').substring(0,22).replace('AjaxPage','AjaxPage2');
-            $(this).attr("href",href);
-        });
-    };    
-    init();
-   var AjaxPage = function(page){
+   function AjaxPage1(page){
         $.ajax({
             url:'ajaxListAction',
             type:'post',
             dataType:'json',
-            data: {apage:page,tid:0},
+            data: {apage:page,tid:0,coid:2},
             success:function(data){
                 var json=data.list.data;
                 $("#school1").empty();
                 for (var i = 0; i <json.length; i++) {
-                    $("#school1").append('<div class="school_nav"><div class="school_con"><img src="'+json[i].thumb+'" style="width: 360px;height: 250px;"><div class="school_conl"><div class="school_names">'+json[i].title+'</div><div class="school_textsa">'+json[i].introduction+'</div><div class="school_more"><a href="/index/details/details.html"></a></div></div></div></div>');
+                    $("#school1").append('<div class="school_nav"><div class="school_con"><img src="'+json[i].thumb+'" style="width: 360px;height: 250px;"><div class="school_conl"><div class="school_names">'+json[i].title+'</div><div class="school_textsa">'+json[i].introduction+'</div><div class="school_more"><a style="color:#000;" href="/index/details/details.html?table=publiclist&id='+json[i].id+'">[ 详 情 ]</a></div></div></div></div>');
                 }                
                 $("#school1").append(data.page);
-                init();
+                $("#school1 .pagination").find('a').each(function(){
+                    var href=$(this).attr('href').substring(0,22).replace('AjaxPage','AjaxPage1');
+                    $(this).attr("href",href);
+                });
             }
         });
     }
-    var AjaxPage2 = function(page){
+    function AjaxPage2(page){
         $.ajax({
             url:'ajaxListAction',
             type:'post',
             dataType:'json',
-            data: {apage:page,tid:1},
+            data: {apage:page,tid:1,coid:2},
             success:function(data){
                 var json=data.list.data;
                 $("#school2").empty();
                 for (var i = 0; i <json.length; i++) {
-                    $("#school2").append('<div class="school_nav"><div class="school_con"><img src="'+json[i].thumb+'" style="width: 360px;height: 250px;"><div class="school_conl"><div class="school_names">'+json[i].title+'</div><div class="school_textsa">'+json[i].introduction+'</div><div class="school_more"><a href="/index/details/details.html"></a></div></div></div></div>');
+                    $("#school2").append('<div class="school_nav"><div class="school_con"><img src="'+json[i].thumb+'" style="width: 360px;height: 250px;"><div class="school_conl"><div class="school_names">'+json[i].title+'</div><div class="school_textsa">'+json[i].introduction+'</div><div class="school_more"><a style="color:#000;" href="/index/details/details.html?table=publiclist&id='+json[i].id+'">[ 详 情 ]</a></div></div></div></div>');
                 }                
                 $("#school2").append(data.page);
-                init();
+                $("#school2 .pagination").find('a').each(function(){
+                    var href=$(this).attr('href').substring(0,22).replace('AjaxPage','AjaxPage2');
+                    $(this).attr("href",href);
+                });
             }
         });
     }
+    AjaxPage1(1);
+    AjaxPage2(1);
 </script>
 </html>

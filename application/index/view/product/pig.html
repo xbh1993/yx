@@ -16,49 +16,65 @@
         <div id="TabMain">
             <div class="underline">
             <div class="tabItemContainer">
-                <li><a data-id="1"  class="tabItemCurrent">猪 精</a></li>
-                <div class="lixian"></div>
-                <li><a data-id="2">饲 料</a></li>
-                <div class="lixian"></div>
-                <li><a data-id="3">种 猪</a></li>
-                <div class="lixian"></div>
-                <li><a data-id="4">动 保</a></li>
-                <div class="lixian"></div>
-                <li><a data-id="5">设 备</a></li>
+              {volist name="list" id="vo"}
+              {if condition="$i==1"}
+              <li><a data-id="{$vo.Id}"  class="tabItemCurrent">{$vo.title}</a></li>
+              {else}
+              <div class="lixian"></div>
+              <li><a data-id="{$vo.Id}">{$vo.title}</a></li>
+              {/if}
+              {/volist}                
             </div>
             </div>
-            
-
             <div class="tabBodyContainer">
                 <div class="tabBodyItem tabBodyCurrent">
-                    <div id="html_5">
-                          <iframe align="center" width="100%" height="2200px" src="/index/product/piginfo.html" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-                   </div>
                 </div>  
                 <div class="tabBodyItem">
-                    <div id="html_5">
-                          <iframe align="center" width="100%" height="2200px" src="/index/product/feed.html" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-                   </div>
                 </div>
                 <div class="tabBodyItem">
-                    <div id="html_5">
-                          <iframe align="center" width="100%" height="2200px" src="/index/product/move.html" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-                   </div>
                 </div>
                 <div class="tabBodyItem">
-                    <div id="html_5">
-                          <iframe align="center" width="100%" height="2200px" src="/index/product/pigs.html" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-                   </div>
                 </div>
                 <div class="tabBodyItem">
-                    <div id="html_5">
-                          <iframe align="center" width="100%" height="2200px" src="/index/product/equipment.html" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-                   </div>
                 </div>             
             </div>
         </div>
 </body>
 <script src="/static/index/js/product.js" type="text/javascript"></script>
+<script type="text/javascript">
+  function AjaxPage(page,tid,index){
+        $.ajax({
+            url:'ajaxListAction',
+            type:'post',
+            dataType:'json',
+            data: {apage:page,tid:tid,index:index},
+            success:function(data){         
+                var json=data.list.data; 
+                $(".tabBodyItem").eq(index).empty();
+                if (json.length>0) {
+                    for (var i = 0; i <json.length; i++) {
+                      $(".tabBodyItem").eq(index).append('<a style="color:#000" href="/index/details/details.html?table=product&id='+json[i].id+'"><div class="ptop" style="'+(i%2!=0?"background: #e6e6e6;":"")+'"><div class="pcon"><div class="pconl"><div class="pigname">扬翔集团</div><div class="pigtitle">'+json[i].title+'</div><div class="pigtexts">'+json[i].describe+'</div></div><img src="'+json[i].image+'"></div></div></a>');
+                    }  
+                    if (data.page!=null) {
+                      $(".tabBodyItem").eq(index).append(data.page);                      
+                      $(".tabBodyItem").eq(index).find(".pagination:last").find("a").each(function(){            
+                        var href=$(this).attr('href').split('?')[1].split('&');
+                        var tid=href[0].split('=')[1];
+                        var index=href[1].split('=')[1];
+                        var page=href[2].split('=')[1];            
+                        $(this).attr("href","javascript:AjaxPage("+page+","+tid+","+index+")");
+                      });
+                    }     
+                }
+            }
 
+        });
+    }
+    $(".tabItemContainer a").each(function(index){    
+    console.log(index);    
+        var value=$(this).attr('data-id');
+        AjaxPage(1,value,index);
+    })
+</script>
 </html>
 {include file="public:foot"}

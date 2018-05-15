@@ -24,70 +24,39 @@
         </div>
     </div>
     <div class="tabBodyContainer">
+        <!--人才理念-->
         <div class="tabBodyItem tabBodyCurrent">
-           <iframe  id="test1" align="center" width="100%"  src="/index/manpower/talent.html" frameborder="no"
-                        border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>   
-        </div>
+           <div class="tatcon">
+             <div class="tatnav">
+            {volist name="talent" id="vo"}
+            <div class="tatnava">
+                <img class="tatnava_img" src="{$vo.thumb}">
+                <div class="tatnava_title">{$vo.title}</div>
+                <div class="tatnava_text">{$vo.introduction}</div>
+            </div>
+            {/volist}
+            </div>
+            </div>  
+       </div>
+       <!--校企合作-->
         <div class="tabBodyItem">
-           <iframe  id="test2" align="center" width="100%"  src="/index/manpower/school.html" frameborder="no"
-                        border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+            {include file="manpower:school"}
         </div>
+        <!--培训特色-->
         <div class="tabBodyItem">
-            <iframe id="test3" align="center" width="100%"  src="/index/manpower/train.html" frameborder="no"
-                        border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-            
+            {include file="manpower:train"}   
         </div>
+        <!--培训信息-->
         <div class="tabBodyItem">
-            <iframe id="test4" align="center" width="100%"  src="/index/manpower/train_info.html" frameborder="no"
-                        border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+            {include file="manpower:train_info"}
         </div>
+        <!--扬翔大学-->
         <div class="tabBodyItem">
-            <iframe id="test5" align="center" width="100%"  src="/index/manpower/university.html" frameborder="no"
-                        border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+            {include file="manpower:university"}
         </div>
     </div>
 </div>
 </body>
 <script src="/static/index/js/product.js" type="text/javascript"></script>
-<script language="javascript">
-//输入你希望根据页面高度自动调整高度的iframe的名称的列表
-//用逗号把每个iframe的ID分隔. 例如: ["myframe1", "myframe2"]，可以只有一个窗体，则不用逗号。
-//定义iframe的ID
-var iframeids=["test1","test2","test3","test4","test5"];
-//如果用户的浏览器不支持iframe是否将iframe隐藏 yes 表示隐藏，no表示不隐藏
-var iframehide="yes";
-function dyniframesize()
-{
-    var dyniframe=new Array()
-    for (i=0; i<iframeids.length; i++)
-    {
-    if (document.getElementById)
-    {
-    //自动调整iframe高度
-    dyniframe[dyniframe.length] = document.getElementById(iframeids[i]);
-    if (dyniframe[i] && !window.opera)
-    {
-    dyniframe[i].style.display="block";
-    if (dyniframe[i].contentDocument && dyniframe[i].contentDocument.body.offsetHeight) //如果用户的浏览器是NetScape
-    dyniframe[i].height = dyniframe[i].contentDocument.body.offsetHeight;
-    else if (dyniframe[i].Document && dyniframe[i].Document.body.scrollHeight) //如果用户的浏览器是IE
-    dyniframe[i].height = dyniframe[i].Document.body.scrollHeight;
-    }
-    }
-    //根据设定的参数来处理不支持iframe的浏览器的显示问题
-    if ((document.all || document.getElementById) && iframehide=="no")
-    {
-    var tempobj=document.all? document.all[iframeids[i]] : document.getElementById(iframeids[i]);
-    tempobj.style.display="block";
-    }
-    }
-}
-if (window.addEventListener)
-    window.addEventListener("load", dyniframesize, false);
-    else if (window.attachEvent)
-    window.attachEvent("onload", dyniframesize);
-    else
-    window.onload=dyniframesize;
-</script>
 </html>
 {include file="public:foot"}

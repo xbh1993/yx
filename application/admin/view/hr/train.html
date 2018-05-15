@@ -115,7 +115,7 @@
     editor.render("myEditor");
     editor.addListener("ready", function () {
         // editor准备好之后才可以使用
-        editor.setContent("{$info.content|default=''}");
+        editor.setContent('{$info.content|default=''}');
         });
     window.UEDITOR_HOME_URL='ueditor/';//此为ueditor相对于实例页面的路径
     $(function(){

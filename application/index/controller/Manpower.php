@@ -21,9 +21,34 @@ class Manpower extends Controller
     }
 
   public function manpower(){
-      
-      
-      
+      $talent=Db::name('publiclist')->where(['coid'=>1,'status'=>1])->limit(3)->select();
+      $this->assign('talent',$talent);       
+      //大学简介
+      $info1=Db::name('content')->where('id',8)->find();
+      $this->assign('info1',$info1);
+      //建设标准
+      $info2=Db::name('content')->where('id',9)->find();
+      $this->assign('info2',$info2);
+      //支持体系
+      $info3=Db::name('content')->where('id',10)->find();
+      $this->assign('info3',$info3);
+      //培训方式
+      $info4=Db::name('content')->where('id',11)->find();
+      if (isset($info4)) {
+          $photo1=json_decode($info4["image"],true);
+          $this->assign('photo1',$photo1);
+      }
+      $this->assign('info4',$info4);
+      $info5=Db::name('content')->where('id',6)->find();
+      if (isset($info5)) {
+          $photo2=json_decode($info5["image"],true);
+          $this->assign('photo2',$photo2);
+      }   
+      $info6=Db::name('content')->where('id',7)->find();
+      $this->assign('info5',$info5);
+      $this->assign('info6',$info6);
+      $info7=Db::name('publiclist')->where(['status'=>1,'is_top'=>1,'coid'=>3])->find();
+        $this->assign('info7',$info7);
       return $this->fetch();
    }
    //校企合作
@@ -51,13 +76,21 @@ class Manpower extends Controller
     }
     public function ajaxListAction(){
       $page = request()->param('apage');
+      $tid=input('post.tid');
+      $coid=input('post.coid');
+      $where="";
+      if (isset($tid)) {
+          $where=['tid'=>$tid,'coid'=>$coid,'status'=>1];
+      }
+      else{
+        $where=['coid'=>$coid,'status'=>1];
+      }
       if (!empty($page)) {
-         $rel = Db::name('publiclist')->where(['coid'=>2,'tid'=>input('post.tid')])->paginate(2,false,[
+         $rel = Db::name('publiclist')->where($where)->paginate(2,false,[
             'type'     => 'Bootstrap',
             'var_page' => 'page',
             'page' => $page,
             'path'=>'javascript:AjaxPage([PAGE]);',
-
          ]);
          $page = $rel->render();
       }
@@ -84,12 +117,7 @@ class Manpower extends Controller
     }
     //培训信息
     public function train_info(){
-        $info=Db::name('publiclist')->where(['status'=>1,'is_top'=>1,'coid'=>3])->find();
-        $this->assign('info',$info);
-        $list=Db::name('publiclist')->where(['status'=>1,'coid'=>3])->paginate(3);
-        $page=$list->render();
-        $this->assign('list',$list);
-        $this->assign('page',$page);
+        
         return $this->fetch();
     }
     //扬翔大学

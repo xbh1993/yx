@@ -22,26 +22,60 @@
     <div class="tabBodyContainer ">
         <!--扬翔新闻-->
         <div class="tabBodyItem tabBodyCurrent">
-            <div id="html_5">
-                          <iframe align="center" width="100%" height="2200px" src="/index/news/yxnews_info.html" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe> 
-                   </div>
+                    
         </div>
         <!--视频-->
         <div class="tabBodyItem">
-            <div id="html_5">
-                          <iframe align="center" width="100%" height="2200px" src="/index/news/video.html" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe> 
-                   </div>
+            
         </div>
         <!--媒体报道-->
         <div class="tabBodyItem">
-            <div id="html_5">
-                          <iframe align="center" width="100%" height="2200px" src="/index/news/media.html" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe> 
-                   </div>
+            
         </div>       
     </div>
 </div>
 </div>
 </body>
 <script src="/static/index/js/yxnews.js" type="text/javascript"></script>
+<script type="text/javascript">
+    function AjaxPage(page,tid,index,table){
+        $.ajax({
+            url:'ajaxListAction',
+            type:'post',
+            dataType:'json',
+            data: {apage:page,tid:tid,index:index,table:table},
+            success:function(data){       
+                var json=data.list.data;
+                $(".tabBodyItem").eq(index).empty();
+                if (json.length>0) {
+                    for (var i = 0; i <json.length; i++) {
+                      if(table=="video"){
+                        $(".tabBodyItem").eq(index).append('<div class="vitop" style="'+(i%2!=0?"background:#e6e6e6;":"")+'"><div class="pdetail"><div class="pdleft"><div class="pdbiaoti">0'+i+'</div><div class="vioname">'+json[i].title+'</div><div class="pdnei">'+json[i].describe+'</div></div><video class="videoimg" src="'+json[i].access+'" controls="controls" poster="'+json[i].image+'"></div>');
+                      } 
+                      else{
+                        $(".tabBodyItem").eq(index).append('<a style="color:#000;" href="/index/details/details.html?table=article&id='+json[i].id+'"><div class="yxlie"><img src="'+json[i].thumb+'" class="yximg"><div class="yxtt"><p class="newnames" >'+json[i].title+'</p><p class="newtexts" >'+json[i].introduction+'</p><div class="newspans">[查看详情]</div></div></div></a>');
+                      }                      
+                    }  
+                    if (data.page!=null) {
+                      $(".tabBodyItem").eq(index).append(data.page);                      
+                      $(".tabBodyItem").eq(index).find(".pagination:last").find("a").each(function(){            
+                        var href=$(this).attr('href').split('?')[1].split('&');
+                                              
+                        var tid=href[0].split('=')[1];
+                        var index=href[1].split('=')[1];
+                        var table=href[2].split('=')[1]; 
+                        var page=href[3].split('=')[1];  
+                                  
+                        $(this).attr("href","javascript:AjaxPage("+page+","+tid+","+index+",'"+table+"')");
+                      });
+                    }     
+                }
+            }
+        });
+    }
+    AjaxPage(1,20,0,'article');
+    AjaxPage(1,0,1,'video');
+    AjaxPage(1,21,2,'article');
+</script>
 </html>
 {include file="public:foot"}

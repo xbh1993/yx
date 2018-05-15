@@ -17,6 +17,29 @@ class news extends Controller
         $banner=unserialize($banner['value']);
         $this->assign('bannerinfo',$banner);
     }
+    public function ajaxListAction(){        
+      $page = request()->param('apage');
+      $index=input('post.index');
+      $tid=input('post.tid');
+      $table=input('post.table');
+      $where="";
+      if ($tid>0) {
+          $where=['cid'=>$tid,'status'=>1];
+      }
+      else{
+          $where=['status'=>1];
+      }
+      if (!empty($page)) {
+         $rel = Db::name($table)->where($where)->paginate(2,false,[
+            'type'     => 'Bootstrap',
+            'var_page' => 'page',
+            'page' => $page,
+            'query'=>['tid'=>$tid,'index'=>$index,'table'=>$table],
+         ]);
+         $page = $rel->render();
+      }
+      return json(['list'=>$rel,'page'=>$page]);
+   }
     public function yxnews()
     {
         return $this->fetch();

@@ -16,6 +16,7 @@
 </div>
 <div class="school_nav">
     {volist name="list" id="vo"}
+    <a href="details.html?table=publiclist&id={$vo.id}" style="color: #000">
     <div class="school_con">
         <img src="{$vo.thumb}">
         <div class="school_conl">
@@ -23,6 +24,7 @@
             <div class="school_texts" style="margin-top: 20px;">{$vo.introduction}</div>
         </div>
     </div>
+    </a>
     {/volist}
     {$list->render()}
 </div>
@@ -31,6 +33,7 @@
 </div>
 <div style="width: 1200px;margin: 50px auto;" class="school2">
     {volist name="list2" id="vo"}
+    <a href="details.html?table=publiclist&id={$vo.id}" style="color: #000">
     <div class="studyt" style="margin-top: 20px;">        
         <div class="studytcon">
             <img src="{$vo.thumb}">
@@ -39,6 +42,7 @@
             <div class="studyt_text">{$vo.content}</div>
         </div>
     </div>
+    </a>
     {/volist}
     {$list2->render()}
 </div>
@@ -67,7 +71,7 @@
                 var json=data.list.data;
                 $(".school_nav").empty();
                 for (var i = 0; i <json.length; i++) {
-                    $(".school_nav").append('<div class="school_con"><img src="'+json[i].thumb+'"><div class="school_conl"><div class="school_name">'+json[i].title+'</div><div class="school_texts" style="margin-top: 20px;">'+json[i].introduction+'</div></div></div>');
+                    $(".school_nav").append('<a href="details.html?table=publiclist&id='+json[i].id+'" style="color: #000"><div class="school_con"><img src="'+json[i].thumb+'"><div class="school_conl"><div class="school_name">'+json[i].title+'</div><div class="school_texts" style="margin-top: 20px;">'+json[i].introduction+'</div></div></div></a>');
                 }                
                 $(".school_nav").append(data.page);
                 init();
@@ -84,7 +88,7 @@
                 var json=data.list.data;
                 $(".school2").empty();
                 for (var i = 0; i <json.length; i++) {
-                    $(".school2").append('<div class="studyt" style="margin-top: 20px;"><div class="studytcon"><img src="'+json[i].thumb+'"><p class="studyt_name">'+json[i].title+'</p><p class="yuanshi">'+json[i].introduction+'</p><div class="studyt_text">'+json[i].content+'</div></div></div>');
+                    $(".school2").append('<a href="details.html?table=publiclist&id='+json[i].id+'" style="color: #000"><div class="studyt" style="margin-top: 20px;"><div class="studytcon"><img src="'+json[i].thumb+'"><p class="studyt_name">'+json[i].title+'</p><p class="yuanshi">'+json[i].introduction+'</p><div class="studyt_text">'+json[i].content+'</div></div></div></a>');
                 }                
                 $(".school2").append(data.page);
                 init();

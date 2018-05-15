@@ -13,6 +13,10 @@ use think\Db;
 class Details extends Controller
 {
     public function details(){
+        $table=input('get.table');
+        $id=input('get.id');
+        $info=Db::name($table)->where('id',$id)->find();
+        $this->assign('info',$info);
         return $this->fetch();
     }
     public function office(){

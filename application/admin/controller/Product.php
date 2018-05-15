@@ -28,8 +28,8 @@ class Product extends Main{
 
 		$this->assign('type',$type);
 
-        if(isset($_GET["Id"])){
-	    $list=Db::name('product')->where('Id',$_GET["Id"])->find();		
+        if(isset($_GET["id"])){
+	    $list=Db::name('product')->where('id',$_GET["id"])->find();		
 	    return  $this->fetch('editlist',['info'=>$list]);
 		}
 		else{
@@ -44,9 +44,9 @@ class Product extends Main{
 		"content"=>$_POST["content"],"describe"=>$_POST["describe"],"time"=>$_POST["time"]];		
         if ($this->request->isPost()) {
 
-					if($_POST["Id"]!=''){
+					if($_POST["id"]!=''){
 
-						 if (Db::name('product')->where('Id', $_POST["Id"])->update($data) !== false) {
+						 if (Db::name('product')->where('id', $_POST["id"])->update($data) !== false) {
 								$this->success('修改成功');
 							} else {
 								$this->error('修改失败');
@@ -71,7 +71,7 @@ class Product extends Main{
     function delete_product()
 	{
 		if ($this->request->isPost()) {			
-	        if (Db::name('product')->where('Id','in',$_POST["id"])->delete() !== false) {
+	        if (Db::name('product')->where('id','in',$_POST["id"])->delete() !== false) {
 	            $this->success('删除成功');
 	        } else {
 	            $this->error('删除失败');
@@ -114,7 +114,7 @@ class Product extends Main{
      * 更新/添加产品类别
      */
     public function addupdate_producttype() {
-        $data=["title"=>$_POST["title"],"name"=>'product','introduction'=>$_POST["introduction"]];
+        $data=["title"=>$_POST["title"],"name"=>'product','introduction'=>$_POST["introduction"],'thumb'=>$_POST["thumb"]];
         //$data=SafeFilter($data);        
         if ($this->request->isPost()) {
 					if($_POST["id"]!=''){
@@ -198,5 +198,8 @@ class Product extends Main{
         } else {
             $this->error('删除失败');
         }
+	}
+	function upload_file(){
+		upload_file();
 	}
 }

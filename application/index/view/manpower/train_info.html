@@ -10,30 +10,43 @@
     <div class="school_topa">培训信息广告</div>
 </div>
 <div class="peixun">
+
     <img src="/static/index/images/peixun.jpg">
     <div class="px">
         <div class="px_div">
-            <div class="px_title">{$info.title}</div>
-            <div class="px_titles">{$info.content}</div>
-            <div class="px_more">【点击更多详情】</div>
+            <div class="px_title">{$info7.title}</div>
+            <div class="px_titles">{$info7.introduction}</div>
+            <a style="color: #fff;" href="/index/details/details.html?table=publiclist&id={$info7.id}"><div class="px_more">【点击更多详情】</div></a>
         </div>
     </div>
 </div>
 <div class="school_top">
     <div class="school_topa">培训动态</div>
 </div>
-{volist name="list" id="vo"}
-<div class="school_nav">
-    <div class="school_con">
-        <img src="{$vo.thumb}" style="width: 360px;height: 250px;">
-        <div class="school_conl">
-            <div class="school_names">{$vo.title}</div>
-            <div class="school_textsa">{$vo.content}</div>
-            <div class="school_more">[ 详 情 ]</div>
-        </div>
-    </div>
+<div class="train_info">
 </div>
-{/volist}
-{$page}
 </body>
+<script type="text/javascript">    
+    function AjaxPage(page){
+        $.ajax({
+            url:'ajaxListAction',
+            type:'post',
+            dataType:'json',
+            data: {apage:page,coid:3},
+            success:function(data){
+                var json=data.list.data;
+                $(".train_info").empty();
+                for (var i = 0; i <json.length; i++) {
+                    $(".train_info").append('<div class="school_nav"><div class="school_con"><img src="'+json[i].thumb+'" style="width: 360px;height: 250px;"><div class="school_conl"><div class="school_names">'+json[i].title+'</div><div class="school_textsa">'+json[i].introduction+'</div><div class="school_more"><a style="color:#000;" href="/index/details/details.html?table=publiclist&id='+json[i].id+'">[ 详 情 ]</a></div></div></div></div>');
+                }                
+                $(".train_info").append(data.page);
+                $(".train_info .pagination").find('a').each(function(){
+                        var href=$(this).attr('href').substring(0,22);
+                        $(this).attr("href",href);
+                });
+            }
+        });
+    }
+    AjaxPage(1);
+</script>
 </html>

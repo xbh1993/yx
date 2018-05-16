@@ -41,11 +41,9 @@ class Product extends Main{
      */
     public function addupdate_product() {		
         $data=["type"=>$_POST["type"],"title"=>$_POST["title"],"time"=>$_POST["time"],
-		"content"=>$_POST["content"],"describe"=>$_POST["describe"],"time"=>$_POST["time"]];		
+		"content"=>$_POST["content"],"describe"=>$_POST["describe"],"image"=>$_POST["image"]];		
         if ($this->request->isPost()) {
-
 					if($_POST["id"]!=''){
-
 						 if (Db::name('product')->where('id', $_POST["id"])->update($data) !== false) {
 								$this->success('修改成功');
 							} else {

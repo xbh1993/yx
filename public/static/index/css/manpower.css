@@ -50,11 +50,10 @@
     text-overflow: ellipsis;
     display: -webkit-box;
     word-break: break-all;
-    text-overflow: ellipsis;
     overflow: hidden;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
-    text-align: left;
+    text-align: center;
 }
 
 /*校企合作*/

@@ -6,7 +6,6 @@
     <link href="/static/index/css/feed.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-<div style="width: 100%;height: 20px;background: #e6e6e6;"></div>
 <div class="gainstop" style="margin-top: 20px;">
     {volist name="list" id="vo"}
     <div class="gainscom">
@@ -17,11 +16,12 @@
             <div class="gainscom_text">
                 {$vo.content}
             </div>
-            <div class="gainscom_more">了解更多+11</div>
         </div>
+        <div class="gainscom_more">了解更多+11</div>
     </div>
     {/volist}
     {$page}
+    <div style="clear: both"></div>
 </div>
 </body>
 </html>

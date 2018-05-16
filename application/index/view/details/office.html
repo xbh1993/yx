@@ -12,25 +12,30 @@
             padding-bottom: 50px;
             font-size: 20px;
         }
-        /*瀑布流层*/
-        .waterfall{
-            column-count:3;
-            column-gap: 1em;
+        a{
+            color: black;
         }
-        /*一个内容层*/
         .item{
-            width: 320px;
-            height: 180px;
-            margin: 0 0 1em 0;
-            -webkit-column-break-inside: avoid;
-            break-inside: avoid;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            width: 360px;
+            margin: 0 20px;
+            float: left;
+            text-align: center;
+
         }
-        .item:hover{
+        .item a{
+             width:360px;
+             margin: 0 auto;
+             display: block;
+             width: 100%;
+             height:100%;
+           padding: 20px 0;
+        }
+        .item a:hover{
+            color: white;
+        }
+        .item:hover {
             background: #ec6f01;
+           color: white;
         }
         .item img{
             width: 100px;
@@ -43,58 +48,119 @@
     </style>
 </head>
 <body>
-<img src="/static/index/images/2.jpg" style="margin-top: 100px;width: 100%;">
+<img src="{$bannerinfo[8]|default=''}" style="margin-top: 100px;width: 100%;">
 <div class="container">
     <div class="officet">办公系统</div>
     <div class="waterfall">
         <div class="item">
-            <img src="/static/index/images/2.jpg">
-            <p>办公系统</p>
+            <a href="https://vpn2.yangxiang.com">
+            <img src="/public/offic/VPN_login.png">
+            <p>VPN登录地址2</p>
+            </a>
         </div>
+
         <div class="item">
-            <img src="/static/index/images/2.jpg">
-            <p>办公系统</p>
+            <a href="https://vpn1.yangxiang.com">
+                <img src="/public/offic/VPN_login.png">
+                <p>VPN登录地址1</p>
+            </a>
         </div>
+
         <div class="item">
-            <img src="/static/index/images/2.jpg">
-            <p>办公系统</p>
+            <a href="http://erp.yangxiang.com:8888/portal">
+                <img src="/public/offic/moin.png">
+                <p>经销管家电信入口</p>
+            </a>
         </div>
+
         <div class="item">
-            <img src="/static/index/images/2.jpg">
-            <p> 办公系统</p>
+            <a href="http://erp2.yangxiang.com:8888/portal">
+                <img src="/public/offic/moin.png">
+                <p>经销管家联通入口</p>
+            </a>
         </div>
+
         <div class="item">
-            <img src="/static/index/images/2.jpg">
-            <p> 办公系统</p>
+            <a href="http://meeting2.yangxiang.com:8905/GuestLogin.jsp">
+                <img src="/public/offic/video.png">
+                <p>视频会议联通入口</p>
+            </a>
         </div>
+
         <div class="item">
-            <img src="/static/index/images/2.jpg">
-            <p> 办公系统</p>
+            <a href="http://meeting1.yangxiang.com:8905/GuestLogin.jsp">
+                <img src="/public/offic/video.png">
+                <p>视频会议电信入口</p>
+            </a>
         </div>
+
+
         <div class="item">
-            <img src="/static/index/images/2.jpg">
-            <p> 办公系统</p>
+            <a href="http://ksxt2.yangxiang.com:9085">
+                <img src="/public/offic/ksxt.png">
+                <p>考试系统(联通)</p>
+            </a>
         </div>
+
         <div class="item">
-            <img src="/static/index/images/2.jpg">
-            <p> 办公系统</p>
+            <a href="http://ksxt1.yangxiang.com:9085">
+                <img src="/public/offic/ksxt.png">
+                <p>考试系统(电信)</p>
+            </a>
         </div>
+
         <div class="item">
-            <img src="/static/index/images/2.jpg">
-            <p> 办公系统</p>
+            <a href="http://rtcp2.yangxiang.com:89">
+                <img src="/public/offic/zp.png">
+                <p>锐途招聘测试系统</p>
+            </a>
         </div>
+
         <div class="item">
-            <img src="/static/index/images/2.jpg">
-            <p> 办公系统</p>
+            <a href="http://rtcp1.yangxiang.com:89">
+                <img src="/public/offic/ctcc.png">
+                <p>锐途招聘测试系统(电信)</p>
+            </a>
         </div>
+
         <div class="item">
-            <img src="/static/index/images/2.jpg">
-            <p> 办公系统</p>
+            <a href="http://yhcp2.yangxiang.com:88">
+                <img src="/public/offic/cucc.png">
+                <p>奕衡招聘测试系统(联通)</p>
+            </a>
         </div>
+
         <div class="item">
-            <img src="/static/index/images/2.jpg">
-            <p> 办公系统</p>
+            <a href="http://yhcp1.yangxiang.com:88">
+                <img src="/public/offic/ctcc.png">
+                <p>奕衡招聘测试系统(电信)</p>
+            </a>
         </div>
+
+        <div class="item">
+            <a href="http://bigdata.yangxiang.com:37799/WebReport/ReportServer?op=fs">
+                <img src="/public/offic/data.png">
+                <p>大数据</p>
+            </a>
+        </div>
+
+        <div class="item">
+            <a href="http://xfzs.yangxiang.com:8988">
+                <img src="/public/offic/manger.png">
+                <p>翼讯管理</p>
+            </a>
+        </div>
+
+        <div class="item">
+            <a href="https://sms.yangxiang.com:8888/">
+                <img src="/public/offic/sms.png">
+                <p>短信平台</p>
+            </a>
+        </div>
+
+
+
+         <div style="clear: both"></div>
     </div>
 </div>
 </body>

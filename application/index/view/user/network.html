@@ -1,28 +1,76 @@
-<!DOCTYPE html>
 {include file="public:header"}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>营销网络</title>
     <link href="/static/index/css/user.css" type="text/css" rel="stylesheet">
-</head>
-<body>
-<img class="timg" src="/static/index/images/top5.jpg">
+<script src="https://webapi.amap.com/js/marker.js"></script>
+<script src="https://webapi.amap.com/maps?v=1.4.2&key=270729cb85d57dc2fc4a9daf217fee20"></script>
+<script type="text/javascript" src="https://webapi.amap.com/demos/js/liteToolbar.js"></script>
+<script language="Javascript" type="text/Javascript" src="/static/jquery-3.3.1.min.js"></script>
+<img class="timg" src="{$bannerinfo['5']|default=''}">
 <div class="outlets">扬 翔 服 务 中 心 网 点</div>
-<div class="map">
-    <div class="map_com">
-        <div class="map_left">
-            <div class="map_name">广西扬翔股份有限公司服务中心</div>
-            <div class="map_xia"></div>
-            <div class="map_address">地址：{$info.content}</div>
-            <div class="map_phone">
-                <div class="phone_text">联系电话：{$info.title}</div>
-                <img src="/static/index/images/phone1.png">
-            </div>
-        </div>
-        <img src="/static/index/images/3.jpg">
-    </div>
+<div class="map" id="container">
+
 </div>
+<script>
+    var map = new AMap.Map('container', {resizeEnable: true, zoom: 5,zoomEnable:false,});
+    var infoWindow = new AMap.InfoWindow({offset: new AMap.Pixel(0, -30)});
+    var markers = [];
+    var url="{:url('index/index/getCompanyList')}"
+    $.post(url,{},function (res) {
+        if(res.code==1){
+            getmap(res.data)
+        }
+    },'json')
+    function getmap(data) {
+        markers=[];
+        for (var i = 0, marker; i < data.length; i++) {
+            var position=data[i].location.split(',');
+
+            var html = ' <div class="map_com" style="height: 260px;">\n' +
+                '                                    <div class="map_left">\n' +
+                '                                        <div class="map_name" style="line-height: 90px;">'+data[i].title+'</div>\n' +
+                '                                        <div class="map_xia"></div>\n' +
+//                '                                        <div class="map_jianjie">'+data[i].describle+'</div>'+
+                '                                        <div class="map_address">地址:'+data[i].address+'</div>\n' +
+                '                                        <div class="map_phone" style="margin-top: 20px">\n' +
+                '                                            <div class="phone_text">联系电话：'+data[i].tel+'</div>\n' +
+                '                                            <img src="/static/index/images/phonef.png">\n' +
+                '                                        </div>\n' +
+                '                                    </div>\n' +
+                '                                    <img src="'+data[i].image+'">\n' +
+                '                                </div>';
+
+            var marker = new AMap.Marker({
+                position: [position[1],position[0]],
+                map: map
+            });
+
+            marker.content = html;
+            markers.push(marker);
+            marker.on('click', markerClick);
+        }
+        map.setFitView();
+        map.setZoomAndCenter(4, [104.205467, 39.857761]);
+        //    map.setLimitBounds(map.getBounds());
+    }
+
+    function markerClick(e) {
+        infoWindow.setContent(e.target.content);
+        infoWindow.open(map, e.target.getPosition());
+    }
+
+
+    //轮播图
+    //因为使用了document，所以js需要放在需要执行的代码下面生效才能生效
+    var img=document.getElementById('lunbo').getElementsByTagName("img");
+    var num=0;
+    var len=img.length;
+
+    setInterval(function(){
+        img[num].style.display="none";
+        num=++num==len?0:num;
+        img[num].style.display="inline-block";
+
+    },3000);//切换时间
+</script>
 </body>
 </html>
 {include file="public:foot"}

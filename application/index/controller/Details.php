@@ -12,6 +12,11 @@ use think\Controller;
 use think\Db;
 class Details extends Controller
 {
+    public function _initialize(){
+        $banner=Db::name('system')->find(4);
+        $banner=unserialize($banner['value']);
+        $this->assign('bannerinfo',$banner);
+    }
     public function details(){
         $table=input('get.table');
         $id=input('get.id');

@@ -1,19 +1,25 @@
 {extend name='public/base'}
 {block name='content'}
 <style type="text/css">
-    .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+    .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
         background-color: green
     }
-    .divs{
+
+    .divs {
         float: left;
         margin-left: 10px;
     }
-    .divs span{
+    .divs img{
+        width:500px;
+        height: 200px;
+    }
+
+    .divs span {
         display: block;
         background-color: black;
         color: white;
         position: relative;
-        top:-20px;
+        top: -20px;
         line-height: 20px;
         height: 20px;
         text-align: center;
@@ -36,7 +42,7 @@
 
 <!-- Main content -->
 <section class="content">
-    <div class="row" >
+    <div class="row">
         <div class="col-xs-12">
             <!-- /.box -->
             <div class="box" style="">
@@ -44,9 +50,10 @@
                     <h3 class="box-title">banner</h3>
                 </div>
                 <!-- /.box-header -->
-                <div class="box-body"  style="width: 800px;">
+                <div class="box-body" style="width: 800px;">
 
-                    <form    id="mainForm" class="layui-form layui-form-line layui-form-pane" method='post' action='updateBanner'>
+                    <form id="mainForm" class="layui-form layui-form-line layui-form-pane" method='post'
+                          action='updateBanner'>
 
                         <input type="hidden" value="3" name="id">
                         <div class="layui-form-item">
@@ -55,143 +62,178 @@
                                 <button type="button" class="layui-btn" id="test1">
                                     <i class="layui-icon">&#xe67c;</i>上传视频
                                 </button>
-                        </div>
-
-                        <div class="layui-form-item">
-                            <label class="layui-form-label">视频地址</label>
-                            <div class="layui-input-block">
-                                <input type="text" readonly value="{$info.video|default=''}" name="video" id="video" required  lay-verify="required" placeholder="视频地址" autocomplete="off" class="layui-input">
                             </div>
-                        </div>
 
-                        <!--<div class="layui-form-item ">-->
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">视频地址</label>
+                                <div class="layui-input-block">
+                                    <input type="text" readonly value="{$info.video|default=''}" name="video" id="video"
+                                           required lay-verify="required" placeholder="视频地址" autocomplete="off"
+                                           class="layui-input">
+                                </div>
+                            </div>
+
+                            <!--<div class="layui-form-item ">-->
                             <!--<label class="layui-form-label">轮播图</label>-->
                             <!--<div class="layui-input-block" id="listimgs">-->
-                                <!--<button type="button" class="layui-btn" id="test2" style="float: left">-->
-                                    <!--<i class="layui-icon">&#xe67c;</i>上传图片-->
-                                <!--</button>-->
+                            <!--<button type="button" class="layui-btn" id="test2" style="float: left">-->
+                            <!--<i class="layui-icon">&#xe67c;</i>上传图片-->
+                            <!--</button>-->
                             <!--</div>-->
                             <!--{if condition="!empty($info.img_url)"}-->
                             <!--{volist name="$info.img_url" id="vo"}-->
                             <!--<div class="divs">-->
-                                <!--<img src="{$vo}" style="width: 150px;height: 150px">-->
-                                <!--<input type="hidden" value="{$vo}" name="img_url[]">-->
-                                <!--<span onclick="delimg(this)" class="item">删除</span>-->
+                            <!--<img src="{$vo}" style="width: 150px;height: 150px">-->
+                            <!--<input type="hidden" value="{$vo}" name="img_url[]">-->
+                            <!--<span onclick="delimg(this)" class="item">删除</span>-->
                             <!--</div>-->
                             <!--{/volist}-->
                             <!--{/if}-->
-                        <!--</div>-->
+                            <!--</div>-->
 
                             <div class="layui-form-item">
                                 <label class="layui-form-label">首页展示</label>
                                 <div class="layui-input-block">
                                     <select name="showType" lay-verify="required">
-                                        <option  {eq name="$info.showType" value="1" }selected{/eq} value="1">轮播图</option>
-                                        <option {eq name="$info.showType" value="2" }selected{/eq} value="2">视频</option>
+                                        <option {eq name="$info.showType" value="1" }selected{
+                                        /eq} value="1">轮播图</option>
+                                        <option {eq name="$info.showType" value="2" }selected{
+                                        /eq} value="2">视频</option>
                                     </select>
                                 </div>
                             </div>
 
 
                             <div class="layui-form-item ">
-                            <label class="layui-form-label">走进杨翔</label>
-                            <div class="layui-input-block" id="listimgs_1">
-                                <button type="button" class="layui-btn" id="test2_1" style="float: left">
-                                    <i class="layui-icon">&#xe67c;</i>上传图片
-                                </button>
+                                <label class="layui-form-label">走进杨翔</label>
+                                <div class="layui-input-block" >
+                                    <button type="button" class="layui-btn" id="test2_1" style="float: left">
+                                        <i class="layui-icon">&#xe67c;</i>上传图片
+                                    </button>
+                                </div>
+                                <div class="divs " id="banner_1">
+                                    <img src="{$banner[0]|default=''}" >
+                                    <input type="hidden" value="{$banner[0]|default=''}" name="banner[]">
+                                </div>
                             </div>
-                            <div class="divs " id="banner_1" >
-                                <img src="{$banner[0]|default=''}" style="width: 150px;height: 150px">
-                                <input type="hidden" value="{$banner[0]|default=''}" name="banner[]">
-                            </div>
-                        </div>
+
+
 
                             <div class="layui-form-item ">
-                                <label class="layui-form-label">产品中心</label>
+                                <label class="layui-form-label">国际合作</label>
                                 <div class="layui-input-block" >
                                     <button type="button" class="layui-btn" id="test2_2" style="float: left">
                                         <i class="layui-icon">&#xe67c;</i>上传图片
                                     </button>
                                 </div>
-                                <div class="divs " id="banner_2" >
-                                    <img src="{$banner[1]|default=''}" style="width: 150px;height: 150px">
+                                <div class="divs " id="banner_2">
+                                    <img src="{$banner[1]|default=''}" >
                                     <input type="hidden" value="{$banner[1]|default=''}" name="banner[]">
                                 </div>
                             </div>
 
                             <div class="layui-form-item ">
-                                <label class="layui-form-label">新闻中心</label>
-                                <div class="layui-input-block" >
+                                <label class="layui-form-label">产品中心</label>
+                                <div class="layui-input-block">
                                     <button type="button" class="layui-btn" id="test2_3" style="float: left">
                                         <i class="layui-icon">&#xe67c;</i>上传图片
                                     </button>
                                 </div>
-                                <div class="divs " id="banner_3" >
-                                    <img src="{$banner[2]|default=''}" style="width: 150px;height: 150px">
+                                <div class="divs " id="banner_3">
+                                    <img src="{$banner[2]|default=''}" >
                                     <input type="hidden" value="{$banner[2]|default=''}" name="banner[]">
                                 </div>
                             </div>
 
                             <div class="layui-form-item ">
-                                <label class="layui-form-label">创新科研中心</label>
-                                <div class="layui-input-block" >
+                                <label class="layui-form-label">新闻中心</label>
+                                <div class="layui-input-block">
                                     <button type="button" class="layui-btn" id="test2_4" style="float: left">
                                         <i class="layui-icon">&#xe67c;</i>上传图片
                                     </button>
                                 </div>
-                                <div class="divs " id="banner_4" >
-                                    <img src="{$banner[3]|default=''}" style="width: 150px;height: 150px">
+                                <div class="divs " id="banner_4">
+                                    <img src="{$banner[3]|default=''}" >
                                     <input type="hidden" value="{$banner[3]|default=''}" name="banner[]">
                                 </div>
                             </div>
 
                             <div class="layui-form-item ">
-                                <label class="layui-form-label">用户中心</label>
-                                <div class="layui-input-block" >
+                                <label class="layui-form-label">创新科研中心</label>
+                                <div class="layui-input-block">
                                     <button type="button" class="layui-btn" id="test2_5" style="float: left">
                                         <i class="layui-icon">&#xe67c;</i>上传图片
                                     </button>
                                 </div>
-                                <div class="divs " id="banner_5" >
-                                    <img src="{$banner[4]|default=''}" style="width: 150px;height: 150px">
+                                <div class="divs " id="banner_5">
+                                    <img src="{$banner[4]|default=''}" >
                                     <input type="hidden" value="{$banner[4]|default=''}" name="banner[]">
                                 </div>
                             </div>
 
                             <div class="layui-form-item ">
-                                <label class="layui-form-label">智慧杨翔</label>
-                                <div class="layui-input-block" >
+                                <label class="layui-form-label">用户中心</label>
+                                <div class="layui-input-block">
                                     <button type="button" class="layui-btn" id="test2_6" style="float: left">
                                         <i class="layui-icon">&#xe67c;</i>上传图片
                                     </button>
                                 </div>
-                                <div class="divs " id="banner_6" >
-                                    <img src="{$banner[5]|default=''}" style="width: 150px;height: 150px">
+                                <div class="divs " id="banner_6">
+                                    <img src="{$banner[5]|default=''}" >
                                     <input type="hidden" value="{$banner[5]|default=''}" name="banner[]">
                                 </div>
                             </div>
 
+
+
                             <div class="layui-form-item ">
                                 <label class="layui-form-label">人力资源中心</label>
-                                <div class="layui-input-block" >
+                                <div class="layui-input-block">
                                     <button type="button" class="layui-btn" id="test2_7" style="float: left">
                                         <i class="layui-icon">&#xe67c;</i>上传图片
                                     </button>
                                 </div>
-                                <div class="divs " id="banner_7" >
-                                    <img src="{$banner[6]|default=''}" style="width: 150px;height: 150px">
+                                <div class="divs " id="banner_7">
+                                    <img src="{$banner[6]|default=''}" >
                                     <input type="hidden" value="{$banner[6]|default=''}" name="banner[]">
                                 </div>
                             </div>
 
-
-
-                        <div class="" class="layui-form-item" >
-                            <div class="layui-input-block submit_btn">
-                                <button   class="layui-btn" lay-submit lay-filter="*">更新</button>
-                                <button style="display: none;" id="reset" type="reset" class=" layui-btn layui-btn-primary">重置</button>
+                            <div class="layui-form-item ">
+                                <label class="layui-form-label">智慧杨翔</label>
+                                <div class="layui-input-block">
+                                    <button type="button" class="layui-btn" id="test2_8" style="float: left">
+                                        <i class="layui-icon">&#xe67c;</i>上传图片
+                                    </button>
+                                </div>
+                                <div class="divs " id="banner_8">
+                                    <img src="{$banner[7]|default=''}" >
+                                    <input type="hidden" value="{$banner[7]|default=''}" name="banner[]">
+                                </div>
                             </div>
-                        </div>
+
+                            <div class="layui-form-item ">
+                                <label class="layui-form-label">办公系统</label>
+                                <div class="layui-input-block">
+                                    <button type="button" class="layui-btn" id="test2_9" style="float: left">
+                                        <i class="layui-icon">&#xe67c;</i>上传图片
+                                    </button>
+                                </div>
+                                <div class="divs " id="banner_9">
+                                    <img src="{$banner[8]|default=''}" >
+                                    <input type="hidden" value="{$banner[8]|default=''}" name="banner[]">
+                                </div>
+                            </div>
+
+
+                            <div class="" class="layui-form-item">
+                                <div class="layui-input-block submit_btn">
+                                    <button class="layui-btn" lay-submit lay-filter="*">更新</button>
+                                    <button style="display: none;" id="reset" type="reset"
+                                            class=" layui-btn layui-btn-primary">重置
+                                    </button>
+                                </div>
+                            </div>
 
                     </form>
                 </div>
@@ -211,21 +253,21 @@
     function delimg(obj) {
         $(obj).parent().remove();
     }
-    $(function(){
+    $(function () {
         var options = {
-            type:'post',           //post提交
+            type: 'post',           //post提交
             //url:'http://ask.tongzhuo100.com/server/****.php?='+Math.random(),   //url
-            dataType:"json",        //json格式
-            data:{},    //如果需要提交附加参数，视情况添加
+            dataType: "json",        //json格式
+            data: {},    //如果需要提交附加参数，视情况添加
             clearForm: false,        //成功提交后，清除所有表单元素的值
             resetForm: false,        //成功提交后，重置所有表单元素的值
-            cache:false,
-            async:false,          //同步返回
-            success:function(data){
-                if(data.code==0){
+            cache: false,
+            async: false,          //同步返回
+            success: function (data) {
+                if (data.code == 0) {
                     layer.msg(data.msg);
-                }else{
-                    layer.msg(data.msg,{icon:1,time:500},function(){
+                } else {
+                    layer.msg(data.msg, {icon: 1, time: 500}, function () {
                         $("#reset").click();
                         lotus_close();
                         parent.location.reload();
@@ -233,126 +275,127 @@
                 }
                 //服务器端返回处理逻辑
             },
-            error:function(XmlHttpRequest,textStatus,errorThrown){
+            error: function (XmlHttpRequest, textStatus, errorThrown) {
                 layer.msg('操作失败:服务器处理失败');
             }
         };
-        layui.use('form', function(){
+        layui.use('form', function () {
             var form = layui.form;
-            $('#mainForm').ajaxForm(options).submit(function(data){});
+            $('#mainForm').ajaxForm(options).submit(function (data) {
+            });
         });
-        layui.use('upload', function(){
+        layui.use('upload', function () {
             var upload = layui.upload;
 
             //执行实例
-            var urls="{:url('uploadvideo')}"
+            var urls = "{:url('uploadvideo')}"
             var uploadInst = upload.render({
                 elem: '#test1' //绑定元素
-                ,url: urls //上传接口
-                ,field:'video'
-                ,accept:'video'
-                ,done: function(res){
+                , url: urls //上传接口
+                , field: 'video'
+                , accept: 'video'
+                , done: function (res) {
                     //上传完毕回调
                     layer.closeAll();
                     console.log(123);
                     $('#video').val(res.data);
 
                 }
-                ,error: function(){
+                , error: function () {
                     //请求异常回调
                     layer.msg('上传失败');
                     setTimeout(function () {
                         layer.closeAll();
-                    },1000)
+                    }, 1000)
 
                 }
-                ,before:function () {
+                , before: function () {
                     layer.msg('正在上传', {
                         icon: 16
-                        ,shade: 0.01,
-                        time:100000
+                        , shade: 0.01,
+                        time: 100000
                     });
                 }
             });
 
-            var url2="{:url('company/uploadfile')}"
+            var url2 = "{:url('company/uploadfile')}"
             //执行实例
             var uploadInst = upload.render({
                 elem: '#test2' //绑定元素
-                ,url: url2 //上传接口
-                ,field:'image'
-                ,multiple:true
-                ,done: function(res){
+                , url: url2 //上传接口
+                , field: 'image'
+                , multiple: true
+                , done: function (res) {
                     //上传完毕回调
                     console.log(7777);
                     console.log(res);
-                    var html='<div class="divs">'+
-                        '<img src="'+res.data+'" style="width: 150px;height: 150px">'+
-                        '<input type="hidden" value="'+res.data+'" name="img_url[]" >'+
-                        '<span onclick="delimg(this)" class="item">删除</span>'+
+                    var html = '<div class="divs">' +
+                        '<img src="' + res.data + '" style="width: 150px;height: 150px">' +
+                        '<input type="hidden" value="' + res.data + '" name="img_url[]" >' +
+                        '<span onclick="delimg(this)" class="item">删除</span>' +
                         '</div>';
                     $('#listimgs').append(html);
                 }
-                ,error: function(){
+                , error: function () {
                     //请求异常回调
                 }
             });
             var uploadInst = upload.render({
                 elem: '#test2_1' //绑定元素
-                ,url: url2 //上传接口
-                ,field:'image'
-                ,multiple:true
-                ,done: function(res){
+                , url: url2 //上传接口
+                , field: 'image'
+                , multiple: true
+                , done: function (res) {
                     //上传完毕回调
-                    $('#banner_1').find('img').attr('src',res.data);
+                    $('#banner_1').find('img').attr('src', res.data);
                     $('#banner_1').find('input').val(res.data);
                 }
-                ,error: function(){
+                , error: function () {
                     //请求异常回调
                 }
             });
 
             var uploadInst = upload.render({
                 elem: '#test2_2' //绑定元素
-                ,url: url2 //上传接口
-                ,field:'image'
-                ,multiple:true
-                ,done: function(res){
+                , url: url2 //上传接口
+                , field: 'image'
+                , multiple: true
+                , done: function (res) {
                     //上传完毕回调
-                    $('#banner_2').find('img').attr('src',res.data);
+                    $('#banner_2').find('img').attr('src', res.data);
                     $('#banner_2').find('input').val(res.data);
                 }
-                ,error: function(){
+                , error: function () {
                     //请求异常回调
                 }
             });
 
             var uploadInst = upload.render({
                 elem: '#test2_3' //绑定元素
-                ,url: url2 //上传接口
-                ,field:'image'
-                ,multiple:true
-                ,done: function(res){
+                , url: url2 //上传接口
+                , field: 'image'
+                , multiple: true
+                , done: function (res) {
                     //上传完毕回调
-                    $('#banner_3').find('img').attr('src',res.data);
+                    $('#banner_3').find('img').attr('src', res.data);
                     $('#banner_3').find('input').val(res.data);
                 }
-                ,error: function(){
+                , error: function () {
                     //请求异常回调
                 }
             });
 
             var uploadInst = upload.render({
                 elem: '#test2_4' //绑定元素
-                ,url: url2 //上传接口
-                ,field:'image'
-                ,multiple:true
-                ,done: function(res){
+                , url: url2 //上传接口
+                , field: 'image'
+                , multiple: true
+                , done: function (res) {
                     //上传完毕回调
-                    $('#banner_4').find('img').attr('src',res.data);
+                    $('#banner_4').find('img').attr('src', res.data);
                     $('#banner_4').find('input').val(res.data);
                 }
-                ,error: function(){
+                , error: function () {
                     //请求异常回调
                 }
             });
@@ -360,48 +403,76 @@
 
             var uploadInst = upload.render({
                 elem: '#test2_5' //绑定元素
-                ,url: url2 //上传接口
-                ,field:'image'
-                ,multiple:true
-                ,done: function(res){
+                , url: url2 //上传接口
+                , field: 'image'
+                , multiple: true
+                , done: function (res) {
                     //上传完毕回调
-                    $('#banner_5').find('img').attr('src',res.data);
+                    $('#banner_5').find('img').attr('src', res.data);
                     $('#banner_5').find('input').val(res.data);
                 }
-                ,error: function(){
+                , error: function () {
                     //请求异常回调
                 }
             });
 
             var uploadInst = upload.render({
                 elem: '#test2_6' //绑定元素
-                ,url: url2 //上传接口
-                ,field:'image'
-                ,multiple:true
-                ,done: function(res){
+                , url: url2 //上传接口
+                , field: 'image'
+                , multiple: true
+                , done: function (res) {
                     //上传完毕回调
-                    $('#banner_6').find('img').attr('src',res.data);
+                    $('#banner_6').find('img').attr('src', res.data);
                     $('#banner_6').find('input').val(res.data);
                 }
-                ,error: function(){
+                , error: function () {
                     //请求异常回调
                 }
             });
 
             var uploadInst = upload.render({
                 elem: '#test2_7' //绑定元素
-                ,url: url2 //上传接口
-                ,field:'image'
-                ,multiple:true
-                ,done: function(res){
+                , url: url2 //上传接口
+                , field: 'image'
+                , multiple: true
+                , done: function (res) {
                     //上传完毕回调
-                    $('#banner_7').find('img').attr('src',res.data);
+                    $('#banner_7').find('img').attr('src', res.data);
                     $('#banner_7').find('input').val(res.data);
                 }
-                ,error: function(){
+                , error: function () {
                     //请求异常回调
                 }
             });
+            var uploadInst = upload.render({
+                elem: '#test2_8' //绑定元素
+                , url: url2 //上传接口
+                , field: 'image'
+                , multiple: true
+                , done: function (res) {
+                    //上传完毕回调
+                    $('#banner_8').find('img').attr('src', res.data);
+                    $('#banner_8').find('input').val(res.data);
+                }
+                , error: function () {
+                    //请求异常回调
+                }
+            });
+            var uploadInst = upload.render({
+                elem: '#test2_9' //绑定元素
+                , url: url2 //上传接口
+                , field: 'image'
+                , multiple: true
+                , done: function (res) {
+                    //上传完毕回调
+                    $('#banner_9').find('img').attr('src', res.data);
+                    $('#banner_9').find('input').val(res.data);
+                }
+                , error: function () {
+                    //请求异常回调
+                }
+            })
         });
 
     })

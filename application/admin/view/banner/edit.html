@@ -1,6 +1,5 @@
 {extend name='public/modal'}
 {block name='content'}
-<!--<script type="text/javascript" src="__STATIC__/plugins/layui/layui.js"></script>-->
 <style type="text/css">
     .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
         background-color: green
@@ -11,6 +10,7 @@
         margin-left: 10px;
         margin-top: 5px;
         cursor: pointer;
+        border: 5px solid white;
     }
 
     .divs span {
@@ -35,6 +35,13 @@
 
     <input type="hidden" value="{$info['id']}" name="id">
     <div class="layui-form-item">
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">图片描述</label>
+            <div class="layui-input-block">
+                <textarea id="describle" class="layui-textarea" onchange="changedescrible(this)" placeholder="输入图片描述"></textarea>
+            </div>
+        </div>
 
         <div class="layui-form-item ">
             <label class="layui-form-label">轮播图</label>
@@ -63,15 +70,10 @@
             </div>
         </div>
 
-        <div class="layui-form-item">
-            <label class="layui-form-label">图片描述</label>
-            <div class="layui-input-block">
-                <textarea id="describle" class="layui-textarea" onchange="changedescrible(this)" placeholder="输入图片描述"></textarea>
-            </div>
-        </div>
 
 
-        <div class="" class="layui-form-item">
+
+        <div  class="layui-form-item">
             <div class="layui-input-block submit_btn">
                 <button class="layui-btn" lay-submit lay-filter="*">更新</button>
                 <button style="display: none;" id="reset" type="reset" class=" layui-btn layui-btn-primary">重置</button>
@@ -170,7 +172,9 @@
         });
 
     })
-    // });
+
+
+
 </script>
 {/block}
 

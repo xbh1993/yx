@@ -1,13 +1,12 @@
-<!DOCTYPE html>
 {include file="public:header"}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>联系我们</title>
+<script src="https://webapi.amap.com/js/marker.js"></script>
+<script src="https://webapi.amap.com/maps?v=1.4.2&key=270729cb85d57dc2fc4a9daf217fee20"></script>
+<script type="text/javascript" src="https://webapi.amap.com/demos/js/liteToolbar.js"></script>
+
+<script language="Javascript" type="text/Javascript" src="/static/jquery-3.3.1.min.js"></script>
     <link href="/static/index/css/user.css" type="text/css" rel="stylesheet">
-</head>
-<body>
-<img class="timg" src="/static/index/images/top6a.jpg">
+
+<img class="timg" src="{$bannerinfo['5']|default=''}">
 <div class="contact">
     <div class="cont_title">联 系 我 们</div>
 </div>
@@ -22,7 +21,59 @@
     <div class="cont_t">{$info.content}</div>
 </div>
 <div class="cont_yx">广西扬翔股份有限公司</div>
-<div class="yx_map"><img src="/static/index/images/4.jpg" ></div>
-</body>
-</html>
+<div class="yx_map" id="container">
+</div>
+<script>
+
+    var map = new AMap.Map('container', {resizeEnable: true, zoom: 5,zoomEnable:false,});
+    var infoWindow = new AMap.InfoWindow({offset: new AMap.Pixel(0, -30)});
+    var markers = [];
+    var url="{:url('index/index/getCompanyList')}"
+    $.post(url,{type:1},function (res) {
+        if(res.code==1){
+            getmap(res.data)
+        }
+    },'json')
+
+    function getmap(data) {
+        markers=[];
+        for (var i = 0, marker; i < data.length; i++) {
+            var position=data[i].location.split(',');
+
+            var html = ' <div class="map_com" style="height: 260px">\n' +
+                '                                    <div class="map_left">\n' +
+                '                                        <div class="map_name" style="line-height: 80px">'+data[i].title+'</div>\n' +
+                '                                        <div class="map_xia"></div>\n' +
+//                '                                        <div class="map_jianjie">'+data[i].describle+'</div>'+
+                '                                        <div class="map_address">地址:'+data[i].address+'</div>\n' +
+                '                                        <div class="map_phone">\n' +
+                '                                            <div class="phone_text">联系电话：'+data[i].tel+'</div>\n' +
+                '                                            <img src="/static/index/images/phonef.png">\n' +
+                '                                        </div>\n' +
+                '                                    </div>\n' +
+                '                                    <img src="'+data[i].image+'">\n' +
+                '                                </div>';
+
+            var marker = new AMap.Marker({
+                position: [position[1],position[0]],
+                map: map
+            });
+
+            marker.content = html;
+            markers.push(marker);
+            marker.on('click', markerClick);
+        }
+        map.setFitView();
+        map.setZoomAndCenter(4, [104.205467, 39.857761]);
+        //    map.setLimitBounds(map.getBounds());
+    }
+
+
+
+
+    function markerClick(e) {
+        infoWindow.setContent(e.target.content);
+        infoWindow.open(map, e.target.getPosition());
+    }
+</script>
 {include file="public:foot"}

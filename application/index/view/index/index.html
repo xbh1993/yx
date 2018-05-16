@@ -26,13 +26,13 @@
     <div class="onyx_content">
         <div class="onyx_detail">
             <div class="onyx_tit">Guang xi &nbsp;yang xiang &nbsp;co . &nbsp;LTD .</div>
-            <div class="onyx_name">广 西 扬 翔 股 份 有 限 公 司</div>
-            <div class="onyx_em">{$profile['text']}</div>
+            <div class="onyx_name">{$profile['title']|default=''}</div>
+            <div class="onyx_em">{$profile['text']|default=''}</div>
             <a href="/index/into/into.html">
                 <div class="onyx_more">点击了解更多</div>
             </a>
         </div>
-        <img class="onyx_img" src="/static/index/images/3.jpg">
+        <img class="onyx_img" src="{$profile['image']|default=''}">
     </div>
 </div>
 <!--扬翔分公司分布-->

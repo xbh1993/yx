@@ -12,20 +12,48 @@ use think\Controller;
 use think\Db;
 class Details extends Controller
 {
+    protected $bannerinfo=[];
     public function _initialize(){
         $banner=Db::name('system')->find(4);
         $banner=unserialize($banner['value']);
-        $this->assign('bannerinfo',$banner);
+        $this->bannerinfo=$banner;
     }
     public function details(){
         $table=input('get.table');
         $id=input('get.id');
+        $data=input('get.');
+        $sign=isset($data['sign'])?$data['sign']:false;
+         $index=$this->switchImg($table,$sign);
+         $this->assign('bannerinfo',$this->bannerinfo);
+         $this->assign('index',$index);
         $info=Db::name($table)->where('id',$id)->find();
         $this->assign('info',$info);
         return $this->fetch();
     }
     public function office(){
         return $this->fetch();
+    }
+    public function switchImg($table,$sign){
+
+        switch ($table){
+            case 'product':
+                $index=2;//产品中心
+            break;
+            case 'publiclist':
+                if($sign){
+                   if($sign=="details")$index=1;//国际合作
+                    if($sign=="manpower")$index=6; //人力资源中心
+                }else{
+                    $index=1;//国际合作
+                }
+                break;
+            case 'article':
+                $index=3;//新闻中心
+                break;
+        }
+
+        return $index;
+
     }
     public function international(){
     	//国际合作
@@ -46,6 +74,7 @@ class Details extends Controller
         ]);
         $this->assign('list2',$list2);
         $this->assign('list',$list);
+        $this->assign('bannerinfo',$this->bannerinfo);
         return $this->fetch();
     }
     public function ajaxListAction(){

@@ -18,8 +18,10 @@ class Company extends Main{
          if(request()->isPost()){
              $d=request()->post();
              if(empty($d) && !is_array($d) ) return json_code(0,'操作失败');
-
-             Db::name('company')->where('id',1)->update($d['site_config']);
+             if(isset($d['image']) && !empty($d['image'])) $arr['image']=$d['image'];
+             $arr['title']=$d['site_config']['title'];
+             $arr['text']=$d['site_config']['text'];
+             Db::name('company')->where('id',1)->update($arr);
              return json_code(1,'操作成功');
          }
 

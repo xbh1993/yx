@@ -43,6 +43,19 @@
                             </div>
                         </div>
 
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                封面图
+                            </label>
+                            <div class="layui-input-block" id="addimg">
+                                <button type="button" class="layui-btn" id="test1">
+                                    <i class="layui-icon">&#xe67c;</i>上传图片
+                                </button>
+                                <img id="img_img" src="{$site_config.image|default=''}" style="width: 100px;height: 100px">
+                            </div>
+                            <input type="hidden" value="{$site_config.image|default=''}" name="image" id="image">
+                        </div>
+
 
 
 
@@ -108,6 +121,30 @@
         layui.use('form', function(){
             var form = layui.form;
             $('#mainForm').ajaxForm(options).submit(function(data){});
+        });
+
+        layui.use('upload', function(){
+            var upload = layui.upload;
+
+            var urls="{:url('uploadfile')}"
+            //执行实例
+            var uploadInst = upload.render({
+                elem: '#test1' //绑定元素
+                ,url: urls //上传接口
+                ,field:"image"
+                ,done: function(res){
+                    //上传完毕回调
+                    if(res.code==1){
+                        var src=res.data;
+                        $('#img_img').attr('src',src);
+                        $('#image').val(src);
+
+                    }
+                }
+                ,error: function(){
+                    //请求异常回调
+                }
+            });
         });
 
     })

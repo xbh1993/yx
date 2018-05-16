@@ -34,16 +34,16 @@ class Manpower extends Controller
       $this->assign('info3',$info3);
       //培训方式
       $info4=Db::name('content')->where('id',11)->find();
-      if (isset($info4)) {
-          $photo1=json_decode($info4["image"],true);
-          $this->assign('photo1',$photo1);
-      }
+      //杨翔大学轮播图
+      $yxdxlist=Db::name('banner')->where('type_pid',43)->find();
+      $yxdxlist['img_url']=unserialize($yxdxlist['img_url']);
+      $this->assign('photo1',$yxdxlist);
       $this->assign('info4',$info4);
       $info5=Db::name('content')->where('id',6)->find();
-      if (isset($info5)) {
-          $photo2=json_decode($info5["image"],true);
-          $this->assign('photo2',$photo2);
-      }   
+      //培训特色轮播图
+      $list=Db::name('banner')->where('type_pid',42)->find();
+      $list['img_url']=unserialize($list['img_url']);
+      $this->assign('photo2',$list);
       $info6=Db::name('content')->where('id',7)->find();
       $this->assign('info5',$info5);
       $this->assign('info6',$info6);
@@ -109,7 +109,7 @@ class Manpower extends Controller
         if (isset($info)) {
             $photo=json_decode($info["image"],true);
             $this->assign('photo',$photo);
-        }   
+        }
         $info2=Db::name('content')->where('id',7)->find();
         $this->assign('info2',$info2);
         $this->assign('info',$info);

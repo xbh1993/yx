@@ -129,10 +129,10 @@
         <div class="onyx_text">国际合作</div>
     </div>
     <div class="onyx_content">
-        <img class="onyx_img" src="/static/index/images/3.jpg">
+        <img class="onyx_img" src="{$newslist.thumb}">
         <div class="onyx_detail">
-            <div class="onyx_name" style="margin-top: 20px;">广 西 扬 翔 股 份 有 限 公 司</div>
-            <div class="onyx_em">{$profile['text']}</div>
+            <div class="onyx_name" style="margin-top: 20px;">{$newslist.title}</div>
+            <div class="onyx_em">{$newslist.introduction}</div>
             <a href="/index/details/international.html">
                 <div class="onyx_more"> 点击了解更多</div>
             </a>
@@ -164,11 +164,14 @@
         <div class="onyx_text">新闻中心</div>
     </div>
     <div class="newb">
+
         <div class="newl">
             <div class="newl_name">扬翔新闻</div>
+            <a style="color:#000" href="/index/details/details.html?table=article&id={$news1.id}">
             <div class="newl_imgs"><img src="{$news1.thumb}"></div>
             <div class="newtext">{$news1.title}</div>
             <div class="new_span">{$news1.introduction}</div>
+            </a>
         </div>
         <div class="newl">
             <div class="newl_name">扬翔视频</div>
@@ -178,9 +181,11 @@
         </div>
         <div class="newl">
             <div class="newl_name">媒体报道</div>
-            <div class="newl_imgs"><img src="{$news2.thumb}"></div>
+            <a style="color:#000" href="/index/details/details.html?table=article&id={$news1.id}">
+                <div class="newl_imgs"><img src="{$news2.thumb}"></div>
             <div class="newtext">{$news2.title}</div>
             <div class="new_span">{$news2.introduction}</div>
+            </a>
         </div>
     </div>
 </div>

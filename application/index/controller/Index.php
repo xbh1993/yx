@@ -23,7 +23,7 @@ class Index extends Controller
           $info=Db::name('company')->find(1);
           $this->assign('profile',$info);
           //国际合作
-          $newslist=Db::name('article')->where(['cid'=>19,'status'=>1])->limit(4)->select();
+          $newslist=Db::name('publiclist')->where(['coid'=>5,'status'=>1,'is_top'=>1])->find();
           $this->assign('newslist',$newslist);
           //产品介绍
           $productlist=Db::name('type')->where('name','product')->select();

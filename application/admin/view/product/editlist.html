@@ -22,12 +22,11 @@
          
             <!-- /.box-header -->
             <div class="box-body"  style="width: 800px;">
-
                 <form  id="mainForm" class="layui-form layui-form-line layui-form-pane" method='post' action='addupdate_product' >                    
                     <div class="layui-form-item layui-input-inline">
                         <label class="layui-form-label">类别选择</label>
                         <div class="layui-input-block">
-              <input style="display:none" type="text" value="{$info.Id|default=''}" name="Id"  >
+              <input style="display:none" type="text" value="{$info.id|default=''}" name="id"  >
               <select name="type">
                           {volist name="type" id="vo"}
                               {if condition="isset($info)"}
@@ -48,11 +47,21 @@
                           <input type="text" value="{$info.title|default=''}" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
                         </div>
                       </div>
-
+                      
                       <div class="layui-form-item ">
                         <label class="layui-form-label">简介</label>
                         <div class="layui-input-block">
                           <input type="text" value="{$info.describe|default=''}" name="describe" required  lay-verify="required" placeholder="请输入简介" autocomplete="off" class="layui-input">
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">预览图</label>
+                        <div class="layui-input-block">                         
+                          <image src="{$info.image|default=''}" id="preview" name="preview" style="width:30%;" />
+                          <input style="display:none" type="text" value="{$info.image|default=''}" name="image"  >
+                          <button type="button" class="layui-btn uploadbtn" >                            
+                            <i class="layui-icon">&#xe67c;</i>上传图片
+                          </button>                          
                         </div>
                       </div>
                       <div class="layui-form-item layui-input-inline">
@@ -64,12 +73,9 @@
                       <div class="layui-form-item">
                         <label class="layui-form-label">内容</label>
                         <div class="layui-input-block">
-                         
-
                           <p id="myEditor" name="content" style="width:1024px;height:500px;"></p>
                         </div>
-                      </div>
-                      
+                      </div>                      
                 <div class="" class="layui-form-item" >
                         <div class="layui-input-block submit_btn">
                           <button   class="layui-btn" lay-submit lay-filter="*">提交</button>
@@ -142,7 +148,35 @@
             var form = layui.form;
             $('#mainForm').ajaxForm(options).submit(function(data){});
           });
-
+layui.use('upload', function(){
+            var upload = layui.upload;   
+            //执行实例
+            //缩略图上传
+            var uploadInst = upload.render({
+              elem: '.uploadbtn' //绑定元素
+              ,url: 'upload_file' //上传接口              
+              ,accept: 'file' //允许上传的文件类型
+              ,exts: 'jpg|png|gif|bmp|jpeg|docx|doc|'//允许上传的文件后缀
+              ,size: 100000 //最大允许上传的文件大小
+              ,data: {}//额外参数
+              ,done: function(res, index, upload){ //上传后的回调
+                layer.closeAll('loading'); //关闭loading
+                //上传完毕回调
+                 if(res.status){                    
+                    $('#preview').attr("src",res.filesrc);
+                    $("input[name='image']").val(res.filesrc);               
+                 }
+              }
+              ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+                  layer.load(); //上传loading
+              }
+              ,error: function(){
+                //请求异常回调
+                
+              }
+           });
+           
+         });
         })
       // });
   </script>

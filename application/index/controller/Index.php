@@ -40,6 +40,7 @@ class Index extends Controller
         return $this->fetch();
     }
     public function testsasas(){
+        dump(1213);
         return $this->fetch();
     }
 

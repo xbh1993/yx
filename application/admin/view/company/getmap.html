@@ -28,91 +28,104 @@
 
     <div style="width: 100%;height: 600px;">
 <div class="x-body">
-    <input type="text" value="" placeholder="请输入您要搜索的关键字" class="search">
-    <button  class="btn">搜索</button>
+    <input type="text" value="" placeholder="请输入您要搜索的关键字" class="search" id="search">
+    <button  class="btn" id="btn">搜索</button>
     <div id="container" ></div>
 
 </div>
     </div>
 <script type="text/javascript">
 
+//    var map = new AMap.Map("container", {
+//        resizeEnable: true,
+//        zoom: 16
+//    });
+//    AMap.plugin(['AMap.ToolBar','AMap.Scale','AMap.OverView'],
+//        function(){
+//            map.addControl(new AMap.ToolBar());
+//            map.addControl(new AMap.Scale());
+//            map.addControl(new AMap.OverView({isOpen:false}));
+//        });
+//
+//    //为地图注册click事件获取鼠标点击出的经纬度坐标
+//    var clickEventListener = map.on('click', function(e) {
+//        var getlng = e.lnglat.getLng();
+//        var getLat = e.lnglat.getLat();
+//        addMarker(getlng,getLat);
+//    });
+//
+//    function addMarker(getlng,getLat) {
+//        map.clearMap();
+//        map.setZoomAndCenter(16, [getlng, getLat]);
+//        marker = new AMap.Marker({
+//            icon: "/public/Upload/icon_2.png",
+//            position: [getlng, getLat]
+//        });
+//        marker.setMap(map);
+//        AMap.event.addListener(marker, 'click', function() {
+//            infoWindow.open(map, marker.getPosition());
+//        });
+//        $.getScript('https://restapi.amap.com/v3/geocode/regeo?output=json&location='+getlng+','+getLat+'&key=7d054ed7101948d5922740aaa83ecc30&radius=1000&extensions=all&callback=renderReverse');
+//    }
+//
+//    function renderReverse(datas){
+//        if( datas.status == 1   && datas.info == 'OK'   ){
+//            if( datas.regeocode.pois.length > 0 ){
+//                var formatted_address = datas.regeocode.pois[0].name;
+//                var getlnglat = datas.regeocode.pois[0].location;
+//            }else{
+//                var formatted_address = datas.regeocode.formatted_address;
+//                var getlnglat = datas.regeocode.pois[0].location;
+//            }
+//
+//        }
+//        var contentc = '<p class="infoAddress"  style="     min-width: 250px;" >'+datas.regeocode.formatted_address+'</p><a href="javascript:void(0);" style=" font-size: 12px; text-decoration: none;float: right;" class="mapBtns" onclick="mapsetlink(\''+getlnglat+'\',\''+formatted_address+'\');">提交保存地址</a>';
+//
+//        var info = [];
+//        info.push(contentc);
+//        infoWindow = new AMap.InfoWindow({
+//            content: info.join("<br/>") , //使用默认信息窗体框样式，显示信息内容\
+//            offset: new AMap.Pixel(2, -25)//
+//        });
+//        //infoWindow.open(map, [getlnglat]);
+//        infoWindow.open(map, marker.getPosition());
+//    }
+//
+//    function mapsetlink(mylnglat,mymapname) {
+//        var lnglatarr = mylnglat.split(',');
+//        var lng = lnglatarr[0];
+//        var lat = lnglatarr[1];
+//        var address=$('.infoAddress').html();
+//        var location=lat+','+lng;
+//        window.parent.setaddress(location,address);
+//        var index = parent.layer.getFrameIndex(window.name);
+//        parent.layer.close(index);
+//    }
+
+    var windowsArr = [];
+    var marker = [];
     var map = new AMap.Map("container", {
         resizeEnable: true,
-        zoom: 16
+        center: [116.397428, 39.90923],//地图中心点
+        zoom: 13,//地图显示的缩放级别
+        keyboardEnable: false
     });
-    AMap.plugin(['AMap.ToolBar','AMap.Scale','AMap.OverView'],
-        function(){
-            map.addControl(new AMap.ToolBar());
-            map.addControl(new AMap.Scale());
-            map.addControl(new AMap.OverView({isOpen:false}));
+    AMap.plugin(['AMap.Autocomplete','AMap.PlaceSearch'],function(){
+        var autoOptions = {
+            city: "北京", //城市，默认全国
+            input: "search"//使用联想输入的input的id
+        };
+        autocomplete= new AMap.Autocomplete(autoOptions);
+        var placeSearch = new AMap.PlaceSearch({
+            city:'北京',
+            map:map
+        })
+        AMap.event.addListener(autocomplete, "select", function(e){
+            //TODO 针对选中的poi实现自己的功能
+            placeSearch.setCity(e.poi.adcode);
+            placeSearch.search(e.poi.name)
         });
-
-    //为地图注册click事件获取鼠标点击出的经纬度坐标
-    var clickEventListener = map.on('click', function(e) {
-        var getlng = e.lnglat.getLng();
-        var getLat = e.lnglat.getLat();
-        addMarker(getlng,getLat);
     });
-
-    function addMarker(getlng,getLat) {
-        map.clearMap();
-        map.setZoomAndCenter(16, [getlng, getLat]);
-        marker = new AMap.Marker({
-            icon: "/public/Upload/icon_2.png",
-            position: [getlng, getLat]
-        });
-        marker.setMap(map);
-        AMap.event.addListener(marker, 'click', function() {
-            infoWindow.open(map, marker.getPosition());
-        });
-        $.getScript('https://restapi.amap.com/v3/geocode/regeo?output=json&location='+getlng+','+getLat+'&key=7d054ed7101948d5922740aaa83ecc30&radius=1000&extensions=all&callback=renderReverse');
-    }
-
-    function renderReverse(datas){
-        if( datas.status == 1   && datas.info == 'OK'   ){
-            if( datas.regeocode.pois.length > 0 ){
-                var formatted_address = datas.regeocode.pois[0].name;
-                var getlnglat = datas.regeocode.pois[0].location;
-            }else{
-                var formatted_address = datas.regeocode.formatted_address;
-                var getlnglat = datas.regeocode.pois[0].location;
-            }
-
-        }
-        var contentc = '<p class="infoAddress"  style="     min-width: 250px;" >'+datas.regeocode.formatted_address+'</p><a href="javascript:void(0);" style=" font-size: 12px; text-decoration: none;float: right;" class="mapBtns" onclick="mapsetlink(\''+getlnglat+'\',\''+formatted_address+'\');">提交保存地址</a>';
-
-        var info = [];
-        info.push(contentc);
-        infoWindow = new AMap.InfoWindow({
-            content: info.join("<br/>") , //使用默认信息窗体框样式，显示信息内容\
-            offset: new AMap.Pixel(2, -25)//
-        });
-        //infoWindow.open(map, [getlnglat]);
-        infoWindow.open(map, marker.getPosition());
-    }
-
-    function mapsetlink(mylnglat,mymapname) {
-        var lnglatarr = mylnglat.split(',');
-        var lng = lnglatarr[0];
-        var lat = lnglatarr[1];
-        var address=$('.infoAddress').html();
-        var location=lat+','+lng;
-        window.parent.setaddress(location,address);
-        var index = parent.layer.getFrameIndex(window.name);
-        parent.layer.close(index);
-    }
-
-//    AMap.service(["AMap.PlaceSearch"], function() {
-//        var placeSearch = new AMap.PlaceSearch({ //构造地点查询类
-//            pageSize: 5,
-//            pageIndex: 1,
-//            city: "010", //城市
-//            map: map,
-//            panel: "panel"
-//        });
-//        //关键字查询
-//        placeSearch.search('北京大学');
-//    });
 
 </script>
     <style media="screen" type="text/css">

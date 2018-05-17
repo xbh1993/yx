@@ -79,13 +79,13 @@
 <!--</div>-->
 
 <!--关于扬翔-->
-<div class="onyx">
+<div class="onyx ">
     <div class="tb">
         <div class="onyx_text">About Yang Xiang</div>
         <div class="onyx_text">关于扬翔</div>
     </div>
     <div class="onyx_content">
-        <div class="onyx_detail">
+        <div class="onyx_detail fadeInLeft TwoAnimated">
             <div class="onyx_tit">Guang xi &nbsp;yang xiang &nbsp;co . &nbsp;LTD .</div>
             <div class="onyx_name">广 西 扬 翔 股 份 有 限 公 司</div>
             <div class="onyx_em">{$profile['text']}</div>
@@ -93,7 +93,7 @@
                 <div class="onyx_more">点击了解更多</div>
             </a>
         </div>
-        <img class="onyx_img" src="/static/index/images/3.jpg">
+        <img class="onyx_img fadeInRight TwoAnimated" src="/static/index/images/3.jpg">
     </div>
 </div>
 <!--扬翔分公司分布-->
@@ -129,8 +129,8 @@
         <div class="onyx_text">国际合作</div>
     </div>
     <div class="onyx_content">
-        <img class="onyx_img" src="{$newslist.thumb}">
-        <div class="onyx_detail">
+        <img class="onyx_img fadeInRight TwoAnimated" src="{$newslist.thumb}">
+        <div class="onyx_detail fadeInLeft TwoAnimated">
             <div class="onyx_name" style="margin-top: 20px;line-height: 30px;">{$newslist.title}</div>
             <div class="onyx_em">{$newslist.introduction}</div>
             <a href="/index/details/international.html">
@@ -147,7 +147,7 @@
     </div>
     <div class="goodsb">
         {volist name="productlist" id="vo"}
-        <div class="goodsl">
+        <div class="goodsl fadeInRight TwoAnimated">
             <img src="{$vo.thumb}">
             <div class="gooodslbtm">
                 <div class="jies">{$vo.title}</div>
@@ -165,7 +165,7 @@
     </div>
     <div class="newb">
 
-        <div class="newl">
+        <div class="newl fadeInRight TwoAnimated" >
             <div class="newl_name">扬翔新闻</div>
             <a style="color:#000" href="/index/details/details.html?table=article&id={$news1.id}">
             <div class="newl_imgs"><img src="{$news1.thumb}"></div>
@@ -173,13 +173,13 @@
             <div class="new_span">{$news1.introduction}</div>
             </a>
         </div>
-        <div class="newl">
+        <div class="newl fadeInUp TwoAnimated" >
             <div class="newl_name">扬翔视频</div>
             <div class="newl_imgs"><img src="{$video.image}"></div>
             <div class="newtext">{$video.title}</div>
             <div class="new_span">{$video.describe}</div>
         </div>
-        <div class="newl">
+        <div class="newl fadeInDown TwoAnimated">
             <div class="newl_name">媒体报道</div>
             <a style="color:#000" href="/index/details/details.html?table=article&id={$news1.id}">
                 <div class="newl_imgs"><img src="{$news2.thumb}"></div>
@@ -364,6 +364,7 @@
             t=setInterval(show,2000);
         })
     })
+
 </script>
 
 {include file="public:foot"}

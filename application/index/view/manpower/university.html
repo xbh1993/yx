@@ -34,54 +34,17 @@
                 <div class="sumtext">
                     {$info2.content}
                 </div>
-                <div class="jsconten" style="background: #e6e6e6;">
-                    <img src="/static/index/images/3.jpg">
+                {volist name="list1" id="vo"}
+                <div class="jsconten" style="{$i%2!=0?"background: #e6e6e6;":""}">
+                    <div style="{$i%2!=0?"display:none":""}" class="jsshu">0{$i}</div>
+                    <img style="{$i%2!=0?"":"display:none"}" src="{$vo.thumb}">                    
                     <div class="jsnav">专业化
-                        <ul>
-                            <li>组建专业化的师资团队</li>
-                            <li>扬翔疫病检测中心及扬</li>
-                            <li>组建专业化的师</li>
-                            <li>组建专业化</li>
-                        </ul>
-                    </div>
-                    <div class="jsshu">01</div>
+                        {$vo.content}
+                    </div>                    
+                    <img style="{$i%2!=0?"display:none":""}" src="{$vo.thumb}">
+                    <div style="{$i%2!=0?"":"display:none"}" class="jsshu">0{$i}</div>
                 </div>
-                <div class="jsconten">
-                    <div class="jsshu">02</div>
-                    <div class="jsnav">专业化
-                        <ul>
-                            <li>组建专业化的师资团队</li>
-                            <li>扬翔疫病检测中心及扬</li>
-                            <li>组建专业化的师</li>
-                            <li>组建专业化</li>
-                        </ul>
-                    </div>
-                    <img src="/static/index/images/3.jpg">
-                </div>
-                <div class="jsconten" style="background: #e6e6e6;">
-                    <img src="/static/index/images/3.jpg">
-                    <div class="jsnav">专业化
-                        <ul>
-                            <li>组建专业化的师资团队</li>
-                            <li>扬翔疫病检测中心及扬</li>
-                            <li>组建专业化的师</li>
-                            <li>组建专业化</li>
-                        </ul>
-                    </div>
-                    <div class="jsshu">03</div>
-                </div>
-                <div class="jsconten">
-                    <div class="jsshu">04</div>
-                    <div class="jsnav">专业化
-                        <ul>
-                            <li>组建专业化的师资团队</li>
-                            <li>扬翔疫病检测中心及扬</li>
-                            <li>组建专业化的师</li>
-                            <li>组建专业化</li>
-                        </ul>
-                    </div>
-                    <img src="/static/index/images/3.jpg">
-                </div>
+                {/volist}
             </div>
         </div>
         <div class="tabBodyContainers">
@@ -90,54 +53,17 @@
                 <div class="sumtext">
                     {$info3.content}
                 </div>
-                <div class="jsconten" style="background: #e6e6e6;">
-                    <img src="/static/index/images/3.jpg">
+                {volist name="list1" id="vo"}
+                <div class="jsconten" style="{$i%2!=0?"background: #e6e6e6;":""}">
+                    <div style="{$i%2!=0?"display:none":""}" class="jsshu">0{$i}</div>
+                    <img style="{$i%2!=0?"":"display:none"}" src="{$vo.thumb}">                    
                     <div class="jsnav">专业化
-                        <ul>
-                            <li>组建专业化的师资团队</li>
-                            <li>扬翔疫病检测中心及扬</li>
-                            <li>组建专业化的师</li>
-                            <li>组建专业化</li>
-                        </ul>
-                    </div>
-                    <div class="jsshu">01</div>
+                        {$vo.content}
+                    </div>                    
+                    <img style="{$i%2!=0?"display:none":""}" src="{$vo.thumb}">
+                    <div style="{$i%2!=0?"":"display:none"}" class="jsshu">0{$i}</div>
                 </div>
-                <div class="jsconten">
-                    <div class="jsshu">02</div>
-                    <div class="jsnav">专业化
-                        <ul>
-                            <li>组建专业化的师资团队</li>
-                            <li>扬翔疫病检测中心及扬</li>
-                            <li>组建专业化的师</li>
-                            <li>组建专业化</li>
-                        </ul>
-                    </div>
-                    <img src="/static/index/images/3.jpg">
-                </div>
-                <div class="jsconten" style="background: #e6e6e6;">
-                    <img src="/static/index/images/3.jpg">
-                    <div class="jsnav">专业化
-                        <ul>
-                            <li>组建专业化的师资团队</li>
-                            <li>扬翔疫病检测中心及扬</li>
-                            <li>组建专业化的师</li>
-                            <li>组建专业化</li>
-                        </ul>
-                    </div>
-                    <div class="jsshu">03</div>
-                </div>
-                <div class="jsconten">
-                    <div class="jsshu">04</div>
-                    <div class="jsnav">专业化
-                        <ul>
-                            <li>组建专业化的师资团队</li>
-                            <li>扬翔疫病检测中心及扬</li>
-                            <li>组建专业化的师</li>
-                            <li>组建专业化</li>
-                        </ul>
-                    </div>
-                    <img src="/static/index/images/3.jpg">
-                </div>
+                {/volist}
             </div>
         </div>
         <div class="tabBodyContainers">

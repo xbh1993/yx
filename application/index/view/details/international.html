@@ -34,7 +34,7 @@
 <div style="width: 1200px;margin: 50px auto;" class="school2">
     {volist name="list2" id="vo"}
     <a href="details.html?table=publiclist&id={$vo.id}&sign=details" style="color: #000">
-    <div class="studyt" style="margin-top: 20px;">        
+    <div class="studyt" style="margin-top: 20px;">
         <div class="studytcon">
             <img src="{$vo.thumb}">
             <p class="studyt_name">{$vo.title}</p>
@@ -44,9 +44,10 @@
     </div>
     </a>
     {/volist}
-    {$list2->render()}
-</div>
 
+    <div style="clear:both;"></div>
+</div>
+{$list2->render()}
 </body>
 
 <script>

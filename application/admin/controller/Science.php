@@ -33,8 +33,8 @@ class Science extends Main{
         $data=["title"=>$_POST["title"],"content"=>$_POST["content"],"time"=>$_POST["time"],
 		"image"=>$_POST["image"],"character"=>$_POST["character"],"status"=>$_POST["status"],"introduction"=>$_POST["introduction"]];		
         if ($this->request->isPost()) {
-					if($_POST["Id"]!=''){
-						 if (Db::name('fruit')->where('Id', $_POST["Id"])->update($data) !== false) {
+					if($_POST["id"]!=''){
+						 if (Db::name('fruit')->where('id', $_POST["id"])->update($data) !== false) {
 								$this->success('修改成功');
 							} else {
 								$this->error('修改失败');
@@ -56,7 +56,7 @@ class Science extends Main{
 	*/
     function delete_fruit($id)
 	{					
-        if (Db::name('fruit')->where('Id','in',$id)->delete() !== false) {
+        if (Db::name('fruit')->where('id','in',$id)->delete() !== false) {
             $this->success('删除成功');
         } else {
             $this->error('删除失败');

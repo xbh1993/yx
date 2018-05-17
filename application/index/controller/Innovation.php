@@ -5,7 +5,6 @@
  * Date: 2018/5/5 0005
  * Time: 上午 9:43
  */
-
 namespace app\index\controller;
 use think\Controller;
 use think\Db;
@@ -17,17 +16,38 @@ class Innovation extends Controller
         $banner=unserialize($banner['value']);
         $this->assign('bannerinfo',$banner);
     }
-    public function innovation(){
-
+    public function innovation(){       
         return $this->fetch();
     }
-    public function doctor(){
+    public function ajaxListAction(){
+      $page = request()->param('apage');
+      $bid=input('post.bid');
+      $table=input('post.table');
+      $where="";
+      if (isset($bid)) {
+          $where=['bid'=>$bid,'status'=>0];
+      }
+      else{
+        $where=['status'=>0];
+      }
+      if (!empty($page)) {
+         $rel = Db::name($table)->where($where)->paginate(6,false,[
+            'type'     => 'Bootstrap',
+            'var_page' => 'page',
+            'page' => $page,
+            'path'=>'javascript:AjaxPage([PAGE]);',
+         ]);
+         $page = $rel->render();
+      }
+      return json(['list'=>$rel,'page'=>$page]);
+   }
+    public function doctor(){  
         $info=Db::name('content')->where('id',3)->find();
         $this->assign('info',$info);
         $list=Db::name('project')->where(['bid'=>2,'status'=>0])->paginate(6);
         $page=$list->render();
         $this->assign('list',$list);
-        $this->assign('page',$page);
+        $this->assign('page',$page);      
         return $this->fetch();
     }
     public function study(){
@@ -57,10 +77,6 @@ class Innovation extends Controller
         return $this->fetch();
     }
     public function gains(){
-        $list=Db::name('fruit')->where('status',0)->order('time desc')->paginate(6);
-        $page=$list->render();
-        $this->assign('list',$list);
-        $this->assign('page',$page);
         return $this->fetch();
     }
 }

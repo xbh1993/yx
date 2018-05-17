@@ -37,7 +37,7 @@ class Details extends Controller
            'query' => request()->param(),
         ]);
         //专家顾问
-        $list2 = Db::name('publiclist')->where(['coid'=>6,'status'=>1])->paginate(2,false,[
+        $list2 = Db::name('publiclist')->where(['coid'=>6,'status'=>1])->paginate(6,false,[
            'type'     => 'Bootstrap',
            'var_page' => 'page',
            'path'=>'javascript:AjaxPage([PAGE]);',

@@ -51,7 +51,7 @@ class Details extends Controller
     public function ajaxListAction(){
       $page = request()->param('apage');
       if (!empty($page)) {
-         $rel = Db::name('publiclist')->where(['coid'=>input('post.coid'),'tid'=>input('post.tid')])->paginate(2,false,[
+         $rel = Db::name('publiclist')->where(['coid'=>input('post.coid'),'tid'=>input('post.tid')])->paginate(6,false,[
             'type'     => 'Bootstrap',
             'var_page' => 'page',
             'page' => $page,

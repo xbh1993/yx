@@ -177,7 +177,7 @@ class News extends Main{
     public function addupdate_video() {
 		
         $data=["type"=>input('post.type'),"title"=>input('post.title'),"create_time"=>date("Y-m-d H:i:s",time()),
-		"access"=>input('post.access'),"image"=>input('post.image'),"url"=>input('post.url'),"describe"=>input('post.describe')];
+		"access"=>input('post.access'),"image"=>input('post.image'),"url"=>input('post.url'),"describe"=>input('post.describe'),'status'=>input('post.status')];
 		//$data=SafeFilter($data);
 		
         if ($this->request->isPost()) {

@@ -50,7 +50,13 @@
                 if (json.length>0) {
                     for (var i = 0; i <json.length; i++) {
                       if(table=="video"){
-                        $(".tabBodyItem").eq(index).append('<div class="vitop" style="'+(i%2!=0?"background:#e6e6e6;":"")+'"><div class="pdetail"><div class="pdleft"><div class="pdbiaoti">0'+i+'</div><div class="vioname">'+json[i].title+'</div><div class="pdnei">'+json[i].describe+'</div></div><video class="videoimg" src="'+json[i].access+'" controls="controls" poster="'+json[i].image+'"></div>');
+                        if (i%2!=0) {
+$(".tabBodyItem").eq(index).append('<div class="vitop" style="background:#e6e6e6"><div class="pdetail"><video class="videoimg" src="'+json[i].access+'" controls="controls" poster="'+json[i].image+'" /><div class="pdleft"><div class="pdbiaoti">0'+(i+1)+'</div><div class="vioname">'+json[i].title+'</div><div class="pdnei">'+json[i].describe+'</div></div></div>');
+                        }
+                        else{
+                            $(".tabBodyItem").eq(index).append('<div class="vitop" style="'+(i%2!=0?"background:#e6e6e6;":"")+'"><div class="pdetail"><div class="pdleft"><div class="pdbiaoti">0'+(i+1)+'</div><div class="vioname">'+json[i].title+'</div><div class="pdnei">'+json[i].describe+'</div></div><video class="videoimg" src="'+json[i].access+'" controls="controls" poster="'+json[i].image+'"></div>');
+                        }
+                        
                       } 
                       else{
                         $(".tabBodyItem").eq(index).append('<a style="color:#000;" href="/index/details/details.html?table=article&id='+json[i].id+'"><div class="yxlie"><img src="'+json[i].thumb+'" class="yximg"><div class="yxtt"><p class="newnames" >'+json[i].title+'</p><p class="newtexts" >'+json[i].introduction+'</p><div class="newspans">[查看详情]</div></div></div></a>');

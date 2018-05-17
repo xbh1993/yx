@@ -29,9 +29,13 @@ class Manpower extends Controller
       //建设标准
       $info2=Db::name('content')->where('id',9)->find();
       $this->assign('info2',$info2);
+      $list1=Db::name('publiclist')->where(['coid'=>7,'status'=>1])->order('sys_order asc,create_time desc')->select();
+      $this->assign('list1',$list1);
       //支持体系
       $info3=Db::name('content')->where('id',10)->find();
       $this->assign('info3',$info3);
+      $list2=Db::name('publiclist')->where(['coid'=>8,'status'=>1])->order('sys_order asc,create_time desc')->select();
+      $this->assign('list2',$list2);
       //培训方式
       $info4=Db::name('content')->where('id',11)->find();
       //杨翔大学轮播图

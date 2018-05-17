@@ -52,14 +52,14 @@
                 <tbody>
                   {volist name='list' id='vo'}
                   <tr style="">
-                    <td><input type="checkbox" name="checkbox" data-id="{$vo.Id}"></td>
+                    <td><input type="checkbox" name="checkbox" data-id="{$vo.id}"></td>
                     <td>{$vo.title}</td>
                     <td>{$vo.character}</td>
                     <td>{$vo.time}</td>
                     <td>{$vo.status==0?'发布':'不发布'}</td>
                     <td>
-                        <button onclick="lotus_show('编辑','editfruit?Id={$vo.Id}',0,0)" class="btn btn-xs  btn-success btn-small">编辑</button>
-                        <button onclick='delete_fruit({$vo.Id})' class="btn btn-xs  btn-danger btn-small">删除</button>
+                        <button onclick="lotus_show('编辑','editfruit?Id={$vo.id}',0,0)" class="btn btn-xs  btn-success btn-small">编辑</button>
+                        <button onclick='delete_fruit({$vo.id})' class="btn btn-xs  btn-danger btn-small">删除</button>
                     </td>
                   </tr>
                   {/volist}

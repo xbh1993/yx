@@ -91,28 +91,20 @@ class Hr extends Main{
     	return $this->fetch('train');
     }
     //建设标准
-    function standard(){
-        $info=Db::name('content')->where('id',9)->find();
-        if (isset($info)) {
-    		$photo=json_decode($info["image"],true);
-    		$this->assign('photo',$photo);
-		}
-        $this->assign('id',9);
-        $this->assign('info',$info);
+    function standard(){        
+        $list=Db::name('publiclist')->where('coid',7)->order('sys_order asc,create_time desc')->select();
+        $this->assign('list',$list);
+        $this->assign('coid',7);
         $this->assign('item',['item1'=>'扬翔大学','item2'=>'建设标准']);
-    	return $this->fetch('train');
+        return $this->fetch('talent');
     }
     //支持体系
-    function system(){
-        $info=Db::name('content')->where('id',10)->find();
-        if (isset($info)) {
-    		$photo=json_decode($info["image"],true);
-    		$this->assign('photo',$photo);
-		}
-        $this->assign('id',10);
-        $this->assign('info',$info);
+    function system(){        
+        $list=Db::name('publiclist')->where('coid',8)->order('sys_order asc,create_time desc')->select();
+        $this->assign('list',$list);
+        $this->assign('coid',8);
         $this->assign('item',['item1'=>'扬翔大学','item2'=>'支持体系']);
-    	return $this->fetch('train');
+        return $this->fetch('talent');
     }
     //培训方式
     function way(){

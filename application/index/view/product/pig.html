@@ -53,7 +53,7 @@
                 $(".tabBodyItem").eq(index).empty();
                 if (json.length>0) {
                     for (var i = 0; i <json.length; i++) {
-                      $(".tabBodyItem").eq(index).append('<a style="color:#000" href="/index/details/details.html?table=product&id='+json[i].id+'"><div class="ptop" style="'+(i%2!=0?"background: #e6e6e6;":"")+'"><div class="pcon"><div class="pconl"><div class="pigname">扬翔集团</div><div class="pigtitle">'+json[i].title+'</div><div class="pigtexts">'+json[i].describe+'</div></div><img src="'+json[i].image+'"></div></div></a>');
+                      $(".tabBodyItem").eq(index).append('<a style="color:#000" href="/index/details/details.html?table=product&id='+json[i].id+'"><div class="ptop" style="'+(i%2!=0?"background: #e6e6e6;":"")+'"><div class="pcon"><div class="pconl"><div class="pigname">'+json[i].title+'</div><div class="pigtitle">特点</div><div class="pigtexts">'+json[i].describe+'</div></div><img src="'+json[i].image+'"></div></div></a>');
                     }  
                     if (data.page!=null) {
                       $(".tabBodyItem").eq(index).append(data.page);                      

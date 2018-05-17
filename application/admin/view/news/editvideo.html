@@ -33,24 +33,20 @@
             <div class="box-body"  style="width: 800px;">
 
                 <form  id="mainForm" class="layui-form layui-form-line layui-form-pane" method='post' action='addupdate_video' >                    
-                    <!-- <div class="layui-form-item layui-input-inline">
-                        <label class="layui-form-label">视频类别</label>
-                        <div class="layui-input-block">
-                        
-                        <select name="type">
-                          {volist name="type" id="vo"}
-                              {if condition="isset($info)"}
-                                {if condition="$vo.Id eq $info.type"} <option value ="{$vo.Id}"  selected="true">{$vo.title}</option>                        
-                                {else /} 
-                                <option value ="{$vo.Id}">{$vo.title}</option>
-                              {/if}
-                              {else /}
-                              <option value ="{$vo.Id}">{$vo.title}</option>
-                              {/if}
-                          {/volist}
+                    <div class="layui-form-item layui-input-inline">
+                        <label class="layui-form-label">状态</label>
+                        <div class="layui-input-block">              
+                       <select name="status">
+                          {if condition="isset($info)"}
+                            <option value ="0" {$info.status==0?'selected=\"true\"':''}>不发布</option>
+                            <option value ="1"  {$info.status==1?'selected=\"true\"':''}>发布</option>
+                          {else /}
+                          <option value ="0">不发布</option>
+                          <option value ="1">发布</option>
+                          {/if}
                         </select>
                         </div>
-                      </div> -->
+                      </div>
                       <input style="display:none" type="text" value="{$info.Id|default=''}" name="Id"  >
                       <div class="layui-form-item layui-input-inline">
                         <label class="layui-form-label">标题</label>

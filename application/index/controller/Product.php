@@ -30,12 +30,16 @@ class Product extends Controller
       $page = request()->param('apage');
       $index=input('post.index');
       $tid=input('post.tid');
+      $pagesize=input('post.pagesize');
+      if (!isset($pagesize)) {
+          $pagesize=2;
+      }
       if (!empty($page)) {
-         $rel = Db::name('product')->where(['type'=>$tid])->paginate(2,false,[
+         $rel = Db::name('product')->where(['type'=>$tid])->paginate($pagesize,false,[
             'type'     => 'Bootstrap',
             'var_page' => 'page',
             'page' => $page,
-            'query'=>['tid'=>$tid,'index'=>$index],
+            'query'=>['tid'=>$tid,'index'=>$index,'size'=>$pagesize],
          ]);
          $page = $rel->render();
       }

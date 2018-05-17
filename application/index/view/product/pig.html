@@ -23,7 +23,8 @@
               <div class="lixian"></div>
               <li><a data-id="{$vo.Id}">{$vo.title}</a></li>
               {/if}
-              {/volist}                
+              {/volist}     
+
             </div>
             </div>
             <div class="tabBodyContainer">
@@ -42,27 +43,43 @@
 </body>
 <script src="/static/index/js/product.js" type="text/javascript"></script>
 <script type="text/javascript">
-  function AjaxPage(page,tid,index){
+  function AjaxPage(page,tid,index,size){
         $.ajax({
             url:'ajaxListAction',
             type:'post',
             dataType:'json',
-            data: {apage:page,tid:tid,index:index},
+            data: {apage:page,tid:tid,index:index,pagesize:size},
             success:function(data){         
                 var json=data.list.data; 
                 $(".tabBodyItem").eq(index).empty();
                 if (json.length>0) {
+                    
                     for (var i = 0; i <json.length; i++) {
-                      $(".tabBodyItem").eq(index).append('<a style="color:#000" href="/index/details/details.html?table=product&id='+json[i].id+'"><div class="ptop" style="'+(i%2!=0?"background: #e6e6e6;":"")+'"><div class="pcon"><div class="pconl"><div class="pigname">'+json[i].title+'</div><div class="pigtitle">特点</div><div class="pigtexts">'+json[i].describe+'</div></div><img src="'+json[i].image+'"></div></div></a>');
-                    }  
+                        if (tid==2&&i>1) {
+$(".tabBodyItem").eq(index).append('<a style="color:#000;display:none" href="/index/details/details.html?table=product&id='+json[i].id+'"><div class="ptop" style="'+(i%2!=0?"background: #e6e6e6;":"")+'"><div class="pcon"><div class="pconl"><div class="pigname">'+json[i].title+'</div><div class="pigtitle">特点</div><div class="pigtexts">'+json[i].describe+'</div></div><img src="'+json[i].image+'"></div></div></a>');
+                        }
+                        else{
+                            $(".tabBodyItem").eq(index).append('<a style="color:#000" href="/index/details/details.html?table=product&id='+json[i].id+'"><div class="ptop" style="'+(i%2!=0?"background: #e6e6e6;":"")+'"><div class="pcon"><div class="pconl"><div class="pigname">'+json[i].title+'</div><div class="pigtitle">特点</div><div class="pigtexts">'+json[i].describe+'</div></div><img src="'+json[i].image+'"></div></div></a>');
+                        }                     
+                        
+                    } 
+                     if (tid==2){
+                        $(".tabBodyItem").eq(index).append('<div class="pmoret">点击了解更多</div>');
+                        $(".pmoret").click(function(){
+                                                   $(this).parent().find('a').show();
+                                                   $(this).hide();
+                                                })
+
+                     }
                     if (data.page!=null) {
                       $(".tabBodyItem").eq(index).append(data.page);                      
                       $(".tabBodyItem").eq(index).find(".pagination:last").find("a").each(function(){            
                         var href=$(this).attr('href').split('?')[1].split('&');
                         var tid=href[0].split('=')[1];
                         var index=href[1].split('=')[1];
-                        var page=href[2].split('=')[1];            
-                        $(this).attr("href","javascript:AjaxPage("+page+","+tid+","+index+")");
+                        var size=href[2].split('=')[1];
+                        var page=href[3].split('=')[1];            
+                        $(this).attr("href","javascript:AjaxPage("+page+","+tid+","+index+","+size+")");
                       });
                     }     
                 }
@@ -70,10 +87,17 @@
 
         });
     }
-    $(".tabItemContainer a").each(function(index){    
-    console.log(index);    
-        var value=$(this).attr('data-id');
-        AjaxPage(1,value,index);
+    $(".tabItemContainer a").each(function(index){
+        var value=parseInt($(this).attr('data-id'));
+        console.log(value);
+        if (value==2) {
+            console.log(1111);
+          AjaxPage(1,value,index,5);
+        }
+        else{
+          AjaxPage(1,value,index,2);
+        }
+        
     })
 </script>
 </html>

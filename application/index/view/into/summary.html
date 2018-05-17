@@ -49,17 +49,16 @@
             <div class="tabBodyItems">
                 <div class="sumname">公 司 荣 誉</div>
                 <div class="sumtw" id="item_item1">
-
                     <div class="item1" style="width: 800%;">
-                        <div id="item1" style="height: 000px;float: left;display: flex">
+                        <div id="item1" style="height: 100%;float: left;display: flex;padding-top: 50px">
                             {volist name="$lits1['img_url']" id="vo" empty="暂时没有数据"}
-                            <div style="margin-left: 50px">
-                                <img style="width: 400px;height: 300px;" src="{$vo}">
+                            <div style="margin:0 23px">
+                                <img style="width: 354px;height: 236px;" src="{$vo}">
                                 <div class="sumtwtext">{$lits1['data'][$key]|default='  '}</div>
                             </div>
                             {/volist}
                         </div>
-                        <div id="item2" style="height: 300px;float: left;display: flex">
+                        <div id="item2" style="height: 100%;float: left;display: flex">
                         </div>
                     </div>
 
@@ -70,10 +69,10 @@
                 <div class="sumtw" id="item_item_2">
 
                     <div class="item1" style="width: 800%;">
-                        <div id="item2_2" style="height: 300px;float: left;display: flex">
+                        <div id="item2_2" style="height: 100%s;float: left;display: flex;padding-top: 50px">
                             {volist name="$lits2['img_url']" id="vo" empty="暂时没有数据"}
-                            <div style="margin-left: 50px">
-                                <img style="height: 300px;width: 400px" src="{$vo}">
+                            <div style="margin:0 23px">
+                                <img style="height: 236px;width: 354px" src="{$vo}">
                                 <div class="sumtwtext">{$lits2['data'][$key]|default=''}</div>
                             </div>
                             {/volist}

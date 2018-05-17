@@ -155,16 +155,16 @@
                     </div>
                 </div>
                 <div class="sumname">图 片 展 示</div>
-                    <div class="fengcai" id="item_item" style="width: 1100px;overflow: hidden;padding: 50px">
+                    <div class="fengcai" id="item_item" style="width: 1200px;overflow: hidden;height: 336px">
                         <div class="item4_1" style="width: 800%;">
-                            <div id="item4_a" style="height:260px;float: left;display: flex">
+                            <div id="item4_a" style="height:236px;float: left;display: flex;padding-top: 50px">
                                 {volist name="photo1['img_url']" id="vo" empty="暂时没有数据"}
-                                <div style="margin-left: 50px">
-                                    <img style="width: 400px;height: 260px;" src="{$vo}">
+                                <div style="margin:0 23px">
+                                    <img style="width: 354px;height: 236px;" src="{$vo}">
                                 </div>
                                 {/volist}
                             </div>
-                            <div id="item4_c" style="height: 300px;float: left;display: flex">
+                            <div id="item4_c" style="height: 236px;float: left;display: flex">
                             </div>
                         </div>
                     </div>
@@ -174,7 +174,6 @@
     <div style="clear: both"></div>
 </div>
 <script>
-    console.log(111);
     var speed = 15; //数字越大速度越慢
     var tab = document.getElementById("item_item");
     var tab1 = document.getElementById("item4_a");

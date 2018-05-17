@@ -56,10 +56,11 @@
 </style>
 <div id="second_div">
     <div class="img_box">
-        <img src="/static/index/images/top1.jpg">
-        <img src="/static/index/images/top2.jpg">
-        <img src="/static/index/images/top3.jpg">
-        <img src="/static/index/images/top4.jpg">
+        {if condition="isset($bannerinfo) && !empty($bannerinfo)"}
+        {volist name="$bannerinfo" id='item'}
+        <img src="{$item|default=''}">
+        {/volist}
+        {/if}
     </div>
     <ul class="ul5">
         <li></li>

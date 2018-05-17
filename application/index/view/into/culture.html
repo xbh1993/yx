@@ -35,22 +35,21 @@
         </div>
     </div>
     <p style="text-align: center;font-size: 30px;line-height: 150px;">扬 翔 风 采</p>
-    <div class="fengcai" id="item_item4" style="width: 1400px;overflow: hidden">
+    <div class="fengcai" id="item_item4" style="width: 1400px;overflow: hidden;height: 388px">
         <div class="item4_1" style="width: 800%;">
-            <div id="item4_2" style="height:300px;float: left;display: flex">
+            <div id="item4_2" style="height:100%;float: left;display: flex;padding-top: 50px">
                 {volist name="$yxfcList['img_url']" id="vo" empty="暂时没有数据"}
-                <div style="margin-left: 50px">
-                    <img style="width: 400px;height: 300px;" src="{$vo}">
+                <div style="margin:0 17.3px">
+                    <img style="width: 432px;height: 288px;" src="{$vo}">
                 </div>
                 {/volist}
             </div>
-            <div id="item4_3" style="height: 300px;float: left;display: flex">
+            <div id="item4_3" style="height: 388px;float: left;display: flex">
             </div>
         </div>
     </div>
 </div>
 <script>
-
     var speed = 15; //数字越大速度越慢
     var tab123 = document.getElementById("item_item4");
     var tab1123 = document.getElementById("item4_2");

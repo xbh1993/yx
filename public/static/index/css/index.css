@@ -38,6 +38,9 @@
     color: #000;
     text-decoration: none;
 }
+.tab a:hover {
+    color: #ff6600;
+}
 
 .nav {
     margin-left: 20px;
@@ -558,9 +561,9 @@ a {
 /*分页*/
 .pagination{
     display: flex;
+    justify-content: center;
     list-style: none;
-    padding: 0 0 0 50%;
-    margin-top: 30px;
+    margin-top: 50px;
 }
 .pagination li{
     padding: 5px 20px;
@@ -575,15 +578,5 @@ a {
 .pagination li a:hover{
     color: #ff6600;
 }
-.pagination{
-  display: flex;
-  list-style: none;
-  background-color:#ffffff;
-  padding: 0 0 0 42%;
-}
-.pagination li{
-  width: 31px;
-  border: 1px solid lightgrey;
-    text-align: center;
-}
+
 

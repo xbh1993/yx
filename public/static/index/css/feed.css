@@ -370,33 +370,13 @@
     background: #e6e6e6;
     position: relative;
     bottom: -19px;
-    left: 143px;
+    left: 140px;
 }
 
 .gainscom_div {
     width: 100px;
     margin: auto;
     border-bottom: 2px #ff6600 solid;
-}
-/*分页*/
-.pagination{
-    display: flex;
-    list-style: none;
-    padding: 0 0 0 50%;
-    margin-top: 50px;
-}
-.pagination li{
-    padding: 5px 20px;
-    border: 1px solid lightgrey;
-    text-align: center;
-    color: #555;
-}
-.pagination li a{
-    color: #555;
-    text-decoration: none;
-}
-.pagination li a:hover{
-    color: #ff6600;
 }
 
 

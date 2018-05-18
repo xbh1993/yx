@@ -88,12 +88,11 @@ $(".tabBodyItem").eq(index).append('<a style="color:#000;display:none" href="/in
     }
     $(".tabItemContainer a").each(function(index){
         var value=parseInt($(this).attr('data-id'));
-        console.log(value);
         if (value==2) {
-          AjaxPage(1,value,index,5);
+          AjaxPage(1,value,index,10);
         }
         else{
-          AjaxPage(1,value,index,1000);
+          AjaxPage(1,value,index,10);
         }
         
     })

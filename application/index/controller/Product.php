@@ -20,6 +20,7 @@ class Product extends Controller
     public function pig()
     {       
         $listli=Db::name('type')->where('name','product')->select();
+
         $this->assign('list',$listli);
 
         //产品列表

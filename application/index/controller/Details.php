@@ -50,6 +50,11 @@ class Details extends Controller
             case 'article':
                 $index=3;//新闻中心
                 break;
+            case 'fruit':
+                $index=4;//创新科研中心
+                break;
+            default:
+                $index=1;
         }
 
         return $index;
@@ -57,15 +62,9 @@ class Details extends Controller
     }
     public function international(){
     	//国际合作
-    	$list = Db::name('publiclist')->where(['coid'=>5,'status'=>1])->paginate(2,false,[
-           'type'     => 'Bootstrap',
-           'var_page' => 'page',
-           'path'=>'javascript:AjaxPage([PAGE]);',
-           //使用函数助手传入参数
-           'query' => request()->param(),
-        ]);
+    	$list = Db::name('publiclist')->where(['coid'=>5,'status'=>1])->select();
         //专家顾问
-        $list2 = Db::name('publiclist')->where(['coid'=>6,'status'=>1])->paginate(6,false,[
+        $list2 = Db::name('publiclist')->where(['coid'=>6,'status'=>1])->paginate(12,false,[
            'type'     => 'Bootstrap',
            'var_page' => 'page',
            'path'=>'javascript:AjaxPage([PAGE]);',

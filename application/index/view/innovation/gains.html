@@ -21,7 +21,8 @@
                 $(".gainstop").empty();
                 for (var i = 0; i <json.length; i++) {
                     $(".gainstop").append('<div class="gainscom"><img src="'+json[i].image+'"><div class="gainscom_btm"><div class="gainscom_name">'+json[i].title+'</div><div class="gainscom_div"></div><div class="gainscom_text">'+json[i].introduction+'</div></div><div class="gainscom_more"><a style="color:#000" href="/index/details/details.html?table=fruit&id='+json[i].id+'"&sign=innovation>了解更多</a></div></div>');
-                }                
+                }
+                $(".gainstop").append('<div style="clear: both"></div>');
                 $(".gainstop").append(data.page);
                 $(".gainstop").append('<div style="clear: both"></div>');
                 $(".gainstop .pagination").find('a').each(function(){

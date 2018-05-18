@@ -31,22 +31,22 @@
 
                 <form  id="mainForm" class="layui-form layui-form-line layui-form-pane" method='post' action='add_update' >                    
                     <input style="display:none" type="text" value="{$info.id|default=''}" name="id"  >
-                      <div class="layui-form-item layui-input-inline">
+                      <div style="{$info.id==12?"display:none":""}" class="layui-form-item layui-input-inline">
                         <label class="layui-form-label">联系电话</label>
                         <div class="layui-input-block">
                           <input type="text" value="{$info.title|default=''}" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
                         </div>
                       </div>
-                      <div class="layui-form-item layui-input-inline">
+                      <div style="{$info.id==12?"display:none":""}" class="layui-form-item layui-input-inline">
                         <label class="layui-form-label">坐标</label>
                         <div class="layui-input-block">
                           <input type="text" value="{$info.image|default=''}" name="image"  placeholder="请输入标题" autocomplete="off" class="layui-input">
                         </div>
                       </div>
                       <div class="layui-form-item">
-                        <label class="layui-form-label">地址</label>
+                        <label class="layui-form-label">{$info.id==12?"链接":"地址"}</label>
                         <div class="layui-input-block">
-                          <input type="text" value="{$info.content|default=''}" name="content" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                          <input type="text" value="{$info.content|default=''}" name="content" required  lay-verify="required" placeholder="请输入内容" autocomplete="off" class="layui-input">
                         </div>
                       </div>
                       

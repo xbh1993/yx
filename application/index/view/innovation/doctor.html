@@ -25,18 +25,8 @@
         <div class="tabBodyContainers">
             <div class="tabBodyItems">
                 <div class="sumname">实验基地研究成果</div>
-                <div class="docon">
-                    {volist name="list" id="vo"}
-                    <div class="donav">
-                        <div class="donav_con">
-                            <div class="donav_texta">{$vo.title}</div>
-                            <div class="donav_namea">{$vo.name}</div>
-                            <div class="donav_mms">{$vo.describe}</div>
-                        </div>
-                        <div class="docolor"></div>
-                    </div>
-                    {/volist}
-                    {$page}
+                <div class="docon d1">
+                    
                 </div>
             </div>
         </div>
@@ -45,4 +35,28 @@
 </div>
 </body>
 <script language="Javascript" type="text/Javascript" src="/static/index/js/feed.js"></script>
+<script type="text/javascript">
+    function AjaxPage(page){
+        $.ajax({
+            url:'ajaxListAction',
+            type:'post',
+            dataType:'json',
+            data: {apage:page,table:'project',bid:2},
+            success:function(data){
+                var json=data.list.data;
+                $(".d1").empty();
+                for (var i = 0; i <json.length; i++) {
+                    $(".d1").append('<div class="donav"><div class="donav_con"><div  class="donav_texta">'+json[i].title+'</div><div class="donav_namea">'+json[i].name+'</div><div class="donav_mms">'+json[i].describe+'</div></div><div class="docolor"></div></div>');
+                }                
+                $(".d1").append('<div style="clear: both"></div>');
+                $(".d1").append(data.page);                
+                $(".d1 .pagination").find('a').each(function(){
+                    var href=$(this).attr('href').substring(0,22);
+                    $(this).attr("href",href);
+                });
+            }
+        });
+    }
+    AjaxPage(1);
+</script>
 </html>

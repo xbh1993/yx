@@ -66,10 +66,9 @@ $(".tabBodyItem").eq(index).append('<a style="color:#000;display:none" href="/in
                      if (tid==2){
                         $(".tabBodyItem").eq(index).append('<div class="pmoret">点击了解更多</div>');
                         $(".pmoret").click(function(){
-                                                   $(this).parent().find('a').show();
-                                                   $(this).hide();
-                                                })
-
+                       $(this).parent().find('a').show();
+                       $(this).hide();
+                    })
                      }
                     if (data.page!=null) {
                       $(".tabBodyItem").eq(index).append(data.page);                      
@@ -91,11 +90,10 @@ $(".tabBodyItem").eq(index).append('<a style="color:#000;display:none" href="/in
         var value=parseInt($(this).attr('data-id'));
         console.log(value);
         if (value==2) {
-            console.log(1111);
           AjaxPage(1,value,index,5);
         }
         else{
-          AjaxPage(1,value,index,2);
+          AjaxPage(1,value,index,1000);
         }
         
     })

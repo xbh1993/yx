@@ -11,6 +11,7 @@
 
 // 应用公共文件
 // 应用公共文件
+use think\Db;
 function isMobile()
 {
     if (isset($_SERVER['HTTP_X_WAP_PROFILE'])) {
@@ -74,8 +75,7 @@ function array2level($array, $pid = 0, $level = 1)
  * @param string $child_key_name 子元素键名
  * @return array|bool
  */
-function array2tree(&$array, $pid_name = 'pid', $child_key_name = 'children')
-{
+function array2tree(&$array, $pid_name = 'pid', $child_key_name = 'children'){
     $counter = array_children_count($array, $pid_name);
     if (!isset($counter[0]) || $counter[0] == 0) {
         return $array;
@@ -446,4 +446,13 @@ function upload_file()
        ); 
        echo  json_encode($result);
     };    
+}
+function getserviceurl(){
+    $info=Db::name('content')->where('id',12)->find();
+    if (isset($info)) {
+        return $info["content"];
+    }
+    else{
+        return "";
+    }
 }   

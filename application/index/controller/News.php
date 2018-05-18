@@ -30,7 +30,7 @@ class news extends Controller
           $where=['status'=>1];
       }
       if (!empty($page)) {
-         $rel = Db::name($table)->where($where)->paginate(2,false,[
+         $rel = Db::name($table)->where($where)->paginate(10,false,[
             'type'     => 'Bootstrap',
             'var_page' => 'page',
             'page' => $page,

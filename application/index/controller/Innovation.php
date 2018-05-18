@@ -16,7 +16,16 @@ class Innovation extends Controller
         $banner=unserialize($banner['value']);
         $this->assign('bannerinfo',$banner);
     }
-    public function innovation(){       
+    public function innovation(){  
+        $info=Db::name('content')->where('id',3)->find();
+        $this->assign('info',$info);
+            
+
+        $sinfo=Db::name('content')->where('id',2)->find();
+        $this->assign('sinfo',$sinfo);  
+
+        $jinfo=Db::name('content')->where('id',1)->find();
+        $this->assign('jinfo',$jinfo);
         return $this->fetch();
     }
     public function ajaxListAction(){
@@ -42,12 +51,7 @@ class Innovation extends Controller
       return json(['list'=>$rel,'page'=>$page]);
    }
     public function doctor(){  
-        $info=Db::name('content')->where('id',3)->find();
-        $this->assign('info',$info);
-        $list=Db::name('project')->where(['bid'=>2,'status'=>0])->paginate(6);
-        $page=$list->render();
-        $this->assign('list',$list);
-        $this->assign('page',$page);      
+            
         return $this->fetch();
     }
     public function study(){

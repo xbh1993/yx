@@ -23,6 +23,12 @@ class User extends Main{
     	$this->assign('item',['item1'=>'营销网络','item2'=>'修改']);
     	return $this->fetch('detail');
     }
+    function service(){
+        $info=Db::name('content')->where('id',12)->find();
+        $this->assign('info',$info);
+        $this->assign('item',['item1'=>'技术服务','item2'=>'修改']);
+        return $this->fetch('detail');
+    }
     function add_update(){
     	$data=input('post.');
         if ($this->request->isPost()) {

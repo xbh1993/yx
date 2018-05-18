@@ -170,6 +170,10 @@
     margin-left: 25px;
     margin-right: 25px;
 }
+.tabItemContainer_item li a:hover {
+    border-bottom: 2px solid #ff6600;
+    color: #ff6600;
+}
 .tabItemContainer_item li a {
     float: left;
     width: 100%;

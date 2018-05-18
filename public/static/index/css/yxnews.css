@@ -11,7 +11,6 @@
 /*切换tab*/
 #TabMain {
     width: 100%;
-    height: 2160px;
 }
 .underline{
     width: 100%;
@@ -62,7 +61,6 @@
 
 .tabBodyItem {
     width: 100%;
-    position: absolute;
     display: none;
 }
 .tabBodyItem>p {

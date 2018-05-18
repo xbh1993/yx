@@ -23,39 +23,20 @@
     </div>
     <div class="tabBodyContainer">
         <div class="tabBodyItem tabBodyCurrent">
-            <div id="html_5">
-                <iframe id="myiframe" align="center" width="100%" height="2200px" src="/index/innovation/doctor.html" frameborder="no"
-                        border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-            </div>
+            {include file="innovation:doctor"}
         </div>
         <div class="tabBodyItem">
-            <div id="html_4">
-                <iframe id="myiframe2" align="center" width="100%" height="2200px" src="/index/innovation/study.html" frameborder="no"
-                        border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-            </div>
+            {include file="innovation:study"}
         </div>
         <div class="tabBodyItem">
-            <div id="html_3">
-                <iframe id="myiframe3" align="center" width="100%" height="2200px" src="/index/innovation/jobs.html" frameborder="no"
-                        border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-            </div>
+            {include file="innovation:jobs"}
         </div>
-        <div class="tabBodyItem">
-           
+        <div class="tabBodyItem">           
             {include file="innovation:gains"}
         </div>
     </div>
 </div>
 </body>
 <script src="/static/index/js/product.js" type="text/javascript"></script>
-<script type="text/javascript">
-    var ifm= document.getElementById("myiframe");
-    var ifm2= document.getElementById("myiframe2");
-    var ifm3= document.getElementById("myiframe3");
-
-ifm.height=document.documentElement.clientHeight;
-ifm2.height=document.documentElement.clientHeight;
-ifm3.height=document.documentElement.clientHeight;
-</script>
 </html>
 {include file="public:foot"}

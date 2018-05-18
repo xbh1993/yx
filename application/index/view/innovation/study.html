@@ -12,55 +12,33 @@
     <div class="aa">
     <div class="pnavtopl">
         <div class="tabItemContainers">
-            <li><a class="tabItemCurrents">扬翔研究院</a></li>
+            <li><a>扬翔研究院</a></li>
             <li><a>研究成果</a></li>
             <li><a>科研所团队成员</a></li>
         </div>
     </div>
     <div class="pnavtopr">
         <div class="tabBodyContainers">
-            <div class="tabBodyItems tabBodyCurrents">
+            <div class="tabBodyItems">
                 <div class="sumname">扬翔研究院简介</div>
-                {$info.content}
+                {$sinfo.content}
             </div>
         </div>
         <div class="tabBodyContainers">
             <div class="tabBodyItems">
                 <div class="sumname">研究成果</div>
-                    <div class="docon">
-                    {volist name="list1" id="vo"}
-                    <div class="donav">
-                        <div class="donav_con">
-                            <div  class="donav_texta">{$vo.title}</div>
-                            <div class="donav_namea">{$vo.name}</div>
-                            <div class="donav_mms">{$vo.describe}</div>
-                        </div>
-                        <div class="docolor"></div>
+                    <div class="docon s1">
+                    
                     </div>
-                    {/volist}
-                    {$page1}
-                </div>
                 
             </div>
         </div>
         <div class="tabBodyContainers">
             <div class="tabBodyItems">
                 <div class="sumname">科研所团队成员</div>
-                <div class="studyt" style="margin-top: 20px;">
-                    {volist name="list2" id="vo"}
-                    <div class="studytcon">
-                        <img src="{$vo.image}">
-                        <p class="studyt_name">{$vo.title}</p>
-                        <p class="yuanshi">{$vo.name}</p>
-                        <div class="studyt_text">
-                            {$vo.describe}
-                        </div>
-                    </div>
-                    {/volist}
-                    {$page2}
+                <div class="studyt s2" style="margin-top: 20px;">
+                    
                 </div>
-                
-                
             </div>
 
         </div>
@@ -71,4 +49,50 @@
 
 </body>
 <script language="Javascript" type="text/Javascript" src="/static/index/js/feed.js"></script>
+<script type="text/javascript">
+    function AjaxPage(page){
+        $.ajax({
+            url:'ajaxListAction',
+            type:'post',
+            dataType:'json',
+            data: {apage:page,table:'project',bid:0},
+            success:function(data){
+                var json=data.list.data;
+                $(".s1").empty();
+                for (var i = 0; i <json.length; i++) {
+                    $(".s1").append('<div class="donav"><div class="donav_con"><div  class="donav_texta">'+json[i].title+'</div><div class="donav_namea">'+json[i].name+'</div><div class="donav_mms">'+json[i].describe+'</div></div><div class="docolor"></div></div>');
+                }                
+                $(".s1").append('<div style="clear: both"></div>');
+                $(".s1").append(data.page);                
+                $(".s1 .pagination").find('a').each(function(){
+                    var href=$(this).attr('href').substring(0,22);
+                    $(this).attr("href",href);
+                });
+            }
+        });
+    }
+    function AjaxPage2(page){
+        $.ajax({
+            url:'ajaxListAction',
+            type:'post',
+            dataType:'json',
+            data: {apage:page,table:'member',bid:0},
+            success:function(data){
+                var json=data.list.data;
+                $(".s2").empty();
+                for (var i = 0; i <json.length; i++) {
+                    $(".s2").append('<div class="studytcon"><img src="'+json[i].image+'"><p class="studyt_name">'+json[i].title+'</p><p class="yuanshi">'+json[i].name+'</p><div class="studyt_text">'+json[i].describe+'</div></div>');
+                }                
+                $(".s2").append('<div style="clear: both"></div>');
+                $(".s2").append(data.page);                
+                $(".s2 .pagination").find('a').each(function(){
+                    var href=$(this).attr('href').substring(0,22);
+                    $(this).attr("href",href);
+                });
+            }
+        });
+    }
+    AjaxPage(1);
+    AjaxPage2(1);
+</script>
 </html>

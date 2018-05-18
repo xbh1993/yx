@@ -75,7 +75,7 @@ function array2level($array, $pid = 0, $level = 1)
  * @param string $child_key_name 子元素键名
  * @return array|bool
  */
-function array2tree(&$array, $pid_name = 'pid', $child_key_name = 'children')
+function array2tree(&$array, $pid_name = 'pid', $child_key_name = 'children'){
     $counter = array_children_count($array, $pid_name);
     if (!isset($counter[0]) || $counter[0] == 0) {
         return $array;

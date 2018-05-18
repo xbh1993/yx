@@ -23,15 +23,16 @@
 }
 
 .tab {
-    padding: 2px 14px;
-    float: right;
+    width: 110px;
+    height: 30px;
+    line-height: 30px;
     text-align: center;
     margin-top: 38px;
     border: 1px #e6e6e6 solid;
     border-radius: 12px;
     position: relative;
     bottom: 105px;
-    right: 50px;
+    left: 1730px;
 }
 
 .tab a {
@@ -308,7 +309,8 @@ a {
     list-style: none;
     text-align: center;
     float: left;
-    margin-left: 30px;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .tabfenItemContainer > li > a {
@@ -578,5 +580,69 @@ a {
 .pagination li a:hover{
     color: #ff6600;
 }
+
+/*!**!*/
+/*.fadeInLeft {*/
+    /*animation: fadeInLeft;*/
+/*}*/
+/*.fadeInDown {*/
+    /*animation: fadeInDown;*/
+/*}*/
+/*.fadeInUp {*/
+    /*animation: fadeInUp;*/
+/*}*/
+/*.fadeInRight {*/
+    /*animation: fadeInRight;*/
+/*}*/
+/*.TwoAnimated {*/
+    /*animation-duration: 1s;*/
+    /*animation-fill-mode: both;*/
+/*}*/
+/*@keyframes fadeInDown{*/
+    /*0% {*/
+        /*opacity: 0;*/
+        /*transform: translateY(-50px);*/
+    /*}*/
+    /*100% {*/
+        /*opacity: 1;*/
+        /*transform: translateY(0);*/
+    /*}*/
+/*}*/
+/*@keyframes fadeInLeft{*/
+    /*0% {*/
+        /*opacity: 0;*/
+        /*transform: translateX(-50px);*/
+    /*}*/
+    /*100% {*/
+        /*opacity: 1;*/
+        /*transform: translateX(0);*/
+    /*}*/
+/*}*/
+/*@keyframes fadeInUp{*/
+    /*0% {*/
+        /*opacity: 0;*/
+        /*transform: translateY(50px);*/
+    /*}*/
+    /*100% {*/
+        /*opacity: 1;*/
+        /*transform: translateY(0);*/
+    /*}*/
+/*}*/
+/*@keyframes fadeInRight{*/
+    /*0% {*/
+        /*opacity: 0;*/
+        /*transform: translateX(50px);*/
+    /*}*/
+    /*100% {*/
+        /*opacity: 1;*/
+        /*transform: translateX(0);*/
+    /*}*/
+/*}*/
+
+
+
+
+
+
 
 

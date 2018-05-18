@@ -30,7 +30,7 @@
              <div class="tatnav">
             {volist name="talent" id="vo"}
             <div class="tatnava">
-                <img class="tatnava_img" src="{$vo.thumb}">
+                <img class="tatnava_img" src="{$vo.thumb|default=''}">
                 <div class="tatnava_title">{$vo.title}</div>
                 <div class="tatnava_text">{$vo.introduction}</div>
             </div>

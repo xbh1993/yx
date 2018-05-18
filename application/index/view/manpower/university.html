@@ -82,16 +82,46 @@
                     </div>
                 </div>
                 <div class="sumname">图 片 展 示</div>
-                <div class="display">
-                    {volist name="photo1" id="vo"}
-                    <img src="{$vo.src}">
-                    {/volist}
-                </div>
+                    <div class="fengcai" id="item_item" style="width: 1200px;overflow: hidden;height: 336px">
+                        <div class="item4_1" style="width: 800%;">
+                            <div id="item4_a" style="height:236px;float: left;display: flex;padding-top: 50px">
+                                {volist name="photo1['img_url']" id="vo" empty="暂时没有数据"}
+                                <div style="margin:0 23px">
+                                    <img style="width: 354px;height: 236px;" src="{$vo}">
+                                </div>
+                                {/volist}
+                            </div>
+                            <div id="item4_c" style="height: 236px;float: left;display: flex">
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
     <div style="clear: both"></div>
 </div>
+<script>
+    var speed = 15; //数字越大速度越慢
+    var tab = document.getElementById("item_item");
+    var tab1 = document.getElementById("item4_a");
+    var tab2 = document.getElementById("item4_c");
+    var html = $('#item4_a').html();
+    $('#item4_c').html(html)
+    function Marquee() {
+        if (tab2.offsetWidth - tab.scrollLeft <= 0)
+            tab.scrollLeft -= tab1.offsetWidth
+        else {
+            tab.scrollLeft++;
+        }
+    }
+    var MyMar = setInterval(Marquee, speed);
+    tab.onmouseover = function () {
+        clearInterval(MyMar)
+    };
+    tab.onmouseout = function () {
+        MyMar = setInterval(Marquee, speed)
+    };
+</script>
 </body>
 <script language="Javascript" type="text/Javascript" src="/static/index/js/feed.js"></script>
 </html>

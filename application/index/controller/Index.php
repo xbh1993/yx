@@ -19,6 +19,7 @@ class Index extends Controller
     }
     public function index()
     {
+
           //公司简介
           $info=Db::name('company')->find(1);
           $this->assign('profile',$info);

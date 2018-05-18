@@ -327,10 +327,11 @@
                                     </a>
 
                                      <ul class="treeview-menu">
+                                        
                                         {foreach name="vo['children']" item="v"}
                                               <li style="margin-left: 15px" ><a href="{:url($v.name)}"><i class="fa fa-circle-o"></i>{$v.title}                                             
                                               </a>
-                                                {if condition="isset($v['children'])"}
+                                              {if condition="isset($v['children']) and $vo.id!=1"}
                                               <ul class="treeview-menu sign">
                                                {foreach name="v['children']" item="k"}
                                                <li style="margin-left: 15px" ><a href="{:url($k.name)}"><i class="fa fa-circle-o"></i>{$k.title}</a>

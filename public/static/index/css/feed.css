@@ -39,6 +39,7 @@
     line-height: 20px;
     font-size: 20px;
     border-left: 5px #ec6f01 solid;
+    font-weight: bold;
 }
 
 .flie {
@@ -185,7 +186,7 @@
 }
 
 .donav_con {
-    width: 540px;
+    width: 400px;
     height: 223px;
     margin: auto;
 }
@@ -233,7 +234,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
 }
 .donav_texta {
     line-height: 50px;
@@ -351,7 +352,7 @@
 }
 
 .gainscom_text {
-    height: 180px;
+    /*height: 180px;*/
     font-size: 14px;
     line-height: 30px;
     margin-top: 30px;
@@ -360,7 +361,7 @@
     word-break: break-all;
     overflow: hidden;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 6;
+    -webkit-line-clamp: 3;
 }
 
 .gainscom_more {

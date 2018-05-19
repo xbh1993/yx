@@ -65,10 +65,10 @@
 
 .school_topa {
     width: 1400px;
-    height: 140px;
     line-height: 140px;
     font-size: 24px;
     margin: auto;
+    font-weight: bold;
 }
 
 .school_nav {
@@ -101,6 +101,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    font-weight: bold;
 }
 
 .school_title {
@@ -114,7 +115,7 @@
 .school_texts {
     font-size: 14px;
     line-height: 30px;
-    color: #555;
+    color: #757575;
     display: -webkit-box;
     word-break: break-all;
     text-overflow: ellipsis;
@@ -149,7 +150,9 @@
     font-size: 16px;
     color: #ff6600;
 }
-
+.school_more a{
+    color: #ff6600;
+}
 .school_names {
     line-height: 70px;
     font-size: 20px;
@@ -157,12 +160,13 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    font-weight: bold;
 }
 
 .school_textsa {
     font-size: 14px;
     line-height: 30px;
-    color: #555;
+    color: #757575;
     display: -webkit-box;
     word-break: break-all;
     text-overflow: ellipsis;
@@ -179,6 +183,7 @@
     border-bottom: 1px #e3e3e3 solid;
     font-size: 24px;
     margin: auto;
+    font-weight: bold;
 }
 
 .tesetext {
@@ -189,7 +194,7 @@
     padding-right: 70px;
     padding-bottom: 70px;
     margin: 50px auto;
-    color: #555;
+    color: #757575;
 }
 
 .train_images {

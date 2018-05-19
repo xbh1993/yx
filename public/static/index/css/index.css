@@ -27,7 +27,7 @@
     height: 30px;
     line-height: 30px;
     text-align: center;
-    margin-top: 38px;
+    margin-top: 46px;
     border: 1px #e6e6e6 solid;
     border-radius: 12px;
     position: relative;
@@ -44,8 +44,8 @@
 }
 
 .nav {
-    margin-left: 20px;
-    margin-top: 28px;
+    margin-right: 20px;
+    margin-top: 46px;
     float: right;
     display: flex;
     justify-content: center;
@@ -67,10 +67,12 @@
     text-decoration: none;
 }
 
+.nav ul li a:hover {
+    color: #ff6600;
+}
 .nav ul li:hover {
     color: #ff6600;
 }
-
 .nav ul li ul {
     position: absolute;
     display: none;
@@ -131,7 +133,8 @@
 
 .onyx_text {
     line-height: 36px;
-    font-size: 24px;
+    font-size: 36px;
+    margin-top: 20px;
 }
 
 .onyx_content {
@@ -146,7 +149,7 @@
 }
 
 .onyx_detail {
-    width: 600px;
+    width: 800px;
     padding: 30px;
 }
 
@@ -156,23 +159,24 @@
 }
 
 .onyx_img {
-    width: 740px;
-    height: 470px;
+    width: 520px;
+    height: 390px;
 }
 
 .onyx_name {
     font-size: 20px;
     line-height: 50px;
     margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .onyx_em {
-    height: 305px;
+    height: 240px;
     line-height: 30px;
     font-size: 14px;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: #555;
+    color: #757575;
 }
 
 .onyx_more {
@@ -182,7 +186,7 @@
     border: #e6e6e6 1px solid;
     color: #ff6600;
     text-align: center;
-    margin-top: 40px;
+    margin-top: 35px;
 }
 
 .onyx_more:hover {
@@ -196,7 +200,6 @@ a {
 /*扬翔分公司分布*/
 .buted {
     width: 100%;
-    height: 780px;
     padding-bottom: 10px;
 }
 
@@ -307,7 +310,6 @@ a {
 .tabfenItemContainer > li {
     text-align: center;
     list-style: none;
-    text-align: center;
     float: left;
     margin-left: 15px;
     margin-right: 15px;
@@ -382,7 +384,6 @@ a {
 .goodsl img {
     width: 160px;
     height: 160px;
-    border-radius: 50%;
 }
 
 .jies {
@@ -393,12 +394,13 @@ a {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-weight: bold;
 }
 
 .goods_span {
     width: 220px;
     line-height: 30px;
-    color: #555;
+    color: #757575;
     font-size: 16px;
     margin: auto;
     display: -webkit-box;
@@ -452,6 +454,7 @@ a {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-weight: bold;
 
 }
 
@@ -464,6 +467,7 @@ a {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+    color: #757575;
 }
 
 /*底部*/

@@ -13,7 +13,7 @@
     font-size: 16px;
     position: fixed;
     top: 0;
-    z-index: 999;
+    z-index: 1;
 }
 
 .contop {
@@ -23,11 +23,11 @@
 }
 
 .tab {
-    width: 110px;
-    height: 30px;
-    line-height: 30px;
+    width: 100px;
+    height: 25px;
+    line-height: 25px;
     text-align: center;
-    margin-top: 46px;
+    margin-top: 50px;
     border: 1px #e6e6e6 solid;
     border-radius: 12px;
     position: relative;

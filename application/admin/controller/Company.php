@@ -119,19 +119,51 @@ class Company extends Main{
 
     //公司文化
     function  culture(){
-        if(request()->isPost()){
-            $d=request()->post();
-
-            if(!empty($d) && is_array($d)){
-                Db::name('company')->where('status',4)->update($d);
-                return json_code(1,'success');
-            }
-        }
-        $info=Db::name('company')->where('status',4)->find();
+        $list=Db::name('publiclist')->where(['status'=>1,'coid'=>9])->order('sys_order')->select();
+        $this->assign('list',$list);
+        return $this->fetch();
+    }
+    function editculture(){
+        $info=Db::name('publiclist')->where('id',input('get.id'))->find();
         $this->assign('info',$info);
         return $this->fetch();
     }
-
+    function upload_file(){
+        upload_file();
+    }
+    function addupdate_culture() {      
+        $data=input('post.');
+        $data["coid"]=9;
+        if ($this->request->isPost()) {
+                    unset($data['id']);
+                    unset($data['file']);
+                    if($_POST["id"]!=''){
+                         if (Db::name('publiclist')->where('id', $_POST["id"])->update($data) !== false) {
+                                $this->success('修改成功');
+                            } else {
+                                $this->error('修改失败');
+                            }
+                    }else{                          
+                        $success=Db::name('publiclist')->insert($data);
+                        if($success){
+                            $this->success('新增成功');
+                            //$this->redirect('/admin/login/index');
+                        }else{
+                            $this->error('新增失败');
+                        }                               
+                }           
+        } 
+        
+    }
+    //删除公司文化
+    function  deleteculture(){
+        if(request()->isGet()){
+            $d=request()->get();
+            if(empty($d) && !isset($d['id'])) return json_code(0,'删除失败');
+            $res=Db::name('publiclist')->delete($d['id']);
+            return json_code(1,'删除成功');
+        }
+    }
 
     //发z展历程
     function  history(){

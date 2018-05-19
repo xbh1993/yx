@@ -108,12 +108,12 @@
     height: 250px;
 }
 .newnames{
-    font-size: 20px;line-height: 80px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;
+    font-size: 20px;line-height: 80px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;font-weight: bold;
 }
 .newtexts{
     font-size: 14px;
     line-height: 30px;
-    color: #555;
+    color: #757575;
     display: -webkit-box;
     word-break: break-all;
     text-overflow: ellipsis;
@@ -149,6 +149,7 @@
 
 .pdbiaoti{
     font-size: 50px;
+    font-weight: bold;
 }
 .vioname{
     line-height: 80px;
@@ -156,16 +157,18 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-weight: bold;
 }
 .pdnei{
     line-height: 30px;
     font-size: 14px;
-    color: #555;
+    color: #757575;
     display: -webkit-box;
     word-break: break-all;
     text-overflow: ellipsis;
     overflow: hidden;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
+
 }
 

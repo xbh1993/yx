@@ -8,7 +8,7 @@
     width: 1200px;
     padding-top: 60px;
     padding-bottom: 50px;
-
+    font-weight: bold;
     border-bottom: 1px #e3e3e3 solid;
     font-size: 20px;
 }
@@ -21,11 +21,9 @@
 
 .sumtext {
     width: 1200px;
-    /*height: auto;*/
     line-height: 30px;
     margin-top: 50px;
-    text-indent: 2em;
-    color: #555;
+    color: #757575;
 }
 
 .fenmap {
@@ -37,7 +35,6 @@
     width: 1200px;
     height: 336px;
     overflow: hidden;
-    margin-top: 50px;
 }
 
 .sumtwa {
@@ -84,10 +81,11 @@
     text-align: center;
     font-size: 32px;
     line-height: 80px;
+    font-weight: bold;
 }
 
 .cutexts {
-    color: #555;
+    color: #757575;
     font-size: 16px;
     line-height: 30px;
 }

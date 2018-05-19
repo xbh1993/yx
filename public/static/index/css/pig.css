@@ -212,6 +212,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    font-weight: bold;
 }
 .pigtitle{
     line-height: 60px;font-size: 18px;
@@ -220,7 +221,7 @@
     text-overflow: ellipsis;
 }
 .pigtexts{
-    font-size: 14px;line-height: 20px;color: #555;
+    font-size: 14px;line-height: 20px;color: #757575;
     display: -webkit-box;
     word-break: break-all;
     text-overflow: ellipsis;

@@ -10,7 +10,7 @@
 </div>
 </body>
 <script type="text/javascript">
-	function AjaxPage(page){
+	function AjaxPageg(page){
         $.ajax({
             url:'ajaxListAction',
             type:'post',
@@ -26,12 +26,12 @@
                 $(".gainstop").append(data.page);
                 $(".gainstop").append('<div style="clear: both"></div>');
                 $(".gainstop .pagination").find('a').each(function(){
-                    var href=$(this).attr('href').substring(0,22);
+                    var href=$(this).attr('href').substring(0,22).replace('AjaxPage','AjaxPageg');
                     $(this).attr("href",href);
                 });
             }
         });
     }
-    AjaxPage(1);
+    AjaxPageg(1);
 </script>
 </html>

@@ -70,6 +70,10 @@ class Into extends Controller
         $lits2['data']=unserialize($lits2['data']);
         $this->assign('lits1',$lits1);
         $this->assign('lits2',$lits2);
+
+        //公司文化
+        $clist=Db::name('publiclist')->where(['coid'=>9,'status'=>1])->order('sys_order asc')->select();
+        $this->assign('clist',$clist);
         return $this->fetch();
     }
     public function summary(){

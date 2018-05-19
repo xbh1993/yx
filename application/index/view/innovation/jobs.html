@@ -51,7 +51,7 @@
 </body>
 <script language="Javascript" type="text/Javascript" src="/static/index/js/feed.js"></script>
 <script type="text/javascript">
-    function AjaxPage(page){
+    function AjaxPagej1(page){
         $.ajax({
             url:'ajaxListAction',
             type:'post',
@@ -66,13 +66,13 @@
                 $(".j1").append('<div style="clear: both"></div>');
                 $(".j1").append(data.page);                
                 $(".j1 .pagination").find('a').each(function(){
-                    var href=$(this).attr('href').substring(0,22);
+                    var href=$(this).attr('href').substring(0,22).replace('AjaxPage','AjaxPagej1');
                     $(this).attr("href",href);
                 });
             }
         });
     }
-    function AjaxPage2(page){
+    function AjaxPagej2(page){
         $.ajax({
             url:'ajaxListAction',
             type:'post',
@@ -87,13 +87,13 @@
                 $(".j2").append('<div style="clear: both"></div>');
                 $(".j2").append(data.page);                
                 $(".j2 .pagination").find('a').each(function(){
-                    var href=$(this).attr('href').substring(0,22);
+                    var href=$(this).attr('href').substring(0,22).replace('AjaxPage','AjaxPagej2');
                     $(this).attr("href",href);
                 });
             }
         });
     }
-    AjaxPage(1);
-    AjaxPage2(1);
+    AjaxPagej1(1);
+    AjaxPagej2(1);
 </script>
 </html> 

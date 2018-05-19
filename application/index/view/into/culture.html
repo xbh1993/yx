@@ -6,32 +6,13 @@
     </div>
     <div class="cubacolor">
         <div class="cunav">
+            {volist name="clist" id="vo"}
             <div class="cunava">
-                <img class="cunava_img" src="/static/index/images/wenhua1.png">
-                <p style="line-height: 70px;font-size: 20px;text-align: center;">核心价值观</p>
-                <div class="cunavtext">致力于在母仔猪领域为中小养殖户提供专业、稳定、高效的整体解决方案 。 为此公司投巨资建设扬翔地方猪创新研究为此公司投巨资建设扬翔地方猪创新研究院院</div>
+                <img class="cunava_img" src="{$vo.thumb}">
+                <p style="line-height: 70px;font-size: 20px;text-align: center;">{$vo.title}</p>
+                <div class="cunavtext">{$vo.content}</div>
             </div>
-            <div class="cunava">
-                <img class="cunava_img" src="/static/index/images/wenhua2.png">
-                <p style="line-height: 70px;font-size: 20px;text-align: center;">扬翔使命</p>
-                <div class="cunavtext">致力于在母仔猪领域为中小养殖户提供专业、稳定、高效的整体解决方案 。 为此公司投巨资建设扬翔地方猪创新研究院</div>
-            </div>
-            <div class="cunava">
-                <img class="cunava_img" src="/static/index/images/wenhua3.png">
-                <p style="line-height:70px;font-size: 20px;text-align: center;">质量方针</p>
-                <div class="cunavtext">致力于在母仔猪领域为中小养殖户提供专业、稳定、高效的整体解决方案 。 为此公司投巨资建设扬翔地方猪创新研究院</div>
-            </div>
-            <div class="cunava">
-                <img class="cunava_img" src="/static/index/images/wenhua4.png">
-                <p style="line-height: 70px;font-size: 20px;text-align: center;">健康理念</p>
-                <div class="cunavtext">致力于在母仔猪领域为中小养殖户提供专业、稳定、高效的整体解决方案 。 为此公司投巨资建设扬翔地方猪创新研究院</div>
-            </div>
-            <div class="cunava">
-                <img class="cunava_img" src="/static/index/images/wenhua5.png">
-                <p style="line-height: 70px;font-size: 20px;text-align: center;">经营宗旨</p>
-                <div class="cunavtext">致力于在母仔猪领域为中小养殖户提供专业、稳定、高效的整体解决方案 。 为此公司投巨资建设扬翔地方猪创新研究院</div>
-            </div>
-
+            {/volist}
         </div>
     </div>
     <p style="text-align: center;font-size: 30px;line-height: 150px;">扬 翔 风 采</p>

@@ -36,7 +36,7 @@
 </body>
 <script language="Javascript" type="text/Javascript" src="/static/index/js/feed.js"></script>
 <script type="text/javascript">
-    function AjaxPage(page){
+    function AjaxPaged(page){
         $.ajax({
             url:'ajaxListAction',
             type:'post',
@@ -51,12 +51,12 @@
                 $(".d1").append('<div style="clear: both"></div>');
                 $(".d1").append(data.page);                
                 $(".d1 .pagination").find('a').each(function(){
-                    var href=$(this).attr('href').substring(0,22);
+                    var href=$(this).attr('href').substring(0,22).replace('AjaxPage','AjaxPaged');
                     $(this).attr("href",href);
                 });
             }
         });
     }
-    AjaxPage(1);
+    AjaxPaged(1);
 </script>
 </html>

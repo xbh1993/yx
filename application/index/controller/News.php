@@ -13,6 +13,12 @@ class news extends Controller
 {
     public function _initialize()
     {
+        $param=request()->param();
+        if(isset($param['data_type'])){
+            $this->assign('data_type',$param['data_type']);
+        }else{
+            $this->assign('data_type','article');
+        }
         $banner=Db::name('system')->find(4);
         $banner=unserialize($banner['value']);
         $this->assign('bannerinfo',$banner);
@@ -30,7 +36,7 @@ class news extends Controller
           $where=['status'=>1];
       }
       if (!empty($page)) {
-         $rel = Db::name($table)->where($where)->paginate(10,false,[
+         $rel = Db::name($table)->where($where)->order('create_time desc')->paginate(10,false,[
             'type'     => 'Bootstrap',
             'var_page' => 'page',
             'page' => $page,

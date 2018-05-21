@@ -12,33 +12,33 @@
 <div id="TabMain">
     <div class="underline">
         <div class="tabItemContainer">
-            <li><a class="tabItemCurrent">博士后创新实验基地</a></li>
+            <li><a class="{if condition="$data_type eq 'doctor'"}tabItemCurrent{/if}">博士后创新实验基地</a></li>
             <div class="lixian"></div>
-            <li><a>扬翔研究院</a></li>
+            <li><a class="{if condition="$data_type eq 'study'"}tabItemCurrent{/if}">扬翔研究院</a></li>
             <div class="lixian"></div>
-            <li><a>院士工作站</a></li>
+            <li><a class="{if condition="$data_type eq 'jobs'"}tabItemCurrent{/if}">院士工作站</a></li>
             <div class="lixian"></div>
-            <li><a>创新与研究成果</a></li>
+            <li><a class="{if condition="$data_type eq 'gains'"}tabItemCurrent{/if}">创新与研究成果</a></li>
         </div>
     </div>
     <div class="tabBodyContainer">
-        <div class="tabBodyItem tabBodyCurrent">
+        <div class="tabBodyItem {if condition="$data_type eq 'doctor'"}tabBodyCurrent{/if}">
             <!--博士后创新实验基地-->
             {include file="innovation:doctor"}
         </div>
-        <div class="tabBodyItem">
+        <div class="tabBodyItem {if condition="$data_type eq 'study'"}tabBodyCurrent{/if}">
             <!--杨翔研究院-->
             {include file="innovation:study"}
         </div>
-        <div class="tabBodyItem">
+        <div class="tabBodyItem {if condition="$data_type eq 'jobs'"}tabBodyCurrent{/if}">
             <!--院士工作站-->
             {include file="innovation:jobs"}
         </div>
-        <div class="tabBodyItem">
+        <div class="tabBodyItem {if condition="$data_type eq 'gains'"}tabBodyCurrent{/if}">
              <!--创新与研究成果-->
             {include file="innovation:gains"}
         </div>
     </div>
 </div>
-<script src="/static/index/js/product.js" type="text/javascript"></script>
+<script src="/static/index/js/innovation.js" type="text/javascript"></script>
 {include file="public:foot"}

@@ -12,20 +12,20 @@
 <div id="TabMain">
     <div class="underline">
         <div class="tabItemContainer">
-            <li><a class="tabItemCurrent">人才理念</a></li>
+            <li><a class="{if condition="$data_type eq 'manpower'"}tabItemCurrent{/if}">人才理念</a></li>
             <div class="lixian"></div>
-            <li><a>校企合作</a></li>
+            <li><a class="{if condition="$data_type eq 'school'"}tabItemCurrent{/if}">校企合作</a></li>
             <div class="lixian"></div>
-            <li><a>培训特色</a></li>
+            <li><a class="{if condition="$data_type eq 'train'"}tabItemCurrent{/if}">培训特色</a></li>
             <div class="lixian"></div>
-            <li><a>培训信息</a></li>
+            <li><a class="{if condition="$data_type eq 'train_info'"}tabItemCurrent{/if}">培训信息</a></li>
             <div class="lixian"></div>
-            <li><a>扬翔大学</a></li>
+            <li><a class="{if condition="$data_type eq 'university'"}tabItemCurrent{/if}">扬翔大学</a></li>
         </div>
     </div>
     <div class="tabBodyContainer">
         <!--人才理念-->
-        <div class="tabBodyItem tabBodyCurrent">
+        <div class="tabBodyItem {if condition="$data_type eq 'manpower'"}tabBodyCurrent{/if} ">
            <div class="tatcon">
              <div class="tatnav">
             {volist name="talent" id="vo"}
@@ -39,24 +39,24 @@
             </div>  
        </div>
        <!--校企合作-->
-        <div class="tabBodyItem">
+        <div class="tabBodyItem {if condition="$data_type eq 'school'"}tabBodyCurrent{/if}">
             {include file="manpower:school"}
         </div>
         <!--培训特色-->
-        <div class="tabBodyItem">
+        <div class="tabBodyItem {if condition="$data_type eq 'train'"}tabBodyCurrent{/if}">
             {include file="manpower:train"}   
         </div>
         <!--培训信息-->
-        <div class="tabBodyItem">
+        <div class="tabBodyItem {if condition="$data_type eq 'train_info'"}tabBodyCurrent{/if}">
             {include file="manpower:train_info"}
         </div>
         <!--扬翔大学-->
-        <div class="tabBodyItem">
+        <div class="tabBodyItem {if condition="$data_type eq 'university'"}tabBodyCurrent{/if}">
             {include file="manpower:university"}
         </div>
     </div>
 </div>
 </body>
-<script src="/static/index/js/product.js" type="text/javascript"></script>
+<script src="/static/index/js/innovation.js" type="text/javascript"></script>
 </html>
 {include file="public:foot"}

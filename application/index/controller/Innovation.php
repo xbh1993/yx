@@ -12,6 +12,12 @@ class Innovation extends Controller
 {
     public function _initialize()
     {
+        $param=request()->param();
+        if(isset($param['data_type'])){
+            $this->assign('data_type',$param['data_type']);
+        }else{
+            $this->assign('data_type','doctor');
+        }
         $banner=Db::name('system')->find(4);
         $banner=unserialize($banner['value']);
         $this->assign('bannerinfo',$banner);

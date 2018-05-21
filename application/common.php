@@ -12,6 +12,7 @@
 // 应用公共文件
 // 应用公共文件
 use think\Db;
+
 function isMobile()
 {
     if (isset($_SERVER['HTTP_X_WAP_PROFILE'])) {
@@ -33,10 +34,11 @@ function isMobile()
     }
     return false;
 }
+
 /**
  * 子元素计数器
  * @param array $array
- * @param int   $pid
+ * @param int $pid
  * @return array
  */
 function array_children_count($array, $pid)
@@ -49,11 +51,12 @@ function array_children_count($array, $pid)
     }
     return $counter;
 }
+
 /**
  * 数组层级缩进转换
  * @param array $array 源数组
- * @param int   $pid
- * @param int   $level
+ * @param int $pid
+ * @param int $level
  * @return array
  */
 function array2level($array, $pid = 0, $level = 1)
@@ -62,20 +65,22 @@ function array2level($array, $pid = 0, $level = 1)
     foreach ($array as $v) {
         if ($v['pid'] == $pid) {
             $v['level'] = $level;
-            $list[]     = $v;
+            $list[] = $v;
             array2level($array, $v['id'], $level + 1);
         }
     }
     return $list;
 }
+
 /**
  * 构建层级（树状）数组
- * @param array  $array          要进行处理的一维数组，经过该函数处理后，该数组自动转为树状数组
- * @param string $pid_name       父级ID的字段名
+ * @param array $array 要进行处理的一维数组，经过该函数处理后，该数组自动转为树状数组
+ * @param string $pid_name 父级ID的字段名
  * @param string $child_key_name 子元素键名
  * @return array|bool
  */
-function array2tree(&$array, $pid_name = 'pid', $child_key_name = 'children'){
+function array2tree(&$array, $pid_name = 'pid', $child_key_name = 'children')
+{
     $counter = array_children_count($array, $pid_name);
     if (!isset($counter[0]) || $counter[0] == 0) {
         return $array;
@@ -96,6 +101,51 @@ function array2tree(&$array, $pid_name = 'pid', $child_key_name = 'children'){
     }
     return $tree;
 }
+
+
+//function actionClassData($data, $pid = 0)
+//{
+//    $new_data = array();
+//    $arr = array();
+//    foreach ($data as $key => $val) {
+//        if ($val['pid'] == $pid) {
+//            $arr = $val;
+//            unset($data[$key]);
+//            $arr1 = actionClassData($data, $arr['id']);
+//            $arr['list'] = $arr1;
+//            $new_data[] = $arr;
+//        }
+//    }
+//    return $new_data;
+//}
+
+function array_to_tree1($list, $pid = 0)
+{
+    $new_lists=[];
+    foreach ($list as $k=>$v){
+        if($v['pid']==$pid){
+            $v['children']=array_to_tree1($list,$v['id']);
+            $new_lists[]=$v;
+        }
+    }
+    return $new_lists;
+
+}
+
+
+
+    function digui($n){
+       if($n==1){
+           return 1;
+       }else{
+           return digui($n-1)*$n;
+       }
+    }
+
+
+
+
+
 /**
  * 把元素插入到对应的父元素$child_key_name字段
  * @param        $parent
@@ -132,28 +182,29 @@ function check_mobile_number($mobile)
     return preg_match($reg, $mobile) ? true : false;
 }
 
-function check_env(){
+function check_env()
+{
     $items = array(
-        'os'      => array('操作系统', '不限制', '类Unix', PHP_OS, 'check'),
-        'php'     => array('PHP版本', '5.5', '5.5+', PHP_VERSION, 'check'),
-        'upload'  => array('附件上传', '不限制', '2M+', '未知', 'check'),
-        'gd'      => array('GD库', '2.0', '2.0+', '未知', 'check'),
-        'disk'    => array('磁盘空间', '100M', '不限制', '未知', 'check'),
+        'os' => array('操作系统', '不限制', '类Unix', PHP_OS, 'check'),
+        'php' => array('PHP版本', '5.5', '5.5+', PHP_VERSION, 'check'),
+        'upload' => array('附件上传', '不限制', '2M+', '未知', 'check'),
+        'gd' => array('GD库', '2.0', '2.0+', '未知', 'check'),
+        'disk' => array('磁盘空间', '100M', '不限制', '未知', 'check'),
     );
 
     // PHP环境检测
-    if($items['php'][3] < $items['php'][1]){
+    if ($items['php'][3] < $items['php'][1]) {
         $items['php'][4] = 'times text-warning';
         session('error', true);
     }
 
     // 附件上传检测
-    if(@ini_get('file_uploads'))
+    if (@ini_get('file_uploads'))
         $items['upload'][3] = ini_get('upload_max_filesize');
 
     // GD库检测
     $tmp = function_exists('gd_info') ? gd_info() : array();
-    if(empty($tmp['GD Version'])){
+    if (empty($tmp['GD Version'])) {
         $items['gd'][3] = '未安装';
         $items['gd'][4] = 'times text-warning';
         session('error', true);
@@ -163,9 +214,9 @@ function check_env(){
     unset($tmp);
 
     // 磁盘空间检测
-    if(function_exists('disk_free_space')) {
-        $disk_size = floor(disk_free_space(INSTALL_APP_PATH) / (1024*1024));
-        $items['disk'][3] = $disk_size.'M';
+    if (function_exists('disk_free_space')) {
+        $disk_size = floor(disk_free_space(INSTALL_APP_PATH) / (1024 * 1024));
+        $items['disk'][3] = $disk_size . 'M';
         if ($disk_size < 100) {
             $items['disk'][4] = 'times text-warning';
             session('error', true);
@@ -179,24 +230,25 @@ function check_env(){
  * 目录，文件读写检测
  * @return array 检测数据
  */
-function check_dirfile(){
+function check_dirfile()
+{
     $items = array(
-        array('dir',  '可写', 'check', '../application'),
-        array('dir',  '可写', 'check', '../data'),
-        array('dir',  '可写', 'check', '../export'),
-        array('dir',  '可写', 'check', '../packet'),
-        array('dir',  '可写', 'check', '../plugins'),
-        array('dir',  '可写', 'check', './static'),
-        array('dir',  '可写', 'check', './uploads'),
-        array('dir',  '可写', 'check', '../runtime'),
-        array('dir',  '可写', 'check', '../store'),
+        array('dir', '可写', 'check', '../application'),
+        array('dir', '可写', 'check', '../data'),
+        array('dir', '可写', 'check', '../export'),
+        array('dir', '可写', 'check', '../packet'),
+        array('dir', '可写', 'check', '../plugins'),
+        array('dir', '可写', 'check', './static'),
+        array('dir', '可写', 'check', './uploads'),
+        array('dir', '可写', 'check', '../runtime'),
+        array('dir', '可写', 'check', '../store'),
     );
 
     foreach ($items as &$val) {
         $item = INSTALL_APP_PATH . $val[3];
-        if('dir' == $val[0]){
-            if(!is_writable($item)) {
-                if(is_dir($item)) {
+        if ('dir' == $val[0]) {
+            if (!is_writable($item)) {
+                if (is_dir($item)) {
                     $val[1] = '可读';
                     $val[2] = 'times text-warning';
                     session('error', true);
@@ -207,14 +259,14 @@ function check_dirfile(){
                 }
             }
         } else {
-            if(file_exists($item)) {
-                if(!is_writable($item)) {
+            if (file_exists($item)) {
+                if (!is_writable($item)) {
                     $val[1] = '不可写';
                     $val[2] = 'times text-warning';
                     session('error', true);
                 }
             } else {
-                if(!is_writable(dirname($item))) {
+                if (!is_writable(dirname($item))) {
                     $val[1] = '不存在';
                     $val[2] = 'times text-warning';
                     session('error', true);
@@ -230,21 +282,22 @@ function check_dirfile(){
  * 函数检测
  * @return array 检测数据
  */
-function check_func(){
+function check_func()
+{
     $items = array(
-        array('pdo','支持','check','类'),
-        array('pdo_mysql','支持','check','模块'),
-        array('fileinfo','支持','check','模块'),
-        array('curl','支持','check','模块'),
-        array('file_get_contents', '支持', 'check','函数'),
-        array('mb_strlen', '支持', 'check','函数'),
+        array('pdo', '支持', 'check', '类'),
+        array('pdo_mysql', '支持', 'check', '模块'),
+        array('fileinfo', '支持', 'check', '模块'),
+        array('curl', '支持', 'check', '模块'),
+        array('file_get_contents', '支持', 'check', '函数'),
+        array('mb_strlen', '支持', 'check', '函数'),
     );
 
     foreach ($items as &$val) {
-        if(('类'==$val[3] && !class_exists($val[0]))
-            || ('模块'==$val[3] && !extension_loaded($val[0]))
-            || ('函数'==$val[3] && !function_exists($val[0]))
-        ){
+        if (('类' == $val[3] && !class_exists($val[0]))
+            || ('模块' == $val[3] && !extension_loaded($val[0]))
+            || ('函数' == $val[3] && !function_exists($val[0]))
+        ) {
             $val[1] = '不支持';
             $val[2] = 'times text-warning';
             session('error', true);
@@ -259,8 +312,9 @@ function check_func(){
  * @param $config
  * @return array 配置信息
  */
-function write_config($config){
-    if(is_array($config)){
+function write_config($config)
+{
+    if (is_array($config)) {
         //读取配置内容
         $conf = file_get_contents(APP_PATH . 'install/data/database.tpl');
         // 替换配置项
@@ -269,7 +323,7 @@ function write_config($config){
         }
 
         //写入应用配置文件
-        if(file_put_contents(APP_PATH . 'database.php', $conf)){
+        if (file_put_contents(APP_PATH . 'database.php', $conf)) {
             show_msg('配置文件写入成功');
         } else {
             show_msg('配置文件写入失败！', 'error');
@@ -284,7 +338,8 @@ function write_config($config){
  * @param $db 数据库连接资源
  * @param string $prefix 表前缀
  */
-function create_tables($db, $prefix = ''){
+function create_tables($db, $prefix = '')
+{
     // 读取SQL文件
     $sql = file_get_contents(APP_PATH . 'install/data/dolphin.sql');
 
@@ -301,9 +356,9 @@ function create_tables($db, $prefix = ''){
     $i = 1;
     foreach ($sql as $value) {
         $value = trim($value);
-        if(empty($value)) continue;
-        $msg  = (int)($i/$all_table*100) . '%';
-        if(false !== $db->execute($value)){
+        if (empty($value)) continue;
+        $msg = (int)($i / $all_table * 100) . '%';
+        if (false !== $db->execute($value)) {
             show_progress($msg);
         } else {
             show_progress($msg, 'error');
@@ -318,7 +373,8 @@ function create_tables($db, $prefix = ''){
  * @param $db 数据库连接资源
  * @param string $prefix 表前缀
  */
-function update_tables($db, $prefix = ''){
+function update_tables($db, $prefix = '')
+{
     //读取SQL文件
     $sql = file_get_contents(APP_PATH . 'install/data/update.sql');
     $sql = str_replace("\r", "\n", $sql);
@@ -334,21 +390,21 @@ function update_tables($db, $prefix = ''){
     $msg = '';
     foreach ($sql as $value) {
         $value = trim($value);
-        if(empty($value)) continue;
-        if(substr($value, 0, 12) == 'CREATE TABLE') {
-            $msg  = (int)($i/$all_table*100) . '%';
-            if(($db->execute($value)) === false){
+        if (empty($value)) continue;
+        if (substr($value, 0, 12) == 'CREATE TABLE') {
+            $msg = (int)($i / $all_table * 100) . '%';
+            if (($db->execute($value)) === false) {
                 session('error', true);
             }
         } else {
-            if(substr($value, 0, 8) == 'UPDATE `') {
-                $msg  = (int)($i/$all_table*100) . '%';
-            } else if(substr($value, 0, 11) == 'ALTER TABLE'){
-                $msg  = (int)($i/$all_table*100) . '%';
-            } else if(substr($value, 0, 11) == 'INSERT INTO'){
-                $msg  = (int)($i/$all_table*100) . '%';
+            if (substr($value, 0, 8) == 'UPDATE `') {
+                $msg = (int)($i / $all_table * 100) . '%';
+            } else if (substr($value, 0, 11) == 'ALTER TABLE') {
+                $msg = (int)($i / $all_table * 100) . '%';
+            } else if (substr($value, 0, 11) == 'INSERT INTO') {
+                $msg = (int)($i / $all_table * 100) . '%';
             }
-            if(($db->execute($value)) === false){
+            if (($db->execute($value)) === false) {
                 session('error', true);
             }
         }
@@ -364,7 +420,8 @@ function update_tables($db, $prefix = ''){
  * 及时显示提示信息
  * @param  string $msg 提示信息
  */
-function show_msg($msg, $class = ''){
+function show_msg($msg, $class = '')
+{
     echo "<script type=\"text/javascript\">showmsg(\"{$msg}\", \"{$class}\")</script>";
     flush();
     ob_flush();
@@ -376,7 +433,8 @@ function show_msg($msg, $class = ''){
  * @param string $class
  * @author 蔡伟明 <314013107@qq.com>
  */
-function show_progress($msg, $class = ''){
+function show_progress($msg, $class = '')
+{
     echo "<script type=\"text/javascript\">show_progress(\"{$msg}\", \"{$class}\")</script>";
     flush();
     ob_flush();
@@ -388,20 +446,20 @@ function show_progress($msg, $class = ''){
  */
 function getCity($ip = '')
 {
-    if($ip == ''){
+    if ($ip == '') {
         $url = "http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json";
-        $ip=json_decode(file_get_contents($url),true);
+        $ip = json_decode(file_get_contents($url), true);
         $data = $ip;
-    }else{
-        $url="http://ip.taobao.com/service/getIpInfo.php?ip=".$ip;
-        $ip=json_decode(file_get_contents($url));   
-        if((string)$ip->code=='1'){
-           return false;
+    } else {
+        $url = "http://ip.taobao.com/service/getIpInfo.php?ip=" . $ip;
+        $ip = json_decode(file_get_contents($url));
+        if ((string)$ip->code == '1') {
+            return false;
         }
         $data = (array)$ip->data;
     }
-    
-    return $data;   
+
+    return $data;
 }
 //获取客户端真实IP
 function getClientIP()
@@ -420,39 +478,40 @@ function getClientIP()
     return $ip;
 }
 
-function json_code($code=0,$message="",$data=[]){
-    $data=['code'=>$code,'msg'=>$message,'data'=>$data];
+function json_code($code = 0, $message = "", $data = [])
+{
+    $data = ['code' => $code, 'msg' => $message, 'data' => $data];
     return exit(json_encode($data));
 }
 
 //上传图片
 function upload_file()
-{       
+{
     $filename = $_FILES['file']['name'];
     $filetype = $_FILES['file']['type'];
-    $filetmpname=$_FILES['file']['tmp_name'];
-    $filesize = $_FILES['file']['size']/1024/1024;
+    $filetmpname = $_FILES['file']['tmp_name'];
+    $filesize = $_FILES['file']['size'] / 1024 / 1024;
 
     $file = request()->file('file');
     $info = $file->validate([])->move(ROOT_PATH . 'public' . DS . 'uploads');
-    if ($info) {            
-        $msg=$info->getSaveName();
-        $result=array( 
-        'status'=>true, 
-        'filename'=>$filename, 
-        'filetype'=>$filetype,
-        '$filesize'=>round($filesize,2).'mb',
-        'filesrc'=>'/uploads/'.str_replace('\\','/',$msg)
-       ); 
-       echo  json_encode($result);
-    };    
+    if ($info) {
+        $msg = $info->getSaveName();
+        $result = array(
+            'status' => true,
+            'filename' => $filename,
+            'filetype' => $filetype,
+            '$filesize' => round($filesize, 2) . 'mb',
+            'filesrc' => '/uploads/' . str_replace('\\', '/', $msg)
+        );
+        echo json_encode($result);
+    };
 }
-function getserviceurl(){
-    $info=Db::name('content')->where('id',12)->find();
+function getserviceurl()
+{
+    $info = Db::name('content')->where('id', 12)->find();
     if (isset($info)) {
         return $info["content"];
-    }
-    else{
+    } else {
         return "";
     }
 }   

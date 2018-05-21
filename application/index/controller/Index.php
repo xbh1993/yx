@@ -40,10 +40,13 @@ class Index extends Controller
           $this->assign('news2',$news2);
         return $this->fetch();
     }
-    public function testsasas(){
-        dump(1213);
-        return $this->fetch();
+    public function texxx(){
+       $lists=Db::name('authRule')->select();
+       $arr=array_to_tree1($lists);
+       halt($arr);
     }
+
+
 
     public function getCompanyList(){
         $type=request()->post();

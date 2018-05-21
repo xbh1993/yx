@@ -16,6 +16,7 @@ class Details extends Controller
     public function _initialize(){
         $banner=Db::name('system')->find(4);
         $banner=unserialize($banner['value']);
+
         $this->bannerinfo=$banner;
     }
     public function details(){
@@ -31,6 +32,7 @@ class Details extends Controller
         return $this->fetch();
     }
     public function office(){
+        $this->assign('bannerinfo',$this->bannerinfo);
         return $this->fetch();
     }
     public function switchImg($table,$sign){

@@ -12,24 +12,24 @@
 <div id="TabMain">
     <div class="underline">
         <div class="tabItemContainer">
-            <li><a class="tabItemCurrent">扬翔新闻</a></li>
+            <li><a class="{if condition="$data_type eq 'article'"}tabItemCurrent{/if}">扬翔新闻</a></li>
             <div class="lixian"></div>
-            <li><a>扬翔视频</a></li>
+            <li><a class="{if condition="$data_type eq 'video'"}tabItemCurrent{/if}">扬翔视频</a></li>
             <div class="lixian"></div>
-            <li><a>媒体报道</a></li>
+            <li><a class="{if condition="$data_type eq 'media'"}tabItemCurrent{/if}">媒体报道</a></li>
         </div>
     </div>
     <div class="tabBodyContainer ">
         <!--扬翔新闻-->
-        <div class="tabBodyItem tabBodyCurrent">
+        <div class="tabBodyItem  {if condition="$data_type eq 'article'"}tabBodyCurrent{/if}">
                     
         </div>
         <!--视频-->
-        <div class="tabBodyItem">
+        <div class="tabBodyItem {if condition="$data_type eq 'video'"}tabBodyCurrent{/if}">
             
         </div>
         <!--媒体报道-->
-        <div class="tabBodyItem">
+        <div class="tabBodyItem {if condition="$data_type eq 'media'"}tabBodyCurrent{/if}">
             
         </div>       
     </div>

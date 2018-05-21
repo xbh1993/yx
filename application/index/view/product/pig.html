@@ -16,27 +16,23 @@
         <div id="TabMain">
             <div class="underline">
             <div class="tabItemContainer">
-              {volist name="list" id="vo"}
-              {if condition="$i==1"}
-              <li><a data-id="{$vo.Id}"  class="tabItemCurrent">{$vo.title}</a></li>
-              {else}
-              <div class="lixian"></div>
-              <li><a data-id="{$vo.Id}">{$vo.title}</a></li>
-              {/if}
-              {/volist}     
+                {volist name="list" id="vo"}
+                <div class="lixian"></div>
+                <li><a data-id="{$vo.Id}" class="{if condition="$data_type eq $vo.Id"}tabItemCurrent{/if}">{$vo.title}</a></li>
+                {/volist}
 
             </div>
             </div>
             <div class="tabBodyContainer">
-                <div class="tabBodyItem tabBodyCurrent">
+                <div class="tabBodyItem  {if condition="$data_type eq 1"}tabBodyCurrent{/if}">
                 </div>  
-                <div class="tabBodyItem">
+                <div class="tabBodyItem {if condition="$data_type eq 2"}tabBodyCurrent{/if}">
                 </div>
-                <div class="tabBodyItem">
+                <div class="tabBodyItem {if condition="$data_type eq 3"}tabBodyCurrent{/if}">
                 </div>
-                <div class="tabBodyItem">
+                <div class="tabBodyItem {if condition="$data_type eq 4"}tabBodyCurrent{/if}">
                 </div>
-                <div class="tabBodyItem">
+                <div class="tabBodyItem {if condition="$data_type eq 5"}tabBodyCurrent{/if}">
                 </div>             
             </div>
         </div>

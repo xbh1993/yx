@@ -15,7 +15,11 @@ class Into extends Controller
     public function _initialize()
     {
         $type=request()->param();
-        //banner图
+        if(isset($type['showType'])){
+            $this->assign('showType',$type['showType']);
+        }else{
+            $this->assign('showType','summary');
+        }
         $banner=Db::name('system')->find(4);
         $banner=unserialize($banner['value']);
 
@@ -33,12 +37,11 @@ class Into extends Controller
         $list=Db::name('banner')->where('type_pid',41)->find();
         $list['img_url']=unserialize($list['img_url']);
         $this->assign('yxfcList',$list);
-
         //公益事业
        if(isset($type['page'])){
            $this->assign('p',1);
        }
-        $gysyList=Db::name('company')->where('status',3)->paginate(6,false,$type);
+        $gysyList=Db::name('company')->where('status',3)->paginate(6,false,['query'=>$type]);
 
         $page=$gysyList->render();
 
@@ -76,15 +79,19 @@ class Into extends Controller
         $this->assign('clist',$clist);
         return $this->fetch();
     }
+    //公司简介
     public function summary(){
         return $this->fetch();
     }
+    //发展历程
     public function course(){
         return $this->fetch();
     }
+    //公司文化
     public function culture(){
         return $this->fetch();
     }
+    //公益事业
     public function cause(){
         return $this->fetch();
     }

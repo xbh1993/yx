@@ -15,30 +15,30 @@
 
     <div class="underline">
     <div class="tabItemContainer_item">
-        <li><a class="{if condition="empty($p)"}tabItemCurrent{/if}">公司简介</a></li>
+        <li><a class="{if $showType=='summary'}tabItemCurrent{/if} ">公司简介</a></li>
         <div class="lixian"></div>
-        <li><a>发展历程</a></li>
+        <li><a class="{if $showType=='course'}tabItemCurrent{/if}">发展历程</a></li>
 
         <div class="lixian"></div>
-        <li><a>公司文化</a></li>
+        <li><a class="{if $showType=='culture'}tabItemCurrent{/if}">公司文化</a></li>
         <div class="lixian "></div>
-        <li><a class="{if condition="!empty($p)"}tabItemCurrent{/if}">公益事业</a></li>
+        <li><a class="{if $showType=='cause' or isset($p) }tabItemCurrent{/if}">公益事业</a></li>
     </div>
     </div>
 <div id="TabMain">
     <div class="tabBodyContainer">
         <!--<iframe id="test1" align="center" width="100%"  src="/index/into/summary.html" frameborder="no"-->
                 <!--border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>-->
-        <div class="tabBodyItem {if condition="empty($p)"}tabBodyCurrent{/if} ">
+        <div class="tabBodyItem {if $showType=='summary'}tabBodyCurrent{/if} ">
             {include file="into:summary"}
         </div>
-        <div class="tabBodyItem">
+        <div class="tabBodyItem {if $showType=='course'}tabBodyCurrent{/if}"  >
             {include file="into:course"}
         </div>
-        <div class="tabBodyItem">
+        <div class="tabBodyItem {if $showType=='culture'}tabBodyCurrent{/if}">
             {include file="into:culture"}
         </div>
-        <div class="tabBodyItem {if condition="!empty($p)"}tabBodyCurrent{/if}" >
+        <div class="tabBodyItem {if $showType=='cause' or isset($p) }tabBodyCurrent{/if}" >
             {include file="into:cause"}
         </div>
     </div>

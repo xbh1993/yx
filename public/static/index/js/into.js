@@ -5,6 +5,7 @@ var tab2 = document.getElementById("item2");
 var html = $('#item1').html();
 $('#item2').html(html)
 function Marquee() {
+
     if (tab2.offsetWidth - tab.scrollLeft <= 0)
         tab.scrollLeft -= tab1.offsetWidth
     else {
@@ -20,7 +21,7 @@ tab.onmouseout = function () {
 };
 
 
-var speed = 15; //数字越大速度越慢
+var speed2 =15; //数字越大速度越慢
 var tab_tab = document.getElementById("item_item_2");
 var tab2_2 = document.getElementById("item2_2");
 var tab2_3 = document.getElementById("item2_3");
@@ -34,12 +35,12 @@ function Marquee2() {
     }
 }
 
-var MyMars = setInterval(Marquee2, speed);
+var MyMars = setInterval(Marquee2, speed2);
 tab_tab.onmouseover = function () {
     clearInterval(MyMars)
 };
 tab_tab.onmouseout = function () {
-    MyMars = setInterval(Marquee2, speed)
+    MyMars = setInterval(Marquee2, speed2)
 };
 
 

@@ -17,7 +17,7 @@
 }
 
 .contop {
-    width: 1400px;
+    width: 1500px;
     height: 100px;
     margin: 0 auto;
 }
@@ -31,6 +31,7 @@
     border: 1px #e6e6e6 solid;
     border-radius: 12px;
     float: right;
+    margin-right: 20px;
 }
 
 .tab a {
@@ -42,7 +43,7 @@
 }
 
 .nav {
-    margin-left: 50px;
+    margin-left: 100px;
     margin-top: 46px;
     float: left;
     display: flex;
@@ -354,6 +355,7 @@ a {
 /*产品介绍*/
 .goodsb {
     width: 1400px;
+    height: 400px;
     margin: 0 auto;
     display: flex;
     flex-direction: row;

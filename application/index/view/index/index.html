@@ -88,7 +88,7 @@
                 <div class="onyx_more">点击了解更多</div>
             </a>
         </div>
-        <img class="onyx_img fadeInRight TwoAnimated" src="{$profile['image']|default=''}">
+        <img class="onyx_img" src="{$profile['image']|default=''}">
     </div>
 </div>
 <!--扬翔分公司分布-->
@@ -100,8 +100,8 @@
     <div class="buteda">
         <div id="Tabfen" style="background: #fcf9f2;">
             <div class="tabfenItemContainer">
-                <li data-type="1"><a class="tabfenItemCurrent">饲料分公司</a></li>
-                <li data-type="2"><a>养猪分公司</a></li>
+                <li data-type="2"><a class="tabfenItemCurrent">饲料分公司</a></li>
+                <li data-type="1"><a>养猪分公司</a></li>
             </div>
             <div class="tabfenBodyContainer">
                 <div class="tabfenBodyItem tabfenBodyCurrent">
@@ -124,8 +124,8 @@
         <div class="onyx_text">国际合作</div>
     </div>
     <div class="onyx_content">
-        <img class="onyx_img fadeInRight TwoAnimated" src="{$newslist.thumb}">
-        <div class="onyx_detail fadeInLeft TwoAnimated">
+        <img id="item1_parent" class="onyx_img " src="{$newslist.thumb}">
+        <div id="item1_son" class="onyx_detail ">
             <div class="onyx_name" style="margin-top: 20px;line-height: 30px;">{$newslist.title}</div>
             <div class="onyx_em">{$newslist.introduction}</div>
             <a href="/index/details/international.html">
@@ -142,7 +142,7 @@
     </div>
     <div class="goodsb">
         {volist name="productlist" id="vo"}
-        <div class="goodsl fadeInRight TwoAnimated">
+        <div class="goodsl ">
             <img src="{$vo.thumb}">
             <div class="gooodslbtm">
                 <div class="jies">{$vo.title}</div>
@@ -160,7 +160,7 @@
     </div>
     <div class="newb">
 
-        <div class="newl fadeInRight TwoAnimated" >
+        <div class="newl " >
             <div class="newl_name">扬翔新闻</div>
             <a style="color:#000" href="/index/details/details.html?table=article&id={$news1.id}">
             <div class="newl_imgs"><img src="{$news1.thumb}"></div>
@@ -168,13 +168,13 @@
             <div class="new_span">{$news1.introduction}</div>
             </a>
         </div>
-        <div class="newl fadeInUp TwoAnimated" >
+        <div class="newl " >
             <div class="newl_name">扬翔视频</div>
             <div class="newl_imgs"><img src="{$video.image}"></div>
             <div class="newtext">{$video.title}</div>
             <div class="new_span">{$video.describe}</div>
         </div>
-        <div class="newl fadeInDown TwoAnimated">
+        <div class="newl ">
             <div class="newl_name">媒体报道</div>
             <a style="color:#000" href="/index/details/details.html?table=article&id={$news1.id}">
                 <div class="newl_imgs"><img src="{$news2.thumb}"></div>
@@ -191,10 +191,11 @@
 <script>
 
     var map = new AMap.Map('container', {resizeEnable: true, zoom: 5,zoomEnable:false,});
+//var map = new AMap.Map('container', {resizeEnable: true, zoom: 5});
     var infoWindow = new AMap.InfoWindow({offset: new AMap.Pixel(0, -30)});
     var markers = [];
     var url="{:url('index/index/getCompanyList')}"
-    $.post(url,{type:1},function (res) {
+    $.post(url,{type:2},function (res) {
        if(res.code==1){
            getmap(res.data)
        }
@@ -361,7 +362,43 @@
             t=setInterval(show,2000);
         })
     })
+     $(window).scroll(function(e){
+    //滚动距离
+       var min= $(window).scrollTop();
 
+         if(min>500){
+           $($('.onyx_detail')[0]).addClass('fadeInRight TwoAnimated')
+             $($('.onyx_img')[0]).addClass('fadeInRight TwoAnimated')
+         }
+         if(min<300){
+             $($('.onyx_detail')[0]).removeClass('fadeInRight TwoAnimated')
+             $($('.onyx_img')[0]).removeClass('fadeInRight TwoAnimated')
+         }
+        if(min>1900){
+             $('#item1_parent').addClass('fadeInRight TwoAnimated')
+            $('#item1_son').addClass('fadeInLeft TwoAnimated')
+        }
+        if(min<1600){
+            $('#item1_parent').removeClass('fadeInRight TwoAnimated')
+            $('#item1_son').removeClass('fadeInLeft TwoAnimated')
+        }
+        if(min>2600){
+            $('.goodsl').addClass('fadeInRight TwoAnimated');
+        }
+        if(min<2400){
+            $('.goodsl').removeClass('fadeInRight TwoAnimated');
+        }
+        if(min>3300){
+            $($('.newl')[0]).addClass('fadeInRight TwoAnimated');
+            $($('.newl')[1]).addClass('fadeInUp TwoAnimated ');
+            $($('.newl')[2]).addClass('fadeInDown TwoAnimated');
+        }
+        if(min<3100){
+            $($('.newl')[0]).removeClass('fadeInRight TwoAnimated');
+            $($('.newl')[1]).removeClass('fadeInUp TwoAnimated ');
+            $($('.newl')[2]).removeClass('fadeInDown TwoAnimated');
+        }
+     });
 </script>
 
 {include file="public:foot"}

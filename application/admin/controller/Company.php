@@ -30,7 +30,7 @@ class Company extends Main{
 
     //分公司列表
     function lists(){
-        $company_lists = Db::name('company')->where('status', '2')->order('sort desc,add_time desc')->paginate(8);
+        $company_lists = Db::name('company')->where('status', '2')->order('sort desc,add_time desc')->select();
          return $this->fetch('lists',['list'=>$company_lists]);
     }
 

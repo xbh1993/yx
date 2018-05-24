@@ -25,6 +25,7 @@ class Into extends Controller
 
         //公司
         $info=Db::name('company')->where('status',1)->find();
+
         $this->assign('info',$info);
         $videoArr=Db::name('system')->find(2);
         $videoArr=unserialize($videoArr['value']);

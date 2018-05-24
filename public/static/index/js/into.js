@@ -45,11 +45,12 @@ tab_tab.onmouseout = function () {
 
 
 
-var map = new AMap.Map('container', {resizeEnable: true, zoom: 5,zoomEnable:false,});
+// var map = new AMap.Map('container', {resizeEnable: true, zoom: 5,zoomEnable:false,});
+var map = new AMap.Map('container', {resizeEnable: true, zoom: 5});
 var infoWindow = new AMap.InfoWindow({offset: new AMap.Pixel(0, -30)});
 var markers = [];
 var url=$('#Tabfen').attr('data-url');
-$.post(url,{type:1},function (res) {
+$.post(url,{type:2},function (res) {
     if(res.code==1){
         getmap(res.data)
     }

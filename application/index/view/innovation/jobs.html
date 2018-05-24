@@ -13,7 +13,7 @@
     <div class="aa">
         <div class="pnavtopl">
             <div class="tabItemContainers">
-                <li><a class="tabItemCurrents">扬翔研究院</a></li>
+                <li><a class="tabItemCurrents">院士工作站</a></li>
                 <li><a>研究成果</a></li>
                 <li><a>科研所团队成员</a></li>
             </div>
@@ -21,15 +21,17 @@
         <div class="pnavtopr">
             <div class="tabBodyContainers">
                 <div class="tabBodyItems tabBodyCurrents">
-                    <div class="sumname">扬翔研究院简介</div>
+                    <div class="sumname">院士工作站简介</div>
                     {$jinfo.content}
                 </div>
             </div>
             <div class="tabBodyContainers">
                 <div class="tabBodyItems">
                     <div class="sumname">研究成果</div>
-                    <div class="docon j1">
+                    <div class="hot_news j1">
+                        <ul >
 
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -59,13 +61,14 @@
             data: {apage:page,table:'project',bid:1},
             success:function(data){
                 var json=data.list.data;
-                $(".j1").empty();
+                $(".j1 ul").empty();
+                $(".j1").nextAll().remove();
                 for (var i = 0; i <json.length; i++) {
-                    $(".j1").append('<div class="donav"><div class="donav_con"><div  class="donav_texta">'+json[i].title+'</div><div class="donav_namea">'+json[i].name+'</div><div class="donav_mms">'+json[i].describe+'</div></div><div class="docolor"></div></div>');
-                }                
-                $(".j1").append('<div style="clear: both"></div>');
-                $(".j1").append(data.page);                
-                $(".j1 .pagination").find('a').each(function(){
+                    $(".j1 ul").append('<li><div class="donav_con"><div class="thum">'+json[i].title+'</div><div class="title">'+json[i].name+'</div><div class="detail">'+json[i].describe+'</div></div><div class="docolor"></div><div class="code"><div class="donav_con" style="color: #fff;text-align: left;"><div class="thum">'+json[i].title+'</div><div class="title">'+json[i].name+'</div><div class="detail_xq">'+json[i].describe+'</div></div></div></li>');
+                }
+                $(".j1").after(data.page);
+                $(".j1").after('<div style="clear: both"></div>');
+                $(".j1").parent().parent().find('a').each(function(){
                     var href=$(this).attr('href').substring(0,22).replace('AjaxPage','AjaxPagej1');
                     $(this).attr("href",href);
                 });

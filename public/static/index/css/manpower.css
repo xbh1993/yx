@@ -400,7 +400,7 @@
 .dx {
     width: 1200px;
     height: 370px;
-    z-index: 999;
+    z-index: 1;
     margin: auto;
     position: relative;
     bottom: 424px;

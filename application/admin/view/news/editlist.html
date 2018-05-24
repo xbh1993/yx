@@ -33,19 +33,19 @@
                     <div class="layui-form-item layui-input-inline">
                         <label class="layui-form-label">类别选择</label>
                         <div class="layui-input-block">
-              <input style="display:none" type="text" value="{$info.id|default=''}" name="id"  >
-              <select name="cid">
-                          {volist name="type" id="vo"}
-                              {if condition="isset($info)"}
-                                {if condition="$vo.Id eq $info.cid"} <option value ="{$vo.Id}"  selected="true">{$vo.title}</option>                        
-                                {else /} 
+                          <input style="display:none" type="text" value="{$info.id|default=''}" name="id"  >
+                          <select name="cid">
+                            {volist name="type" id="vo"}
+                                {if condition="isset($info)"}
+                                  {if condition="$vo.Id eq $info.cid"} <option value ="{$vo.Id}"  selected="true">{$vo.title}</option>
+                                  {else /} 
+                                  <option value ="{$vo.Id}">{$vo.title}</option>
+                                {/if}
+                                {else /}
                                 <option value ="{$vo.Id}">{$vo.title}</option>
-                              {/if}
-                              {else /}
-                              <option value ="{$vo.Id}">{$vo.title}</option>
-                              {/if}
-                          {/volist}
-                        </select>
+                                {/if}
+                            {/volist}
+                          </select>
                         </div>
                       </div>
                       <div class="layui-form-item layui-input-inline">

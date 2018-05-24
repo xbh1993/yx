@@ -11,6 +11,14 @@ class Hr extends Main{
         $this->assign('item',['item1'=>'扬翔大学','item2'=>'人才理念']);
 		return $this->fetch();
 	}
+    //人才理念
+    function management(){
+        $list=Db::name('publiclist')->where('coid',10)->order('sys_order asc,create_time desc')->select();
+        $this->assign('list',$list);
+        $this->assign('coid',10);
+        $this->assign('item',['item1'=>'扬翔大学','item2'=>'管理人员']);
+        return $this->fetch('talent');
+    }
 	//
 	function edittalent(){
 		$this->assign('coid',input('get.coid'));

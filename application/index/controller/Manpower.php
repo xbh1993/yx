@@ -51,7 +51,7 @@ class Manpower extends Controller
       $this->assign('photo1',$yxdxlist);
       $this->assign('info4',$info4);
       $info5=Db::name('content')->where('id',6)->find();
-      //培训特色轮播图
+      //培训特色轮播图、管理人员
       $list=Db::name('banner')->where('type_pid',42)->find();
       $list['img_url']=unserialize($list['img_url']);
       $this->assign('photo2',$list);
@@ -60,6 +60,8 @@ class Manpower extends Controller
       $this->assign('info6',$info6);
       $info7=Db::name('publiclist')->where(['status'=>1,'is_top'=>1,'coid'=>3])->find();
         $this->assign('info7',$info7);
+        $list3=Db::name('publiclist')->where(['coid'=>10,'status'=>1])->order('sys_order asc,create_time desc')->select();
+      $this->assign('list3',$list3);
       return $this->fetch();
    }
    //校企合作

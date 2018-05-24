@@ -32,26 +32,13 @@
 </div>
 <div class="train_duixiang">
     <div class="duix">
+        {volist name="list3" id="vo"}
         <div class="duixiang">
-            <img src="/static/index/images/dx1.png">
-            <div class="dx_name">高层管理人员</div>
-            <div class="dx_tt">重点提升领导力，决策力和系统逻辑思维能力</div>
+            <img src="{$vo.thumb}">
+            <div class="dx_name">{$vo.title}</div>
+            <div class="dx_tt">{$vo.introduction}</div>
         </div>
-        <div class="duixiang">
-            <img src="/static/index/images/dx2.png">
-            <div class="dx_name">中层管理人员</div>
-            <div class="dx_tt">重点提升领导力，决策力和系统逻辑思维能力</div>
-        </div>
-        <div class="duixiang">
-            <img src="/static/index/images/dx3.png">
-            <div class="dx_name">基层管理人员</div>
-            <div class="dx_tt">重点提升领导力，决策力和系统逻辑思维能力</div>
-        </div>
-        <div class="duixiang">
-            <img src="/static/index/images/dx4.png">
-            <div class="dx_name">基层人员</div>
-            <div class="dx_tt">重点提升领导力，决策力和系统逻辑思维能力</div>
-        </div>
+        {/volist}
 
     </div>
 

@@ -82,16 +82,14 @@
   $(function (){
         layui.use('laydate', function(){
         var laydate = layui.laydate;
-  $("#btncheck").change(function() { 
-    if($(this).is(':checked')) {
-$("input[type='checkbox']").attr('checked',true);
-    }
-    else{
-      $("input[type='checkbox']").attr('checked',false);
-    }
-
-
-});
+        $("#btncheck").change(function() { 
+            if($(this).is(':checked')) {
+              $("input[type='checkbox']").attr('checked',true);
+            }
+            else{
+              $("input[type='checkbox']").attr('checked',false);
+            }
+        });
   //执行一个laydate实例
   laydate.render({
     elem: '#test1' //指定元素
@@ -166,10 +164,7 @@ $("input[type='checkbox']").attr('checked',true);
                       });
               }
           })
-
-
        })
-
     }
 
 </script>

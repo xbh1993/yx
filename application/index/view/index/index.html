@@ -367,11 +367,11 @@
        var min= $(window).scrollTop();
 
          if(min>500){
-           $($('.onyx_detail')[0]).addClass('fadeInRight TwoAnimated')
+           $($('.onyx_detail')[0]).addClass('fadeInLeft TwoAnimated')
              $($('.onyx_img')[0]).addClass('fadeInRight TwoAnimated')
          }
          if(min<300){
-             $($('.onyx_detail')[0]).removeClass('fadeInRight TwoAnimated')
+             $($('.onyx_detail')[0]).removeClass('fadeInLeft TwoAnimated')
              $($('.onyx_img')[0]).removeClass('fadeInRight TwoAnimated')
          }
         if(min>1900){
@@ -399,6 +399,8 @@
             $($('.newl')[2]).removeClass('fadeInDown TwoAnimated');
         }
      });
+//
+
 </script>
 
 {include file="public:foot"}

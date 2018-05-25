@@ -90,9 +90,14 @@
     height: 300px;
 }
 
-.school_con img {
+.school_con_imgs {
     width: 430px;
     height: 300px;
+
+}
+.school_con_imgs img {
+    width: 100%;
+    height: 100%;
 }
 
 .school_name {

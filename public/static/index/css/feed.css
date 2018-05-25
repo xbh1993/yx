@@ -332,7 +332,9 @@
     margin-right: 20px;
     margin-top: 20px;
 }
-
+.gainscom:hover{
+    border: 2px solid #ff6600;
+}
 .gainscom img {
     width: 175px;
     height: 145px;
@@ -375,10 +377,9 @@
     font-size: 14px;
     background: #e6e6e6;
     position: relative;
-    bottom: -19px;
+    bottom: -17px;
     left: 140px;
 }
-
 .gainscom_div {
     width: 100px;
     margin: auto;

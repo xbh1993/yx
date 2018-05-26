@@ -20,20 +20,7 @@
         height: 100%;
         position:absolute;
     }
-    /*.ul5{*/
-        /*list-style: none;*/
-        /*position:absolute;*/
-        /*left:850px;*/
-        /*bottom: 0px;*/
-    /*}*/
-    /*.ul5 li{*/
-        /*float:left;*/
-        /*margin-left:20px;*/
-        /*width:15px;*/
-        /*height:15px;*/
-        /*border-radius: 50%;*/
-        /*background:gray;*/
-    /*}*/
+
     .d1,.d2{
         width:50px;
         height:60px;
@@ -53,6 +40,9 @@
         top:507px;
         right: 25px;
     }
+    /*#item1{*/
+        /*display: none;*/
+    /*}*/
 </style>
 <div>
 <div id="second_div">
@@ -63,12 +53,7 @@
         {/volist}
         {/if}
     </div>
-    <!--<ul class="ul5">-->
-        <!--<li></li>-->
-        <!--<li></li>-->
-        <!--<li></li>-->
-        <!--<li></li>-->
-    <!--</ul>-->
+
     <div class="d1"><</div>
     <div class="d2">></div>
 </div>
@@ -79,7 +64,7 @@
         <!--<div class="onyx_text">About Yang Xiang</div>-->
         <div class="onyx_text">关于扬翔</div>
     </div>
-    <div class="onyx_content">
+    <div class="onyx_content" id="item1">
         <div class="onyx_detail fadeInLeft TwoAnimated">
             <div class="onyx_tit">Guang xi &nbsp;yang xiang &nbsp;co . &nbsp;LTD .</div>
             <div class="onyx_name">{$profile['title']|default=''}</div>
@@ -365,14 +350,16 @@
      $(window).scroll(function(e){
     //滚动距离
        var min= $(window).scrollTop();
-
-         if(min>500){
+          console.log(min)
+         if(min>300){
            $($('.onyx_detail')[0]).addClass('fadeInLeft TwoAnimated')
              $($('.onyx_img')[0]).addClass('fadeInRight TwoAnimated')
+//             $('#item1').show();
          }
          if(min<300){
              $($('.onyx_detail')[0]).removeClass('fadeInLeft TwoAnimated')
-             $($('.onyx_img')[0]).removeClass('fadeInRight TwoAnimated')
+             $($('.onyx_img')[0]).removeClass('fadeInRight TwoAnimated');
+//             $('#item1').hide();
          }
         if(min>1900){
              $('#item1_parent').addClass('fadeInRight TwoAnimated')
